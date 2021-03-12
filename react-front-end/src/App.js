@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import React, { useState, useCallback, useRef } from 'react'
+import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
+import { formatRelative } from "date-fns";
 
 const containerStyle = {
   width: '800px',
@@ -23,17 +24,28 @@ export default function App() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
     libraries,
   })
-  const [markers, setMarkers] = useState([])
+  const [markers, setMarkers] = useState([]);
+  const [selected, setSelected] = useState(null);
+
+  const onMapClick = useCallback((event) => {
+      setMarkers(prev => [
+        ...prev, {
+          lat: event.latLng.lat(),
+          lng: event.latLng.lng(),
+          time: new Date()
+        }
+      ])
+    }, []);
+
+  const mapRef = useRef();
+  const onMapLoad = useCallback((map) => {
+    mapRef.current = map;
+  }, [])
 
   if (loadError) return "Error loading maps";
   if(!isLoaded) return "Loading Maps";
   
 
-  // const onLoad = React.useCallback(function callback(map) {
-  //   const bounds = new window.google.maps.LatLngBounds();
-  //   map.fitBounds(bounds);
-  //   setMap(map)
-  // }, [])
 
   // const onUnmount = React.useCallback(function callback(map) {
   //   setMap(null)
@@ -49,23 +61,24 @@ export default function App() {
         center={center}
         zoom={18}
         options={options}
-        onClick={(event) => {
-          setMarkers(prev => [
-            ...prev, {
-              lat: event.latLng.lat(),
-              lng: event.latLng.lng(),
-              time: new Date()
-            }
-          ])
-        }}
-        // onLoad={onLoad}
+        onClick={onMapClick}
+        onLoad={onMapLoad}
         // onUnmount={onUnmount}
       >
         {markers.map((marker => (
         <Marker 
           key={marker.time.toISOString()}
-          position={{lat: marker.lat, lng: marker.lng}}  
+          position={{lat: marker.lat, lng: marker.lng}}
+          onClick = { () => { setSelected(marker) }}
+        
           />)))}
+
+        {selected ? (<InfoWindow position={{lat: selected.lat, lng: selected.lng}}>
+          <div>
+            <h2>Crime Reported❗️</h2>
+            <p>Spotted { formatRelative(selected.time, new Date()) }</p>
+          </div>
+        </InfoWindow>) : null}
       </GoogleMap>
       </div>
   )
