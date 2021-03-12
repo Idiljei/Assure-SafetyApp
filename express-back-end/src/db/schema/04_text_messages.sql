@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS text_messages ON CASCADE;
+DROP TABLE IF EXISTS text_messages CASCADE;
 
 CREATE TABLE text_messages (
   id SERIAL PRIMARY KEY NOT NULL,

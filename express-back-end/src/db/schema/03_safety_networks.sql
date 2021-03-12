@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS safety_networks ON CASCADE;
+DROP TABLE IF EXISTS safety_networks CASCADE;
 
 CREATE TABLE safety_networks (
   id SERIAL PRIMARY KEY NOT NULL,
