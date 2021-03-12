@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reach/combobox": "^0.13.2",
     "@react-google-maps/api": "^2.1.1",
     "axios": "^0.18.1",
     "date-fns": "^2.19.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "use-places-autocomplete": "^1.9.1"
   },
   "scripts": {
     "start": "react-scripts start",
