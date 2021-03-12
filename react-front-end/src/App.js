@@ -1,38 +1,72 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import './App.css';
+import React, { useState } from 'react'
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      message: 'Click the button to load data!'
-    }
-  }
+const containerStyle = {
+  width: '800px',
+  height: '800px'
+};
 
-  fetchData = () => {
-    axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
-      // handle success
-      console.log(response.data) // The entire response from the Rails API
+const center = {
+  lat: -3.745,
+  lng: -38.523
+};
 
-      console.log(response.data.message) // Just the message
-      this.setState({
-        message: response.data.message
-      });
-    }) 
-  }
+const libraries = ["places"];
 
-  render() {
-    return (
-      <div className="App">
-        <h1>{ this.state.message }</h1>
-        <button onClick={this.fetchData} >
-          Fetch Data
-        </button>        
-      </div>
-    );
-  }
+const options = {
+  disableDefaultUI: true,
+  zoomControl: true,
 }
 
-export default App;
+export default function App() {
+  const { isLoaded, loadError } = useJsApiLoader ({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
+    libraries,
+  })
+  const [markers, setMarkers] = useState([])
+
+  if (loadError) return "Error loading maps";
+  if(!isLoaded) return "Loading Maps";
+  
+
+  // const onLoad = React.useCallback(function callback(map) {
+  //   const bounds = new window.google.maps.LatLngBounds();
+  //   map.fitBounds(bounds);
+  //   setMap(map)
+  // }, [])
+
+  // const onUnmount = React.useCallback(function callback(map) {
+  //   setMap(null)
+  // }, [])
+
+
+
+  return (
+    <div>
+    <h1> Safety App <span>🤴🏼</span></h1>
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={18}
+        options={options}
+        onClick={(event) => {
+          setMarkers(prev => [
+            ...prev, {
+              lat: event.latLng.lat(),
+              lng: event.latLng.lng(),
+              time: new Date()
+            }
+          ])
+        }}
+        // onLoad={onLoad}
+        // onUnmount={onUnmount}
+      >
+        {markers.map((marker => (
+        <Marker 
+          key={marker.time.toISOString()}
+          position={{lat: marker.lat, lng: marker.lng}}  
+          />)))}
+      </GoogleMap>
+      </div>
+  )
+}
