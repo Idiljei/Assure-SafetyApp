@@ -13,8 +13,8 @@ module.exports = {
       ssl      : process.env.DB_SSL,
     },
     migrations: {
-      directory: './db/migrations',
-      tableName: 'migrations',
+      directory: './db/schema',
+      tableName: 'schema',
     },
     seeds: {
       directory: './db/seeds',
@@ -29,7 +29,7 @@ module.exports = {
       max: 10,
     },
     migrations: {
-      tableName: 'migrations',
+      tableName: 'schema',
     },
   },
 
