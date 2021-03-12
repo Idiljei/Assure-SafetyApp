@@ -42,20 +42,20 @@ export default function App() {
     mapRef.current = map;
   }, [])
 
+  const panTo = useCallback(({ lat, lng }) => {
+    mapRef.current.panTo({ lat, lng });
+    mapRef.current.setZoom(14);
+  },[]);
+
   if (loadError) return "Error loading maps";
   if(!isLoaded) return "Loading Maps";
   
 
-
-  // const onUnmount = React.useCallback(function callback(map) {
-  //   setMap(null)
-  // }, [])
-
-
-
   return (
     <div>
     <h1> Safety App <span>🤴🏼</span></h1>
+    <Locate panTo={panTo} />
+    
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
@@ -63,7 +63,6 @@ export default function App() {
         options={options}
         onClick={onMapClick}
         onLoad={onMapLoad}
-        // onUnmount={onUnmount}
       >
         {markers.map((marker => (
         <Marker 
@@ -73,7 +72,7 @@ export default function App() {
         
           />)))}
 
-        {selected ? (<InfoWindow position={{lat: selected.lat, lng: selected.lng}}>
+        {selected ? (<InfoWindow position={{lat: selected.lat, lng: selected.lng}} onCloseClick={() => {setSelected(null)}}>
           <div>
             <h2>Crime Reported❗️</h2>
             <p>Spotted { formatRelative(selected.time, new Date()) }</p>
@@ -82,4 +81,13 @@ export default function App() {
       </GoogleMap>
       </div>
   )
+
+  function Locate({panTo}) {
+    return <button  onClick={() => {
+      navigator.geolocation.getCurrentPosition((position) => panTo({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      }), () => null)
+    }}>Me</button>
+  }
 }
