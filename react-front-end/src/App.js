@@ -4,7 +4,7 @@ import Navbar from './components/Navbar'
 import Map from './components/Map'
 
 const App = () => {
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState(0);
 
   return (
   <div>
