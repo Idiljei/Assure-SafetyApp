@@ -10,9 +10,9 @@ const client = require('twilio')(accountSid, authToken);
 
 client.messages
   .create({
-     body: 'Rachel is sharing her location with you',
-     from: process.env.TWILIO_PHONE_NUMBER,
-     to: process.env.USER_PHONE_NUMUSER_PHONE_NUM
-   })
+    body: 'Rachel is sharing her location with you',
+    from: process.env.TWILIO_PHONE_NUMBER,
+    to: process.env.USER_PHONE_NUM
+  })
   .then(message => console.log(message.sid));
 
