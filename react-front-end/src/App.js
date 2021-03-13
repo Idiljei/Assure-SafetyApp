@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Home from './components/Home'
 import Navbar from './components/Navbar'
 import Map from './components/Map'
 
@@ -9,7 +10,7 @@ const App = () => {
   <div>
   <Navbar setSelected={setSelected} selected={selected} />
   
-  {selected === 1 ? (<Map />) : null}
+  {selected === 1 ? (<Map />) : (<Home />)}
 
   </div>
   );
