@@ -3,7 +3,6 @@ import Post from './Posts'
 import ShowPost from './ShowPost'
 
 const Forum = () => {
-  const [selected, setSelected] = useState(false);
 
   return (  
   <div>
