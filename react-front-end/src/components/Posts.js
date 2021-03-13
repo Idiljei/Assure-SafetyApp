@@ -8,6 +8,7 @@ const Post = () => {
   const [ location, setLocation ] = useState("");
   const [ description, setDescription ] = useState("");
   const [ incidents, setIncidents ] = useState([]);
+  
   const post = {
     title,
     name,
@@ -69,9 +70,8 @@ const Post = () => {
 
       <h2>Reported Incidents:</h2>
       { incidents.map(incident=> {
-        return <div><ShowPost title={post.title} name={post.name} location={post.location} description={post.description}/></div>
+        return <div><ShowPost title={incident.title} name={incident.name} location={incident.location} description={incident.description}/></div>
       })}
-
     
     </section>
   );
