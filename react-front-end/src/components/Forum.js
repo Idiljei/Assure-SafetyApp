@@ -28,8 +28,8 @@ const incident = [
 
 const Forum = () => {
   const classes = postStyles();
-  const [ allPosts, setAllPosts ] = useState(incident);
-  const [ selected, setSelected ] = useState(false);
+  const [ allPosts, setAllPosts ] = useState(incident); // list of all the posts
+  const [ selected, setSelected ] = useState(false); // add button --> true
 
   const [ title, setTitle ] = useState("");
   const [ user, setUser ] = useState("");
