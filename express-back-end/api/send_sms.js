@@ -6,11 +6,12 @@ require('dotenv').config();
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
+console.log(client.messages.create)
 
 
 client.messages
   .create({
-    body: 'Rachel is sharing her location with you',
+    body: 'Monica is sharing her location with you',
     from: process.env.TWILIO_PHONE_NUMBER,
     to: process.env.USER_PHONE_NUM
   })
