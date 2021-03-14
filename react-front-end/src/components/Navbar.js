@@ -9,13 +9,16 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 const Navbar = ( { setSelected, selected } ) => {
   return (
     <div>
-  <BottomNavigation
+      <div>
+        <img src="logo/assure-logo.png" alt="assure logo"/>
+      </div>
+      <BottomNavigation
         value={selected}
         onChange={(event, newValue) => {
           setSelected(newValue);
         }}
         showLabels
-      >
+        >
         <BottomNavigationAction label="Home" icon={<HomeIcon />} />
         <BottomNavigationAction label="Map" icon={<RoomIcon />} />
         <BottomNavigationAction label="Forum" icon={<ForumIcon />} />

@@ -5,7 +5,7 @@ const postStyles = makeStyles({
     justifyContent: "center",
   },
   submitButton: {
-    background: 'linear-gradient(45deg, #6190E8, #A7BFE8)',
+    background: 'linear-gradient(45deg, #63639F, #63639F)',
     color: 'white',
     width: '100%',
     marginTop: '10px',

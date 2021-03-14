@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     alignItems: "center"
   },
   homeButton: {
-    background: 'linear-gradient(45deg, #6190E8, #A7BFE8)',
+    background: 'linear-gradient(45deg, #63639F, #63639F)',
     border: 0,
     color: 'white',
     height: 60,
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     margin: '100px'
   },
   locateButton: {
-    background: 'linear-gradient(45deg, #6190E8, #A7BFE8)',
+    background: 'linear-gradient(45deg, #63639F, #63639F)',
     border: 0,
     color: 'white',
     padding: '8px',
