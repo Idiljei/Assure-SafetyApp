@@ -15,5 +15,6 @@ client.messages
     from: process.env.TWILIO_PHONE_NUMBER,
     to: process.env.USER_PHONE_NUM
   })
-  .then(message => console.log(message.sid));
+  .then(message => console.log(message.sid))
+  .catch((error) => console.log(error));
 
