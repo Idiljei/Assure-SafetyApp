@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Button, TextField } from '@material-ui/core';
-import ShowPost from './ShowPost'; 
+import { Button, TextField, Grid, Paper } from '@material-ui/core';
+import ShowPost from './ShowPost';
+import postStyles from './PostStyles';
 
-const Post = () => {
+const CreatePost = () => {
+  const classes = postStyles();
   const [ title, setTitle ] = useState("");
   const [ name, setName ] = useState("");
   const [ location, setLocation ] = useState("");
@@ -25,48 +27,83 @@ const Post = () => {
   
   return (
     <section>
-      <form noValidate autoComplete="off">
-        <TextField 
-          id="standard-secondary" 
-          label="Title" 
-          value={post.title} 
-          color="primary" 
-          variant="outlined" 
-          onChange={(event) => setTitle(event.target.value)} 
-          />
-        <TextField 
-          id="standard-secondary" 
-          label="Name" 
-          value={post.name} 
-          color="primary" 
-          variant="outlined" 
-          onChange={(event) => setName(event.target.value)} 
-          />
-        <TextField 
-          id="standard-secondary" 
-          label="Location"
-          value={post.location} 
-          color="primary"
-          variant="outlined"
-          onChange={(event) => setLocation(event.target.value)} 
-          />
-        <TextField 
-          id="standard-secondary"
-          label="Description"
-          value={post.description} 
-          color="primary" 
-          variant="outlined"
-          onChange={(event) => setDescription(event.target.value)} 
-          />
-      </form>
-      <Button
-        type="submit"
-        size="large" 
-        variant="contained"
-        onClick={addPost} 
-        >
-        Submit
-      </Button>
+      <Grid container spacing={0} justify="center" direction="row">
+        <Grid item>
+        <Grid
+          container
+          direction="column"
+          justify="center"
+          spacing={2}
+          className={classes.createPost}
+          >
+        <Paper
+          variant="elevation"
+          elevation={3}
+          className={classes.background}
+          >
+          <Grid item>
+          <form noValidate autoComplete="off">
+            <Grid container direction="column" spacing={2}>
+              <Grid item>
+                <h2>Report a Crime</h2>
+              </Grid>
+            <Grid item>
+            <TextField 
+              id="standard-secondary" 
+              label="Title" 
+              value={post.title} 
+              color="primary" 
+              variant="outlined" 
+              onChange={(event) => setTitle(event.target.value)} 
+              />
+              </Grid>
+              <Grid item>
+              <TextField 
+                id="standard-secondary" 
+                label="Name" 
+                value={post.name} 
+                color="primary" 
+                variant="outlined" 
+                onChange={(event) => setName(event.target.value)} 
+                />
+                </Grid>
+                <Grid item>
+                <TextField 
+                  id="standard-secondary" 
+                  label="Location"
+                  value={post.location} 
+                  color="primary"
+                  variant="outlined"
+                  onChange={(event) => setLocation(event.target.value)} 
+                  />
+                  </Grid>
+                  <Grid item>
+                  <TextField 
+                    id="standard-secondary"
+                    label="Description"
+                    value={post.description} 
+                    color="primary" 
+                    variant="outlined"
+                    onChange={(event) => setDescription(event.target.value)} 
+                    />
+                    </Grid>
+                    </Grid>
+                  </form>
+              </Grid>
+              <Grid item>
+              <Button
+                className={classes.submitButton}
+                type="submit"
+                size="large" 
+                variant="contained"
+                onClick={addPost} 
+                > Submit
+              </Button>
+              </Grid>
+            </Paper>
+          </Grid>
+        </Grid>
+      </Grid>
 
       <h2>Reported Incidents:</h2>
       { incidents.map(incident=> {
