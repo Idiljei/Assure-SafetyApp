@@ -15,6 +15,11 @@ const postStyles = makeStyles({
     justifyContent: "center",
     minHeight: "30vh",
     padding: "50px"
+  },
+  forum: {
+    justifyContent: "center",
+    border: "solid black",
+    marginTop: '10px'
   }
 });
 

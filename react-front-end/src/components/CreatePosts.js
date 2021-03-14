@@ -27,7 +27,7 @@ const CreatePost = () => {
   
   return (
     <section>
-      <Grid container spacing={0} justify="center" direction="row">
+      <Grid container justify="center" direction="row">
         <Grid item>
         <Grid
           container
@@ -89,7 +89,7 @@ const CreatePost = () => {
                     </Grid>
                     </Grid>
                   </form>
-              </Grid>
+                </Grid>
               <Grid item>
               <Button
                 className={classes.submitButton}
