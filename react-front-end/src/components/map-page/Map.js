@@ -72,10 +72,10 @@ const Map = () => {
 
   return (
     <div>
-       <Search /> 
     <Box className={classes.mapBox} >
     <Locate panTo={panTo} />
 
+       <Search /> 
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
