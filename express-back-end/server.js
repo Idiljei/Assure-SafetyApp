@@ -1,8 +1,8 @@
-const Express = require('express');
+const Express = require("express");
 const App = Express();
-const BodyParser = require('body-parser');
+const BodyParser = require("body-parser");
 const PORT = 8080;
-const pool = require('./src/server/db');
+const pool = require("./src/server/db");
 const cors = require("cors");
 // const router  = Express.Router();
 
@@ -11,25 +11,27 @@ const cors = require("cors");
 App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
 App.use(cors());
-App.use(Express.static('public'));
+App.use(Express.static("public"));
 
 // Sample GET route
-App.get('/', (req, res) => res.json({
-  message: "Seems to work!", 
-}));
+App.get("/", (req, res) =>
+  res.json({
+    message: "Seems to work!",
+  })
+);
 
-//----- FORUM -----// 
+//----- FORUM -----//
 
-// GET => get all posts 
-App.get("/forum", async(req, res) => {
-  console.log("Forum Get Request")
+// GET => get all posts
+App.get("/forum", async (req, res) => {
+  console.log("Forum Get Request");
   try {
-    const allForums = await pool.query("SELECT * FROM posts")
-    res.json(allForums.rows)
+    const allForums = await pool.query("SELECT * FROM posts");
+    res.json(allForums.rows);
   } catch (err) {
-    console.log(err.message)
+    console.log(err.message);
   }
-})
+});
 
 // GET => get posts for one user
 // App.get("/forum/:id", async(req, res) => {
@@ -43,23 +45,27 @@ App.get("/forum", async(req, res) => {
 // })
 
 // POST => create a post
-App.post("/forum", async(req, res) => {
+App.post("/forum", async (req, res) => {
   // console.log("Post Request")
   // console.log(req.body)
   try {
     // console.log("Post Request Inside Try")
-    const { user_id, title, address, description } = req.body
-    const newForum = await pool.query("INSERT INTO posts (user_id, title, address, description) VALUES ($1, $2, $3, $4)", [user_id, title, address, description])
+    const { user_id, title, address, description } = req.body;
+    const newForum = await pool.query(
+      "INSERT INTO posts (user_id, title, address, description) VALUES ($1, $2, $3, $4)",
+      [user_id, title, address, description]
+    );
   } catch (err) {
     console.log(err);
   }
-})
+});
 
-// UPDATE => update a post 
-// DELETE => delete a post 
-
+// UPDATE => update a post
+// DELETE => delete a post
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
-  console.log(`Express seems to be listening on port ${PORT} so that's pretty DAMN GOOD 👍`);
+  console.log(
+    `Express seems to be listening on port ${PORT} so that's pretty DAMN GOOD 👍`
+  );
 });
