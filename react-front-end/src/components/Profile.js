@@ -4,13 +4,13 @@ import './profileStyles.css'
 
 const Profile = () => {
   return (
-    <div class="profile-box">
-      <div class="profile-img">
-        <img src="pheebs.png" alt="profile"/>
+    <div class="profile">
+      <div class="profile-box">
+        <img src="pheebs.png" alt="profile" class="profile-img"/>
+        <h1 class="user-name"> Pheobe Buffay </h1>
       </div>
       
       <section class="profile-container">
-        <p>Name: Pheobe Buffay</p>
         <p>Phone: 555-5555</p>
         <p>D.O.B:</p>
       </section>
