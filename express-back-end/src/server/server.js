@@ -11,7 +11,7 @@ App.use(BodyParser.json());
 App.use(Express.static('public'));
 
 // Sample GET route
-App.get('/', (req, res) => res.json({
+App.get('/api/data', (req, res) => res.json({
   message: "Seems to work!", 
 }));
 

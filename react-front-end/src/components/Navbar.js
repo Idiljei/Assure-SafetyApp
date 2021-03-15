@@ -9,9 +9,6 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 const Navbar = ( { setSelected, selected } ) => {
   return (
     <div>
-      <div>
-        <img src="logo/assure-logo.png" alt="assure logo"/>
-      </div>
       <BottomNavigation
         value={selected}
         onChange={(event, newValue) => {

@@ -4,7 +4,9 @@ const useStyles = makeStyles({
   homeBox: {
     display: "flex",
     justifyContent: "space-evenly",
-    alignItems: "center"
+    alignItems: "center",
+    flexWrap: "wrap",
+    height: '100%'
   },
   mapBox: {
     display: "flex",
@@ -13,15 +15,16 @@ const useStyles = makeStyles({
     alignItems: "center"
   },
   homeButton: {
-    background: 'linear-gradient(45deg, #63639F, #63639F)',
+    background: 'linear-gradient(45deg, #63639F, #a6a6e0)',
     border: 0,
     color: 'white',
-    height: 60,
-    padding: '40px',
-    margin: '100px'
+    height: '100%',
+    padding: '2em',
+    margin: '3em 1em',
+
   },
   locateButton: {
-    background: 'linear-gradient(45deg, #63639F, #63639F)',
+    background: 'linear-gradient(45deg, #63639F, #a6a6e0)',
     border: 0,
     color: 'white',
     padding: '8px',

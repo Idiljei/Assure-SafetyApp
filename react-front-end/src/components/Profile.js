@@ -11,7 +11,7 @@ const Profile = () => {
       <p>Name: Pheobe Buffay</p>
       <p>Phone: 555-5555</p>
       <p>D.O.B:</p>
-    </section>
+      </section>
 
     <section profile-container>
       <h1 class= "profile-container"> Safety Network</h1>
@@ -27,7 +27,6 @@ const Profile = () => {
       <p class="contacts">
         <ContactsTwoToneIcon>ContactsTwoToneIcon</ContactsTwoToneIcon> Boothang <br></br> 234-567-8901
       </p>
-        
       </section>
     </div>
   );

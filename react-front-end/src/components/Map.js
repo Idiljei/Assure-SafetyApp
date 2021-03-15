@@ -5,7 +5,6 @@ import { Box } from '@material-ui/core';
 import Locate from "./Locate";
 import mapStyles from './mapStyles';
 import useStyles from './Styles';
-import './Map.css';
 
 const containerStyle = {
   width: '800px',
