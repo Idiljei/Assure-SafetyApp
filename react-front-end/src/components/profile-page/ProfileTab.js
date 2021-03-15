@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Tabs, Tab, Typography, Box } from '@material-ui/core';
-import ContactsTwoToneIcon from '@material-ui/icons/ContactsTwoTone';
+import SimpleList from './ContactList';
+import UserInfoList from './UserList';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -70,22 +71,13 @@ export default function SimpleTabs(props) {
       </AppBar>
       <TabPanel value={value} index={0}>
         <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-          <h4>Phone: {props.number}</h4>
-          <h4>Date of Birth: {props.dob}</h4>
+          <UserInfoList number={props.number} dob={props.dob}/>
         </Box>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <section class="profile-container"> 
-          <p class="contacts">
-            <ContactsTwoToneIcon>ContactsTwoToneIcon</ContactsTwoToneIcon> Mom <br></br>123-456-7890  
-          </p>
-          <p class="contacts">
-            <ContactsTwoToneIcon>ContactsTwoToneIcon</ContactsTwoToneIcon> Sister <br></br> 345-678-9012
-          </p>
-          <p class="contacts">
-            <ContactsTwoToneIcon>ContactsTwoToneIcon</ContactsTwoToneIcon> Boothang <br></br> 234-567-8901
-          </p>
-        </section>
+        <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+          <SimpleList />
+        </Box>
       </TabPanel>
     </div>
   );
