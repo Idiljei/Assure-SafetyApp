@@ -27,9 +27,9 @@ const useStyles = makeStyles({
     background: 'linear-gradient(45deg, #63639F, #a6a6e0)',
     border: 0,
     color: 'white',
-    padding: '8px',
-    width: '10%',
-    margin: '8px'
+    padding: '1em',
+    width: '42%',
+    margin: '2em'
   }    
 });
 

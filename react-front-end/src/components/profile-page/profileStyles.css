@@ -20,8 +20,8 @@
 /* profile picture */
 img.profile-img {
   border-radius: 50%;
-  width: 25%;
-  height: 25%;
+  width: 13em;
+  height: 13em;
   margin: 4em;
   margin-bottom: 0;
 }
@@ -30,12 +30,12 @@ img.profile-img {
 .user-name {
   margin: 1.5em;
   font-weight: bold;
-  font-family: 'Roboto';
+  font-family: "Roboto";
 }
 
 /* user info */
 .user-info {
-  padding: 1.5em
+  padding: 1.5em;
 }
 
 /* first container for user details */

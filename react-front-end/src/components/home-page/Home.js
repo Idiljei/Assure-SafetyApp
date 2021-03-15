@@ -3,7 +3,6 @@ import { Box, Button } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 import ErrorIcon from '@material-ui/icons/Error';
 import useStyles from '../Styles';
-import './Home.css';
 
 const Home = (props) => {
   const classes = useStyles();

@@ -8,8 +8,9 @@ const profileStyles = makeStyles({
   root: {
     display: "flex",
     flexDirection: "column",
-    margin: "1em",
-    width: "50%"
+    margin: "1.5em",
+    marginTop: "0.5em",
+    width: "85%"
   }
 });
 

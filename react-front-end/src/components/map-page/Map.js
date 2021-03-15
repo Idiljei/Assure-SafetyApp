@@ -21,7 +21,7 @@ const libraries = ["places"];
 const options = {
   styles: mapStyles,
   disableDefaultUI: true,
-  zoomControl: true,
+  zoomControl: true
 }
 
 const Map = () => {
@@ -60,7 +60,6 @@ const Map = () => {
   return (
     <div>
     <Box className={classes.mapBox} >
-    <h1> Safety App <span>🤴🏼</span></h1>
     <Locate panTo={panTo} />
     
       <GoogleMap
