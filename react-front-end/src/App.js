@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import Home from './components/Home';
+import Home from './components/home-page/Home';
 import Navbar from './components/Navbar';
-import Map from './components/Map';
-import Forum from './components/Forum';
-import Profile from './components/Profile'
+import Map from './components/map-page/Map';
+import Forum from './components/forum-page/Forum';
+import Profile from './components/profile-page/Profile'
 import './App.css'
 
 const App = () => {
