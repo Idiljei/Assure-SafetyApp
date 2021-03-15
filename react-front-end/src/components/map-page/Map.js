@@ -1,0 +1,94 @@
+import React, { useState, useCallback, useRef } from 'react'
+import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
+import { formatRelative } from "date-fns";
+import { Box } from '@material-ui/core';
+import Locate from "./Locate";
+import mapStyles from './mapStyles';
+import useStyles from '../Styles';
+
+const containerStyle = {
+  width: '800px',
+  height: '800px'
+};
+
+const center = {
+  lat: -3.745,
+  lng: -38.523
+};
+
+const libraries = ["places"];
+
+const options = {
+  styles: mapStyles,
+  disableDefaultUI: true,
+  zoomControl: true,
+}
+
+const Map = () => {
+  const [markers, setMarkers] = useState([]);
+  const [selected, setSelected] = useState(null);
+  const classes = useStyles();
+    
+  const { isLoaded, loadError } = useJsApiLoader ({
+      googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
+      libraries
+    })
+  
+  const onMapClick = useCallback((event) => {
+      setMarkers(prev => [
+        ...prev, {
+          lat: event.latLng.lat(),
+          lng: event.latLng.lng(),
+          time: new Date()
+        }
+      ])
+    }, []);
+
+  const mapRef = useRef();
+  const onMapLoad = useCallback((map) => {
+    mapRef.current = map;
+  }, [])
+
+  const panTo = useCallback(({ lat, lng }) => {
+    mapRef.current.panTo({ lat, lng });
+    mapRef.current.setZoom(14);
+  },[]);
+
+  if (loadError) return "Error loading maps";
+  if(!isLoaded) return "Loading Maps";
+
+  return (
+    <div>
+    <Box className={classes.mapBox} >
+    <h1> Safety App <span>🤴🏼</span></h1>
+    <Locate panTo={panTo} />
+    
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={18}
+        options={options}
+        onClick={onMapClick}
+        onLoad={onMapLoad}
+      >
+        {markers.map((marker => (
+        <Marker 
+          key={marker.time.toISOString()}
+          position={{lat: marker.lat, lng: marker.lng}}
+          onClick = { () => { setSelected(marker) }}
+        
+          />)))}
+
+        {selected ? (<InfoWindow position={{lat: selected.lat, lng: selected.lng}} onCloseClick={() => {setSelected(null)}}>
+          <div>
+            <h2>Crime Reported❗️</h2>
+            <p>Spotted { formatRelative(selected.time, new Date()) }</p>
+          </div>
+        </InfoWindow>) : null}
+      </GoogleMap>
+      </Box>
+        </div>
+  )
+};
+
+export default Map;

@@ -1,0 +1,58 @@
+/* master container */
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #dde9eb;
+}
+
+/* container for profile pictures and name */
+.profile-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 30%;
+}
+
+/* profile picture */
+img.profile-img {
+  border-radius: 50%;
+  width: 25%;
+  height: 25%;
+  margin: 4em;
+  margin-bottom: 0;
+}
+
+/* user name */
+.user-name {
+  margin: 1.5em;
+  font-weight: bold;
+  font-family: 'Roboto';
+}
+
+/* user info */
+.user-info {
+  padding: 1.5em
+}
+
+/* first container for user details */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 2em;
+}
+
+.contacts {
+  border: 2px solid;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  /* margin: auto; */
+  margin-bottom: 0;
+}
