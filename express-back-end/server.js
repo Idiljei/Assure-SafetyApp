@@ -4,6 +4,7 @@ const BodyParser = require('body-parser');
 const PORT = 8080;
 const pool = require('./src/server/db');
 const cors = require("cors");
+// const router  = Express.Router();
 
 // const {sendTextMsg} = require('./api/send_sms');
 // Express Configuration
@@ -21,6 +22,7 @@ App.get('/', (req, res) => res.json({
 
 // GET => get all posts 
 App.get("/forum", async(req, res) => {
+  console.log("Forum Get Request")
   try {
     const allForums = await pool.query("SELECT * FROM posts")
     res.json(allForums.rows)
@@ -29,27 +31,29 @@ App.get("/forum", async(req, res) => {
   }
 })
 
-// GET => get one post 
-App.get("/forum/:id", async(req, res) => {
-  try {
-    const { id } = req.params
-    const forum = await pool.query("SELECT * FROM posts WHERE id = $1", [id])
-    res.json(forum.rows[0])
-  } catch (err) {
-    console.log(err.message)
-  }
-})
+// GET => get posts for one user
+// App.get("/forum/:id", async(req, res) => {
+//   try {
+//     const { id } = req.params
+//     const forum = await pool.query("SELECT * FROM posts WHERE user_id = $1", [id])
+//     res.json(forum.rows)
+//   } catch (err) {
+//     console.log(err.message)
+//   }
+// })
 
 // POST => create a post
-App.post('/forum/new', async(req, res) => {
+App.post("/forum", async(req, res) => {
+  // console.log("Post Request")
+  // console.log(req.body)
   try {
-    const postData = req.body;
-    console.log("Data:", postData)
+    // console.log("Post Request Inside Try")
+    const { user_id, title, address, description } = req.body
+    const newForum = await pool.query("INSERT INTO posts (user_id, title, address, description) VALUES ($1, $2, $3, $4)", [user_id, title, address, description])
   } catch (err) {
     console.log(err);
   }
 })
-
 
 // UPDATE => update a post 
 // DELETE => delete a post 
