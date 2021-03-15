@@ -80,7 +80,7 @@ const Map = () => {
 
         {selected ? (<InfoWindow position={{lat: selected.lat, lng: selected.lng}} onCloseClick={() => {setSelected(null)}}>
           <div>
-            <h2>Crime Reported❗️</h2>
+            <h2>Crime Reported <span>❗️</span></h2>
             <p>Spotted { formatRelative(selected.time, new Date()) }</p>
           </div>
         </InfoWindow>) : null}
