@@ -5,6 +5,7 @@ import CreatePost from './CreatePost';
 import postStyles from './PostStyles';
 import Post from './Post';
 
+
 const incident = [
   {
     title: "Theft at Restaurant",
@@ -56,6 +57,7 @@ const Forum = () => {
         <Box display="flex" flexDirection="row" alignItems="center">
           <Box>
           <h1>Forum</h1>
+
           </Box>
           <Box margin="30px">
             <Fab onClick={() => setSelected(true) } color="primary" aria-label="add">

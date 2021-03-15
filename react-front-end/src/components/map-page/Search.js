@@ -1,8 +1,19 @@
 import React, {useState} from "react"; 
-import PlacesAutocomplete from "react-places-autocomplete";
+import {PlacesAutocomplete, Autocomplete} from "react-places-autocomplete";
 
 
-const searchApi = () => {
+const SearchApi = () => {
+//   return (
+//     <Autocomplete
+//         style={{width: '90%'}}
+//         onPlaceSelected={(place) => {
+//           console.log(place);
+//         }}
+//         types={['(regions)']}
+//         componentRestrictions={{country: "ru"}}
+//     />
+//     )
+// }
   
   const [address, setAddress] = useState("")
   const handleChange = (value) => {
@@ -13,8 +24,8 @@ const searchApi = () => {
     setAddress(value)
   }
   
-  if (isScriptLoaded && isScriptLoadSucceed) {
-   return <div> 
+
+   return (<div> 
      <PlacesAutocomplete value={address} onChange={handleChange} onSelect={handleSelect}>
       {( getInputProps, suggestions, getSuggestionItemProps, loading ) => (
         <div>
@@ -42,10 +53,10 @@ const searchApi = () => {
      </PlacesAutocomplete>
    </div>
     
-  } else {
-    return <div></div>
-  }
+ 
     
-};
+   )};
 
-export default searchApi;
+
+  
+export default SearchApi;
