@@ -2,7 +2,7 @@ const Express = require('express');
 const App = Express();
 const BodyParser = require('body-parser');
 const PORT = 8080;
-const pool = require('./db')
+const pool = require('./src/server/db');
 
 const {sendTextMsg} = require('./api/send_sms');
 // Express Configuration
