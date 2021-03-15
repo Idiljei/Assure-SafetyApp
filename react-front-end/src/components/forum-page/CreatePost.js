@@ -1,13 +1,17 @@
 import React from 'react';
 import { Button, TextField, Grid, Paper } from '@material-ui/core';
 import postStyles from './PostStyles';
+import SearchApi from './../map-page/Search';
 
 const CreatePost = (props) => {
   const classes = postStyles();
   
   return (
     <section>
+
       <Grid container justify="center" direction="row">
+        <Grid Item>
+        </Grid>
         <Grid item>
         <Grid
           container
@@ -27,6 +31,7 @@ const CreatePost = (props) => {
                 <h2>Report a Crime</h2>
               </Grid>
             <Grid item>
+            <SearchApi />
             <TextField 
               id="standard-secondary" 
               label="Title" 

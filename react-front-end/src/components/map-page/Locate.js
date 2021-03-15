@@ -3,6 +3,7 @@ import useStyles from '../Styles';
 import { Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
+
 function Locate({panTo}) {
   const classes = useStyles();
 
@@ -17,6 +18,9 @@ function Locate({panTo}) {
     }), () => null)
   }}>Find Me!
   </Button>
+
+  
+
 };
 
 export default Locate;

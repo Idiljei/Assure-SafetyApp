@@ -6,6 +6,14 @@ import Locate from "./Locate";
 import mapStyles from './mapStyles';
 import useStyles from '../Styles';
 
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from "use-places-autocomplete"
+
+import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption} from "@reach/combobox"; 
+import "@reach/combobox/styles.css"
+
 const containerStyle = {
   width: '800px',
   height: '800px'
@@ -61,7 +69,7 @@ const Map = () => {
     <div>
     <Box className={classes.mapBox} >
     <Locate panTo={panTo} />
-    
+
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}

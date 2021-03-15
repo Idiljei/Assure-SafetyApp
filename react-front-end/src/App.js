@@ -4,7 +4,6 @@ import Navbar from './components/Navbar';
 import Map from './components/map-page/Map';
 import Forum from './components/forum-page/Forum';
 import Profile from './components/profile-page/Profile'
-import SearchApi from './components/map-page/Search'
 
 import './App.css'
 
@@ -14,7 +13,6 @@ const App = () => {
   return (
   <div class="app">
     <div class="logo">
-      <SearchApi>testing</SearchApi>
         <img src="logo/assure-logo.png" alt="assure logo"/>
     </div>
 
