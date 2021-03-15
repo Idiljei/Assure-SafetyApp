@@ -5,14 +5,19 @@ import { Box } from '@material-ui/core';
 import Locate from "./Locate";
 import mapStyles from './mapStyles';
 import useStyles from '../Styles';
-
+import './search.css'
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
-} from "use-places-autocomplete"
-
-import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption} from "@reach/combobox"; 
-import "@reach/combobox/styles.css"
+} from "use-places-autocomplete";
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxPopover,
+  ComboboxList,
+  ComboboxOption,
+} from "@reach/combobox";
+import "@reach/combobox/styles.css";
 
 const containerStyle = {
   width: '800px',
@@ -67,6 +72,7 @@ const Map = () => {
 
   return (
     <div>
+       <Search /> 
     <Box className={classes.mapBox} >
     <Locate panTo={panTo} />
 
@@ -95,7 +101,48 @@ const Map = () => {
       </GoogleMap>
       </Box>
         </div>
-  )
-};
+  )};
+
+function Search() {
+  const { 
+    ready, 
+    value, 
+    suggestions:{status, data}, setValue,
+    clearSuggestions } = usePlacesAutocomplete({ 
+    requestOptions: {
+      location: {  
+        lat: () => -3.745,
+        lng: () => -38.523 },
+        radius: 200 * 1000, // how many km out but convert to meters
+    },
+  });
+
+  return (
+  <div className= "search">
+    <Combobox
+    onSelect= {(address) => {
+      console.log(address);
+    }}
+    >
+      <ComboboxInput 
+      value={value}
+      onChange={(e) => {
+        setValue(e.target.value)
+      }}
+      disabled={!ready}
+      placeholder="Enter an address"
+      /> 
+      <ComboboxPopover> 
+      {status ==="OK" && 
+      data.map(({ id, description}) => (
+        <ComboboxOption key={id} value={description} />
+      ))}
+      </ComboboxPopover>
+      </Combobox>
+  </div>
+  );
+ }
+
+
 
 export default Map;
