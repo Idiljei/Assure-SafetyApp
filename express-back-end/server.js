@@ -43,10 +43,10 @@ App.get("/forum", async(req, res) => {
 // })
 
 // POST => create a post
-App.post("/forum", async(req, res) => {
-  // console.log("Post Request")
-  // console.log(req.body)
+App.post("/forum/new", async(req, res) => {
   try {
+    console.log("Post Request")
+    console.log(req.body)
     // console.log("Post Request Inside Try")
     const { user_id, title, address, description } = req.body
     const newForum = await pool.query("INSERT INTO posts (user_id, title, address, description) VALUES ($1, $2, $3, $4)", [user_id, title, address, description])
