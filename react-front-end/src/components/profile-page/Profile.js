@@ -1,7 +1,7 @@
 import React from 'react';
 import { Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import SimpleTabs from './ProfileTab';
+import SimpleTabs from './profile-tabs/ProfileTab';
 import './profileStyles.css'
 
 const profileStyles = makeStyles({
@@ -24,7 +24,7 @@ const Profile = () => {
           <img src="pheebs.png" alt="profile" class="profile-img"/>
           <h1 class="user-name"> Pheobe Buffay </h1>
         </div>
-      <SimpleTabs number="604 304 4033" dob="May 23, 1991" />
+      <SimpleTabs number="604 304 4033" dob="May 23, 1991"/>
       </Paper>
     </div>
   );
