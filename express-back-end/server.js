@@ -24,9 +24,9 @@ App.get("/", (req, res) =>
 
 // GET => get all posts
 App.get("/forum", async (req, res) => {
-  console.log("Forum Get Request");
+  // console.log("Forum Get Request");
   try {
-    const allForums = await pool.query("SELECT * FROM posts");
+    const allForums = await pool.query("SELECT * FROM posts ORDER BY id DESC LIMIT 5");
     res.json(allForums.rows);
   } catch (err) {
     console.log(err.message);

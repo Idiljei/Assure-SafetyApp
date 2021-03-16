@@ -2,12 +2,13 @@ import React from 'react';
 import { Button, TextField, Grid, Paper, IconButton, Box } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import postStyles from './PostStyles';
+import './forum.css';
 
 const CreatePost = (props) => {
   const classes = postStyles();
   
   return (
-    <section>
+    <section className="popup">
 
       <Grid container justify="center" direction="row">
         <Grid Item>
@@ -19,6 +20,7 @@ const CreatePost = (props) => {
           justify="center"
           className={classes.createPost}
           >
+        <Box className={classes.popup}>
         <Paper
           variant="elevation"
           elevation={3}
@@ -29,7 +31,7 @@ const CreatePost = (props) => {
             <Grid container direction="column">
 
               <Grid item>
-                <Box display="flex" flexDirection="row">
+                <Box display="flex" flexDirection="row" justifyContent="space-between">
                 <h2>Report a Crime</h2>
                 <IconButton aria-label="close" onClick={props.close} margin="3em">
                   <CloseIcon />
@@ -90,6 +92,7 @@ const CreatePost = (props) => {
               </Button>
               </Grid>
             </Paper>
+            </Box>
           </Grid>
         </Grid>
       </Grid>

@@ -12,7 +12,8 @@ const postStyles = makeStyles((theme) => ({
   },
   background: {
     justifyContent: "center",
-    padding: "50px"
+    borderRadius: '3%',
+    padding: "12em"
   },
   postBox: {
     width: "100%"
@@ -26,7 +27,7 @@ const postStyles = makeStyles((theme) => ({
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
     color: '#ffff',
-  },
+  }
 }));
 
 export default postStyles;

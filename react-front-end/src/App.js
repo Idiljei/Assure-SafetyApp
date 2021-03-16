@@ -11,19 +11,19 @@ const App = () => {
   const [selected, setSelected] = useState(0);
 
   return (
-  <div class="app">
-    <div class="logo">
+  <div className="app">
+    <div className="logo">
         <img src="logo/assure-logo.png" alt="assure logo"/>
     </div>
 
-    <div class="page">
+    <div className="page">
       {selected === 0 ? (<Home />) : null}
       {selected === 1 ? (<Map />): null}
       {selected === 2 ? (<Forum />) : null}
       {selected === 3 ? (<Profile />) : null}
     </div>
 
-    <div class="nav">
+    <div className="nav">
       <Navbar setSelected={setSelected} selected={selected} />   
     </div>
   </div>

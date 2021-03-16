@@ -36,3 +36,7 @@ img {
   background-color: #63639f;
   display: flex;
 }
+
+.MuiBottomNavigationAction-root.Mui-selected {
+  color: #63639f;
+}
