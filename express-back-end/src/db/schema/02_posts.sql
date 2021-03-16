@@ -6,5 +6,5 @@ CREATE TABLE posts (
   address VARCHAR(255) NOT NULL,
   title VARCHAR(255) NOT NULL,
   description VARCHAR(1000) NOT NULL,
-  created_at DATE NOT NULL
+  date DATE NOT NULL
 );

@@ -9,3 +9,6 @@ CREATE TABLE users (
   email VARCHAR(255) NOT NULL,
   pin VARCHAR(4) NOT NULL
 );
+
+GRANT ALL PRIVILEGES ON TABLE users TO spice;
+grant all on sequence posts_id_seq to spice;
