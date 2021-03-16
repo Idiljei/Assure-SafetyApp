@@ -22,6 +22,21 @@ App.get('/', (req, res) => {
   res.json({ "home": "page"})
 })
 
+//----- FORUM -----//
+
+// GET => get all posts
+App.get("/forum", async (req, res) => {
+  // console.log("Forum Get Request");
+  try {
+    const allForums = await pool.query(
+      "SELECT * FROM posts ORDER BY id DESC LIMIT 5"
+    );
+    res.json(allForums.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
 // Sample GET route
 App.get("/:id", async(req, res) => {
   try {
@@ -58,8 +73,6 @@ App.post('/sms', (req, res) => {
   })
   .catch((error) => console.log(error));
 });
-
-//----- FORUM -----//
 
 // GET => get all posts
 App.get("/forum", async (req, res) => {
