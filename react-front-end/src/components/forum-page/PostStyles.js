@@ -16,6 +16,9 @@ const postStyles = makeStyles({
   },
   postBox: {
     width: "100%"
+  },
+  forumPaper: {
+    margin: "2em"
   }
 });
 

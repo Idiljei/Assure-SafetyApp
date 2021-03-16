@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Box, Fab } from '@material-ui/core';
+import { Box, Fab, Paper } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import CreatePost from './CreatePost';
 import postStyles from './PostStyles';
 import Post from './Post';
+import './forum.css';
 
 
 const incident = [
@@ -52,22 +53,9 @@ const Forum = () => {
   };
 
   return (
-    <div>
-      <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column">
-        <Box display="flex" flexDirection="row" alignItems="center">
-          <Box>
-          <h1>Forum</h1>
-
-          </Box>
-          <Box margin="30px">
-            <Fab onClick={() => setSelected(true) } color="primary" aria-label="add">
-              <AddIcon />
-            </Fab>
-          </Box>
-        </Box>
-
-        <Box display="flex">
-          <Box margin="50px">
+    <div class="forum-page">
+      <Box display="flex" justifyContent="center" alignItems="center" flexDirection="row">
+        <Box margin="50px" width="50%">
           { allPosts.map(post => {
             return (
               <Box className={classes.postBox}>
@@ -81,14 +69,22 @@ const Forum = () => {
               </Box>
             )})}
           </Box>
-          
-          <Box margin="50px">
-            { selected ? <CreatePost setTitle={setTitle} setUser={setUser} setLocation={setLocation} setDescription={setDescription}  addPost={addPost} /> : null}
-          </Box>
-        </Box>
       </Box>
-    </div>
-  )
+    </div>)
 }
-
 export default Forum;
+
+
+{/* <Box display="flex" justifyContent="center">
+<h1>Forum</h1>
+</Box>
+
+<Box margin="30px">
+  <Fab onClick={() => setSelected(true) } color="primary" aria-label="add">
+    <AddIcon />
+  </Fab>
+</Box>
+
+<Box margin="50px">
+{ selected ? <CreatePost setTitle={setTitle} setUser={setUser} setLocation={setLocation} setDescription={setDescription}  addPost={addPost} /> : null}
+</Box> */}

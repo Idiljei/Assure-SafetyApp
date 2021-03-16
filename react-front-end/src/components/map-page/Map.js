@@ -60,7 +60,7 @@ const Map = () => {
   const mapRef = useRef();
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
-  }, [])
+  }, []);
 
   const panTo = useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
@@ -75,7 +75,7 @@ const Map = () => {
     <Box className={classes.mapBox} >
     <Locate panTo={panTo} />
 
-       <Search /> 
+       <Search panTo={panTo} /> 
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
@@ -103,7 +103,7 @@ const Map = () => {
         </div>
   )};
 
-function Search() {
+function Search({ panTo }) {
   const { 
     ready, 
     value, 
@@ -118,9 +118,18 @@ function Search() {
   });
 
   return (
-  <div className= "search">
+  <div className="search">
     <Combobox
-    onSelect= {(address) => {
+    onSelect={async (address) => {
+      setValue(address, false);
+      clearSuggestions();
+      try {
+        const results =  await getGeocode({ address });
+        const { lat, lng } = await getLatLng(results[0])
+        console.log( lat, lng )   
+        panTo({ lat, lng })   
+      } catch(error) {
+      }
       console.log(address);
     }}
     >
@@ -130,7 +139,7 @@ function Search() {
         setValue(e.target.value)
       }}
       disabled={!ready}
-      placeholder="Enter an address"
+      placeholder="Enter address"
       /> 
       <ComboboxPopover> 
       {status ==="OK" && 
