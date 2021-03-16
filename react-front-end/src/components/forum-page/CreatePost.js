@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, TextField, Grid, Paper, IconButton, Box } from '@material-ui/core';
+import { Button, TextField, Paper, IconButton, Box } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import postStyles from './PostStyles';
 import './forum.css';
@@ -8,94 +8,83 @@ const CreatePost = (props) => {
   const classes = postStyles();
   
   return (
-    <section className="popup">
+    <section>
+      <Paper variant="elevation" elevation={3} className={classes.background}>
+        <Box display="flex" flexDirection="column" width="50em">
+          <Box display="flex" justifyContent="space-between" width="100%">
+            <Box>
+              <h1 class="title">Report a Crime</h1>
+              <h4 class="subtitle">Help the community stay safe</h4>
+            </Box>
+            <Box alignSelf="stretch">
+              <IconButton aria-label="close" onClick={props.close} margin="3em"  >
+                <CloseIcon />
+              </IconButton>
+            </Box>
+          </Box>
 
-      <Grid container justify="center" direction="row">
-        <Grid Item>
-        </Grid>
-        <Grid item>
-        <Grid
-          container
-          direction="column"
-          justify="center"
-          className={classes.createPost}
-          >
-        <Box className={classes.popup}>
-        <Paper
-          variant="elevation"
-          elevation={3}
-          className={classes.background}
-          >
-          <Grid item>
-          <form noValidate autoComplete="off">
-            <Grid container direction="column">
-
-              <Grid item>
-                <Box display="flex" flexDirection="row" justifyContent="space-between">
-                <h2>Report a Crime</h2>
-                <IconButton aria-label="close" onClick={props.close} margin="3em">
-                  <CloseIcon />
-                </IconButton>
-                </Box>
-              </Grid>
-
-            <Grid item>
-            <TextField 
-              id="standard-secondary" 
-              label="Title" 
-              color="primary" 
-              variant="outlined"
-              onChange={(e) => props.setTitle(e.target.value)} 
+          <Box display="flex" flexDirection="column" width="50em">
+            <Box width="80%">
+            <Box>
+              <TextField
+                className={classes.input}
+                id="standard-basic" 
+                label="Title" 
+                color="primary" 
+                onChange={(e) => props.setTitle(e.target.value)} 
               />
-              </Grid>
-              <Grid item>
-              <TextField 
-                id="standard-secondary" 
-                label="Address"
-                color="primary"
-                variant="outlined"
-                onChange={(e) => props.setAddress(e.target.value)} 
+            </Box>
+            <Box display="flex" width="100%" justifyContent="space-between">
+              <Box width="100%">
+                <TextField
+                  className={classes.searchInput} 
+                  id="standard-basic" 
+                  label="Address"
+                  color="primary"
+                  onChange={(e) => props.setAddress(e.target.value)} 
+                  />
+              </Box>
+              <Box>
+                <TextField
+                  id="datetime-local"
+                  type="datetime-local"
+                  label="Date"
+                  className={classes.textField}
+                  InputLabelProps={{ shrink: true }}
+                  onChange={(e) => props.setDate(e.target.value)} 
                 />
-                </Grid>
-                <Grid item>
-                <TextField 
-                  id="standard-secondary"
-                  label="Description"
-                  color="primary" 
+              </Box>
+            </Box>
+
+              <Box>
+                <TextField
+                  className={classes.input}
+                  id="outlined-multiline-static"
+                  label="Incident Description"
+                  color="primary"
+                  multiline
+                  rows={7}
                   variant="outlined"
                   onChange={(e) => props.setDescription(e.target.value)} 
-                  />
-                  </Grid>
-                  <Grid item>
-                  <TextField
-                    id="datetime-local"
-                    label="Date"
-                    type="datetime-local"
-                    className={classes.textField}
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                    onChange={(e) => props.setDate(e.target.value)} 
-                  />
-                    </Grid>
-                  </Grid>
-                </form>
-                </Grid>
-              <Grid item>
-              <Button
-                className={classes.submitButton}
-                type="submit"
-                size="large" 
-                variant="contained"
-                onClick={props.onSubmitForm} 
-                > Submit
-              </Button>
-              </Grid>
-            </Paper>
+                />
+              </Box>
+
+              <Box display="flex" justifyContent="center">
+                <Box>
+                  <Button
+                    className={classes.submitButton}
+                    type="submit"
+                    size="large" 
+                    variant="contained"
+                    onClick={props.onSubmitForm} 
+                    > Submit
+                  </Button>
+                </Box>
+              </Box>
             </Box>
-          </Grid>
-        </Grid>
-      </Grid>
+          </Box>
+        </Box>
+      </Paper>
     </section>
   );
 };
