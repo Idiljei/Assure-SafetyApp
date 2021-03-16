@@ -4,6 +4,10 @@ const BodyParser = require("body-parser");
 const PORT = 8080;
 const pool = require("./src/server/db");
 const cors = require("cors");
+require('dotenv').config();
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require('twilio')(accountSid, authToken);
 // const router  = Express.Router();
 
 // const {sendTextMsg} = require('./api/send_sms');
@@ -13,12 +17,47 @@ App.use(BodyParser.json());
 App.use(cors());
 App.use(Express.static("public"));
 
+//Page when user is not logged in
+App.get('/', (req, res) => {
+  res.json({ "home": "page"})
+})
+
 // Sample GET route
-App.get("/", (req, res) =>
-  res.json({
-    message: "Seems to work!",
-  })
+App.get("/:id", async(req, res) => {
+  try {
+    const { id } = req.params
+    const user = await pool.query("SELECT * FROM users where id = $1", [id])
+    res.json(user.rows)
+  } catch (error) {
+    console.log(error)
+  }
+}
 );
+
+// App.get("/forum/:id", async(req, res) => {
+//   try {
+//     const { id } = req.params
+//     const forum = await pool.query("SELECT * FROM posts WHERE user_id = $1", [id])
+//     res.json(forum.rows)
+//   } catch (err) {
+//     console.log(err.message)
+//   }
+// })
+
+App.post('/sms', (req, res) => {
+  res.header('Content-Type', 'application/json')
+  console.log("Req BOdy of Post to SMS:", req.body)
+  client.messages
+  .create({
+    body: req.body.message,
+    from: process.env.TWILIO_PHONE_NUMBER,
+    to: process.env.USER_PHONE_NUM
+  })
+  .then(() => {
+    res.send(JSON.stringify({ success: true }))
+  })
+  .catch((error) => console.log(error));
+});
 
 //----- FORUM -----//
 
@@ -47,9 +86,21 @@ App.get("/forum", async (req, res) => {
 // })
 
 // POST => create a post
+App.post("/forum", async (req, res) => {
+  try {
+  const { user_id, title, address, description, date } = req.body;
+  const postData = [user_id, title, address, description, date];
+  
+    const newForum = await pool.query(
+      "INSERT INTO posts (user_id, title, address, description, date) VALUES ($1, $2, $3, $4, $5)",
+      postData
+    );
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 // UPDATE => update a post
-
 App.put("/forum/:id", async (req, res) => {
   try {
     const { id } = req.params;
