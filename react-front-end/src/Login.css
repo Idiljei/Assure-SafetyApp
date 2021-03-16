@@ -1,0 +1,12 @@
+.main-logo {
+  background-color: #63639f;
+}
+
+.main-box {
+  background-color: #63639f;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 66.8em;
+}
