@@ -58,7 +58,7 @@ export default function SimpleTabs(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" elevation={0}>
         <Tabs
           className={classes.bar} 
           value={value} 

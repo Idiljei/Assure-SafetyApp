@@ -10,7 +10,7 @@ const profileStyles = makeStyles({
     flexDirection: "column",
     margin: "1.5em",
     marginTop: "0.5em",
-    width: "85%"
+    width: "50%"
   }
 });
 
