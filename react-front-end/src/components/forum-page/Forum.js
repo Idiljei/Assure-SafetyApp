@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Fab, Paper } from '@material-ui/core';
+import { Box, Fab, Paper, Tooltip } from '@material-ui/core';
+import FilterButton from './FilterButton';
 import AddIcon from '@material-ui/icons/Add';
 import CreatePost from './CreatePost';
 import postStyles from './PostStyles';
@@ -54,8 +55,19 @@ const Forum = () => {
 
   return (
     <div class="forum-page">
-      <Box display="flex" justifyContent="center" alignItems="center" flexDirection="row">
-        <Box margin="50px" width="50%">
+      <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column">
+        <Box display="flex" className={classes.filterButton} justifyContent="flex-end" alignItems="center" width="50%">
+          <FilterButton />
+          <div class="add-button">
+          <Tooltip title="Add" aria-label="add">
+            <Fab onClick={() => setSelected(true) } color="primary" aria-label="add">
+              <AddIcon />
+            </Fab>
+          </Tooltip>
+          </div>
+        </Box>
+
+        <Box width="50%">
           { allPosts.map(post => {
             return (
               <Box className={classes.postBox}>

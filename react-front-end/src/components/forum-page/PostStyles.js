@@ -19,6 +19,9 @@ const postStyles = makeStyles({
   },
   forumPaper: {
     margin: "2em"
+  },
+  filterButton: {
+    margin: '1em'
   }
 });
 

@@ -25,8 +25,10 @@ const containerStyle = {
 };
 
 const center = {
-  lat: -3.745,
-  lng: -38.523
+  // lat: -3.745,
+  // lng: -38.523
+  lat: 49.2811956,
+  lng: -123.13068
 };
 
 const libraries = ["places"];
@@ -73,9 +75,11 @@ const Map = () => {
   return (
     <div>
     <Box className={classes.mapBox} >
-    <Locate panTo={panTo} />
+      <Box display="flex" alignItems="center">
+        <Search panTo={panTo} /> 
+        <Locate panTo={panTo} />
+      </Box>
 
-       <Search panTo={panTo} /> 
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
@@ -118,7 +122,7 @@ function Search({ panTo }) {
   });
 
   return (
-  <div className="search">
+  <div class="search">
     <Combobox
     onSelect={async (address) => {
       setValue(address, false);
@@ -142,10 +146,12 @@ function Search({ panTo }) {
       placeholder="Enter address"
       /> 
       <ComboboxPopover> 
+        <ComboboxList>
       {status ==="OK" && 
       data.map(({ id, description}) => (
         <ComboboxOption key={id} value={description} />
       ))}
+         </ComboboxList>
       </ComboboxPopover>
       </Combobox>
   </div>
