@@ -1,10 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import { InputLabel, MenuItem, FormControl, Select } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -18,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FilterButton() {
   const classes = useStyles();
-  const [filter, setFilter] = React.useState('');
+  const [filter, setFilter] = useState('');
 
   const handleChange = (event) => {
     setFilter(event.target.value);
