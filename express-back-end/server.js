@@ -26,7 +26,9 @@ App.get("/", (req, res) =>
 App.get("/forum", async (req, res) => {
   // console.log("Forum Get Request");
   try {
-    const allForums = await pool.query("SELECT * FROM posts ORDER BY id DESC LIMIT 5");
+    const allForums = await pool.query(
+      "SELECT * FROM posts ORDER BY id DESC LIMIT 5"
+    );
     res.json(allForums.rows);
   } catch (err) {
     console.log(err.message);
@@ -45,21 +47,33 @@ App.get("/forum", async (req, res) => {
 // })
 
 // POST => create a post
-App.post("/forum/new", async(req, res) => {
-  try {
-    console.log(req.body)
-    const { user_id, title, address, description, date } = req.body;
-    const postData = [user_id, title, address, description, date];
-    const newForum = await pool.query(
-      "INSERT INTO posts (user_id, title, address, description, date) VALUES ($1, $2, $3, $4, $5)", postData
-    );
-  } catch (err) {
-    console.log(err);
-  }
-});
 
 // UPDATE => update a post
+
+App.put("/forum/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { description } = req.body;
+    const updateForum = await pool.query(
+      "UPDATE posts SET description = $1 WHERE id = $2",
+      [description, id]
+    );
+    // res.json();
+  } catch (error) {
+    console.log(error);
+  }
+});
 // DELETE => delete a post
+App.delete("/forum/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteForum = await pool.query("DELETE FROM posts WHERE id = $1", [
+      id,
+    ]);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
