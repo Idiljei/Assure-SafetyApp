@@ -4,5 +4,18 @@
 }
 
 .popup {
-  margin: 0
+  display: flex;
+  justify-content: space-between;
+  width: auto;
+}
+
+.title {
+  font-family: 'Roboto';
+  margin-bottom: 0;
+}
+
+.subtitle {
+  font-family: 'Roboto';
+  margin-bottom: 0;
+  margin-top: 5%;
 }

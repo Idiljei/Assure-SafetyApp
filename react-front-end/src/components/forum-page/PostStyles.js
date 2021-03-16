@@ -2,24 +2,23 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const postStyles = makeStyles((theme) => ({ 
   createPost: {
-    justifyContent: "center",
+    justifyContent: "center"
   },
   submitButton: {
     background: 'linear-gradient(45deg, #63639F, #63639F)',
     color: 'white',
     width: '100%',
-    marginTop: '10px',
+    marginTop: '15%',
   },
   background: {
     justifyContent: "center",
     borderRadius: '3%',
-    padding: "12em"
+    padding: "6em 4em",
+    paddingRight: "2em",
+    marginBottom: "19%"
   },
   postBox: {
     width: "100%"
-  },
-  forumPaper: {
-    margin: "2em"
   },
   filterButton: {
     margin: '1em'
@@ -27,6 +26,19 @@ const postStyles = makeStyles((theme) => ({
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
     color: '#ffff',
+  },
+  input: {
+    width: '100%',
+    marginTop: '2em',
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginTop: '1.3em',
+    width: '96%',
+  },
+  searchInput: {
+    marginTop: '1.3em',
+    width: '87%'
   }
 }));
 

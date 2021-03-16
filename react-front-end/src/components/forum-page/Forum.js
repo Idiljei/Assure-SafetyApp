@@ -1,35 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Box, Fab, Paper, Tooltip, Backdrop } from "@material-ui/core";
+import { Box, Fab, Tooltip, Backdrop } from "@material-ui/core";
 import FilterButton from "./FilterButton";
 import AddIcon from "@material-ui/icons/Add";
 import CreatePost from "./CreatePost";
 import postStyles from "./PostStyles";
 import Post from "./Post";
 import "./forum.css";
-
-const incident = [
-  {
-    title: "Theft at Restaurant",
-    user: "Monica Geller",
-    address: "Vancouver",
-    description: "Someone stole something",
-    date: "2019-01-12",
-  },
-  {
-    title: "Assault by Comic Book Store",
-    user: "Ross Geller",
-    address: "New York",
-    description: "Pheobe mugged me!",
-    date: "2023-04-02",
-  },
-  {
-    title: "Purse Stolen",
-    user: "Rachel Green",
-    address: "New York",
-    description: "Tall man in black hoodie stole my bag!",
-    date: "2012-11-00",
-  },
-];
 
 const Forum = () => {
   const classes = postStyles();
@@ -91,19 +67,8 @@ const Forum = () => {
 
   return (
     <div class="forum-page">
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        flexDirection="column"
-      >
-        <Box
-          display="flex"
-          className={classes.filterButton}
-          justifyContent="flex-end"
-          alignItems="center"
-          width="50%"
-        >
+      <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column">
+        <Box display="flex" className={classes.filterButton} justifyContent="flex-end" alignItems="center" width="50%">
           <FilterButton />
           <div class="add-button">
             <Tooltip title="Add" aria-label="add">
@@ -115,22 +80,22 @@ const Forum = () => {
                 <AddIcon />
               </Fab>
             </Tooltip>
-            <Backdrop className={classes.backdrop} open={selected}>
-              <div>
-                <Box padding="10em">
-                  {selected ? (
-                    <CreatePost
-                      setTitle={setTitle}
-                      setAddress={setAddress}
-                      setDescription={setDescription}
-                      onSubmitForm={onSubmitForm}
-                      close={handleClose}
-                      setDate={setDate}
-                    />
-                  ) : null}
+            <Box className={classes.paper}>
+              <Backdrop className={classes.backdrop} open={selected}>
+                <Box display="flex">
+                    {selected ? (
+                      <CreatePost
+                        setTitle={setTitle}
+                        setAddress={setAddress}
+                        setDescription={setDescription}
+                        onSubmitForm={onSubmitForm}
+                        close={handleClose}
+                        setDate={setDate}
+                      />
+                    ) : null}
                 </Box>
-              </div>
-            </Backdrop>
+              </Backdrop>
+            </Box>
           </div>
         </Box>
 
