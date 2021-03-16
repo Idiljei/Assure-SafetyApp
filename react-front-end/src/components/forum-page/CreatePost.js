@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, TextField, Grid, Paper } from '@material-ui/core';
+import { Button, TextField, Grid, Paper, IconButton, Box } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 import postStyles from './PostStyles';
-import SearchApi from './../map-page/Search';
 
 const CreatePost = (props) => {
   const classes = postStyles();
@@ -27,11 +27,17 @@ const CreatePost = (props) => {
           <Grid item>
           <form noValidate autoComplete="off">
             <Grid container direction="column">
+
               <Grid item>
+                <Box display="flex" flexDirection="row">
                 <h2>Report a Crime</h2>
+                <IconButton aria-label="close" onClick={props.close} margin="3em">
+                  <CloseIcon />
+                </IconButton>
+                </Box>
               </Grid>
+
             <Grid item>
-            <SearchApi />
             <TextField 
               id="standard-secondary" 
               label="Title" 
@@ -43,32 +49,35 @@ const CreatePost = (props) => {
               <Grid item>
               <TextField 
                 id="standard-secondary" 
-                label="Name" 
-                color="primary" 
-                variant="outlined" 
-                onChange={(e) => props.setUser(e.target.value)} 
+                label="Address"
+                color="primary"
+                variant="outlined"
+                onChange={(e) => props.setAddress(e.target.value)} 
                 />
                 </Grid>
                 <Grid item>
                 <TextField 
-                  id="standard-secondary" 
-                  label="Location"
-                  color="primary"
+                  id="standard-secondary"
+                  label="Description"
+                  color="primary" 
                   variant="outlined"
-                  onChange={(e) => props.setLocation(e.target.value)} 
+                  onChange={(e) => props.setDescription(e.target.value)} 
                   />
                   </Grid>
                   <Grid item>
-                  <TextField 
-                    id="standard-secondary"
-                    label="Description"
-                    color="primary" 
-                    variant="outlined"
-                    onChange={(e) => props.setDescription(e.target.value)} 
-                    />
+                  <TextField
+                    id="datetime-local"
+                    label="Date"
+                    type="datetime-local"
+                    className={classes.textField}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    onChange={(e) => props.setDate(e.target.value)} 
+                  />
                     </Grid>
-                    </Grid>
-                  </form>
+                  </Grid>
+                </form>
                 </Grid>
               <Grid item>
               <Button
@@ -76,7 +85,7 @@ const CreatePost = (props) => {
                 type="submit"
                 size="large" 
                 variant="contained"
-                onClick={props.addPost} 
+                onClick={props.onSubmitForm} 
                 > Submit
               </Button>
               </Grid>

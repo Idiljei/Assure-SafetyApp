@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Fab, Paper, Tooltip } from '@material-ui/core';
+import { Box, Fab, Paper, Tooltip, Backdrop } from '@material-ui/core';
 import FilterButton from './FilterButton';
 import AddIcon from '@material-ui/icons/Add';
 import CreatePost from './CreatePost';
@@ -7,24 +7,23 @@ import postStyles from './PostStyles';
 import Post from './Post';
 import './forum.css';
 
-
 const incident = [
   {
     title: "Theft at Restaurant",
     user: "Monica Geller",
-    location: "Vancouver",
+    address: "Vancouver",
     description: "Someone stole something"
   },
   {
     title: "Assault by Comic Book Store",
     user: "Ross Geller",
-    location: "New York",
+    address: "New York",
     description: "Pheobe mugged me!"
   },
   {
     title: "Purse Stolen",
     user: "Rachel Green",
-    location: "New York",
+    address: "New York",
     description: "Tall man in black hoodie stole my bag!"
   }
 ]
@@ -35,23 +34,44 @@ const Forum = () => {
   const [ selected, setSelected ] = useState(false); // add button --> true
 
   const [ title, setTitle ] = useState("");
-  const [ user, setUser ] = useState("");
-  const [ location, setLocation ] = useState("");
+  const [ address, setAddress] = useState("");
   const [ description, setDescription ] = useState("");
-  
-  const addPost = () => {
-    const postData = {
-      title,
-      user,
-      location,
-      description
-    };
-  
-    setAllPosts((prev) => {
-      return [...prev, postData]
-    })
-    
+  const [ date, setDate ] = useState(new Date);
+
+  const handleClose = () => {
+    setSelected(false);
   };
+  
+  // const addPost = () => {
+  //   const postData = {
+  //     title,
+  //     user,
+  //     location,
+  //     description
+  //   };
+  
+  //   setAllPosts((prev) => {
+  //     return [...prev, postData]
+  //   })
+  //   setSelected(false);
+  // };
+
+  const onSubmitForm = async (e) => {
+    e.preventDefault();
+    try {
+    const body = { description, address, title, date };
+    const response = await fetch(`http://localhost:8080/forum/new`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+
+    });
+    console.log('this is response: ', response)
+    window.location = '/';
+    } catch (err) {
+    console.error(err.message)
+    }
+    }
 
   return (
     <div class="forum-page">
@@ -60,10 +80,17 @@ const Forum = () => {
           <FilterButton />
           <div class="add-button">
           <Tooltip title="Add" aria-label="add">
-            <Fab onClick={() => setSelected(true) } color="primary" aria-label="add">
+            <Fab onClick={() => setSelected(true)} color="primary" aria-label="add">
               <AddIcon />
             </Fab>
           </Tooltip>
+          <Backdrop className={classes.backdrop} open={selected}>
+            <div>
+              <Box margin="50px">
+              { selected ? <CreatePost setTitle={setTitle} setAddress={setAddress} setDescription={setDescription}  onSubmitForm={onSubmitForm} close={handleClose} setDate={setDate} /> : null}
+              </Box> 
+            </div>
+          </Backdrop>
           </div>
         </Box>
 
@@ -71,12 +98,13 @@ const Forum = () => {
           { allPosts.map(post => {
             return (
               <Box className={classes.postBox}>
-              <div key={post.title+post.user+post.location} >
+              <div key={post.title+post.address} >
                 <Post 
                   title={post.title}
-                  user={post.user}
-                  location={post.location}
-                  description={post.description} />
+                  address={post.address}
+                  description={post.description} 
+                  date={post.date}
+                  />
               </div>
               </Box>
             )})}
@@ -85,18 +113,3 @@ const Forum = () => {
     </div>)
 }
 export default Forum;
-
-
-{/* <Box display="flex" justifyContent="center">
-<h1>Forum</h1>
-</Box>
-
-<Box margin="30px">
-  <Fab onClick={() => setSelected(true) } color="primary" aria-label="add">
-    <AddIcon />
-  </Fab>
-</Box>
-
-<Box margin="50px">
-{ selected ? <CreatePost setTitle={setTitle} setUser={setUser} setLocation={setLocation} setDescription={setDescription}  addPost={addPost} /> : null}
-</Box> */}
