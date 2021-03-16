@@ -36,7 +36,7 @@ export default function ContactList() {
         return (
           <div>
             <List component="nav" aria-label={contact.name}>
-              <ListItem >
+              <ListItem button >
                 <ListItemIcon>
                   <AccountCircleIcon />
                 </ListItemIcon>
