@@ -1,26 +1,24 @@
 import React from "react";
 import useStyles from '../Styles';
-import { Button } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+import { IconButton, Tooltip } from '@material-ui/core';
+import MyLocationIcon from '@material-ui/icons/MyLocation';
 
 
 function Locate({panTo}) {
   const classes = useStyles();
 
-  return <Button
-    className={classes.locateButton}
+  return (
+  <Tooltip title="Get Current Location" aria-label="Get Current Location">
+  <IconButton
     variant="contained"
-    startIcon={<SearchIcon />}
     onClick={() => {
     navigator.geolocation.getCurrentPosition((position) => panTo({
       lat: position.coords.latitude,
       lng: position.coords.longitude
     }), () => null)
-  }}>Find Me!
-  </Button>
-
-  
-
+  }}><MyLocationIcon />
+  </IconButton>
+  </Tooltip>)
 };
 
 export default Locate;

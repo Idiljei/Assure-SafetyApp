@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, TextField, Paper, IconButton, Box } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
+import Search from '../map-page/Search';
+import Locate from '../map-page/Locate';
 import postStyles from './PostStyles';
 import './forum.css';
 
@@ -35,15 +37,14 @@ const CreatePost = (props) => {
               />
             </Box>
             <Box display="flex" width="100%" justifyContent="space-between">
-              <Box width="100%">
-                <TextField
-                  className={classes.searchInput} 
-                  id="standard-basic" 
-                  label="Address"
-                  color="primary"
-                  onChange={(e) => props.setAddress(e.target.value)} 
-                  />
+
+              <Box display="flex">
+                <Search 
+                  onSubmit={(e) => props.setAddress(e.target.value)} 
+                />
+                <Locate />
               </Box>
+
               <Box>
                 <TextField
                   id="datetime-local"
@@ -90,3 +91,13 @@ const CreatePost = (props) => {
 };
 
 export default CreatePost;
+
+{/* <Box width="100%">
+<TextField
+  className={classes.searchInput} 
+  id="standard-basic" 
+  label="Address"
+  color="primary"
+  onChange={(e) => props.setAddress(e.target.value)} 
+  />
+</Box> */}

@@ -1,5 +1,13 @@
-.main-logo {
+.main-logo-box {
   background-color: #63639f;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1%;
+}
+
+.main-logo {
+  width: 60%;
 }
 
 .main-box {

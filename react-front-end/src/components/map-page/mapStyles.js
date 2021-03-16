@@ -95,5 +95,20 @@ export default [
             }
         ]
     },
+
+    {
+        "featureType": "poi.medical",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "hue": "#5e00ff"
+            },
+            {
+                "saturation": -16
+            }
+        ]
+    },
     {}
 ]

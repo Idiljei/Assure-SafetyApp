@@ -30,7 +30,6 @@ const Search = ( props ) => {
         const results =  await getGeocode({ address });
         const { lat, lng } = await getLatLng(results[0])
         console.log( lat, lng )   
-        panTo({ lat, lng })   
       } catch(error) {
       }
       console.log(address);
@@ -42,7 +41,7 @@ const Search = ( props ) => {
         setValue(e.target.value)
       }}
       disabled={!ready}
-      placeholder="Enter address"
+      placeholder="Enter Address"
       /> 
       <ComboboxPopover> 
         <ComboboxList>

@@ -49,14 +49,17 @@ const Map = () => {
     }, []);
 
   const mapRef = useRef();
-  const onMapLoad = useCallback((map) => {
-    mapRef.current = map;
-  }, []);
 
   const panTo = useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(16);
   },[]);
+
+
+  const onMapLoad = useCallback((map) => {
+    mapRef.current = map;
+  }, []);
+
 
   if (loadError) return "Error loading maps";
   if(!isLoaded) return "Loading Maps";
