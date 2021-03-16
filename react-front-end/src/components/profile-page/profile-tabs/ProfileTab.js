@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Tabs, Tab, Typography, Box } from '@material-ui/core';
-import SimpleList from './ContactList';
+import ContactList from './ContactList';
 import UserInfoList from './UserList';
+import MyPosts from './MyPost';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -67,17 +68,26 @@ export default function SimpleTabs(props) {
           >
           <Tab label="User Information" {...a11yProps(0)} />
           <Tab label="Safety Network" {...a11yProps(1)} />
+          <Tab label="My Posts" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
+
       <TabPanel value={value} index={0}>
-        <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-          <UserInfoList number={props.number} dob={props.dob}/>
+          <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+            <UserInfoList number={props.number} dob={props.dob}/>
+          </Box>
+      </TabPanel>
+
+      <TabPanel value={value} index={1}>
+          <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" marginBottom="1%">
+            <ContactList />
         </Box>
       </TabPanel>
-      <TabPanel value={value} index={1}>
-        <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-          <SimpleList />
-        </Box>
+
+      <TabPanel value={value} index={2}>
+          <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+            <MyPosts title={props.title} date={props.date} />
+          </Box>
       </TabPanel>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core';
+import { List, ListItem, ListItemIcon, ListItemText, Divider, Box } from '@material-ui/core';
+import EditDeleteButton from '../buttons/EditDeleteButton';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +27,7 @@ const contacts = [
   }
 ];
 
-export default function SimpleList() {
+export default function ContactList() {
   const classes = useStyles();
 
   return (
@@ -40,6 +41,9 @@ export default function SimpleList() {
                   <AccountCircleIcon />
                 </ListItemIcon>
                 <ListItemText primary={contact.name} secondary={contact.number} />
+                <Box marginLeft="2%">
+                  <EditDeleteButton />
+                </Box>
               </ListItem>
             </List>
             <Divider />
