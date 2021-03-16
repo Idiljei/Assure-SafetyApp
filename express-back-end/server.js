@@ -48,10 +48,10 @@ App.get("/forum", async (req, res) => {
 App.post("/forum/new", async(req, res) => {
   try {
     console.log(req.body)
-    const { user_id, title, address, description, created_at } = req.body;
-    const postData = [user_id, title, address, description, created_at];
+    const { user_id, title, address, description, date } = req.body;
+    const postData = [user_id, title, address, description, date];
     const newForum = await pool.query(
-      "INSERT INTO posts (user_id, title, address, description, created_at) VALUES ($1, $2, $3, $4, $5)", postData
+      "INSERT INTO posts (user_id, title, address, description, date) VALUES ($1, $2, $3, $4, $5)", postData
     );
   } catch (err) {
     console.log(err);
