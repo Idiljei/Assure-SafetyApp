@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Button, TextField, Paper, IconButton, Box } from '@material-ui/core';
+import { Button, TextField, Paper, IconButton, Box, Input } from '@material-ui/core';
+import Autocomplete from 'react-google-autocomplete';
 import CloseIcon from '@material-ui/icons/Close';
-import Search from '../map-page/Search';
-import Locate from '../map-page/Locate';
+import Search from './ForumSearch';
 import postStyles from './PostStyles';
 import './forum.css';
 
@@ -36,16 +36,12 @@ const CreatePost = (props) => {
                 onChange={(e) => props.setTitle(e.target.value)} 
               />
             </Box>
+
             <Box display="flex" width="100%" justifyContent="space-between">
-
-              <Box display="flex">
-                <Search 
-                  onSubmit={(e) => props.setAddress(e.target.value)} 
-                />
-                <Locate />
+              <Box display="flex" width="100%" alignItems="flex-end">
+                <Search setAddress={props.setAddress}/>
               </Box>
-
-              <Box>
+            <Box>
                 <TextField
                   id="datetime-local"
                   type="datetime-local"
