@@ -5,7 +5,7 @@ import { Box } from '@material-ui/core';
 import Locate from "./Locate";
 import mapStyles from './mapStyles';
 import useStyles from '../Styles';
-import Search from './Search';
+import MapSearch from './MapSearch';
 import "@reach/combobox/styles.css";
 
 const containerStyle = {
@@ -68,7 +68,7 @@ const Map = () => {
     <div>
     <Box className={classes.mapBox} >
       <Box display="flex" alignItems="center">
-        <Search panTo={panTo} /> 
+        <MapSearch panTo={panTo} /> 
         <Locate panTo={panTo} />
       </Box>
 

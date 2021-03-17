@@ -4,7 +4,7 @@ import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocom
 import "@reach/combobox/styles.css";
 import './search.css'
 
-const Search = ( props ) => {
+const MapSearch = ( props ) => {
   const panTo = props.panTo
 
   const { 
@@ -56,4 +56,4 @@ const Search = ( props ) => {
   );
 }
 
-export default Search;
+export default MapSearch;

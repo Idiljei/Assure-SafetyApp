@@ -44,7 +44,6 @@ const Forum = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      console.log("this is body", body)
       window.location = "/";
     } catch (err) {
       console.error(err.message);
