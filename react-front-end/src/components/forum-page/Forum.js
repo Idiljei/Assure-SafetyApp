@@ -43,10 +43,39 @@ const Forum = () => {
       const jsonData = await response.json();
 
       setAllPosts(jsonData);
+  
+      const test = jsonData[3].address
+      const obj = JSON.parse(test)
+      const lat = obj.lat
+      const lng = obj.lng
+
+      // const distanceBetween2Points = async(p1, p2)  => {
+        
+      //   try {
+      //     const lat1 = p1[0] / (180 / Math.PI);
+      //     const lat2 = p2[0] / (180 / Math.PI);
+      //     const lon1 = p1[1] / (180 / Math.PI);
+      //     const lon2 = p2[1] / (180 / Math.PI);
+      //     const distance =
+      //       6371 *
+      //       Math.acos(
+      //         Math.sin(lat1) * Math.sin(lat2) +
+      //           Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2)
+      //       );
+      //     return distance;
+      //   } catch (error) {
+      //     return null;
+      //   }
+      // }
+
+      console.log(lat,lng)
+
     } catch (err) {
       console.error(err.message);
     }
   };
+
+
 
   useEffect(() => {
     getPosts();

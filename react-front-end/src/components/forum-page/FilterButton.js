@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { InputLabel, MenuItem, FormControl, Select } from '@material-ui/core';
 
+
 const useStyles = makeStyles((theme) => ({
   filter: {
     width: '8em'
@@ -26,8 +27,9 @@ export default function FilterButton() {
           onChange={handleChange}
           label="Filter"
         >
-        <MenuItem value={1}>Distance</MenuItem>
-        <MenuItem value={2}>Recent</MenuItem>
+          <MenuItem value={1} >Distance</MenuItem>
+          <MenuItem value={2}>Recent</MenuItem>
+      
       </Select>
     </FormControl>
   )
