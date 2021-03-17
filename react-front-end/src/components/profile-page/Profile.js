@@ -1,22 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { Paper } from '@material-ui/core';
+import { IconButton, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import SimpleTabs from './profile-tabs/ProfileTab';
+import EditIcon from '@material-ui/icons/Edit';
 import './profileStyles.css'
 
 const profileStyles = makeStyles({
   root: {
     display: "flex",
-    flexDirection: "column",
-    margin: "1.5em",
-    marginTop: "0.5em",
-    width: "50%"
+    justifyContent: "center",
+    alignItems: "center",
+    width: '100%'
+  },
+  icon: {
+    color: '#f7f7f7'
   }
 });
 
 const Profile = () => {
   const classes = profileStyles();
   const [users, setUser] = useState([]);
+  const [ selected, setSelected ] = useState(false);
+
+  const toggle = () => {
+    if (selected) return setSelected(false);
+    if (!selected) return setSelected(true);
+  }
 
   const getUser = async () => {
     try {
@@ -38,13 +47,20 @@ return (
   <div class="profile">
   { users.map(user => {
     return (
-        <Paper elevation={3} className={classes.root}>
-          <div class="profile-box">
+      <Box display="flex" height="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="column">
+        <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
             <img src="pheebs.png" alt="profile" class="profile-img"/>
-            <h1 class="user-name"> {user.first_name} {user.last_name}</h1>
-          </div>
-        <SimpleTabs number={user.phone_number} dob={user.date_of_birth}/>
-        </Paper>
+            <Box display="flex" alignItems="center">
+              <h1 class="user-name"> {user.first_name} {user.last_name}</h1>
+              <IconButton aria-label="edit" onClick={toggle}>
+                <EditIcon className={classes.icon}/>
+              </IconButton>
+            </Box>
+        </Box>
+        <Box>
+          <SimpleTabs number={user.phone_number} dob={user.date_of_birth} selected={selected}/> 
+        </Box>
+      </Box>
     )})}
     </div>
   )
