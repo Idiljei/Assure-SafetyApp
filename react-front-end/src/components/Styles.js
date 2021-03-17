@@ -21,16 +21,10 @@ const useStyles = makeStyles({
     height: '100%',
     padding: '2em',
     margin: '3em 1em',
-
   },
-  locateButton: {
-    background: 'linear-gradient(45deg, #63639F, #a6a6e0)',
-    border: 0,
-    color: 'white',
-    padding: '1em',
-    width: '42%',
-    margin: '2em'
-  }    
+  findButton: {
+    margin: "2rem",
+  }
 });
 
 export default useStyles;

@@ -1,9 +1,9 @@
 .search input {
-  padding: 0.5rem;
+  margin: 1rem;
   font-size: 1.5rem;
   border: 0;
-  margin: 10%;
   width: 100%;
+  padding: 1rem;
 }
 
 .forum-search {
@@ -12,11 +12,6 @@
   display: flex;
   flex-direction: column;
   z-index: 6;
-}
-
-div.background {
-  background-color: white;
-  color: white
 }
 
 .MuiFormControl-root {
@@ -29,4 +24,17 @@ div.background {
     flex-direction: column;
     vertical-align: top;
     width: 15em;
+}
+
+.report-icon {
+  margin: 0.5em;
+  margin-bottom: 1em;
+  padding: 0;
+  width: 2em;
+  height: 2em;
+}
+
+.legend {
+  font-family: 'Roboto';
+  margin: 0.5em; 
 }
