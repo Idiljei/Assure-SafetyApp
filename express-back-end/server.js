@@ -103,6 +103,7 @@ App.post("/forum", async (req, res) => {
   try {
   const { user_id, title, address, description, date } = req.body;
   const postData = [user_id, title, address, description, date];
+  console.log("This is the submitted data:", postData)
   
     const newForum = await pool.query(
       "INSERT INTO posts (user_id, title, address, description, date) VALUES ($1, $2, $3, $4, $5)",
