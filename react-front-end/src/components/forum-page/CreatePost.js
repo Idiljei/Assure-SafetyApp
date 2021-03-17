@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button, TextField, Paper, IconButton, Box, Input } from '@material-ui/core';
-import Autocomplete from 'react-google-autocomplete';
 import CloseIcon from '@material-ui/icons/Close';
 import Search from './ForumSearch';
 import postStyles from './PostStyles';
