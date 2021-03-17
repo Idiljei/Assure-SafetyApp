@@ -17,9 +17,6 @@ const postStyles = makeStyles((theme) => ({
     paddingRight: "2em",
     marginBottom: "19%"
   },
-  postBox: {
-    width: "100%"
-  },
   filterButton: {
     margin: '1em'
   },

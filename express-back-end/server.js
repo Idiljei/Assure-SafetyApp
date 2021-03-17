@@ -18,6 +18,7 @@ App.use(cors());
 App.use(Express.static("public"));
 
 //Page when user is not logged in
+
 App.get("/", (req, res) => {
   res.json({ home: "page" });
 });
@@ -37,8 +38,20 @@ App.get("/forum", async (req, res) => {
   }
 });
 
+App.get("/safetynetwork/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const showSafetyNetwork = await pool.query(
+      "SELECT a.first_name, a.last_name, a.phone_number FROM safety_networks JOIN users ON safety_networks.user_id = users.id JOIN users a ON safety_networks.sn_id = a.id WHERE users.id = $1",
+      [id]
+    );
+    res.json(showSafetyNetwork.rows);
+  } catch (error) {
+    console.log(error);
+  }
+});
 // Sample GET route
-App.get("/:id", async (req, res) => {
+App.get("/user/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const user = await pool.query("SELECT * FROM users where id = $1", [id]);
@@ -82,7 +95,6 @@ App.get("/forum", async (req, res) => {
   try {
     const allForums = await pool.query(
       "SELECT * FROM posts ORDER BY id DESC LIMIT 5;"
-
     );
     res.json(allForums.rows);
   } catch (err) {
@@ -98,7 +110,7 @@ App.get("/forum", async (req, res) => {
 //     res.json(forum.rows)
 //   } catch (err) {
 //     console.log(err.message)
-//   } 
+//   }
 // })
 
 // POST => create a post

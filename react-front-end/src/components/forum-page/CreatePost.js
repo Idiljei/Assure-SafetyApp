@@ -7,7 +7,7 @@ import './forum.css';
 
 const CreatePost = (props) => {
   const classes = postStyles();
-  
+
   return (
     <section>
       <Paper variant="elevation" elevation={3} className={classes.background}>
