@@ -25,16 +25,16 @@ const Home = (props) => {
 
   return (
     <Box className={classes.homeBox}>
- {selectLocation ? 
-   <div>
-      <Button onClick={handleLocationClick} type="submit" className={classes.homeButton} size="large" startIcon={<SendIcon />} variant="contained">
-        Share Live Location
-      
-      </Button>
+    {selectLocation ? 
+    <div>
+        <Button onClick={handleLocationClick} type="submit" className={classes.homeButton} size="large" startIcon={<SendIcon />} variant="contained">
+          Share Live Location
+        
+        </Button>
       <Alert variant="outlined" severity="info">
-         sharing live location with safety network! 
+        sharing live location with safety network! 
       </Alert>  
-   </div> : <Button onClick={handleLocationClick} type="submit" className={classes.homeButton} size="large" startIcon={<SendIcon />} variant="contained">
+    </div> : <Button onClick={handleLocationClick} type="submit" className={classes.homeButton} size="large" startIcon={<SendIcon />} variant="contained">
         Share Live Location
       </Button> } 
 
@@ -49,9 +49,8 @@ const Home = (props) => {
       </Button>
   </div> : <Button onClick={handlePoliceClick} className={classes.homeButton} size="large" startIcon={<ErrorIcon />} variant="contained">
         Call 911
-      </Button>
-};
- </Box>
+      </Button> }
+  </Box>
 
   );
 

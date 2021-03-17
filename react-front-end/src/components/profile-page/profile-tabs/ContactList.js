@@ -16,21 +16,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const contacts = [
-  {
-    name: "Mom",
-    number: "123-456-7890",
-  },
-  {
-    name: "Sister",
-    number: "123-456-7890",
-  },
-  {
-    name: "Dad",
-    number: "123-456-7890",
-  },
-];
-
 export default function ContactList(props) {
   const classes = useStyles();
   const selected = props.selected;
