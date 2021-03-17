@@ -10,7 +10,7 @@ import "./forum.css";
 const Forum = () => {
   const classes = postStyles();
   const [allPosts, setAllPosts] = useState([]);
-  const [selected, setSelected] = useState(false); 
+  const [selected, setSelected] = useState(false);
 
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
@@ -34,7 +34,6 @@ const Forum = () => {
     } catch (err) {
       console.error(err.message);
     }
-
   };
 
   const getPosts = async () => {
@@ -42,8 +41,7 @@ const Forum = () => {
       const response = await fetch("http://localhost:8080/forum");
       const jsonData = await response.json();
 
-      setAllPosts(jsonData)
-
+      setAllPosts(jsonData);
     } catch (err) {
       console.error(err.message);
     }
@@ -55,8 +53,19 @@ const Forum = () => {
 
   return (
     <div class="forum-page">
-      <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column">
-        <Box display="flex" className={classes.filterButton} justifyContent="flex-end" alignItems="center" width="50%">
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+      >
+        <Box
+          display="flex"
+          className={classes.filterButton}
+          justifyContent="flex-end"
+          alignItems="center"
+          width="50%"
+        >
           <FilterButton />
           <div class="add-button">
             <Tooltip title="Add" aria-label="add" arrow>
@@ -71,16 +80,16 @@ const Forum = () => {
             <Box className={classes.paper}>
               <Backdrop className={classes.backdrop} open={selected}>
                 <Box display="flex">
-                  { selected ? (
-                      <CreatePost
-                        setTitle={setTitle}
-                        setAddress={setAddress}
-                        setDescription={setDescription}
-                        onSubmitForm={onSubmitForm}
-                        close={handleClose}
-                        setDate={setDate}
-                      />
-                    ) : null }
+                  {selected ? (
+                    <CreatePost
+                      setTitle={setTitle}
+                      setAddress={setAddress}
+                      setDescription={setDescription}
+                      onSubmitForm={onSubmitForm}
+                      close={handleClose}
+                      setDate={setDate}
+                    />
+                  ) : null}
                 </Box>
               </Backdrop>
             </Box>
@@ -88,15 +97,16 @@ const Forum = () => {
         </Box>
 
         <Box width="80%">
-        { allPosts.map((post) => {
+          {allPosts.map((post) => {
             return (
               <Box>
-                <div key={post.title+post.address+post.date}>
+                <div key={post.title + post.address + post.date}>
                   <Post
                     title={post.title}
                     address={post.address}
                     description={post.description}
                     date={post.date}
+                    user={post.first_name + " " + post.last_name}
                   />
                 </div>
               </Box>
