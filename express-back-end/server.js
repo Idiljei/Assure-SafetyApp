@@ -109,6 +109,7 @@ App.post("/forum", async (req, res) => {
       "INSERT INTO posts (user_id, title, address, description, date) VALUES ($1, $2, $3, $4, $5)",
       postData
     );
+    res.json(newForum.rows[0]);
   } catch (err) {
     console.log(err);
   }
