@@ -30,7 +30,7 @@ App.get("/forum", async (req, res) => {
   // console.log("Forum Get Request");
   try {
     const allForums = await pool.query(
-      "SELECT * FROM posts ORDER BY id DESC LIMIT 5"
+      "SELECT users.first_name, users.last_name, posts.description, posts.date, posts.title, posts.address FROM posts JOIN users ON posts.user_id = users.id ORDER by posts.id DESC LIMIT 5;"
     );
     res.json(allForums.rows);
   } catch (err) {
