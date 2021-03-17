@@ -10,7 +10,13 @@ const GetAddress = (props) => {
 
   Geocode.fromLatLng(lat, lng)
   .then((response) => {
-    const address = response.results[0].formatted_address;
+    const comp = response.results[0].address_components;
+    const num = comp[0].short_name;
+    const street = comp[1].short_name;
+    const city = comp[3].short_name;
+    const prov = comp[5].short_name;
+
+    const address = ` ${num} ${street}, ${city}, ${prov}`
     props.setConverted(address)
   })
   .catch( err => console.log(err))

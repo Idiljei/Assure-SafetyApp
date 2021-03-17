@@ -42,19 +42,7 @@ const Forum = () => {
       const response = await fetch("http://localhost:8080/forum");
       const jsonData = await response.json();
 
-      setAllPosts(jsonData);
-  
-      const p1 = jsonData[1].address
-      const p2 = jsonData[2].address
-      const obj = JSON.parse(test)
-      const lat = obj.lat
-      const lng = obj.lng
-      console.log("PERSON 1", p1)
-      console.log("PERSON 2,", p2)
-
-   
-
-      console.log(lat,lng)
+      setAllPosts(jsonData)
 
     } catch (err) {
       console.error(err.message);
@@ -99,11 +87,11 @@ const Forum = () => {
           </div>
         </Box>
 
-        <Box width="50%">
+        <Box width="80%">
         { allPosts.map((post) => {
             return (
-              <Box className={classes.postBox}>
-                <div key={post.title + post.address}>
+              <Box>
+                <div key={post.title+post.address+post.date}>
                   <Post
                     title={post.title}
                     address={post.address}
@@ -121,3 +109,13 @@ const Forum = () => {
 };
 
 export default Forum;
+
+// const p1 = jsonData[1].address
+// const p2 = jsonData[2].address
+// const obj = JSON.parse(test)
+// const lat = obj.lat
+// const lng = obj.lng
+// console.log("PERSON 1", p1)
+// console.log("PERSON 2,", p2)
+
+// console.log(lat,lng)
