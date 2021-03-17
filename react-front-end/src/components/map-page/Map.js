@@ -1,11 +1,5 @@
-import React, { useState, useCallback, useRef } from "react";
-import {
-  GoogleMap,
-  useJsApiLoader,
-  Marker,
-  InfoWindow,
-} from "@react-google-maps/api";
-import { formatRelative } from "date-fns";
+import React, { useState, useCallback, useRef, useEffect } from "react";
+import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from "@react-google-maps/api";
 import { Box } from "@material-ui/core";
 import Locate from "./Locate";
 import mapStyles from "./mapStyles";
@@ -19,8 +13,6 @@ const containerStyle = {
 };
 
 const center = {
-  // lat: -3.745,
-  // lng: -38.523
   lat: 49.2811956,
   lng: -123.13068,
 };
@@ -34,8 +26,8 @@ const options = {
 };
 
 const Map = () => {
-  const [markers, setMarkers] = useState([]);
-  const [selected, setSelected] = useState(null);
+  const [ markers, setMarkers ] = useState([]);
+  const [ selected, setSelected ] = useState(null);
   const classes = useStyles();
 
   const { isLoaded, loadError } = useJsApiLoader({
@@ -43,15 +35,31 @@ const Map = () => {
     libraries,
   });
 
-  const onMapClick = useCallback((event) => {
-    setMarkers((prev) => [
-      ...prev,
-      {
-        lat: event.latLng.lat(),
-        lng: event.latLng.lng(),
-        time: new Date(),
-      },
-    ]);
+  const getPostLocation = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/forum");
+      const jsonData = await response.json();
+
+      jsonData.map(post => {
+        const title = post.title;
+        const locationObj = JSON.parse(post.address);
+        const lat = locationObj.lat;
+        const lng = locationObj.lng;
+        const markerInfo = {
+          title,
+          lat, 
+          lng
+        }
+        
+        return setMarkers((prev) => [...prev, markerInfo])
+      })
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  useEffect(() => {
+    getPostLocation();
   }, []);
 
   const mapRef = useRef();
@@ -66,7 +74,7 @@ const Map = () => {
   }, []);
 
   if (loadError) return "Error loading maps";
-  if (!isLoaded) return "Loading Maps";
+  if (!isLoaded) return "Loading maps";
 
   return (
     <div>
@@ -81,17 +89,16 @@ const Map = () => {
           center={center}
           zoom={18}
           options={options}
-          onClick={onMapClick}
           onLoad={onMapLoad}
         >
-          {markers.map((marker) => (
-            <Marker
-              key={marker.time.toISOString()}
-              position={{ lat: marker.lat, lng: marker.lng }}
-              onClick={() => {
-                setSelected(marker);
-              }}
-            />
+          {markers.map((post) => (
+              <Marker 
+                key={post.title+post.lat+post.lng}
+                position={{ lat: post.lat, lng: post.lng }}
+                onClick={() => {
+                  setSelected(post);
+                }}
+              />
           ))}
 
           {selected ? (
@@ -103,12 +110,11 @@ const Map = () => {
             >
               <div>
                 <h2>
-                  Crime Reported{" "}
+                  {selected.title}
                   <span role="img" aria-label="emoji">
                     ❗️
                   </span>
                 </h2>
-                <p>Spotted {formatRelative(selected.time, new Date())}</p>
               </div>
             </InfoWindow>
           ) : null}
