@@ -9,6 +9,7 @@
     "start": "nodemon -L server.js"
   },
   "dependencies": {
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
