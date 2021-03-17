@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
 export default function FilterButton() {
   const classes = useStyles();
   const [filter, setFilter] = useState('');
-
   const handleChange = (event) => {
     setFilter(event.target.value);
   };
