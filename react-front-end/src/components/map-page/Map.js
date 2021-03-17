@@ -1,11 +1,12 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from "@react-google-maps/api";
-import { Box } from "@material-ui/core";
-import ReportIcon from '@material-ui/icons/Report';
+import { Box, Button } from "@material-ui/core";
 import Locate from "./Locate";
+import Legend from './Legend';
 import mapStyles from "./mapStyles";
 import useStyles from "../Styles";
 import MapSearch from "./MapSearch";
+import './search.css';
 import "@reach/combobox/styles.css";
 
 const containerStyle = {
@@ -80,10 +81,12 @@ const Map = () => {
   return (
     <div>
       <Box className={classes.mapBox}>
-        <Box display="flex" alignItems="center">
-          <MapSearch panTo={panTo} />
-          <Locate panTo={panTo} />
+        <Box display="flex" justifyContent="space-between" alignItems="center" width="29%" margin="0">
+          <Box><MapSearch panTo={panTo} /></Box>
+          <Box className={classes.findButton}><Locate panTo={panTo} /></Box>
         </Box>
+      
+        <Legend />
 
         <GoogleMap
           mapContainerStyle={containerStyle}
@@ -122,6 +125,7 @@ const Map = () => {
                     ❗️
                   </span>
                 </h2>
+                <p><Button>See Details</Button></p>
               </div>
             </InfoWindow>
           ) : null}

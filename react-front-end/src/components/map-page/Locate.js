@@ -6,15 +6,15 @@ function Locate({panTo}) {
 
   return (
   <Tooltip title="Find Me" aria-label="Get Current Location">
-  <IconButton
-    variant="contained"
-    onClick={() => {
-    navigator.geolocation.getCurrentPosition((position) => panTo({
-      lat: position.coords.latitude,
-      lng: position.coords.longitude
-    }), () => null)
-  }}><MyLocationIcon />
-  </IconButton>
+    <IconButton
+      variant="contained"
+      onClick={() => {
+      navigator.geolocation.getCurrentPosition((position) => panTo({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      }), () => null)
+    }}><MyLocationIcon fontSize="large"/>
+    </IconButton>
   </Tooltip>)
 };
 

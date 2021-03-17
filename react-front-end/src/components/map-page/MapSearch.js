@@ -32,7 +32,6 @@ const MapSearch = ( props ) => {
           panTo({ lat, lng })  
         } catch(error) {
         }
-        console.log(address);
       }}
       >
         <ComboboxInput 
