@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from "@react-google-maps/api";
 import { Box } from "@material-ui/core";
+import ReportIcon from '@material-ui/icons/Report';
 import Locate from "./Locate";
 import mapStyles from "./mapStyles";
 import useStyles from "../Styles";
@@ -50,7 +51,7 @@ const Map = () => {
           lat, 
           lng
         }
-        
+
         return setMarkers((prev) => [...prev, markerInfo])
       })
     } catch (err) {
@@ -92,11 +93,17 @@ const Map = () => {
           onLoad={onMapLoad}
         >
           {markers.map((post) => (
-              <Marker 
+              <Marker
                 key={post.title+post.lat+post.lng}
                 position={{ lat: post.lat, lng: post.lng }}
                 onClick={() => {
                   setSelected(post);
+                }}
+                icon={{
+                  url: "./report.svg",
+                  scaledSize: new window.google.maps.Size(35,35),
+                  origin: new window.google.maps.Point(0, 0),
+                  anchor: new window.google.maps.Point(17, 17)
                 }}
               />
           ))}
