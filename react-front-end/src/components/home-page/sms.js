@@ -2,6 +2,7 @@
 export const smsLocation = async(e) => {
   e.preventDefault();
 
+
   const body = { "message": "Phoebe has sent her live location through Assure" }
   await fetch('/sms', {
     method: 'POST',
