@@ -41,10 +41,11 @@ function a11yProps(index) {
 
 const useStyles = makeStyles({
   root: {
-    flexGrow: 1,
+    flexGrow: 2
   },
   bar: {
-    background: 'linear-gradient(45deg, #63639F, #a6a6e0)'
+    background: '#63639F',
+    indicatorColor: 'white'
   }
 });
 
@@ -61,7 +62,7 @@ export default function SimpleTabs(props) {
       <AppBar position="static" elevation={0}>
         <Tabs
           className={classes.bar} 
-          value={value} 
+          value={value}
           onChange={handleChange} 
           aria-label="simple tabs example"
           centered
@@ -80,13 +81,13 @@ export default function SimpleTabs(props) {
 
       <TabPanel value={value} index={1}>
           <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" marginBottom="1%">
-            <ContactList />
+            <ContactList selected={props.selected}/>
         </Box>
       </TabPanel>
 
       <TabPanel value={value} index={2}>
           <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-            <MyPosts title={props.title} date={props.date} />
+            <MyPosts title={props.title} date={props.date} selected={props.selected}/>
           </Box>
       </TabPanel>
     </div>

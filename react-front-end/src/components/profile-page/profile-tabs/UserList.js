@@ -9,8 +9,12 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'transparent',
+    color: 'white'
   },
+  icon: {
+    color: 'white'
+  }
 }));
 
 export default function UserInfoList(props) {
@@ -21,17 +25,15 @@ export default function UserInfoList(props) {
       <List component="nav" aria-label="user info">
         <ListItem>
           <ListItemIcon>
-            <PhoneIcon />
+            <PhoneIcon className={classes.icon}/>
           </ListItemIcon>
-          <ListItemText primary={props.number} />
-          <EditButton />
+          <ListItemText primary={props.number}/>
         </ListItem>
         <ListItem>
           <ListItemIcon>
-            <CakeIcon />
+            <CakeIcon className={classes.icon}/>
           </ListItemIcon>
           <ListItemText primary={props.dob} />
-          <EditButton />
         </ListItem>
       </List>
     </div>

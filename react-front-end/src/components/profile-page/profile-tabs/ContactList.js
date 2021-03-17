@@ -1,15 +1,19 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { List, ListItem, ListItemIcon, ListItemText, Divider, Box } from '@material-ui/core';
-import EditDeleteButton from '../buttons/EditDeleteButton';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import DeleteButton from '../buttons/DeleteButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+    maxWidth: 500,
+    backgroundColor: 'transparent',
+    color: 'white'
   },
+  icon: {
+    color: 'white'
+  }
 }));
 
 const contacts = [
@@ -27,8 +31,9 @@ const contacts = [
   }
 ];
 
-export default function ContactList() {
+export default function ContactList(props) {
   const classes = useStyles();
+  const selected = props.selected;
 
   return (
     <div className={classes.root}>
@@ -38,12 +43,10 @@ export default function ContactList() {
             <List component="nav" aria-label={contact.name}>
               <ListItem button >
                 <ListItemIcon>
-                  <AccountCircleIcon />
+                  <AccountCircleIcon className={classes.icon} fontSize="large"/>
                 </ListItemIcon>
-                <ListItemText primary={contact.name} secondary={contact.number} />
-                <Box marginLeft="2%">
-                  <EditDeleteButton />
-                </Box>
+                <ListItemText className={classes.icon} primary={contact.name} secondary={contact.number} />
+                { selected ? <DeleteButton /> : null}
               </ListItem>
             </List>
             <Divider />

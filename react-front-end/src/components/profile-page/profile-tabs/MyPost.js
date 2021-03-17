@@ -1,43 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Divider, List, ListItem, ListItemText, Box } from "@material-ui/core";
-import EditDeleteButton from "../buttons/EditDeleteButton";
+import DeleteButton from '../buttons/DeleteButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+    maxWidth: 500,
+    backgroundColor: 'white'
   },
 }));
-
-// const myPosts = [
-//   {
-//     title: "Theft at Restaurant",
-//     user: "Monica Geller",
-//     address: "Vancouver",
-//     description: "Someone stole something",
-//     date: "2019-01-12",
-//   },
-//   {
-//     title: "Assault by Comic Book Store",
-//     user: "Ross Geller",
-//     address: "New York",
-//     description: "Pheobe mugged me!",
-//     date: "2023-04-02",
-//   },
-//   {
-//     title: "Purse Stolen",
-//     user: "Rachel Green",
-//     address: "New York",
-//     description: "Tall man in black hoodie stole my bag!",
-//     date: "2012-11-00",
-//   },
-// ];
 
 export default function MyPosts(props) {
   const classes = useStyles();
   const [myPosts, setMyPosts] = useState([]);
+  const selected = props.selected;
 
   const getPosts = async () => {
     try {
@@ -61,12 +38,14 @@ export default function MyPosts(props) {
         return (
           <div>
             <List>
-              <ListItem button>
-                <ListItemText primary={post.title} secondary={post.date} />
-                <Box marginLeft="2%">
-                  <EditDeleteButton />
-                </Box>
-              </ListItem>
+              <Box display="flex" alignItems="center">
+                <ListItem button>
+                  <ListItemText primary={post.title} secondary={post.date} />
+                </ListItem>
+                
+                { selected ? <DeleteButton /> : null}
+
+              </Box>
             </List>
             <Divider />
           </div>
