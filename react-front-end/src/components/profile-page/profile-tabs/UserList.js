@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import EditButton from '../buttons/EditButton';
 import PhoneIcon from '@material-ui/icons/Phone';
 import CakeIcon from '@material-ui/icons/Cake';
 
