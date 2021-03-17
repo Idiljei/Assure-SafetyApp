@@ -35,10 +35,6 @@ const postStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
     marginTop: '1.3em',
     width: '96%',
-  },
-  searchInput: {
-    marginTop: '1.3em',
-    width: '87%'
   }
 }));
 

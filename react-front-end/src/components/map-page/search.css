@@ -4,7 +4,27 @@
 }
 
 .forum-search {
-  padding: 0.5rem;
   font-size: 1.5rem;
-  width: max-content;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 6;
+}
+
+div.background {
+  background-color: white;
+  color: white
+}
+
+
+.MuiFormControl-root {
+    border: 0;
+    margin: 0;
+    display: inline-flex;
+    padding: 0;
+    position: relative;
+    min-width: 0;
+    flex-direction: column;
+    vertical-align: top;
+    width: 15em;
 }

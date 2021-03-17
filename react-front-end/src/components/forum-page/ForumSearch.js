@@ -1,9 +1,20 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
-import { TextField, List, ListItem, ListItemText, Divider } from '@material-ui/core';
+import { TextField, List, ListItem, ListItemText, Divider, Paper, Box } from '@material-ui/core';
 import '../map-page/search.css';
 
+const useStyles = makeStyles({
+  search: {
+    position: "absolute",
+    width: "20%",
+    zIndex: 'auto'
+  }
+})
+
 const Search = (props) => {
+  const classes = useStyles();
+
   const {
     ready,
     value,
@@ -46,24 +57,35 @@ const Search = (props) => {
 
       return (
         <div>
-          <ListItemText button key={place_id} onClick={handleSelect(suggestion)} primary={main_text} secondary={secondary_text} />
-          <Divider />
+          <ListItem button>
+            <ListItemText key={place_id} onClick={handleSelect(suggestion)} primary={main_text} secondary={secondary_text} />
+            <Divider />
+          </ListItem>
         </div>
       );
     });
 
   return (
-    <div class="forum-search">
+    <Box class="forum-search">
+      <Box>
       <TextField
+        width="2em"
         value={value}
+        position="absolute"
         onChange={handleInput}
         disabled={!ready}
         placeholder="Enter Address"
       />
+      </Box>
       {/* We can use the "status" to decide whether we should display the dropdown or not */}
-
-      {status === "OK" &&  <List>{renderSuggestions()}</List>}
-    </div>
+      
+      <Box>
+        {status === "OK" ?  
+            <Paper className={classes.search}>
+                <List>{renderSuggestions()}</List>
+            </Paper>: null}
+      </Box>
+    </Box>
   );
 };
 

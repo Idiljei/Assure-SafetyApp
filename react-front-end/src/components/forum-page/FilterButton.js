@@ -3,13 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { InputLabel, MenuItem, FormControl, Select } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
+  filter: {
+    width: '8em'
+  }
 }));
 
 export default function FilterButton() {
@@ -21,7 +17,7 @@ export default function FilterButton() {
   };
 
   return (
-    <FormControl variant="outlined" className={classes.formControl}>
+    <FormControl variant="outlined" className={classes.filter}>
       <InputLabel id="demo-simple-select-outlined-label">Filter</InputLabel>
         <Select
           labelId="demo-simple-select-outlined-label"

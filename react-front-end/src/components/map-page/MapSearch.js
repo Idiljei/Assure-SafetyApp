@@ -1,6 +1,7 @@
 import React from 'react'
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from "@reach/combobox";
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
+import { TextField, List, ListItem, ListItemText, Divider, Paper, Box } from '@material-ui/core';
 import "@reach/combobox/styles.css";
 import './search.css'
 
@@ -43,14 +44,14 @@ const MapSearch = ( props ) => {
       disabled={!ready}
       placeholder="Enter Address"
       /> 
-      <ComboboxPopover> 
-        <ComboboxList>
-      {status ==="OK" && 
-      data.map(({ id, description}) => (
-        <ComboboxOption key={id} value={description} />
-      ))}
-        </ComboboxList>
-      </ComboboxPopover>
+        <ComboboxPopover> 
+            <ComboboxList>
+          {status ==="OK" && 
+          data.map(({ id, description}) => (
+            <ComboboxOption key={id} value={description} />
+          ))}
+            </ComboboxList>
+        </ComboboxPopover>
       </Combobox>
   </div>
   );
