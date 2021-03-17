@@ -5,7 +5,7 @@ import MyLocationIcon from '@material-ui/icons/MyLocation';
 function Locate({panTo}) {
 
   return (
-  <Tooltip title="Find Me" aria-label="Get Current Location">
+  <Tooltip title="Find Me" aria-label="Get Current Location" arrow>
     <IconButton
       variant="contained"
       onClick={() => {

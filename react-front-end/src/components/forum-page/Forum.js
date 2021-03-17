@@ -75,8 +75,6 @@ const Forum = () => {
     }
   };
 
-
-
   useEffect(() => {
     getPosts();
   }, []);
@@ -87,7 +85,7 @@ const Forum = () => {
         <Box display="flex" className={classes.filterButton} justifyContent="flex-end" alignItems="center" width="50%">
           <FilterButton />
           <div class="add-button">
-            <Tooltip title="Add" aria-label="add">
+            <Tooltip title="Add" aria-label="add" arrow>
               <Fab
                 onClick={() => setSelected(true)}
                 color="primary"
