@@ -81,7 +81,8 @@ App.get("/forum", async (req, res) => {
   // console.log("Forum Get Request");
   try {
     const allForums = await pool.query(
-      "SELECT * FROM posts ORDER BY id DESC LIMIT 5"
+      "SELECT * FROM posts ORDER BY id DESC LIMIT 5;"
+
     );
     res.json(allForums.rows);
   } catch (err) {
@@ -97,7 +98,7 @@ App.get("/forum", async (req, res) => {
 //     res.json(forum.rows)
 //   } catch (err) {
 //     console.log(err.message)
-//   }
+//   } 
 // })
 
 // POST => create a post
@@ -111,6 +112,7 @@ App.post("/forum", async (req, res) => {
       "INSERT INTO posts (user_id, title, address, description, date) VALUES ($1, $2, $3, $4, $5)",
       postData
     );
+    res.json(newForum.rows[0]);
   } catch (err) {
     console.log(err);
   }
