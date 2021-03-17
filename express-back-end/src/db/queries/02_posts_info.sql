@@ -1,0 +1,1 @@
+SELECT users.first_name, users.last_name, posts.description, posts.date, posts.title, posts.address FROM posts JOIN users ON posts.user_id = users.id ORDER by posts.id DESC LIMIT 5;
