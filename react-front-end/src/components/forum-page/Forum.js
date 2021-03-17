@@ -97,7 +97,7 @@ const Forum = () => {
             <Box className={classes.paper}>
               <Backdrop className={classes.backdrop} open={selected}>
                 <Box display="flex">
-                    {selected ? (
+                  { selected ? (
                       <CreatePost
                         setTitle={setTitle}
                         setAddress={setAddress}
@@ -106,7 +106,7 @@ const Forum = () => {
                         close={handleClose}
                         setDate={setDate}
                       />
-                    ) : null}
+                    ) : null }
                 </Box>
               </Backdrop>
             </Box>
@@ -114,7 +114,7 @@ const Forum = () => {
         </Box>
 
         <Box width="50%">
-          {allPosts.map((post) => {
+        { allPosts.map((post) => {
             return (
               <Box className={classes.postBox}>
                 <div key={post.title + post.address}>

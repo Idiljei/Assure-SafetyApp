@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Divider, List, ListItem, ListItemText } from '@material-ui/core';
+import { Divider, Box } from '@material-ui/core';
+import GetAddress from './ConvertToAdd';
+import './forum.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,14 +13,27 @@ const useStyles = makeStyles((theme) => ({
 
 const Post = (props) => {
   const classes = useStyles();
+  const [ converted, setConverted ] = useState(''); 
+
+  const addressObj = JSON.parse(props.address);
+  const lat = addressObj.lat;
+  const lng = addressObj.lng;
 
   return (
-    <div>
-      <List className={classes.root}>
-        <ListItem button>
-          <ListItemText primary={props.date} secondary={props.address} />
-        </ListItem>
-      </List>
+    <div class="post">
+      <Box>
+        <Box display="flex" flexDirection="column">
+          <h2>{props.title}</h2>
+          <h6><GetAddress lat={lat} lng={lng} converted={converted} setConverted={setConverted}/>
+          </h6>
+        </Box>
+
+        <Box display="flex" flexDirection="column">
+          <h4>{props.description}</h4>
+          <h6>Posted: {props.date}</h6>
+        </Box>
+
+      </Box>
       <Divider />
     </div>
   );
