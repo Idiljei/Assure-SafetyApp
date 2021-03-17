@@ -1,6 +1,6 @@
 // Texting Safety Network 
-export const smsLocation = async(e) => {
-  e.preventDefault();
+export const smsLocation = async() => {
+  // e.preventDefault();
 
 
   const body = { "message": "Phoebe has sent her live location through Assure" }
