@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Button, TextField, Paper, IconButton, Box, Input } from '@material-ui/core';
+import React from 'react';
+import { Button, TextField, Paper, IconButton, Box } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import Search from './ForumSearch';
 import postStyles from './PostStyles';
@@ -86,13 +86,3 @@ const CreatePost = (props) => {
 };
 
 export default CreatePost;
-
-{/* <Box width="100%">
-<TextField
-  className={classes.searchInput} 
-  id="standard-basic" 
-  label="Address"
-  color="primary"
-  onChange={(e) => props.setAddress(e.target.value)} 
-  />
-</Box> */}

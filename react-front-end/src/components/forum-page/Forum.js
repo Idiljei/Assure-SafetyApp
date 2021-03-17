@@ -21,20 +21,6 @@ const Forum = () => {
     setSelected(false);
   };
 
-  // const addPost = () => {
-  //   const postData = {
-  //     title,
-  //     user,
-  //     location,
-  //     description
-  //   };
-
-  //   setAllPosts((prev) => {
-  //     return [...prev, postData]
-  //   })
-  //   setSelected(false);
-  // };
-
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
@@ -48,6 +34,7 @@ const Forum = () => {
     } catch (err) {
       console.error(err.message);
     }
+
   };
 
   const getPosts = async () => {

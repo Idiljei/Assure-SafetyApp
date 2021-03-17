@@ -1,20 +1,11 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from "@reach/combobox";
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
-import { TextField, List, ListItem, ListItemText, Paper, Box } from '@material-ui/core';
 import "@reach/combobox/styles.css";
 import './search.css'
 
-const useStyles = makeStyles({
-  search: {
-    width: '100%'
-  }
-})
-
 const MapSearch = ( props ) => {
   const panTo = props.panTo;
-  const classes = useStyles();
 
   const { 
     ready, 

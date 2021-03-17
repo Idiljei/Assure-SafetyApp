@@ -4,7 +4,6 @@ import Navbar from './components/Navbar';
 import Map from './components/map-page/Map';
 import Forum from './components/forum-page/Forum';
 import Profile from './components/profile-page/Profile'
-import Login from './Login';
 import './App.css'
 
 const App = () => {
