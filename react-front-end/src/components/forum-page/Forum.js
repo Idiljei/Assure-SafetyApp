@@ -9,8 +9,8 @@ import "./forum.css";
 
 const Forum = () => {
   const classes = postStyles();
-  const [allPosts, setAllPosts] = useState([]); // list of all the posts
-  const [selected, setSelected] = useState(false); // add button --> true
+  const [allPosts, setAllPosts] = useState([]);
+  const [selected, setSelected] = useState(false); 
 
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
