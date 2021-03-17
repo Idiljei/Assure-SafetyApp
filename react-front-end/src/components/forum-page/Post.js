@@ -16,7 +16,7 @@ const Post = (props) => {
     <div>
       <List className={classes.root}>
         <ListItem button>
-          <ListItemText primary={props.title} secondary={props.date} />
+          <ListItemText primary={props.date} secondary={props.address} />
         </ListItem>
       </List>
       <Divider />
