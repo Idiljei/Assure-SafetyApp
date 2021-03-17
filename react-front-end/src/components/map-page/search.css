@@ -1,6 +1,9 @@
 .search input {
   padding: 0.5rem;
   font-size: 1.5rem;
+  border: 0;
+  margin: 10%;
+  width: 100%;
 }
 
 .forum-search {
@@ -15,7 +18,6 @@ div.background {
   background-color: white;
   color: white
 }
-
 
 .MuiFormControl-root {
     border: 0;

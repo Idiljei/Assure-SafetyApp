@@ -1,12 +1,20 @@
 import React from 'react'
+import { makeStyles } from '@material-ui/core/styles';
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from "@reach/combobox";
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
-import { TextField, List, ListItem, ListItemText, Divider, Paper, Box } from '@material-ui/core';
+import { TextField, List, ListItem, ListItemText, Paper, Box } from '@material-ui/core';
 import "@reach/combobox/styles.css";
 import './search.css'
 
+const useStyles = makeStyles({
+  search: {
+    width: '100%'
+  }
+})
+
 const MapSearch = ( props ) => {
-  const panTo = props.panTo
+  const panTo = props.panTo;
+  const classes = useStyles();
 
   const { 
     ready, 
@@ -22,39 +30,39 @@ const MapSearch = ( props ) => {
   });
 
   return (
-  <div class="search">
-    <Combobox
-    onSelect={async (address) => {
-      setValue(address, false);
-      clearSuggestions();
-      try {
-        const results =  await getGeocode({ address });
-        const { lat, lng } = await getLatLng(results[0])
-        panTo({ lat, lng })  
-      } catch(error) {
-      }
-      console.log(address);
-    }}
-    >
-      <ComboboxInput 
-      value={value}
-      onChange={(e) => {
-        setValue(e.target.value)
+    <div class="search">
+      <Combobox
+      onSelect={async (address) => {
+        setValue(address, false);
+        clearSuggestions();
+        try {
+          const results =  await getGeocode({ address });
+          const { lat, lng } = await getLatLng(results[0])
+          panTo({ lat, lng })  
+        } catch(error) {
+        }
+        console.log(address);
       }}
-      disabled={!ready}
-      placeholder="Enter Address"
-      /> 
+      >
+        <ComboboxInput 
+        value={value}
+        onChange={(e) => {
+          setValue(e.target.value)
+        }}
+        disabled={!ready}
+        placeholder="Enter Address"
+        /> 
         <ComboboxPopover> 
-            <ComboboxList>
-          {status ==="OK" && 
-          data.map(({ id, description}) => (
-            <ComboboxOption key={id} value={description} />
-          ))}
-            </ComboboxList>
+          <ComboboxList>
+            {status ==="OK" && 
+            data.map(({ id, description}) => (
+              <ComboboxOption key={id} value={description} />
+            ))}
+          </ComboboxList>
         </ComboboxPopover>
       </Combobox>
-  </div>
-  );
+    </div>
+    );
 }
 
 export default MapSearch;
