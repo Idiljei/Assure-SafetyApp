@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Button } from '@material-ui/core';
 
 const CancelButton = (props) => {
-  
+
   const onClick = () => {
-    props.setSelected(true)
+    props.setSelected(1)
   }
 
   return (
