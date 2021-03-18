@@ -33,7 +33,7 @@ const PoliceAlert = (props) => {
   return (
   <div>
     { !selected &&  
-        <Alert variant="outlined" severity="info">
+        <Alert variant="outlined" severity="warning">
           {alerts.sharing}
           <CancelButton setSelected={setSelected} /> 
         </Alert> }
@@ -57,7 +57,7 @@ const PoliceAlert = (props) => {
     { selected === 2 &&
         <Alert 
           variant="outlined" 
-          severity="info"
+          severity="success"
           action={
             <IconButton
               aria-label="close"
@@ -75,7 +75,7 @@ const PoliceAlert = (props) => {
     { selected === 3 &&
       <Alert 
         variant="outlined"
-        severity="info"  
+        severity="error"  
         action={
           <IconButton
             aria-label="close"

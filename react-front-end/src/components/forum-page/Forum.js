@@ -31,7 +31,7 @@ const Forum = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      window.location = "/";
+      window.location = "/map";
     } catch (err) {
       console.error(err.message);
     }

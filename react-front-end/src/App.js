@@ -1,32 +1,34 @@
-import React, {useState} from 'react';
-import Home from './components/home-page/Home';
-import Navbar from './components/Navbar';
-import Map from './components/map-page/Map';
-import Forum from './components/forum-page/Forum';
-import Profile from './components/profile-page/Profile'
-import './App.css'
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./components/home-page/Home";
+import Navbar from "./components/Navbar";
+import Map from "./components/map-page/Map";
+import Forum from "./components/forum-page/Forum";
+import Profile from "./components/profile-page/Profile";
+import "./App.css";
 
 const App = () => {
   // const [ login, setLogin ] = useState(false);
   const [selected, setSelected] = useState(0);
 
   return (
-      <div className="app">
-        <div className="logo">
-            <img src="logo/assure-logo.png" alt="assure logo"/>
-        </div>
-
-        <div className="page">
-          {selected === 0 ? (<Home />) : null}
-          {selected === 1 ? (<Map />): null}
-          {selected === 2 ? (<Forum />) : null}
-          {selected === 3 ? (<Profile />) : null}
-        </div>
-
-        <div className="nav">
-          <Navbar setSelected={setSelected} selected={selected} />   
-        </div>
+    <div className="app">
+      <div className="logo">
+        <img src="logo/assure-logo.png" alt="assure logo" />
       </div>
+
+      <Router forceRefresh={true}>
+        <div className="nav">
+          <Navbar />
+        </div>
+        <Switch>
+          <Route path="/profile" component={Profile} />
+          <Route path="/map" component={Map} />
+          <Route path="/forum" component={Forum} />
+          <Route path="/" component={Home} />
+        </Switch>
+      </Router>
+    </div>
   );
 };
 
