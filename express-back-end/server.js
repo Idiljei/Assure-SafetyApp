@@ -10,9 +10,6 @@ const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require("twilio")(accountSid, authToken);
 
-const { Client } = require("@googlemaps/google-maps-services-js");
-const client = new Client({});
-
 // const router  = Express.Router();
 
 // const {sendTextMsg} = require('./api/send_sms');
@@ -27,11 +24,6 @@ App.use(Express.static("public"));
 App.get("/", (req, res) => {
   res.json({ home: "page" });
 });
-
-const url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=police&key=AIzaSyBJ39OWl9LG9oLnk5L3QYaeh8vQCi8OzhM'
-
-//----- GOOGLE -----//
-
 
 //----- FORUM -----//
 
