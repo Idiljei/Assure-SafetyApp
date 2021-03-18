@@ -39,7 +39,7 @@ const LocationAlert = (props) => {
         </Alert> }
 
     { selected === 1 && 
-        <Alert variant="outlined" severity="info">
+        <Alert variant="outlined" severity="warning">
         {alerts.verify}
           <Box>
             <TextField
@@ -57,7 +57,7 @@ const LocationAlert = (props) => {
     { selected === 2 &&
         <Alert 
           variant="outlined" 
-          severity="info"
+          severity="success"
           action={
             <IconButton
               aria-label="close"
@@ -75,7 +75,7 @@ const LocationAlert = (props) => {
     { selected === 3 &&
       <Alert 
         variant="outlined"
-        severity="info"  
+        severity="error"  
         action={
           <IconButton
             aria-label="close"
