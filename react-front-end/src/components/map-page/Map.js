@@ -139,6 +139,7 @@ const Map = () => {
           options={options}
           onLoad={onMapLoad}
         >
+
           {markers.map((post) => (
             <Marker
               key={post.title + post.lat + post.lng}
