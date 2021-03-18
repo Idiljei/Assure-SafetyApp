@@ -51,10 +51,7 @@ const MarkSafeSpots = (props) => {
     getPlaces('fire+stations')
   }, []);
 
-  console.log("This is hospitals:", hospitals);
-
-  console.log("This is the selected:", selected);
-  console.log("This is teh safe spot:", safeSpot)
+  console.log("This is police:", policeStations)
 
   return (
     <>
@@ -62,8 +59,8 @@ const MarkSafeSpots = (props) => {
             <Marker
               position={{ lat: popo.coords.lat, lng: popo.coords.lng}}
               onClick={() => {
-                setSelected(popo);
                 setSafeSpot(true);
+                setSelected(popo);
               }}
               icon={{
                 url: "./police.svg",
@@ -78,8 +75,8 @@ const MarkSafeSpots = (props) => {
             <Marker
               position={{ lat: fire.coords.lat, lng: fire.coords.lng}}
               onClick={() => {
-                setSelected(fire);
                 setSafeSpot(true);
+                setSelected(fire);
               }}
               icon={{
                 url: "./fire-station.svg",
@@ -94,8 +91,8 @@ const MarkSafeSpots = (props) => {
             <Marker
               position={{ lat: mark.coords.lat, lng: mark.coords.lng}}
               onClick={() => {
-                setSelected(mark)
                 setSafeSpot(true)
+                setSelected(mark)
               }}
               icon={{
                 url: "./hospital.svg",
@@ -115,11 +112,13 @@ const MarkSafeSpots = (props) => {
                 setSelected(null);
               }}
             >
+              <div>
               <h2>
                 {selected.name}
                 Address: {selected.address}
                 { selected.open ? <h4>Open Now</h4> : null }
               </h2>
+              </div>
             </InfoWindow>
           ) : null}       
     </>
