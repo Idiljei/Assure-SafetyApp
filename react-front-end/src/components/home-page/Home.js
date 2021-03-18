@@ -17,7 +17,7 @@ const Home = (props) => {
   const [ police, setPolice ] = useState(false);
 
   const handleLocationClick = () => {
-    setLocation(true)
+    setLocation(true);
     setSelectedLOC(0);
     // smsLocation()
   }
