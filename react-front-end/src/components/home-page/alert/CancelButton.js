@@ -8,7 +8,7 @@ const CancelButton = (props) => {
   }
 
   return (
-    <Button variant="outlined" color="secondary" onClick={onClick}> 
+    <Button variant="outlined" color="primary" onClick={onClick} size="small"> 
       Cancel
     </Button>
   )
