@@ -37,7 +37,6 @@ const options = {
 const Map = () => {
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
-  const [ safeSpot, setSafeSpot ] = useState(false);
   const classes = useStyles();
 
   const { isLoaded, loadError } = useJsApiLoader({
@@ -113,7 +112,7 @@ const Map = () => {
           options={options}
           onLoad={onMapLoad}
         >
-          <MarkSafeSpots safeSpot={safeSpot} setSafeSpot={setSafeSpot} selected={selected} setSelected={setSelected}/>
+          <MarkSafeSpots selected={selected} setSelected={setSelected}/>
 s
           {markers.map((post) => (
             <Marker
@@ -131,7 +130,7 @@ s
             />
           ))}
 
-        { (selected && !safeSpot) ? (
+        { selected ? (
             <InfoWindow
               position={{ lat: selected.lat, lng: selected.lng }}
               onCloseClick={() => {
@@ -139,15 +138,11 @@ s
               }}
             >
               <div>
-                <h2>
-                  {selected.title}
-                  <span role="img" aria-label="emoji">
-                    ❗️
-                  </span>
-                </h2>
-                <p>
-                  <Button>See Details</Button>
-                </p>
+                <h2>{ selected.title || selected.name }</h2>
+                { selected.address ? <h4>Address: {selected.address}</h4> : null }
+                { selected.open ? <h4>Open Now</h4> : null }
+                { selected.name ? <h6>Go Here:  </h6> : null}
+                { !selected.name ? <div><Button>See Details</Button></div> : null}
               </div>
             </InfoWindow>
           ) : null}

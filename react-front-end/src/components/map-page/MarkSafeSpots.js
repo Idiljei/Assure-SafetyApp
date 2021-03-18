@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Marker, InfoWindow } from "@react-google-maps/api";
+import { Marker } from "@react-google-maps/api";
 
 const MarkSafeSpots = (props) => {
   const [ policeStations, setPoliceStations ] = useState([]);
@@ -7,8 +7,6 @@ const MarkSafeSpots = (props) => {
   const [ hospitals, setHospitals ] = useState([]);
   const setSelected = props.setSelected;
   const selected = props.selected;
-  const setSafeSpot = props.setSafeSpot;
-  const safeSpot = props.safeSpot;
 
   const getPlaces = async (query) => {
     try {
@@ -23,7 +21,8 @@ const MarkSafeSpots = (props) => {
         const info = {
           name: data.name,
           address: data.formatted_address,
-          coords: data.geometry.location,
+          lat: data.geometry.location.lat,
+          lng: data.geometry.location.lng,
           open: data.opening_hours
         }
     
@@ -44,22 +43,21 @@ const MarkSafeSpots = (props) => {
     };
 
   };
-  
+
   useEffect(() => {
     getPlaces('police+stations');
     getPlaces('hospitals');
     getPlaces('fire+stations')
   }, []);
 
-  console.log("This is police:", policeStations)
+  console.log("This is selected:", selected);
 
   return (
     <>
     { policeStations.map( popo => (
             <Marker
-              position={{ lat: popo.coords.lat, lng: popo.coords.lng}}
+              position={{ lat: popo.lat, lng: popo.lng}}
               onClick={() => {
-                setSafeSpot(true);
                 setSelected(popo);
               }}
               icon={{
@@ -73,9 +71,8 @@ const MarkSafeSpots = (props) => {
 
         { fireStations.map( fire => (
             <Marker
-              position={{ lat: fire.coords.lat, lng: fire.coords.lng}}
+              position={{ lat: fire.lat, lng: fire.lng}}
               onClick={() => {
-                setSafeSpot(true);
                 setSelected(fire);
               }}
               icon={{
@@ -87,40 +84,20 @@ const MarkSafeSpots = (props) => {
               />
         ))}  
 
-        {hospitals.map((mark) => (
-            <Marker
-              position={{ lat: mark.coords.lat, lng: mark.coords.lng}}
-              onClick={() => {
-                setSafeSpot(true)
-                setSelected(mark)
-              }}
-              icon={{
-                url: "./hospital.svg",
-                scaledSize: new window.google.maps.Size(25, 25),
-                origin: new window.google.maps.Point(0, 0),
-                anchor: new window.google.maps.Point(17, 17),
-              }}
-              />
+      { hospitals.map((mark) => (
+          <Marker
+            position={{ lat: mark.lat, lng: mark.lng}}
+            onClick={() => {
+              setSelected(mark)
+            }}
+            icon={{
+              url: "./hospital.svg",
+              scaledSize: new window.google.maps.Size(25, 25),
+              origin: new window.google.maps.Point(0, 0),
+              anchor: new window.google.maps.Point(17, 17),
+            }}
+            />
         ))}
-
-      { (selected && safeSpot) ? (
-            <InfoWindow
-              position={
-                { lat: selected.coords.lat, lng: selected.coords.lng }
-              }
-              onCloseClick={() => {
-                setSelected(null);
-              }}
-            >
-              <div>
-              <h2>
-                {selected.name}
-                Address: {selected.address}
-                { selected.open ? <h4>Open Now</h4> : null }
-              </h2>
-              </div>
-            </InfoWindow>
-          ) : null}       
     </>
   )
 
