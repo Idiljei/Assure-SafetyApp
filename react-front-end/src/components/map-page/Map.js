@@ -1,12 +1,17 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
-import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  useJsApiLoader,
+  Marker,
+  InfoWindow,
+} from "@react-google-maps/api";
 import { Box, Button } from "@material-ui/core";
 import Locate from "./Locate";
-import Legend from './Legend';
+import Legend from "./Legend";
 import mapStyles from "./mapStyles";
 import useStyles from "../Styles";
 import MapSearch from "./MapSearch";
-import './search.css';
+import "./search.css";
 import "@reach/combobox/styles.css";
 
 const containerStyle = {
@@ -28,8 +33,8 @@ const options = {
 };
 
 const Map = () => {
-  const [ markers, setMarkers ] = useState([]);
-  const [ selected, setSelected ] = useState(null);
+  const [markers, setMarkers] = useState([]);
+  const [selected, setSelected] = useState(null);
   const classes = useStyles();
 
   const { isLoaded, loadError } = useJsApiLoader({
@@ -42,19 +47,19 @@ const Map = () => {
       const response = await fetch("http://localhost:8080/forum");
       const jsonData = await response.json();
 
-      jsonData.map(post => {
+      jsonData.map((post) => {
         const title = post.title;
         const locationObj = JSON.parse(post.address);
         const lat = locationObj.lat;
         const lng = locationObj.lng;
         const markerInfo = {
           title,
-          lat, 
-          lng
-        }
+          lat,
+          lng,
+        };
 
-        return setMarkers((prev) => [...prev, markerInfo])
-      })
+        return setMarkers((prev) => [...prev, markerInfo]);
+      });
     } catch (err) {
       console.error(err.message);
     }
@@ -63,6 +68,17 @@ const Map = () => {
   useEffect(() => {
     getPostLocation();
   }, []);
+
+  const policeMarkers = [
+    { lat: 49.2665048, lng: -123.1143029 },
+    { lat: 49.2825439, lng: -123.1343405 },
+    { lat: 49.2765917, lng: -123.1273855 },
+    { lat: 49.2807041, lng: -123.1236826 },
+    { lat: 49.286993, lng: -123.1220944 },
+    { lat: 49.2871145, lng: -123.1178602 },
+    { lat: 49.279315, lng: -123.101608 },
+    { lat: 49.28198, lng: -123.0993109 },
+  ];
 
   const mapRef = useRef();
 
@@ -76,16 +92,26 @@ const Map = () => {
   }, []);
 
   if (loadError) return "Error loading maps";
-  if (!isLoaded) return "Loading maps";
+  // if (!isLoaded) return "Loading maps";
 
   return (
     <div>
       <Box className={classes.mapBox}>
-        <Box display="flex" justifyContent="space-between" alignItems="center" width="29%" margin="0">
-          <Box><MapSearch panTo={panTo} /></Box>
-          <Box className={classes.findButton}><Locate panTo={panTo} /></Box>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          width="29%"
+          margin="0"
+        >
+          <Box>
+            <MapSearch panTo={panTo} />
+          </Box>
+          <Box className={classes.findButton}>
+            <Locate panTo={panTo} />
+          </Box>
         </Box>
-      
+
         <Legend />
 
         <GoogleMap
@@ -96,19 +122,34 @@ const Map = () => {
           onLoad={onMapLoad}
         >
           {markers.map((post) => (
-              <Marker
-                key={post.title+post.lat+post.lng}
-                position={{ lat: post.lat, lng: post.lng }}
-                onClick={() => {
-                  setSelected(post);
-                }}
-                icon={{
-                  url: "./report.svg",
-                  scaledSize: new window.google.maps.Size(35,35),
-                  origin: new window.google.maps.Point(0, 0),
-                  anchor: new window.google.maps.Point(17, 17)
-                }}
-              />
+            <Marker
+              key={post.title + post.lat + post.lng}
+              position={{ lat: post.lat, lng: post.lng }}
+              onClick={() => {
+                setSelected(post);
+              }}
+              icon={{
+                url: "./report.svg",
+                scaledSize: new window.google.maps.Size(25, 25),
+                origin: new window.google.maps.Point(0, 0),
+                anchor: new window.google.maps.Point(17, 17),
+              }}
+            />
+          ))}
+          {policeMarkers.map((popo) => (
+            <Marker
+              // key={post.title + post.lat + post.lng}
+              position={{ lat: popo.lat, lng: popo.lng }}
+              // onClick={() => {
+              //   setSelected(post);
+              // }}
+              icon={{
+                url: "./police.svg",
+                scaledSize: new window.google.maps.Size(25, 25),
+                origin: new window.google.maps.Point(0, 0),
+                anchor: new window.google.maps.Point(17, 17),
+              }}
+            />
           ))}
 
           {selected ? (
@@ -125,7 +166,9 @@ const Map = () => {
                     ❗️
                   </span>
                 </h2>
-                <p><Button>See Details</Button></p>
+                <p>
+                  <Button>See Details</Button>
+                </p>
               </div>
             </InfoWindow>
           ) : null}

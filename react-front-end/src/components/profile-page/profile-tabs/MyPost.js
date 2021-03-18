@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Divider, List, ListItem, ListItemText, Box } from "@material-ui/core";
-import DeleteButton from '../buttons/DeleteButton';
+import DeleteButton from "../buttons/DeleteButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     maxWidth: 500,
-    backgroundColor: 'white'
+    backgroundColor: "white",
   },
 }));
 
@@ -40,11 +40,13 @@ export default function MyPosts(props) {
             <List>
               <Box display="flex" alignItems="center">
                 <ListItem button>
-                  <ListItemText primary={post.title} secondary={post.date} />
+                  <ListItemText
+                    primary={post.title}
+                    secondary={post.description}
+                  />
                 </ListItem>
-                
-                { selected ? <DeleteButton /> : null}
 
+                {selected ? <DeleteButton /> : null}
               </Box>
             </List>
             <Divider />
