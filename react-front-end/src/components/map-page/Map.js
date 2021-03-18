@@ -91,6 +91,11 @@ const Map = () => {
     { lat: 49.2647179, lng: -123.1735997 },
   ];
 
+  const medicalMarkers = [
+    { lat: 49.2805197, lng: -123.1282662 },
+    { lat: 49.2610991, lng: -123.1246645 },
+  ];
+
   const mapRef = useRef();
 
   const panTo = useCallback(({ lat, lng }) => {
@@ -172,6 +177,22 @@ const Map = () => {
               // }}
               icon={{
                 url: "./fire-station.svg",
+                scaledSize: new window.google.maps.Size(25, 25),
+                origin: new window.google.maps.Point(0, 0),
+                anchor: new window.google.maps.Point(17, 17),
+              }}
+            />
+          ))}
+
+          {medicalMarkers.map((med) => (
+            <Marker
+              // key={post.title + post.lat + post.lng}
+              position={{ lat: med.lat, lng: med.lng }}
+              // onClick={() => {
+              //   setSelected(post);
+              // }}
+              icon={{
+                url: "./hospital.svg",
                 scaledSize: new window.google.maps.Size(25, 25),
                 origin: new window.google.maps.Point(0, 0),
                 anchor: new window.google.maps.Point(17, 17),
