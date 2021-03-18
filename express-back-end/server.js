@@ -65,7 +65,7 @@ App.get("/forum/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const userPosts = await pool.query(
-      "SELECT * FROM posts WHERE user_id = $1",
+      "SELECT * FROM posts WHERE user_id = $1 ORDER BY id DESC",
       [id]
     );
     res.json(userPosts.rows);

@@ -24,7 +24,8 @@ const Forum = () => {
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      const body = { description, address, title, date };
+      const user_id = 3;
+      const body = { user_id, description, address, title, date };
       const response = await fetch(`http://localhost:8080/forum`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

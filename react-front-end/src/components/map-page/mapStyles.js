@@ -23,17 +23,6 @@ export default [
     ],
   },
   {
-    featureType: "poi.medical",
-    stylers: [
-      {
-        hue: "#1900ff",
-      },
-      {
-        visibility: "simplified",
-      }
-    ],
-  },
-  {
     featureType: "road.local",
     stylers: [
       {
