@@ -80,6 +80,17 @@ const Map = () => {
     { lat: 49.28198, lng: -123.0993109 },
   ];
 
+  const fireMarkers = [
+    { lat: 49.2864877, lng: -123.1347864 },
+    { lat: 49.2835303, lng: -123.1260786 },
+    { lat: 49.2779959, lng: -123.1174854 },
+    { lat: 49.28339889999999, lng: -123.1000289 },
+    { lat: 49.2759724, lng: -123.0894408 },
+    { lat: 49.2599251, lng: -123.1034196 },
+    { lat: 49.26287199999999, lng: -123.137576 },
+    { lat: 49.2647179, lng: -123.1735997 },
+  ];
+
   const mapRef = useRef();
 
   const panTo = useCallback(({ lat, lng }) => {
@@ -145,6 +156,22 @@ const Map = () => {
               // }}
               icon={{
                 url: "./police.svg",
+                scaledSize: new window.google.maps.Size(25, 25),
+                origin: new window.google.maps.Point(0, 0),
+                anchor: new window.google.maps.Point(17, 17),
+              }}
+            />
+          ))}
+
+          {fireMarkers.map((fire) => (
+            <Marker
+              // key={post.title + post.lat + post.lng}
+              position={{ lat: fire.lat, lng: fire.lng }}
+              // onClick={() => {
+              //   setSelected(post);
+              // }}
+              icon={{
+                url: "./fire-station.svg",
                 scaledSize: new window.google.maps.Size(25, 25),
                 origin: new window.google.maps.Point(0, 0),
                 anchor: new window.google.maps.Point(17, 17),
