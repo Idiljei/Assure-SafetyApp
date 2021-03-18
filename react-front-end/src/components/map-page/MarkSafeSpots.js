@@ -50,8 +50,6 @@ const MarkSafeSpots = (props) => {
     getPlaces('fire+stations')
   }, []);
 
-  console.log("This is selected:", selected);
-
   return (
     <>
     { policeStations.map( popo => (
