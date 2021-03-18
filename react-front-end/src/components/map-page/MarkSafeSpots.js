@@ -54,6 +54,7 @@ const MarkSafeSpots = (props) => {
   console.log("This is hospitals:", hospitals);
 
   console.log("This is the selected:", selected);
+  console.log("This is teh safe spot:", safeSpot)
 
   return (
     <>
@@ -107,7 +108,9 @@ const MarkSafeSpots = (props) => {
 
       { (selected && safeSpot) ? (
             <InfoWindow
-              position={{ lat: selected.coords.lat, lng: selected.coords.lng }}
+              position={
+                { lat: selected.coords.lat, lng: selected.coords.lng }
+              }
               onCloseClick={() => {
                 setSelected(null);
               }}
