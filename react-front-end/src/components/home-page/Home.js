@@ -7,6 +7,8 @@ import PoliceAlert from './alert/PoliceAlert';
 import useStyles from '../Styles';
 import { smsLocation } from './sms'
 import { smsPolice } from './sms'
+import '././alert/Alertpopup.css';
+
 
 const Home = (props) => {
   const classes = useStyles();
