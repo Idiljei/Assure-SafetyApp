@@ -9,7 +9,10 @@ const MarkSafeSpots = (props) => {
     try {
       const response = fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=police+in+Vancouver&key=${process.env.REACT_APP_GOOGLE_KEY}`, {
         method: 'GET',
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_GOOGLE_KEY}`,
+          "Content-type": "application/json",
+        },
         mode: 'cors'
       });
       const jsonData = response.text();
