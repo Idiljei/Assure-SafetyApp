@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Button } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 import ErrorIcon from '@material-ui/icons/Error';

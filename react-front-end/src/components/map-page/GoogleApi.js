@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { Marker } from "@react-google-maps/api";
 
-const FindSafeSpots = () => {
-  const [ policeStations, setPoliceStations] = useState([]);
-  const type = ['police', 'hospitals', 'fire+stations'];
+const MarkSafeSpots = (props) => {
+  const policeStations = props.policeStations;
+  const setPoliceStations = props.setPoliceStations;
   
-  const getPlaces = async () => {
+  const getPlaces = () => {
     try {
-      const response = await fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${type}+in+Vancouver&key=${process.env.REACT_APP_GOOGLE_KEY}`, {
+      const response = fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=police+in+Vancouver&key=${process.env.REACT_APP_GOOGLE_KEY}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" },
         mode: 'cors'
       });
-      const jsonData = await response.text();
+      const jsonData = response.text();
       const results = JSON.parse(jsonData).results;
       console.log(results)
       results.map(data => {
+        
         const coords = data.geometry.location;
         console.log("These are coords:", coords)
         setPoliceStations(prev => [...prev, coords])
@@ -34,9 +36,26 @@ const FindSafeSpots = () => {
   return (
     <div>
 
+    { policeStations !== [] ?
+
+      policeStations.map( popo => {
+        return (
+          <div>
+            <Marker
+              position={{ lat: popo.lat, lng: popo.lng}}
+              icon={{
+                url: "./police.svg",
+                scaledSize: new window.google.maps.Size(25, 25),
+                origin: new window.google.maps.Point(0, 0),
+                anchor: new window.google.maps.Point(17, 17),
+              }}
+              />
+          </div>
+        )
+      }) : null }      
     </div>
   )
 
 }
 
-export default FindSafeSpots;
+export default MarkSafeSpots;
