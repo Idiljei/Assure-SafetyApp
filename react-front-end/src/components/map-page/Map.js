@@ -8,6 +8,7 @@ import {
 import { Box, Button } from "@material-ui/core";
 import Locate from "./Locate";
 import Legend from "./Legend";
+import Forum from '../forum-page/Forum';
 import mapStyles from "./mapStyles";
 import useStyles from "../Styles";
 import MapSearch from "./MapSearch";
@@ -111,14 +112,15 @@ const Map = () => {
   // if (!isLoaded) return "Loading maps";
 
   return (
-    <div>
-      <Box className={classes.mapBox}>
+    <div class="map-page">
+      <div class="map-box">
         <Box
           display="flex"
           justifyContent="space-between"
           alignItems="center"
-          width="29%"
           margin="0"
+          paddingTop="2%"
+          width="60%"
         >
           <Box>
             <MapSearch panTo={panTo} />
@@ -221,7 +223,11 @@ const Map = () => {
             </InfoWindow>
           ) : null}
         </GoogleMap>
-      </Box>
+      </div>
+
+      <div class="forum-box">
+        <Forum />
+      </div>
     </div>
   );
 };

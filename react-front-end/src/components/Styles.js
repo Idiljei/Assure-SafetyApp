@@ -11,8 +11,10 @@ const useStyles = makeStyles({
   mapBox: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: "flex-start",
+    alignItems: "center",
+    width: '50%',
+    paddingLeft: '3%'
   },
   homeButton: {
     background: 'linear-gradient(45deg, #63639F, #a6a6e0)',

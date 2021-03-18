@@ -53,13 +53,8 @@ const Forum = () => {
   }, []);
 
   return (
-    <div class="forum-page">
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        flexDirection="column"
-      >
+    <div>
+      <div class="forum-page">
         <Box
           display="flex"
           className={classes.filterButton}
@@ -114,7 +109,7 @@ const Forum = () => {
             );
           })}
         </Box>
-      </Box>
+      </div>
     </div>
   );
 };

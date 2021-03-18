@@ -3,6 +3,13 @@
   margin-right: 0;
 }
 
+.forum-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
 .popup {
   display: flex;
   justify-content: space-between;
@@ -50,4 +57,11 @@
 .user {
   margin-left: 0;
   font-weight: 500;
+}
+
+/* Mobile version*/
+@media only screen and (max-width: 767px) {
+  .forum-page {
+    align-items: center;
+  }
 }
