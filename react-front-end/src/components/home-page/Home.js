@@ -6,6 +6,8 @@ import AlertNotice from './alert/Alert';
 import useStyles from '../Styles';
 import { smsLocation } from './sms'
 import { smsPolice } from './sms'
+import '././alert/Alertpopup.css';
+
 
 const Home = (props) => {
   const classes = useStyles();
@@ -37,7 +39,7 @@ const Home = (props) => {
               Share Live Location
       </Button>
 
-      { selectLocation &&  <AlertNotice close={setSelectedLocation} selected={selected} setSelected={setSelected} locButton={locationButton} /> }
+      { selectLocation &&  <AlertNotice  close={setSelectedLocation} selected={selected} setSelected={setSelected} locButton={locationButton} /> }
 
       <Button onClick={handlePoliceClick} className={classes.homeButton} size="large" startIcon={<ErrorIcon />} variant="contained">
         Call 911
