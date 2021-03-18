@@ -6,37 +6,17 @@ import CloseIcon from '@material-ui/icons/Close';
 
 const userPIN = 2021;
 const limit = 4;
+const alerts = {
+  sharing: "Calling Emergency Services.",
+  verify: "Please enter your PIN to cancel.",
+  cancelled: "Cancelling call to Emergency Services. Glad you're safe!",
+  incorrect: "The PIN is incorrect. Still calling Emergency Services.",
+}
 
-const AlertNotice = (props) => {
+const PoliceAlert = (props) => {
   const [ pin, setPin ] = useState(0);
   const setSelected = props.setSelected;
   const selected = props.selected;
-
-  const getAlerts = () => {
-    if (props.locButton) {
-      const alerts = {
-        sharing: "Sharing live location with safety network!",
-        verify: "Please enter your PIN to cancel.",
-        cancelled: "No longer sharing your live location. Glad you're safe!",
-        incorrect: "The PIN is incorrect. Live location is still being shared.",
-      }
-
-      return alerts;
-    }
-    
-    if (props.poButton) {
-      const alerts = {
-        sharing: "Calling Emergency Services.",
-        verify: "Please enter your PIN to cancel.",
-        cancelled: "Cancelling call to Emergency Services. Glad you're safe!",
-        incorrect: "The PIN is incorrect. Still calling Emergency Services.",
-      }
-
-      return alerts;
-    }
-  };
-
-  const alerts = getAlerts();
 
   const handleSubmit = () => {
     if (userPIN === parseInt(pin)) {
@@ -115,4 +95,4 @@ const AlertNotice = (props) => {
   );
 };
 
-export default AlertNotice;
+export default PoliceAlert;

@@ -2,31 +2,29 @@ import React, { useState } from 'react';
 import { Box, Button } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 import ErrorIcon from '@material-ui/icons/Error';
-import AlertNotice from './alert/Alert';
+import LocationAlert from './alert/LocationAlert';
+import PoliceAlert from './alert/PoliceAlert';
 import useStyles from '../Styles';
 import { smsLocation } from './sms'
 import { smsPolice } from './sms'
 
 const Home = (props) => {
   const classes = useStyles();
-  const [ selected, setSelected ] = useState(0);
-  const [ locationButton, setLocationButton ] = useState(false);
-  const [ policeButton, setPoliceButton ] = useState(false);
-  const [ selectLocation, setSelectedLocation ] = useState(false);
-  const [ selectPolicecall, setSelectPolicecall ] = useState(false);
+  const [ selectedLOC, setSelectedLOC ] = useState(0);
+  const [ selectedPOL, setSelectedPOL ] = useState(0);
 
+  const [ location, setLocation ] = useState(false);
+  const [ police, setPolice ] = useState(false);
 
   const handleLocationClick = () => {
-    setSelectedLocation(true)
-    setSelected(0);
-    setLocationButton(true);
+    setLocation(true)
+    setSelectedLOC(0);
     // smsLocation()
   }
 
   const handlePoliceClick = () => {
-    setSelectPolicecall(true)
-    setSelected(0);
-    setPoliceButton(true);
+    setPolice(true)
+    setSelectedPOL(0);
     // smsPolice()
   }
 
@@ -37,13 +35,13 @@ const Home = (props) => {
               Share Live Location
       </Button>
 
-      { selectLocation &&  <AlertNotice close={setSelectedLocation} selected={selected} setSelected={setSelected} locButton={locationButton} /> }
+      { location &&  <LocationAlert close={setLocation} location={location} selected={selectedLOC} setSelected={setSelectedLOC} /> }
 
       <Button onClick={handlePoliceClick} className={classes.homeButton} size="large" startIcon={<ErrorIcon />} variant="contained">
         Call 911
       </Button>
 
-      { selectPolicecall &&  <AlertNotice close={setSelectPolicecall} selected={selected} setSelected={setSelected} poButton={policeButton} /> }
+      { police &&  <PoliceAlert close={setPolice} police={police} selected={selectedPOL} setSelected={setSelectedPOL} /> }
             
     </Box>
   );
