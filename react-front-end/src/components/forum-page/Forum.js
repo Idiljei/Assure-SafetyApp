@@ -11,7 +11,6 @@ const Forum = () => {
   const classes = postStyles();
   const [allPosts, setAllPosts] = useState([]);
   const [selected, setSelected] = useState(false);
-
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
   const [description, setDescription] = useState("");

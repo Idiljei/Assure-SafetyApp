@@ -17,7 +17,7 @@ const App = () => {
         <img src="logo/assure-logo.png" alt="assure logo" />
       </div>
 
-      <Router forceRefresh={true}>
+      <Router forceRefresh={false}>
         <div className="nav">
           <Navbar />
         </div>
