@@ -2,6 +2,7 @@
   "name": "react-front-end",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
@@ -12,6 +13,7 @@
     "cors-anywhere": "file:cors-anywhere",
     "date-fns": "^2.19.0",
     "dotenv": "^8.2.0",
+    "http-proxy-middleware": "^1.0.6",
     "node-sass": "^5.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -35,6 +37,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "proxy": "http://localhost:8080"
+  ]
 }

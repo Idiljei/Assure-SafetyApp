@@ -1,51 +1,69 @@
 import React, { useState, useEffect } from 'react';
-import { Marker } from "@react-google-maps/api";
+import { Marker, InfoWindow } from "@react-google-maps/api";
 
 const MarkSafeSpots = (props) => {
-  const policeStations = props.policeStations;
-  const setPoliceStations = props.setPoliceStations;
-  
-  const getPlaces = () => {
+  const [ policeStations, setPoliceStations ] = useState([]);
+  const [ fireStations, setFireStations ] = useState([]);
+  const [ hospitals, setHospitals ] = useState([]);
+  const setSelected = props.setSelected;
+  const selected = props.selected;
+  const setSafeSpot = props.setSafeSpot;
+  const safeSpot = props.safeSpot;
+
+  const getPlaces = async (query) => {
     try {
-      const response = fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=police+in+Vancouver&key=${process.env.REACT_APP_GOOGLE_KEY}`, {
+      const response = await fetch(`/maps?query=${query}&key=${process.env.REACT_APP_GOOGLE_KEY}`, {
         method: 'GET',
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_GOOGLE_KEY}`,
-          "Content-type": "application/json",
-        },
-        mode: 'cors'
+        headers: { "Content-type": "application/json" }
       });
-      const jsonData = response.text();
-      const results = JSON.parse(jsonData).results;
-      console.log(results)
+      const jsonData = await response.json();
+      const results = jsonData.results;
+
       results.map(data => {
-        
-        const coords = data.geometry.location;
-        console.log("These are coords:", coords)
-        setPoliceStations(prev => [...prev, coords])
-      })
+        const info = {
+          name: data.name,
+          address: data.formatted_address,
+          coords: data.geometry.location,
+          open: data.opening_hours
+        }
+    
+        if (query === 'police+stations') {
+          setPoliceStations(prev => [...prev, info])
+        }
+        if (query === 'fire+stations') {
+          setFireStations(prev => [...prev, info])
+        }
+
+        if (query === 'hospitals') {
+          setHospitals(prev => [...prev, info])
+        }
+      });
   
     } catch (err) {
       console.log(err);
-    }
+    };
 
   };
   
-  console.log("These are police stations", policeStations)
   useEffect(() => {
-    getPlaces();
+    getPlaces('police+stations');
+    getPlaces('hospitals');
+    getPlaces('fire+stations')
   }, []);
 
+  console.log("This is hospitals:", hospitals);
+
+  console.log("This is the selected:", selected);
+
   return (
-    <div>
-
-    { policeStations !== [] ?
-
-      policeStations.map( popo => {
-        return (
-          <div>
+    <>
+    { policeStations.map( popo => (
             <Marker
-              position={{ lat: popo.lat, lng: popo.lng}}
+              position={{ lat: popo.coords.lat, lng: popo.coords.lng}}
+              onClick={() => {
+                setSelected(popo);
+                setSafeSpot(true);
+              }}
               icon={{
                 url: "./police.svg",
                 scaledSize: new window.google.maps.Size(25, 25),
@@ -53,10 +71,55 @@ const MarkSafeSpots = (props) => {
                 anchor: new window.google.maps.Point(17, 17),
               }}
               />
-          </div>
-        )
-      }) : null }      
-    </div>
+        ))}
+
+        { fireStations.map( fire => (
+            <Marker
+              position={{ lat: fire.coords.lat, lng: fire.coords.lng}}
+              onClick={() => {
+                setSelected(fire);
+                setSafeSpot(true);
+              }}
+              icon={{
+                url: "./fire-station.svg",
+                scaledSize: new window.google.maps.Size(25, 25),
+                origin: new window.google.maps.Point(0, 0),
+                anchor: new window.google.maps.Point(17, 17),
+              }}
+              />
+        ))}  
+
+        {hospitals.map((mark) => (
+            <Marker
+              position={{ lat: mark.coords.lat, lng: mark.coords.lng}}
+              onClick={() => {
+                setSelected(mark)
+                setSafeSpot(true)
+              }}
+              icon={{
+                url: "./hospital.svg",
+                scaledSize: new window.google.maps.Size(25, 25),
+                origin: new window.google.maps.Point(0, 0),
+                anchor: new window.google.maps.Point(17, 17),
+              }}
+              />
+        ))}
+
+      { (selected && safeSpot) ? (
+            <InfoWindow
+              position={{ lat: selected.coords.lat, lng: selected.coords.lng }}
+              onCloseClick={() => {
+                setSelected(null);
+              }}
+            >
+              <h2>
+                {selected.name}
+                Address: {selected.address}
+                { selected.open ? <h4>Open Now</h4> : null }
+              </h2>
+            </InfoWindow>
+          ) : null}       
+    </>
   )
 
 }
