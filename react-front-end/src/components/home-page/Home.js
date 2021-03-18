@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, Button } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 import ErrorIcon from '@material-ui/icons/Error';
-import LocationAlert from './alert/LocationAlert';
+import LocationAlert from './alert/LocateAlert';
 import PoliceAlert from './alert/PoliceAlert';
 import useStyles from '../Styles';
 import { smsLocation } from './sms'
@@ -20,13 +20,13 @@ const Home = (props) => {
   const handleLocationClick = () => {
     setLocation(true);
     setSelectedLOC(0);
-    smsLocation()
+    // smsLocation()
   }
 
   const handlePoliceClick = () => {
     setPolice(true)
     setSelectedPOL(0);
-    smsPolice()
+    // smsPolice()
   }
 
   return (
