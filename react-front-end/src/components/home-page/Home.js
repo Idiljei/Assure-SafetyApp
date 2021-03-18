@@ -2,61 +2,50 @@ import React, { useState } from 'react';
 import { Box, Button } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 import ErrorIcon from '@material-ui/icons/Error';
-import Alert from '@material-ui/lab/Alert'
-import AlertNotice from './Alert';
+import LocationAlert from './alert/LocationAlert';
+import PoliceAlert from './alert/PoliceAlert';
 import useStyles from '../Styles';
 import { smsLocation } from './sms'
 import { smsPolice } from './sms'
+import '././alert/Alertpopup.css';
 
 const Home = (props) => {
   const classes = useStyles();
-  const [ selectLocation, setSelectedLocation ] = useState(false);
-  const [ selectPolicecall, setSelectPolicecall ] = useState(false);
+  const [ selectedLOC, setSelectedLOC ] = useState(0);
+  const [ selectedPOL, setSelectedPOL ] = useState(0);
 
+  const [ location, setLocation ] = useState(false);
+  const [ police, setPolice ] = useState(false);
 
   const handleLocationClick = () => {
-    setSelectedLocation(true)
-    // smsLocation()
+    setLocation(true);
+    setSelectedLOC(0);
+    smsLocation()
   }
 
   const handlePoliceClick = () => {
-    setSelectPolicecall(true)
-    // smsPolice()
+    setPolice(true)
+    setSelectedPOL(0);
+    smsPolice()
   }
 
   return (
     <Box className={classes.homeBox}>
 
-    { selectLocation ? 
-    <div>
       <Button onClick={handleLocationClick} type="submit" className={classes.homeButton} size="large" startIcon={<SendIcon />} variant="contained">
-        Share Live Location
+              Share Live Location
       </Button>
-      <AlertNotice />
-    </div> 
-    
-    : <Button onClick={handleLocationClick} type="submit" className={classes.homeButton}    size="large" startIcon={<SendIcon />} variant="contained">
-        Share Live Location
-      </Button> } 
 
-    {selectPolicecall ? 
-      <div>
-          <Button />
-          <Alert variant="outlined" severity="warning">
-            Calling Emergency Services 
-          </Alert>
-          <Button onClick={handlePoliceClick} className={classes.homeButton} size="large" startIcon={<ErrorIcon />} variant="contained">
-            Call 911
-          </Button>
-      </div>
-      : <Button onClick={handlePoliceClick} className={classes.homeButton} size="large" startIcon={<ErrorIcon />} variant="contained">
-            Call 911
-          </Button> }
-  </Box>
+      { location &&  <LocationAlert close={setLocation} location={location} selected={selectedLOC} setSelected={setSelectedLOC} /> }
 
+      <Button onClick={handlePoliceClick} className={classes.homeButton} size="large" startIcon={<ErrorIcon />} variant="contained">
+        Call 911
+      </Button>
+
+      { police &&  <PoliceAlert close={setPolice} police={police} selected={selectedPOL} setSelected={setSelectedPOL} /> }
+            
+    </Box>
   );
-
 };
 
 export default Home;
-
