@@ -30,8 +30,7 @@ const LocationButton = (props) => {
     <Box className={classes.home}>
       <Button onClick={handleClick} type="submit" className={classes.homeButton} size="large" startIcon={<SendIcon />} variant="contained">
         
-        { !option && status.before }
-        { option === 1 && status.after }
+      { !option ? status.before : status.after }
 
       </Button>
 
