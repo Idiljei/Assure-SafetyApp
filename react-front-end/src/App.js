@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/home-page/Home";
 import Navbar from "./components/Navbar";
 import Map from "./components/map-page/Map";
-import Forum from "./components/forum-page/Forum";
 import Profile from "./components/profile-page/Profile";
+import SafetyNetworkMap from "./components/safety-network-page/SafetyNetwork";
 import "./App.css";
 
 const App = () => {
@@ -18,8 +18,8 @@ const App = () => {
       <Router>
         <Switch>
           <Route path="/profile" component={Profile} />
-          <Route path="/map" component={Map} />
-          <Route path="/forum" component={Forum} />
+          <Route path="/forum" component={Map} />
+          <Route path="/safetyNetwork" component={SafetyNetworkMap} />
           <Route path="/" component={Home} />
         </Switch>
 

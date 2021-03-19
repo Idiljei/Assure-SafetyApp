@@ -36,6 +36,10 @@ const useStyles = makeStyles({
   },
   home: {
     display: "flex"
+  },
+  contacts: {
+    height: "22em",
+    backgroundColor: "white"
   }
 });
 
