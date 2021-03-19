@@ -39,7 +39,7 @@ const Map = () => {
   const [selected, setSelected] = useState(null);
   const classes = useStyles();
 
-  const { isLoaded, loadError } = useJsApiLoader({
+  const { loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
     libraries,
   });
@@ -148,53 +148,3 @@ const Map = () => {
 };
 
 export default Map;
-
-{/* <Legend />
-
-<GoogleMap
-  mapContainerStyle={containerStyle}
-  center={center}
-  zoom={18}
-  options={options}
-  onLoad={onMapLoad}
->
-  <MarkSafeSpots selected={selected} setSelected={setSelected}/>
-s
-  {markers.map((post) => (
-    <Marker
-      key={post.title + post.lat + post.lng}
-      position={{ lat: post.lat, lng: post.lng }}
-      onClick={() => {
-        setSelected(post);
-      }}
-      icon={{
-        url: "./report.svg",
-        scaledSize: new window.google.maps.Size(25, 25),
-        origin: new window.google.maps.Point(0, 0),
-        anchor: new window.google.maps.Point(17, 17),
-      }}
-    />
-  ))}
-
-{ selected ? (
-    <InfoWindow
-      position={{ lat: selected.lat, lng: selected.lng }}
-      onCloseClick={() => {
-        setSelected(null);
-      }}
-    >
-      <div>
-        <h2>{ selected.title || selected.name }</h2>
-        { selected.address ? <h4>Address: {selected.address}</h4> : null }
-        { selected.open ? <h4>Open Now</h4> : null }
-        { selected.name ? <h6>Go Here:  </h6> : null}
-        { !selected.name ? <div><Button>See Details</Button></div> : null}
-      </div>
-    </InfoWindow>
-  ) : null}
-</GoogleMap>
-</div>
-
-<div class="forum-box">
-<Forum />
-</div> */}

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Paper, Dialog, DialogActions, DialogContent, TextField, Button, DialogTitle } from '@material-ui/core';
+import React from 'react';
+import { Dialog } from '@material-ui/core';
 import EnterPin from './EnterPin';
 import SafeNow from './SafeNow';
 import WrongPin from './WrongPin';

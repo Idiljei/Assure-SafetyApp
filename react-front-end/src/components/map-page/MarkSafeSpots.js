@@ -6,7 +6,6 @@ const MarkSafeSpots = (props) => {
   const [ fireStations, setFireStations ] = useState([]);
   const [ hospitals, setHospitals ] = useState([]);
   const setSelected = props.setSelected;
-  const selected = props.selected;
 
   const getPlaces = async (query) => {
     try {
@@ -27,21 +26,20 @@ const MarkSafeSpots = (props) => {
         }
     
         if (query === 'police+stations') {
-          setPoliceStations(prev => [...prev, info])
+          return setPoliceStations(prev => [...prev, info])
         }
         if (query === 'fire+stations') {
-          setFireStations(prev => [...prev, info])
+          return setFireStations(prev => [...prev, info])
         }
 
         if (query === 'hospitals') {
-          setHospitals(prev => [...prev, info])
+          return setHospitals(prev => [...prev, info])
         }
       });
   
     } catch (err) {
       console.log(err);
     };
-
   };
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Paper, Dialog, DialogActions, DialogContent, TextField, Button, DialogTitle } from '@material-ui/core';
+import { DialogActions, DialogContent, TextField, Button, DialogTitle } from '@material-ui/core';
 
 const userPIN = 2021;
 const limit = 4;

@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { Paper, Dialog, DialogActions, DialogContent, DialogContentText, Button, DialogTitle } from '@material-ui/core';
+import React from 'react';
+import { DialogActions, DialogContent, DialogContentText, Button, DialogTitle } from '@material-ui/core';
 
 const SafeNow = (props) => {
-  const option = props.option;
   const setOption = props.setOption;
   const id = props.id;
 
