@@ -14,58 +14,57 @@ const Forum = () => {
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
   const [description, setDescription] = useState("");
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(null);
   const [error, setError] = useState("");
 
   const makePost = async () => {
-  try {
-    const user_id = 3;
-    const body = { user_id, description, address, title, date };
-    const response = await fetch(`http://localhost:8080/forum`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
-  } catch (err) {
-    console.error(err.message);
-  }}
-
-  // validate 
+    try {
+      const user_id = 3;
+      const body = { user_id, description, address, title, date };
+      const response = await fetch(`http://localhost:8080/forum`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      window.location = "/forum";
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+  // validate
   const validateForm = () => {
-    if (!title  && !address && !description) {
-      setError("Please enter a title, address, description and date to post your incident");
+    if (!description) {
+      setError("Description required");
       return;
     }
     if (!title) {
-      setError("Please enter a title");
+      setError("Title required");
       return;
     }
-
-    if(!address) {
-      setError("Please enter an address");
+    if (!address) {
+      setError("Address required");
       return;
     }
-
-    if (!description) {
-        setError("Description required");
-        return;
+    if (!date) {
+      setError("Date required");
+      return;
     }
-    setError("")
-    makePost()
+    setError("");
+    makePost();
   };
 
-  //  Reset Function 
-  const reset = () =>  {
+  //  Reset Function
+  const reset = () => {
     setTitle("");
     setAddress("");
-    setDescription("")
-    setError("")
-  }
-
-  // validate takes in an object 
+    setDescription("");
+    setError("");
+  };
+  
+  // validate takes in an object
   const handleClose = () => {
-      reset();
-      setSelected(false);
+    reset();
+    setSelected(false);
   };
 
   const getPosts = async () => {
@@ -81,7 +80,6 @@ const Forum = () => {
 
   useEffect(() => {
     getPosts();
-
   }, []);
 
   return (
