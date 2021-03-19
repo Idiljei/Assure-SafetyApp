@@ -67,8 +67,8 @@ const Profile = () => {
                   {" "}
                   {user.first_name} {user.last_name}
                 </h1>
-                <IconButton aria-label="edit" onClick={toggle}>
-                  <EditIcon className={classes.icon} />
+                <IconButton aria-label="edit">
+                  <EditIcon className={classes.icon} onClick={toggle} />
                 </IconButton>
               </Box>
             </Box>

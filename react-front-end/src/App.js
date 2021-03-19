@@ -9,7 +9,6 @@ import "./App.css";
 
 const App = () => {
   // const [ login, setLogin ] = useState(false);
-  const [selected, setSelected] = useState(0);
 
   return (
     <div className="app">
