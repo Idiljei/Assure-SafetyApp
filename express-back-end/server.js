@@ -44,7 +44,7 @@ App.get("/safetynetwork/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const showSafetyNetwork = await pool.query(
-      "SELECT a.first_name, a.last_name, a.phone_number FROM safety_networks JOIN users ON safety_networks.user_id = users.id JOIN users a ON safety_networks.sn_id = a.id WHERE users.id = $1",
+      "SELECT a.first_name, a.last_name, a.phone_number, a.img FROM safety_networks JOIN users ON safety_networks.user_id = users.id JOIN users a ON safety_networks.sn_id = a.id WHERE users.id = $1",
       [id]
     );
     res.json(showSafetyNetwork.rows);
@@ -57,7 +57,7 @@ App.get("/snlocation/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const showSnLocation = await pool.query(
-      "SELECT users.first_name as user, a.first_name, a.phone_number, a.current_location FROM safety_networks JOIN users ON safety_networks.sn_id = users.id JOIN users a ON safety_networks.user_id = a.id WHERE users.id = $1",
+      "SELECT users.first_name as user, a.first_name, a.phone_number, a.current_location, a.img FROM safety_networks JOIN users ON safety_networks.sn_id = users.id JOIN users a ON safety_networks.user_id = a.id WHERE users.id = $1",
       [id]
     );
     res.json(showSnLocation.rows);
