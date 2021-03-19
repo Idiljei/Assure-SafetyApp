@@ -40,6 +40,9 @@ const useStyles = makeStyles({
   contacts: {
     height: "22em",
     backgroundColor: "white"
+  },
+  marker: {
+    borderRadius: "50%"
   }
 });
 

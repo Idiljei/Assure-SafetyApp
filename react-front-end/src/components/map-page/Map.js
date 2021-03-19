@@ -1,8 +1,8 @@
-import React, { useState, useCallback, useRef, useEffc1t } from "react";
+import React, { useState, useCallback, useRef, useEffect } from "react";
 import {
   GoogleMap,
   useJsApiLoader,
-
+  Marker,
   InfoWindow,
 } from "@react-google-maps/api";
 import { Box, Button } from "@material-ui/core";

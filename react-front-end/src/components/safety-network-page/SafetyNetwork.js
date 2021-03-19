@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from "@react-google-maps/api";
-import { Box } from "@material-ui/core";
+import { GoogleMap, useJsApiLoader, Marker, InfoWindow, Circle } from "@react-google-maps/api";
+import { Box, CircularProgress } from "@material-ui/core";
 import Locate from "../map-page/Locate";
 import mapStyles from "../map-page/mapStyles";
 import useStyles from "../Styles";
@@ -8,6 +8,7 @@ import MapSearch from "../map-page/MapSearch";
 import "@reach/combobox/styles.css";
 import "../map-page/search.css";
 import { parse } from "date-fns";
+import './network.css'
 
 const containerStyle = {
   width: "100%",
@@ -39,14 +40,14 @@ const SafetyNetworkMap = () => {
       const jsonData = await response.json();
       
     jsonData.map(data => {
-
       const parsed = JSON.parse(data.current_location)
 
       const userInfo = {
         name: data.first_name, 
         number: data.phone_number,
         lat: parsed.lat,
-        lng: parsed.lng
+        lng: parsed.lng,
+        img: data.img
       }
       
       return setUserSn((prev) => [...prev, userInfo])
@@ -79,7 +80,6 @@ const SafetyNetworkMap = () => {
 
   if (loadError) return "Error loading maps";
 
-
   return (
     <div className="map">
     <Box display="flex" flexDirection="column">
@@ -99,12 +99,19 @@ const SafetyNetworkMap = () => {
 
       { userSn.map((sn) => {
           return(
-          <Marker 
+            <Marker
+            className={classes.marker}
             position={{ lat: sn.lat, lng: sn.lng }}
             onClick={() => {
               setSelected(sn);
             }}
-            /> )
+            icon={{
+              url: sn.img,
+              scaledSize: new window.google.maps.Size(35, 35),
+              origin: new window.google.maps.Point(0, 0),
+              anchor: new window.google.maps.Point(17, 17),
+            }}
+            />)
         })}
 
       { selected ? (
@@ -112,11 +119,13 @@ const SafetyNetworkMap = () => {
           position={{ lat: selected.lat, lng: selected.lng }}
           onCloseClick={() => {
             setSelected(null)
-          }}
-        >
-          <div>
-            <h2>{ selected.name }</h2>
-            <h2>{ selected.number }</h2>
+          }}>
+          <div class="user-info">
+            <img class="avatar" src={selected.img} alt="icon" />
+            <div class="info">
+              <h2>{ selected.name }</h2>
+              <h2>{ selected.number }</h2>
+            </div>
           </div>
         </InfoWindow>
       ) : null } 

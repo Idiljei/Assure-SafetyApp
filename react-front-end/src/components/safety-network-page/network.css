@@ -1,0 +1,19 @@
+.avatar {
+  width: 5em;
+  height:  5em;
+  border-radius: 50%;
+  margin: 1.5em;
+}
+
+.user-info {
+  display: flex;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.marker {
+  border-radius: 50%;
+}

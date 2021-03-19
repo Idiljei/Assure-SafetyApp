@@ -61,7 +61,7 @@ const Profile = () => {
               justifyContent="center"
               alignItems="center"
             >
-              <img src="pheebs.png" alt="profile" class="profile-img" />
+              <img src={user.img} alt="profile" class="profile-img" />
               <Box display="flex" alignItems="center">
                 <h1 class="user-name">
                   {" "}
