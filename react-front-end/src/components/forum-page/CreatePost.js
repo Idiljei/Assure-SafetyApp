@@ -4,12 +4,12 @@ import Search from './ForumSearch';
 import postStyles from './PostStyles';
 import './forum.css';
 
-// props = errors
-
 const CreatePost = (props) => {
   const classes = postStyles();
   const open = props.open;
   const close = props.close;
+
+  console.log("This is the error:" , props.error)
 
   return (
     <div>
@@ -18,6 +18,8 @@ const CreatePost = (props) => {
         <DialogContent>
           <DialogContentText>
             Help the Community Stay Safe
+            { props.error ? props.error : null}
+
           </DialogContentText>
   
           <TextField

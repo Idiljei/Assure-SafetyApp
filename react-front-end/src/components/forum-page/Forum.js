@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Fab, Tooltip, Backdrop } from "@material-ui/core";
+import { Box, Fab, Tooltip } from "@material-ui/core";
 import FilterButton from "./FilterButton";
 import AddIcon from "@material-ui/icons/Add";
 import CreatePost from "./CreatePost";
@@ -32,7 +32,6 @@ const Forum = () => {
   }
   // validate 
   const validateForm = () => {
-    
     if (!title  && !address && !description) {
       setError("Please enter a title, address, description and date to post your incident");
       return;
@@ -79,11 +78,11 @@ const Forum = () => {
       <Box className={classes.filterButton}>
         <FilterButton />
         <div class="add-button">
-          <Tooltip title="Add" aria-label="add" arrow>
+          <Tooltip title="Create Post" aria-label="add" arrow>
             <Fab
               onClick={() => setSelected(true)}
               color="primary"
-              aria-label="add"
+              aria-label="Create Post"
             >
               <AddIcon />
             </Fab>

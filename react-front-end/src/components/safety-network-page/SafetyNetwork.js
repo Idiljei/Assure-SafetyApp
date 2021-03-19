@@ -1,6 +1,6 @@
-import React, { useState, useCallback, useRef, useEffect } from "react";
-import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from "@react-google-maps/api";
-import { Box, Button } from "@material-ui/core";
+import React, { useCallback, useRef } from "react";
+import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import { Box } from "@material-ui/core";
 import Locate from "../map-page/Locate";
 import Legend from "../map-page/Legend";
 import mapStyles from "../map-page/mapStyles";
@@ -28,8 +28,6 @@ const options = {
 };
 
 const SafetyNetworkMap = () => {
-  const [markers, setMarkers] = useState([]);
-  const [selected, setSelected] = useState(null);
   const classes = useStyles();
 
   const { loadError } = useJsApiLoader({
