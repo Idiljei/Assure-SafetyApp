@@ -36,7 +36,6 @@ const CreatePost = (props) => {
               id="datetime-local"
               type="datetime-local"
               label="Date"
-              required
               className={classes.textField}
               margin="normal"
               InputLabelProps={{ shrink: true }}
