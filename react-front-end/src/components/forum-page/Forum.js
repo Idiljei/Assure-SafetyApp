@@ -36,6 +36,16 @@ const Forum = () => {
       setError("Please enter a title, address, description and date to post your incident");
       return;
     }
+    if (!title) {
+      setError("Please enter a title");
+      return;
+    }
+
+    if(!address) {
+      setError("Please enter an address");
+      return;
+    }
+
     if (!description) {
         setError("Description required");
         return;
@@ -51,6 +61,7 @@ const Forum = () => {
     setDescription("")
     setError("")
   }
+  
   // validate takes in an object 
   const handleClose = () => {
       reset();
@@ -98,6 +109,7 @@ const Forum = () => {
                   onSubmitForm={validateForm}
                   close={handleClose}
                   setDate={setDate}
+                  error={error}
                 />
               ) : null}
           </Box>

@@ -9,8 +9,6 @@ const CreatePost = (props) => {
   const open = props.open;
   const close = props.close;
 
-  console.log("This is the error:" , props.error)
-
   return (
     <div>
       <Dialog open={open} onClose={close} maxWidth="md" fullWidth aria-labelledby="form-dialog-title">
