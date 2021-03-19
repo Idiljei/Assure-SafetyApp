@@ -22,9 +22,6 @@ const Search = (props) => {
     setValue,
     clearSuggestions,
   } = usePlacesAutocomplete({
-    requestOptions: {
-      /* Define search scope here */
-    },
     debounce: 300,
   });
 

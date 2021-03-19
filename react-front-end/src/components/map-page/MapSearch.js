@@ -41,7 +41,7 @@ const MapSearch = ( props ) => {
         }}
         disabled={!ready}
         placeholder="Enter Address"
-        style={{ width: 180 }}
+        style={{ width: 245 }}
         /> 
         <ComboboxPopover> 
           <ComboboxList>

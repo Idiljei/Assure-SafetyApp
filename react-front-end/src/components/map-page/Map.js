@@ -138,6 +138,8 @@ const Map = () => {
       </GoogleMap>
       </Box>
 
+      <Legend />
+
       <Forum />
 
     </Box>
