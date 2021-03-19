@@ -8,7 +8,8 @@ CREATE TABLE users (
   date_of_birth VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   current_location VARCHAR(255) NOT NULL,
-  img VARCHAR(255) NOT NULL
+  img VARCHAR(255) NOT NULL,
+  sharing_location BOOLEAN DEFAULT FALSE
 )
 
 -- GRANT ALL PRIVILEGES ON TABLE users TO spice;
