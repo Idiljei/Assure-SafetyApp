@@ -21,10 +21,6 @@ const postStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center"
   },
-  backdrop: {
-    zIndex: theme.zIndex.drawer + 1,
-    color: '#ffff',
-  },
   hover: {
     padding: "2em",
     backgroundColor: "white", 

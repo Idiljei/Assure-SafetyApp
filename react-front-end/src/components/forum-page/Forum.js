@@ -90,20 +90,17 @@ const Forum = () => {
           </Tooltip>
 
           <Box className={classes.paper}>
-            <Backdrop className={classes.backdrop} open={selected}>
-              <Box display="flex">
-                {selected ? (
-                  <CreatePost
-                    setTitle={setTitle}
-                    setAddress={setAddress}
-                    setDescription={setDescription}
-                    onSubmitForm={validateForm}
-                    close={handleClose}
-                    setDate={setDate}
-                  />
-                ) : null}
-              </Box>
-            </Backdrop>
+            { selected ? (
+                <CreatePost
+                  open={selected}
+                  setTitle={setTitle}
+                  setAddress={setAddress}
+                  setDescription={setDescription}
+                  onSubmitForm={validateForm}
+                  close={handleClose}
+                  setDate={setDate}
+                />
+              ) : null}
           </Box>
         </div>
       </Box>

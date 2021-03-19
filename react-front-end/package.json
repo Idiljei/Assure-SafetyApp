@@ -10,7 +10,6 @@
     "@reach/combobox": "^0.13.2",
     "@react-google-maps/api": "^2.1.1",
     "axios": "^0.18.1",
-    "cors-anywhere": "file:cors-anywhere",
     "date-fns": "^2.19.0",
     "dotenv": "^8.2.0",
     "http-proxy-middleware": "^1.0.6",

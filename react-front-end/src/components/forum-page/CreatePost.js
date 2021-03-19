@@ -1,89 +1,72 @@
 import React from 'react';
-import { Button, TextField, Paper, IconButton, Box } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
+import { Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 import Search from './ForumSearch';
 import postStyles from './PostStyles';
 import './forum.css';
 
+// props = errors
+
 const CreatePost = (props) => {
   const classes = postStyles();
+  const open = props.open;
+  const close = props.close;
 
-  console.log("error", props.error)
   return (
-    <section>
-      <Paper variant="elevation" elevation={3} className={classes.background}>
-        <Box display="flex" flexDirection="column" width="50em">
-          <Box display="flex" justifyContent="space-between" width="100%">
-            <Box>
-              <h1 class="title">Report a Crime</h1>
-              <h4 class="subtitle">Help the community stay safe</h4>
-              {props.error !== "" && props.error} 
-            </Box>
-            <Box alignSelf="stretch">
-              <IconButton aria-label="close" onClick={props.close} margin="3em"  >
-                <CloseIcon />
-              </IconButton>
-            </Box>
-          </Box>
+    <div>
+      <Dialog open={open} onClose={close} maxWidth="md" fullWidth aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Report an Incident</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Help the Community Stay Safe
+          </DialogContentText>
+  
+          <TextField
+            autoFocus
+            required
+            id="standard-basic"
+            label="Title" 
+            color="primary"
+            margin="normal"
+            fullWidth
+            onChange={(e) => props.setTitle(e.target.value)} 
+            />  
 
-          <Box display="flex" flexDirection="column" width="50em">
-            <Box width="80%">
-            <Box>
-              <TextField
-                className={classes.input}
-                id="standard-basic" 
-                label="Title" 
-                color="primary" 
-                onChange={(e) => props.setTitle(e.target.value)} 
-                />
-            </Box>
+            <Search setAddress={props.setAddress} />
 
-            <Box display="flex" width="100%" justifyContent="space-between">
-              <Box display="flex" width="100%" alignItems="flex-end">
-                <Search setAddress={props.setAddress}/>
-              </Box>
-            <Box>
-                <TextField
-                  id="datetime-local"
-                  type="datetime-local"
-                  label="Date"
-                  className={classes.textField}
-                  InputLabelProps={{ shrink: true }}
-                  onChange={(e) => props.setDate(e.target.value)} 
-                  />
-              </Box>
-            </Box>
+            <TextField
+              id="datetime-local"
+              type="datetime-local"
+              label="Date"
+              required
+              className={classes.textField}
+              margin="normal"
+              InputLabelProps={{ shrink: true }}
+              onChange={(e) => props.setDate(e.target.value)} 
+              />
 
-              <Box>
-                <TextField
-                  className={classes.input}
-                  id="outlined-multiline-static"
-                  label="Incident Description"
-                  color="primary"
-                  multiline
-                  rows={7}
-                  variant="outlined"
-                  onChange={(e) => props.setDescription(e.target.value)} 
-                />
-              </Box>
+            <TextField
+              className={classes.input}
+              id="outlined-multiline-static"
+              label="Incident Description"
+              color="primary"
+              multiline
+              required
+              rows={7}
+              variant="outlined"
+              onChange={(e) => props.setDescription(e.target.value)} 
+            />
 
-              <Box display="flex" justifyContent="center">
-                <Box>
-                  <Button
-                    className={classes.submitButton}
-                    type="submit"
-                    size="large" 
-                    variant="contained"
-                    onClick={props.onSubmitForm} 
-                    > Submit
-                  </Button>
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-      </Paper>
-    </section>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={close} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={props.onSubmitForm} color="primary">
+            Submit
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   );
 };
 

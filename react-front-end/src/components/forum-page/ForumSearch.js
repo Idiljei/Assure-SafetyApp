@@ -7,8 +7,13 @@ import '../map-page/search.css';
 const useStyles = makeStyles({
   search: {
     position: "absolute",
-    width: "20%",
-    zIndex: 'auto'
+    width: "94%",
+    zIndex: 6
+  },
+  suggestions: {
+    fontSize: "1.5rem",
+    display: "flex",
+    flexDirection: "column",
   }
 })
 
@@ -54,22 +59,23 @@ const Search = (props) => {
         <div>
           <ListItem button>
             <ListItemText key={place_id} onClick={handleSelect(suggestion)} primary={main_text} secondary={secondary_text} />
-            <Divider />
           </ListItem>
+          <Divider />
         </div>
       );
     });
 
   return (
-    <Box class="forum-search">
+    <Box className={classes.suggestions}>
       <Box>
       <TextField
-        width="2em"
         value={value}
-        position="absolute"
+        fullWidth
+        required
+        margin="normal"
         onChange={handleInput}
         disabled={!ready}
-        placeholder="Enter Address"
+        placeholder="Enter Address*"
       />
       </Box>
 
