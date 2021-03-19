@@ -28,8 +28,8 @@ const Forum = () => {
     });
   } catch (err) {
     console.error(err.message);
-  }
-  }
+  }}
+
   // validate 
   const validateForm = () => {
     if (!title  && !address && !description) {
@@ -52,7 +52,7 @@ const Forum = () => {
     }
     setError("")
     makePost()
-  }
+  };
 
   //  Reset Function 
   const reset = () =>  {
@@ -61,7 +61,7 @@ const Forum = () => {
     setDescription("")
     setError("")
   }
-  
+
   // validate takes in an object 
   const handleClose = () => {
       reset();
@@ -111,13 +111,13 @@ const Forum = () => {
                   setDate={setDate}
                   error={error}
                 />
-              ) : null}
+              ) : null }
           </Box>
         </div>
       </Box>
 
       <div>
-        {allPosts.map((post) => {
+      { allPosts.map((post) => {
           return (
             <Box className={classes.hover}>
               <div key={post.title + post.address + post.date}>
