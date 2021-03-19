@@ -1,8 +1,6 @@
 // Texting Safety Network 
 export const smsLocation = async() => {
   // e.preventDefault();
-
-
   const body = { "message": "Phoebe has sent her live location through Assure" }
   await fetch('/sms', {
     method: 'POST',
@@ -13,6 +11,7 @@ export const smsLocation = async() => {
   })
   .then(res =>  res.json())
   .catch(err => console.log(err))
+  
 }
 
 // Texting Police 

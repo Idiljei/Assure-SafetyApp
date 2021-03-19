@@ -1,51 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Button } from '@material-ui/core';
-import SendIcon from '@material-ui/icons/Send';
-import ErrorIcon from '@material-ui/icons/Error';
-import LocationAlert from './alert/LocateAlert';
-import PoliceAlert from './alert/PoliceAlert';
+import React, { useState } from 'react';
+import { Box } from '@material-ui/core';
+import LocationButton from './alert/LocationButton';
+import EmergencyButton from './alert/EmergencyButton';
 import useStyles from '../Styles';
-import { smsLocation } from './sms'
-import { smsPolice } from './sms'
 import '././alert/Alertpopup.css';
 
 const Home = (props) => {
   const classes = useStyles();
-  const [ selectedLOC, setSelectedLOC ] = useState(0);
-  const [ selectedPOL, setSelectedPOL ] = useState(0);
 
-  const [ location, setLocation ] = useState(false);
-  const [ police, setPolice ] = useState(false);
-
-  const handleLocationClick = () => {
-    setLocation(true);
-    setSelectedLOC(0);
-    // smsLocation()
-  }
-
-  const handlePoliceClick = () => {
-    setPolice(true)
-    setSelectedPOL(0);
-    // smsPolice()
-  }
+  const [ location, setLocation ] = useState(0);
+  const [ police, setPolice ] = useState(0);
 
   return (
     <Box className={classes.homeBox}>
+      <Box display="flex" flexDirection="column" margin="2em">
+        <LocationButton location={location} setLocation={setLocation} />
+      </Box>
 
-      <Button onClick={handleLocationClick} type="submit" className={classes.homeButton} size="large" startIcon={<SendIcon />} variant="contained">
-              Share Live Location
-      </Button>
-
-      { location &&  <LocationAlert close={setLocation} location={location} selected={selectedLOC} setSelected={setSelectedLOC} /> }
-
-      <Button onClick={handlePoliceClick} className={classes.homeButton} size="large" startIcon={<ErrorIcon />} variant="contained">
-        Call 911
-      </Button>
-
-      { police &&  <PoliceAlert close={setPolice} police={police} selected={selectedPOL} setSelected={setSelectedPOL} /> }
-            
+      <Box>
+        <EmergencyButton police={police} setPolice={setPolice} />
+      </Box>
     </Box>
-  );
+  )
 };
 
 export default Home;

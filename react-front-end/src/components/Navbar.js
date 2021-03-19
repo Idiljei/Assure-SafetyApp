@@ -10,12 +10,11 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 const Navbar = () => {
   return (
     <div>
-      <BottomNavigation>
+      <BottomNavigation showLabels >
         <Link to="/">
           <BottomNavigationAction label="Home" icon={<HomeIcon />} />
         </Link>
         <Link to="/map">
-          {" "}
           <BottomNavigationAction label="Map" icon={<RoomIcon />} />
         </Link>
         <Link to="/forum">

@@ -3,10 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({ 
   homeBox: {
     display: "flex",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
     alignItems: "center",
     flexWrap: "wrap",
-    height: '100%'
   },
   mapBox: {
     display: "flex",
@@ -20,12 +19,22 @@ const useStyles = makeStyles({
     background: 'linear-gradient(45deg, #63639F, #a6a6e0)',
     border: 0,
     color: 'white',
-    height: '100%',
-    padding: '2em',
-    margin: '3em 1em',
+    width: "20em",
+    height: "10em",
   },
   findButton: {
     margin: "2rem",
+  },
+  alert: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "30em",
+    height: "30em"
+  },
+  home: {
+    display: "flex"
   }
 });
 
