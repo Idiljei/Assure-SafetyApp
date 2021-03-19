@@ -1,9 +1,11 @@
+div.map {
+  background-color: white;
+}
+
 .search input {
-  margin: 1rem;
-  font-size: 1.5rem;
-  border: 0;
+  font-size: 1.3rem;
   width: 100%;
-  padding: 1rem;
+  padding: 0.5em;
 }
 
 .forum-search {
@@ -14,16 +16,10 @@
   z-index: 6;
 }
 
-.MuiFormControl-root {
-  border: 0;
-  margin: 0;
-  display: inline-flex;
-  padding: 0;
+div.style {
+  height: 500px;
   position: relative;
-  min-width: 0;
-  flex-direction: column;
-  vertical-align: top;
-  width: 15em;
+  overflow: hidden;
 }
 
 .report-icon {
@@ -44,37 +40,11 @@
   justify-content: center;
 }
 
-.map-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 50%;
-  padding-left: 3%;
-}
-
-.forum-box {
-  width: 50%;
-}
-
 /* Mobile version*/
 @media only screen and (max-width: 767px) {
   .map-page {
     display: flex;
     justify-content: center;
     flex-direction: column;
-  }
-
-  .map-box {
-    justify-content: center;
-    width: 100%;
-    padding: 0;
-  }
-
-  .forum-box {
-    width: 100%;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
   }
 }

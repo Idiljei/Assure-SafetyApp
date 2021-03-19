@@ -18,11 +18,19 @@ const postStyles = makeStyles((theme) => ({
     marginBottom: "19%"
   },
   filterButton: {
-    margin: '1em'
+    display: "flex",
+    alignItems: "center"
   },
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
     color: '#ffff',
+  },
+  hover: {
+    padding: "2em",
+    backgroundColor: "white", 
+    '&:hover' : {
+      backgroundColor: '#faf7ff'
+    }  
   },
   input: {
     width: '100%',

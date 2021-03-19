@@ -1,18 +1,12 @@
 .app {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  height: 100%;
-  margin: 0;
-  box-sizing: border-box;
 }
 
 body {
   margin: 0px;
-}
-
-.page {
-  height: 100%;
+  background-color: #63639f;
+  font-family: 'Roboto';
 }
 
 .MuiBottomNavigation-root {

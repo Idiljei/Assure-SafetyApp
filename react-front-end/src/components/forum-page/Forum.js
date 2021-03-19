@@ -53,75 +53,58 @@ const Forum = () => {
   }, []);
 
   return (
-    <div>
-      <div class="forum-page">
-        <Box
-          display="flex"
-          className={classes.filterButton}
-          justifyContent="flex-end"
-          alignItems="center"
-          width="50%"
-        >
-          <FilterButton />
-          <div class="add-button">
-            <Tooltip title="Add" aria-label="add" arrow>
-              <Fab
-                onClick={() => setSelected(true)}
-                color="primary"
-                aria-label="add"
-              >
-                <AddIcon />
-              </Fab>
-            </Tooltip>
-            <Box className={classes.paper}>
-              <Backdrop className={classes.backdrop} open={selected}>
-                <Box display="flex">
-                  {selected ? (
-                    <CreatePost
-                      setTitle={setTitle}
-                      setAddress={setAddress}
-                      setDescription={setDescription}
-                      onSubmitForm={onSubmitForm}
-                      close={handleClose}
-                      setDate={setDate}
-                    />
-                  ) : null}
-                </Box>
-              </Backdrop>
-            </Box>
-          </div>
-        </Box>
+    <div className="forum-box">
+      <Box className={classes.filterButton}>
+        <FilterButton />
+        <div class="add-button">
+          <Tooltip title="Add" aria-label="add" arrow>
+            <Fab
+              onClick={() => setSelected(true)}
+              color="primary"
+              aria-label="add"
+            >
+              <AddIcon />
+            </Fab>
+          </Tooltip>
 
-        <Box width="80%">
-          {allPosts.map((post) => {
-            return (
-              <Box>
-                <div key={post.title + post.address + post.date}>
-                  <Post
-                    title={post.title}
-                    address={post.address}
-                    description={post.description}
-                    date={post.date}
-                    user={post.first_name + " " + post.last_name}
+          <Box className={classes.paper}>
+            <Backdrop className={classes.backdrop} open={selected}>
+              <Box display="flex">
+                {selected ? (
+                  <CreatePost
+                    setTitle={setTitle}
+                    setAddress={setAddress}
+                    setDescription={setDescription}
+                    onSubmitForm={onSubmitForm}
+                    close={handleClose}
+                    setDate={setDate}
                   />
-                </div>
+                ) : null}
               </Box>
-            );
-          })}
-        </Box>
+            </Backdrop>
+          </Box>
+        </div>
+      </Box>
+
+      <div>
+        {allPosts.map((post) => {
+          return (
+            <Box className={classes.hover}>
+              <div key={post.title + post.address + post.date}>
+                <Post
+                  title={post.title}
+                  address={post.address}
+                  description={post.description}
+                  date={post.date}
+                  user={post.first_name + " " + post.last_name}
+                />
+              </div>
+            </Box>
+          );
+        })}
       </div>
     </div>
   );
 };
 
 export default Forum;
-
-// const p1 = jsonData[1].address
-// const p2 = jsonData[2].address
-// const obj = JSON.parse(test)
-// const lat = obj.lat
-// const lng = obj.lng
-// console.log("PERSON 1", p1)
-// console.log("PERSON 2,", p2)
-
-// console.log(lat,lng)

@@ -23,17 +23,17 @@ const MapSearch = ( props ) => {
   return (
     <div class="search">
       <Combobox
-      onSelect={async (address) => {
-        setValue(address, false);
-        clearSuggestions();
-        try {
-          const results =  await getGeocode({ address });
-          const { lat, lng } = await getLatLng(results[0])
-          panTo({ lat, lng })  
-        } catch(error) {
-        }
-      }}
-      >
+        onSelect={async (address) => {
+          setValue(address, false);
+          clearSuggestions();
+          try {
+            const results =  await getGeocode({ address });
+            const { lat, lng } = await getLatLng(results[0])
+            panTo({ lat, lng })  
+          } catch(error) {
+          }
+        }}
+        >
         <ComboboxInput 
         value={value}
         onChange={(e) => {
@@ -41,6 +41,7 @@ const MapSearch = ( props ) => {
         }}
         disabled={!ready}
         placeholder="Enter Address"
+        style={{ width: 180 }}
         /> 
         <ComboboxPopover> 
           <ComboboxList>

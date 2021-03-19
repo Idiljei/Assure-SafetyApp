@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/home-page/Home";
 import Navbar from "./components/Navbar";
@@ -8,8 +8,6 @@ import Profile from "./components/profile-page/Profile";
 import "./App.css";
 
 const App = () => {
-  // const [ login, setLogin ] = useState(false);
-  const [selected, setSelected] = useState(0);
 
   return (
     <div className="app">
@@ -18,15 +16,16 @@ const App = () => {
       </div>
 
       <Router>
-        <div className="nav">
-          <Navbar />
-        </div>
         <Switch>
           <Route path="/profile" component={Profile} />
           <Route path="/map" component={Map} />
           <Route path="/forum" component={Forum} />
           <Route path="/" component={Home} />
         </Switch>
+
+        <div className="nav">
+          <Navbar />
+        </div>
       </Router>
     </div>
   );

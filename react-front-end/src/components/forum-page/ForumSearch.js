@@ -36,15 +36,13 @@ const Search = (props) => {
     setValue(description, false);
     clearSuggestions();
 
-    // Get latitude and longitude via utility functions
     getGeocode({ address: description })
       .then((results) => getLatLng(results[0]))
       .then(({ e, lat, lng }) => {
         props.setAddress({ lat, lng})
-        console.log("📍 Coordinates: ", { lat, lng });
       })
       .catch((error) => {
-        console.log("😱 Error: ", error);
+        console.log(error);
       });
   };
 
@@ -77,8 +75,7 @@ const Search = (props) => {
         placeholder="Enter Address"
       />
       </Box>
-      {/* We can use the "status" to decide whether we should display the dropdown or not */}
-      
+
       <Box>
         {status === "OK" ?  
             <Paper className={classes.search}>

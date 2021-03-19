@@ -3,17 +3,19 @@
   margin-right: 0;
 }
 
-.forum-page {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-}
-
 .popup {
   display: flex;
   justify-content: space-between;
   width: auto;
+}
+
+.forum-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  padding-top: 1em;
 }
 
 .title {
@@ -25,15 +27,6 @@
   font-family: 'Roboto';
   margin-bottom: 0;
   margin-top: 5%;
-}
-
-/* for each post */
-
-.post {
-  font-family: 'Roboto';
-}
-
-.post-title {
 }
 
 .date {

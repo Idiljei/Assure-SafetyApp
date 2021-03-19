@@ -10,14 +10,6 @@ const useStyles = makeStyles({
     height: "fit-content",
     paddingBottom: "7em"
   },
-  mapBox: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    width: '50%',
-    paddingLeft: '3%'
-  },
   homeButton: {
     background: 'linear-gradient(45deg, #63639F, #a6a6e0)',
     border: 0,
@@ -25,8 +17,14 @@ const useStyles = makeStyles({
     width: "20em",
     height: "10em",
   },
+  mapBox: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "0.8em"
+  },
   findButton: {
-    margin: "2rem",
+    padding: 0
   },
   alert: {
     display: "flex",

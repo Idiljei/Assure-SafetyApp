@@ -12,13 +12,13 @@ import Forum from '../forum-page/Forum';
 import mapStyles from "./mapStyles";
 import useStyles from "../Styles";
 import MapSearch from "./MapSearch";
+import MarkSafeSpots from "./MarkSafeSpots";
 import "./search.css";
 import "@reach/combobox/styles.css";
-import MarkSafeSpots from "./MarkSafeSpots";
 
 const containerStyle = {
-  width: "75%",
-  height: "500px",
+  width: "100%",
+  height: "325px",
 };
 
 const center = {
@@ -85,36 +85,25 @@ const Map = () => {
   if (loadError) return "Error loading maps";
 
   return (
-    <div class="map-page">
-      <div class="map-box">
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          margin="0"
-          paddingTop="2%"
-          width="60%"
-        >
-          <Box>
-            <MapSearch panTo={panTo} />
-          </Box>
-          <Box className={classes.findButton}>
-            <Locate panTo={panTo} />
-          </Box>
-        </Box>
+    <div className="map">
+    <Box display="flex" flexDirection="column">
+      <Box className={classes.mapBox}>
+        <MapSearch panTo={panTo} />
+        <Locate panTo={panTo} />
+      </Box>
 
-        <Legend />
-
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={center}
-          zoom={18}
-          options={options}
-          onLoad={onMapLoad}
+      <Box>
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={18}
+        options={options}
+        onLoad={onMapLoad}
         >
-          <MarkSafeSpots selected={selected} setSelected={setSelected}/>
-s
-          {markers.map((post) => (
+
+        <MarkSafeSpots selected={selected} setSelected={setSelected}/>
+
+        { markers.map((post) => (
             <Marker
               key={post.title + post.lat + post.lng}
               position={{ lat: post.lat, lng: post.lng }}
@@ -146,14 +135,64 @@ s
               </div>
             </InfoWindow>
           ) : null}
-        </GoogleMap>
-      </div>
+      </GoogleMap>
+      </Box>
 
-      <div class="forum-box">
-        <Forum />
-      </div>
+      <Forum />
+
+    </Box>
     </div>
   );
 };
 
 export default Map;
+
+{/* <Legend />
+
+<GoogleMap
+  mapContainerStyle={containerStyle}
+  center={center}
+  zoom={18}
+  options={options}
+  onLoad={onMapLoad}
+>
+  <MarkSafeSpots selected={selected} setSelected={setSelected}/>
+s
+  {markers.map((post) => (
+    <Marker
+      key={post.title + post.lat + post.lng}
+      position={{ lat: post.lat, lng: post.lng }}
+      onClick={() => {
+        setSelected(post);
+      }}
+      icon={{
+        url: "./report.svg",
+        scaledSize: new window.google.maps.Size(25, 25),
+        origin: new window.google.maps.Point(0, 0),
+        anchor: new window.google.maps.Point(17, 17),
+      }}
+    />
+  ))}
+
+{ selected ? (
+    <InfoWindow
+      position={{ lat: selected.lat, lng: selected.lng }}
+      onCloseClick={() => {
+        setSelected(null);
+      }}
+    >
+      <div>
+        <h2>{ selected.title || selected.name }</h2>
+        { selected.address ? <h4>Address: {selected.address}</h4> : null }
+        { selected.open ? <h4>Open Now</h4> : null }
+        { selected.name ? <h6>Go Here:  </h6> : null}
+        { !selected.name ? <div><Button>See Details</Button></div> : null}
+      </div>
+    </InfoWindow>
+  ) : null}
+</GoogleMap>
+</div>
+
+<div class="forum-box">
+<Forum />
+</div> */}
