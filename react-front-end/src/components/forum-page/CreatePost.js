@@ -18,8 +18,7 @@ const CreatePost = (props) => {
         <DialogContent>
           <DialogContentText>
             Help the Community Stay Safe
-            { props.error ? props.error : null}
-
+            { props.error ? <div>{props.error}</div> : null}
           </DialogContentText>
   
           <TextField
