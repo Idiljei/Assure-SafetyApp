@@ -63,7 +63,7 @@ App.get("/user/:id", async (req, res) => {
   }
 });
 
-App.get("/forum/:id", async (req, res) => {
+App.get("/forum/user/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const userPosts = await pool.query(
@@ -90,30 +90,6 @@ App.post("/sms", (req, res) => {
     })
     .catch((error) => console.log(error));
 });
-
-// GET => get all posts
-App.get("/forum", async (req, res) => {
-  // console.log("Forum Get Request");
-  try {
-    const allForums = await pool.query(
-      "SELECT * FROM posts ORDER BY id DESC LIMIT 5;"
-    );
-    res.json(allForums.rows);
-  } catch (err) {
-    console.log(err.message);
-  }
-});
-
-// GET => get posts for one user
-// App.get("/forum/:id", async(req, res) => {
-//   try {
-//     const { id } = req.params
-//     const forum = await pool.query("SELECT * FROM posts WHERE user_id = $1", [id])
-//     res.json(forum.rows)
-//   } catch (err) {
-//     console.log(err.message)
-//   }
-// })
 
 // POST => create a post
 App.post("/forum", async (req, res) => {

@@ -15,7 +15,6 @@ const Navbar = () => {
           <BottomNavigationAction label="Home" icon={<HomeIcon />} />
         </Link>
         <Link to="/map">
-          {" "}
           <BottomNavigationAction label="Map" icon={<RoomIcon />} />
         </Link>
         <Link to="/forum">
