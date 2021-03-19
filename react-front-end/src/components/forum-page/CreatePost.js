@@ -8,6 +8,7 @@ import './forum.css';
 const CreatePost = (props) => {
   const classes = postStyles();
 
+  console.log("error", props.error)
   return (
     <section>
       <Paper variant="elevation" elevation={3} className={classes.background}>
@@ -16,6 +17,7 @@ const CreatePost = (props) => {
             <Box>
               <h1 class="title">Report a Crime</h1>
               <h4 class="subtitle">Help the community stay safe</h4>
+              {props.error !== "" && props.error} 
             </Box>
             <Box alignSelf="stretch">
               <IconButton aria-label="close" onClick={props.close} margin="3em"  >
@@ -33,7 +35,7 @@ const CreatePost = (props) => {
                 label="Title" 
                 color="primary" 
                 onChange={(e) => props.setTitle(e.target.value)} 
-              />
+                />
             </Box>
 
             <Box display="flex" width="100%" justifyContent="space-between">
@@ -48,7 +50,7 @@ const CreatePost = (props) => {
                   className={classes.textField}
                   InputLabelProps={{ shrink: true }}
                   onChange={(e) => props.setDate(e.target.value)} 
-                />
+                  />
               </Box>
             </Box>
 

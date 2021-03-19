@@ -11,30 +11,51 @@ const Forum = () => {
   const classes = postStyles();
   const [allPosts, setAllPosts] = useState([]);
   const [selected, setSelected] = useState(false);
-
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState(new Date());
+  const [error, setError] = useState("");
 
-  const handleClose = () => {
-    setSelected(false);
-  };
-
-  const onSubmitForm = async (e) => {
-    e.preventDefault();
-    try {
-      const user_id = 3;
-      const body = { user_id, description, address, title, date };
-      const response = await fetch(`http://localhost:8080/forum`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      window.location = "/map";
-    } catch (err) {
-      console.error(err.message);
+  const makePost = async () => {
+  try {
+    const user_id = 3;
+    const body = { user_id, description, address, title, date };
+    const response = await fetch(`http://localhost:8080/forum`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+  } catch (err) {
+    console.error(err.message);
+  }
+  }
+  // validate 
+  const validateForm = () => {
+    
+    if (!title  && !address && !description) {
+      setError("Please enter a title, address, description and date to post your incident");
+      return;
     }
+    if (!description) {
+        setError("Description required");
+        return;
+    }
+    setError("")
+    makePost()
+  }
+
+  //  Reset Function 
+  const reset = () =>  {
+    setTitle("");
+    setAddress("");
+    setDescription("")
+    setError("")
+  }
+  // validate takes in an object 
+  const handleClose = () => {
+      reset();
+      setSelected(false);
   };
 
   const getPosts = async () => {
@@ -50,6 +71,7 @@ const Forum = () => {
 
   useEffect(() => {
     getPosts();
+
   }, []);
 
   return (
@@ -75,7 +97,7 @@ const Forum = () => {
                     setTitle={setTitle}
                     setAddress={setAddress}
                     setDescription={setDescription}
-                    onSubmitForm={onSubmitForm}
+                    onSubmitForm={validateForm}
                     close={handleClose}
                     setDate={setDate}
                   />
