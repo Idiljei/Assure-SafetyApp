@@ -57,7 +57,7 @@ App.get("/snlocation/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const showSnLocation = await pool.query(
-      "SELECT users.first_name as user, a.first_name, a.phone_number, a.current_location, a.img FROM safety_networks JOIN users ON safety_networks.sn_id = users.id JOIN users a ON safety_networks.user_id = a.id WHERE users.id = $1",
+      "SELECT users.first_name as user, a.first_name, a.phone_number, a.current_location, a.img, a.sharing_location, a.updated_at FROM safety_networks JOIN users ON safety_networks.sn_id = users.id JOIN users a ON safety_networks.user_id = a.id WHERE users.id = $1",
       [id]
     );
     res.json(showSnLocation.rows);
@@ -65,6 +65,7 @@ App.get("/snlocation/:id", async (req, res) => {
     console.log(error);
   }
 });
+
 // Sample GET route
 App.get("/user/:id", async (req, res) => {
   try {
@@ -122,19 +123,32 @@ App.post("/forum", async (req, res) => {
 });
 
 // UPDATE => update a post
-App.put("/forum/:id", async (req, res) => {
+// App.put("/forum/:id", async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const { description } = req.body;
+//     const updateForum = await pool.query(
+//       "UPDATE posts SET description = $1 WHERE id = $2",
+//       [description, id]
+//     );
+//     // res.json();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
+
+
+// Update live location status to TRUE
+App.put("/home/:id", async (req, res) => {
+  const { id } = req.params;
   try {
-    const { id } = req.params;
-    const { description } = req.body;
-    const updateForum = await pool.query(
-      "UPDATE posts SET description = $1 WHERE id = $2",
-      [description, id]
-    );
-    // res.json();
+    const updateStatus = await pool.query("UPDATE users SET sharing_location = true, updated_at = current_timestamp WHERE id = $1", [id])
   } catch (error) {
     console.log(error);
   }
 });
+
+
 // DELETE => delete a post
 App.delete("/forum/:id", async (req, res) => {
   try {

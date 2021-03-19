@@ -9,7 +9,8 @@ CREATE TABLE users (
   email VARCHAR(255) NOT NULL,
   current_location VARCHAR(255) NOT NULL,
   img VARCHAR(255) NOT NULL,
-  sharing_location BOOLEAN DEFAULT FALSE
+  sharing_location BOOLEAN DEFAULT FALSE,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 
 -- GRANT ALL PRIVILEGES ON TABLE users TO spice;

@@ -6,7 +6,6 @@ import useStyles from '../../Styles';
 
 const LocationButton = (props) => {
   const classes = useStyles();
-
   const option = props.location;
   const setOption = props.setLocation;
 
@@ -15,10 +14,19 @@ const LocationButton = (props) => {
     after: "Currently sharing your Live Location"
   }
 
+  const turnOnLocationSharing = async () => {
+    const id = 2;
+    await fetch(`http://localhost:8080/home/${id}`, {
+    method: 'PUT',
+    })
+    .catch(err => console.log(err))
+  }
+
   const handleClick = () => {
     if (!option) {
       setOption(1)
-      // smsLocation()
+      turnOnLocationSharing();
+      // smsLocation();
     }
 
     if (option === 1) {

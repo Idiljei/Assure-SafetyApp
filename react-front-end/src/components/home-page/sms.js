@@ -11,7 +11,7 @@ export const smsLocation = async() => {
   })
   .then(res =>  res.json())
   .catch(err => console.log(err))
-  
+
 }
 
 // Texting Police 
