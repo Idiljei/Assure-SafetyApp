@@ -52,6 +52,19 @@ App.get("/safetynetwork/:id", async (req, res) => {
     console.log(error);
   }
 });
+
+App.get("/snlocation/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const showSnLocation = await pool.query(
+      "SELECT users.first_name as user, a.first_name, a.phone_number, a.current_location FROM safety_networks JOIN users ON safety_networks.sn_id = users.id JOIN users a ON safety_networks.user_id = a.id WHERE users.id = $1",
+      [id]
+    );
+    res.json(showSnLocation.rows);
+  } catch (error) {
+    console.log(error);
+  }
+});
 // Sample GET route
 App.get("/user/:id", async (req, res) => {
   try {

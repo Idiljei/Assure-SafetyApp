@@ -6,7 +6,8 @@ CREATE TABLE users (
   last_name VARCHAR (255) NOT NULL,
   phone_number VARCHAR(13) NOT NULL,
   date_of_birth VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL
+  email VARCHAR(255) NOT NULL,
+  current_location VARCHAR(255) NOT NULL
 )
 
 -- GRANT ALL PRIVILEGES ON TABLE users TO spice;
