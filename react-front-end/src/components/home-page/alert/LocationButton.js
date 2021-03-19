@@ -26,8 +26,6 @@ const LocationButton = (props) => {
     }
   }
 
-  console.log("This is the option: ", option)
-
   return (
     <Box className={classes.home}>
       <Button onClick={handleClick} type="submit" className={classes.homeButton} size="large" startIcon={<SendIcon />} variant="contained">

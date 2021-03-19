@@ -6,6 +6,9 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
     flexWrap: "wrap",
+    backgroundColor: "#63639f",
+    height: "fit-content",
+    paddingBottom: "7em"
   },
   mapBox: {
     display: "flex",

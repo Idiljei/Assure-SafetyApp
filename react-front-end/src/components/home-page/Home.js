@@ -13,11 +13,11 @@ const Home = (props) => {
 
   return (
     <Box className={classes.homeBox}>
-      <Box display="flex" flexDirection="column" margin="2em">
+      <Box margin="2em">
         <LocationButton location={location} setLocation={setLocation} />
       </Box>
 
-      <Box>
+      <Box margin="2em">
         <EmergencyButton police={police} setPolice={setPolice} />
       </Box>
     </Box>
