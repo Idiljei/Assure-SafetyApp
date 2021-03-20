@@ -84,6 +84,8 @@ const Forum = () => {
     getPosts();
   }, []);
 
+  console.log(type)
+
   return (
     <div className="forum-box">
       <Box className={classes.filterButton}>

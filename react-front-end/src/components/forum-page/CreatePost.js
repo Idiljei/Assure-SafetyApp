@@ -23,10 +23,6 @@ const CreatePost = (props) => {
   const open = props.open;
   const close = props.close;
 
-  const handleChange = (e) => {
-    props.setType(e.target.value);
-  };
-
   return (
     <div>
       <Dialog
@@ -56,7 +52,7 @@ const CreatePost = (props) => {
 
           <FormControl component="fieldset">
             <FormLabel component="legend">Select an Incident Type</FormLabel>
-            <RadioGroup aria-label="type" value={props.type} onChange={handleChange} >
+            <RadioGroup aria-label="type" value={props.type} onChange={(e) => props.setType(e.target.value)} >
               <Box display="flex" flexWrap="wrap">
               <FormControlLabel value="Theft" control={<Radio />} label="Theft" />
               <FormControlLabel value="Assault" control={<Radio />} label="Assault" />
