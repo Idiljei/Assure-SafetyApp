@@ -5,7 +5,7 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
-import { Box, Button } from "@material-ui/core";
+import { Box, Button,  Avatar } from "@material-ui/core";
 import Locate from "./Locate";
 import Forum from '../forum-page/Forum';
 import mapStyles from "./mapStyles";
@@ -115,7 +115,7 @@ const Map = () => {
                 url: "./report.svg",
                 scaledSize: new window.google.maps.Size(25, 25),
                 origin: new window.google.maps.Point(0, 0),
-                anchor: new window.google.maps.Point(17, 17),
+                anchor: new window.google.maps.Point(17, 17)
               }}
             />
           ))}
@@ -128,12 +128,11 @@ const Map = () => {
               }}
             >
               <div>
-              { selected.img && <img class="avatar" src={selected.img} alt="icon" /> }
+              { selected.img &&  <Avatar alt="avatar" src={selected.img} alt="icon" className={classes.large}/> }
                 <h2>{ selected.title || selected.name }</h2>
-                { selected.number ?  <h2>{ selected.number }</h2> : null }
                 { selected.address ? <h4>Address: {selected.address}</h4> : null }
                 { selected.open ? <h4>Open Now</h4> : null }
-                { selected.name ? <h6>Go Here:  </h6> : null}
+                { selected.address ? <h6>Go Here:  </h6> : null}
                 { selected.title ? <div><Button>See Details</Button></div> : null}
                 { selected.sharing_location ? <div>Current Sharing Location</div> : <div>Updated: {selected.time}</div> }
               </div>

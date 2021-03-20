@@ -41,7 +41,7 @@ const SafetyNetworkMap = (props) => {
   }, []);
 
   return (
-    <div className="map">
+    <div>
       { userSn.map((sn) => {
           return(
             <Marker
