@@ -1,5 +1,5 @@
 const Express = require("express");
-const App = Express();
+const app = Express();
 const BodyParser = require("body-parser");
 const PORT = 8080;
 const pool = require("./src/server/db");
@@ -14,21 +14,21 @@ const client = require("twilio")(accountSid, authToken);
 
 // const {sendTextMsg} = require('./api/send_sms');
 // Express Configuration
-App.use(BodyParser.urlencoded({ extended: false }));
-App.use(BodyParser.json());
-App.use(cors());
-App.use(Express.static("public"));
+app.use(BodyParser.urlencoded({ extended: false }));
+app.use(BodyParser.json());
+app.use(cors());
+app.use(Express.static("public"));
 
 //Page when user is not logged in
 
-App.get("/", (req, res) => {
+app.get("/:id", (req, res) => { 
   res.json({ home: "page" });
 });
 
 //----- FORUM -----//
 
 // GET => get all posts
-App.get("/forum", async (req, res) => {
+app.get("/forum", async (req, res) => {
   // console.log("Forum Get Request");
   try {
     const allForums = await pool.query(
@@ -40,7 +40,7 @@ App.get("/forum", async (req, res) => {
   }
 });
 
-App.get("/safetynetwork/:id", async (req, res) => {
+app.get("/safetynetwork/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const showSafetyNetwork = await pool.query(
@@ -53,7 +53,7 @@ App.get("/safetynetwork/:id", async (req, res) => {
   }
 });
 
-App.get("/snlocation/:id", async (req, res) => {
+app.get("/snlocation/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const showSnLocation = await pool.query(
@@ -67,7 +67,7 @@ App.get("/snlocation/:id", async (req, res) => {
 });
 
 // Sample GET route
-App.get("/user/:id", async (req, res) => {
+app.get("/user/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const user = await pool.query("SELECT * FROM users where id = $1", [id]);
@@ -77,7 +77,7 @@ App.get("/user/:id", async (req, res) => {
   }
 });
 
-App.get("/forum/user/:id", async (req, res) => {
+app.get("/forum/user/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const userPosts = await pool.query(
@@ -90,7 +90,7 @@ App.get("/forum/user/:id", async (req, res) => {
   }
 });
 
-App.post("/sms", (req, res) => {
+app.post("/sms", (req, res) => {
   res.header("Content-Type", "application/json");
   console.log("Req BOdy of Post to SMS:", req.body);
   client.messages
@@ -106,7 +106,7 @@ App.post("/sms", (req, res) => {
 });
 
 // POST => create a post
-App.post("/forum", async (req, res) => {
+app.post("/forum", async (req, res) => {
   try {
     const { user_id, title, address, description, date } = req.body;
     const postData = [user_id, title, address, description, date];
@@ -123,7 +123,7 @@ App.post("/forum", async (req, res) => {
 });
 
 // UPDATE => update a post
-// App.put("/forum/:id", async (req, res) => {
+// app.put("/forum/:id", async (req, res) => {
 //   try {
 //     const { id } = req.params;
 //     const { description } = req.body;
@@ -139,7 +139,7 @@ App.post("/forum", async (req, res) => {
 
 
 // Update live location status to TRUE
-App.put("/home/:id", async (req, res) => {
+app.put("/home/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const updateStatus = await pool.query("UPDATE users SET sharing_location = true, updated_at = current_timestamp WHERE id = $1", [id])
@@ -148,7 +148,7 @@ App.put("/home/:id", async (req, res) => {
   }
 });
 
-App.put("/home/safe/:id", async (req, res) => {
+app.put("/home/safe/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const updateStatus = await pool.query("UPDATE users SET sharing_location = false, updated_at = current_timestamp WHERE id = $1", [id])
@@ -159,7 +159,7 @@ App.put("/home/safe/:id", async (req, res) => {
 
 
 // DELETE => delete a post
-App.delete("/forum/:id", async (req, res) => {
+app.delete("/forum/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const deleteForum = await pool.query("DELETE FROM posts WHERE id = $1", [
@@ -170,7 +170,7 @@ App.delete("/forum/:id", async (req, res) => {
   }
 });
 
-App.listen(PORT, () => {
+app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(
     `Express seems to be listening on port ${PORT} so that's pretty DAMN GOOD 👍`

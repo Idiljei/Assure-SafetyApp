@@ -3,6 +3,7 @@ import { Button, Box, Dialog } from '@material-ui/core';
 import EnterPin from './EnterPin';
 import SafeNow from './SafeNow';
 import WrongPin from './WrongPin';
+import { smsLocation } from '../sms';
 import SendIcon from '@material-ui/icons/Send';
 import useStyles from '../../Styles';
 
@@ -31,7 +32,7 @@ const LocationButton = (props) => {
       setUserStatus(true);
       turnOnLocationSharing();
       props.checkLocationStatus(); 
-      // smsLocation();
+      smsLocation();
     }
 
     if (userStatus) {
