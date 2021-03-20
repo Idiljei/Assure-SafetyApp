@@ -18,6 +18,7 @@ const Post = (props) => {
         <h2 class="post-title">{props.title}</h2>
         <h5 class="date">Date of Incident: {date}</h5>
         <Box display="flex" alignContent="flex-start">
+          <h5 class="address">Incident Type: {props.type}</h5>
           <h5 class="address">Location:</h5>
           <h5 class="address">
             <GetAddress

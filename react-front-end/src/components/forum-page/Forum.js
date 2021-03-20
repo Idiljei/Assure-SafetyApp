@@ -15,13 +15,13 @@ const Forum = () => {
   const [ address, setAddress ] = useState("");
   const [ description, setDescription ] = useState("");
   const [ date, setDate ] = useState(null);
-  const [ type, setType ] = useState(null);
+  const [ incident_type, setIncidentType ] = useState(null);
   const [ error, setError ] = useState("");
 
   const makePost = async () => {
     try {
       const user_id = 3;
-      const body = { user_id, description, address, title, date };
+      const body = { user_id, incident_type, description, address, title, date };
       const response = await fetch(`http://localhost:8080/forum`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -84,7 +84,6 @@ const Forum = () => {
     getPosts();
   }, []);
 
-  console.log(type)
 
   return (
     <div className="forum-box">
@@ -111,8 +110,8 @@ const Forum = () => {
                   onSubmitForm={validateForm}
                   close={handleClose}
                   setDate={setDate}
-                  setType={setType}
-                  type={type}
+                  setType={setIncidentType}
+                  type={incident_type}
                   error={error}
                 />
               ) : null }
@@ -131,6 +130,7 @@ const Forum = () => {
                   description={post.description}
                   date={post.date}
                   user={post.first_name + " " + post.last_name}
+                  type={post.incident_type}
                 />
               </div>
             </Box>

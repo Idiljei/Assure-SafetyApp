@@ -26,7 +26,7 @@ app.get("/forum", async (req, res) => {
   // console.log("Forum Get Request");
   try {
     const allForums = await pool.query(
-      "SELECT users.first_name, users.last_name, posts.description, posts.date, posts.title, posts.address FROM posts JOIN users ON posts.user_id = users.id ORDER by posts.id DESC LIMIT 5;"
+      "SELECT users.first_name, users.last_name, posts.description, posts.date, posts.title, posts.address, posts.incident_type FROM posts JOIN users ON posts.user_id = users.id ORDER by posts.id DESC LIMIT 10;"
     );
     res.json(allForums.rows);
   } catch (err) {
@@ -102,12 +102,12 @@ app.post("/sms", (req, res) => {
 // POST => create a post
 app.post("/forum", async (req, res) => {
   try {
-    const { user_id, title, address, description, date } = req.body;
-    const postData = [user_id, title, address, description, date];
+    const { user_id, incident_type, title, address, description, date } = req.body;
+    const postData = [user_id, incident_type, title, address, description, date];
     console.log("This is the submitted data:", postData);
 
     const newForum = await pool.query(
-      "INSERT INTO posts (user_id, title, address, description, date) VALUES ($1, $2, $3, $4, $5)",
+      "INSERT INTO posts (user_id, incident_type, title, address, description, date) VALUES ($1, $2, $3, $4, $5, $6)",
       postData
     );
     res.json(newForum.rows[0]);
