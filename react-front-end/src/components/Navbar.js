@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import RoomIcon from "@material-ui/icons/Room";
 import HomeIcon from "@material-ui/icons/Home";
-import PeopleIcon from '@material-ui/icons/People';
 import PersonPinIcon from "@material-ui/icons/PersonPin";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";

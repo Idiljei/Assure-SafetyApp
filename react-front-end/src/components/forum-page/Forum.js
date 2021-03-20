@@ -9,13 +9,14 @@ import "./forum.css";
 
 const Forum = () => {
   const classes = postStyles();
-  const [allPosts, setAllPosts] = useState([]);
-  const [selected, setSelected] = useState(false);
-  const [title, setTitle] = useState("");
-  const [address, setAddress] = useState("");
-  const [description, setDescription] = useState("");
-  const [date, setDate] = useState(null);
-  const [error, setError] = useState("");
+  const [ allPosts, setAllPosts ] = useState([]);
+  const [ selected, setSelected ] = useState(false);
+  const [ title, setTitle ] = useState("");
+  const [ address, setAddress ] = useState("");
+  const [ description, setDescription ] = useState("");
+  const [ date, setDate ] = useState(null);
+  const [ type, setType ] = useState(null);
+  const [ error, setError ] = useState("");
 
   const makePost = async () => {
     try {
@@ -108,6 +109,8 @@ const Forum = () => {
                   onSubmitForm={validateForm}
                   close={handleClose}
                   setDate={setDate}
+                  setType={setType}
+                  type={type}
                   error={error}
                 />
               ) : null }

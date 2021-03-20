@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Box,
   Button,
   TextField,
   Dialog,
@@ -7,6 +8,11 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Radio,
+  RadioGroup,
+  FormControl,
+  FormLabel,
+  FormControlLabel
 } from "@material-ui/core";
 import Search from "./ForumSearch";
 import postStyles from "./PostStyles";
@@ -16,6 +22,10 @@ const CreatePost = (props) => {
   const classes = postStyles();
   const open = props.open;
   const close = props.close;
+
+  const handleChange = (e) => {
+    props.setType(e.target.value);
+  };
 
   return (
     <div>
@@ -43,6 +53,19 @@ const CreatePost = (props) => {
             fullWidth
             onChange={(e) => props.setTitle(e.target.value)}
           />
+
+          <FormControl component="fieldset">
+            <FormLabel component="legend">Select an Incident Type</FormLabel>
+            <RadioGroup aria-label="type" value={props.type} onChange={handleChange} >
+              <Box display="flex" flexWrap="wrap">
+              <FormControlLabel value="Theft" control={<Radio />} label="Theft" />
+              <FormControlLabel value="Assault" control={<Radio />} label="Assault" />
+              <FormControlLabel value="Home Invasion" control={<Radio />} label="Home Invasion" />
+              <FormControlLabel value="Homicide" control={<Radio />} label="Homicide" />
+              <FormControlLabel value="Other" control={<Radio />} label="Other" />
+              </Box>
+            </RadioGroup>
+          </FormControl>
 
           <Search setAddress={props.setAddress} />
 

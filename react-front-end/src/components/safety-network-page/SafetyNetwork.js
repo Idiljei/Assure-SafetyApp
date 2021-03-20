@@ -7,7 +7,6 @@ import './network.css'
 
 const SafetyNetworkMap = (props) => {
   const [ userSn, setUserSn ] = useState([]);
-  const selected = props.selected;
   const setSelected = props.setSelected;
 
   const getUserNetwork = async () => {
