@@ -30,6 +30,7 @@ export default function FilterButton() {
         > 
         
         <MenuItem value={0}>None</MenuItem>
+        
         <MenuItem value={1} >
           <Box display="flex" alignItems="center">
             <img src="./report.svg" alt="report icon" class="report-icon" />
