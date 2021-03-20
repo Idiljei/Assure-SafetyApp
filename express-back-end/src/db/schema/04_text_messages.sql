@@ -1,7 +1,0 @@
-DROP TABLE IF EXISTS text_messages CASCADE;
-
-CREATE TABLE text_messages (
-  id SERIAL PRIMARY KEY NOT NULL,
-  sender_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  message VARCHAR(500) NOT NULL
-);
