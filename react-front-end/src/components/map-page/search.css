@@ -32,6 +32,22 @@ div.style {
   justify-content: center;
 }
 
+.legend-icon {
+  width: 1.6em;
+  margin: 0;
+  padding: 0.5em;
+}
+
+.icon-box {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+div.MuiSnackbarContent-message {
+  padding: 0;
+}
+
 /* Mobile version*/
 @media only screen and (max-width: 767px) {
   .map-page {

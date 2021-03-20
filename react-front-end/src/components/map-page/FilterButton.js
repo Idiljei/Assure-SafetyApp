@@ -33,21 +33,18 @@ export default function FilterButton(props) {
 
         <MenuItem value={3}>
           <Box display="flex" alignItems="center">
-            <img src="./users.svg" alt="user icon" class="report-icon" />
             <h4>Safety Network</h4>
           </Box>
         </MenuItem>
 
         <MenuItem value={2} >
           <Box display="flex" alignItems="center">
-            <img src="./report.svg" alt="report icon" class="report-icon" />
             <h4>Reported Incidents</h4>
           </Box>
         </MenuItem>
 
         <MenuItem value={1}>
           <Box display="flex" alignItems="center">
-            <img src="./hospital.svg" alt="hospital icon" class="report-icon" />
             <h4>Safe Spots</h4>
           </Box>
         </MenuItem>

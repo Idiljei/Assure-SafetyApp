@@ -14,6 +14,7 @@ import useStyles from "../Styles";
 import MapSearch from "./MapSearch";
 import MarkSafeSpots from "./MarkSafeSpots";
 import FilterButton from "../map-page/FilterButton";
+import MapLegend from './Legend';
 import SafetyNetworkMap from "../safety-network-page/SafetyNetwork";
 import "./search.css";
 import "@reach/combobox/styles.css";
@@ -40,19 +41,7 @@ const Map = () => {
   const classes = useStyles();
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
-
-  //filter button states
   const [ filter, setFilter ] = useState(0);
-
-  // if filter = 0 ==> display ALL markers
-  // if filter = 1 ==> display ONLY safety network
-  // if filer = 2 ==> display ONLY incidents 
-  // if filter = 3 ===> display ONLY safe spots 
-
-  // legend ON the map: 
-  // 1 - list of safety network
-  // 2 - legend for types of incidents
-  // 3 - legend for types of safe spots
 
   const { loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
@@ -107,6 +96,8 @@ const Map = () => {
         <Locate panTo={panTo} />
       </Box>
 
+      <MapLegend />
+        
       <Box>
       <GoogleMap
         mapContainerStyle={containerStyle}
@@ -115,7 +106,7 @@ const Map = () => {
         options={options}
         onLoad={onMapLoad}
         >
-
+        
         { filter < 2 ? <MarkSafeSpots selected={selected} setSelected={setSelected}/> : null }
 
         { !filter || filter === 3 ? <SafetyNetworkMap selected={selected} setSelected={setSelected}/> : null }
