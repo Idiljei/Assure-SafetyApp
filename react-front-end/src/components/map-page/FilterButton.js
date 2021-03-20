@@ -10,12 +10,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function FilterButton() {
+export default function FilterButton(props) {
   const classes = useStyles();
-  const [filter, setFilter] = useState('');
+  const filter = props.filter;
 
   const handleChange = (e) => {
-    setFilter(e.target.value);
+    props.setFilter(e.target.value);
   };
 
   return (
@@ -29,9 +29,9 @@ export default function FilterButton() {
           label="Filter"
         > 
         
-        <MenuItem value={0}>None</MenuItem>
+        <MenuItem value={0}>Show All</MenuItem>
 
-        <MenuItem value={1}>
+        <MenuItem value={3}>
           <Box display="flex" alignItems="center">
             <img src="./users.svg" alt="user icon" class="report-icon" />
             <h4>Safety Network</h4>
@@ -45,24 +45,10 @@ export default function FilterButton() {
           </Box>
         </MenuItem>
 
-        <MenuItem value={3}>
+        <MenuItem value={1}>
           <Box display="flex" alignItems="center">
             <img src="./hospital.svg" alt="hospital icon" class="report-icon" />
-            <h4>Hospitals</h4>
-          </Box>
-        </MenuItem>
-
-        <MenuItem value={4}>
-          <Box display="flex" alignItems="center">
-            <img src="./police.svg" alt="police icon" class="report-icon" />
-            <h4>Police Stations</h4>
-          </Box>
-        </MenuItem>
-
-        <MenuItem value={5}>
-          <Box display="flex" alignItems="center">
-            <img src="./fire-station.svg" alt="fire icon" class="report-icon" />
-            <h4>Fire Stations</h4>
+            <h4>Safe Spots</h4>
           </Box>
         </MenuItem>
     

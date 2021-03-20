@@ -13,6 +13,7 @@ import mapStyles from "./mapStyles";
 import useStyles from "../Styles";
 import MapSearch from "./MapSearch";
 import MarkSafeSpots from "./MarkSafeSpots";
+import FilterButton from "../map-page/FilterButton";
 import SafetyNetworkMap from "../safety-network-page/SafetyNetwork";
 import "./search.css";
 import "@reach/combobox/styles.css";
@@ -36,9 +37,22 @@ const options = {
 };
 
 const Map = () => {
+  const classes = useStyles();
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
-  const classes = useStyles();
+
+  //filter button states
+  const [ filter, setFilter ] = useState(0);
+
+  // if filter = 0 ==> display ALL markers
+  // if filter = 1 ==> display ONLY safety network
+  // if filer = 2 ==> display ONLY incidents 
+  // if filter = 3 ===> display ONLY safe spots 
+
+  // legend ON the map: 
+  // 1 - list of safety network
+  // 2 - legend for types of incidents
+  // 3 - legend for types of safe spots
 
   const { loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
@@ -102,24 +116,28 @@ const Map = () => {
         onLoad={onMapLoad}
         >
 
-        <MarkSafeSpots selected={selected} setSelected={setSelected}/>
-        <SafetyNetworkMap selected={selected} setSelected={setSelected}/>
+        { filter < 2 ? <MarkSafeSpots selected={selected} setSelected={setSelected}/> : null }
 
-        { markers.map((post) => (
-            <Marker
-              key={post.title + post.lat + post.lng}
-              position={{ lat: post.lat, lng: post.lng }}
-              onClick={() => {
-                setSelected(post);
-              }}
-              icon={{
-                url: "./report.svg",
-                scaledSize: new window.google.maps.Size(25, 25),
-                origin: new window.google.maps.Point(0, 0),
-                anchor: new window.google.maps.Point(17, 17)
-              }}
-            />
-          ))}
+        { !filter || filter === 3 ? <SafetyNetworkMap selected={selected} setSelected={setSelected}/> : null }
+
+        { !filter || filter === 2 ? 
+
+          <div>
+          { markers.map((post) => (
+              <Marker
+                key={post.title + post.lat + post.lng}
+                position={{ lat: post.lat, lng: post.lng }}
+                onClick={() => {
+                  setSelected(post);
+                }}
+                icon={{
+                  url: "./report.svg",
+                  scaledSize: new window.google.maps.Size(25, 25),
+                  origin: new window.google.maps.Point(0, 0),
+                  anchor: new window.google.maps.Point(17, 17)
+                }}
+              />
+            ))} </div> : null }
 
         { selected ? (
             <InfoWindow
@@ -143,6 +161,7 @@ const Map = () => {
       </GoogleMap>
       </Box>
 
+      <FilterButton filter={filter} setFilter={setFilter} />   
       <Forum />
 
     </Box>
