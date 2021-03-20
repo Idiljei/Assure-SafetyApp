@@ -15,10 +15,11 @@ import MapSearch from "./MapSearch";
 import MarkSafeSpots from "./MarkSafeSpots";
 import "./search.css";
 import "@reach/combobox/styles.css";
+import SafetyNetworkMap from "../safety-network-page/SafetyNetwork";
 
 const containerStyle = {
   width: "100%",
-  height: "325px",
+  height: "400px",
 };
 
 const center = {
@@ -102,6 +103,7 @@ const Map = () => {
         >
 
         <MarkSafeSpots selected={selected} setSelected={setSelected}/>
+        <SafetyNetworkMap selected={selected} setSelected={setSelected}/>
 
         { markers.map((post) => (
             <Marker
@@ -127,14 +129,18 @@ const Map = () => {
               }}
             >
               <div>
+              { selected.img && <img class="avatar" src={selected.img} alt="icon" /> }
                 <h2>{ selected.title || selected.name }</h2>
+                { selected.number ?  <h2>{ selected.number }</h2> : null }
                 { selected.address ? <h4>Address: {selected.address}</h4> : null }
                 { selected.open ? <h4>Open Now</h4> : null }
                 { selected.name ? <h6>Go Here:  </h6> : null}
-                { !selected.name ? <div><Button>See Details</Button></div> : null}
+                { selected.title ? <div><Button>See Details</Button></div> : null}
+                { selected.sharing_location ? <div>Current Sharing Location</div> : <div>Updated: {selected.time}</div> }
               </div>
             </InfoWindow>
           ) : null}
+
       </GoogleMap>
       </Box>
 

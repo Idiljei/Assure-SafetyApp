@@ -10,28 +10,10 @@ import "@reach/combobox/styles.css";
 import "../map-page/search.css";
 import './network.css'
 
-const containerStyle = {
-  width: "100%",
-  height: "325px",
-};
-
-const center = {
-  lat: 49.2811956,
-  lng: -123.13068,
-};
-
-const libraries = ["places"];
-
-const options = {
-  styles: mapStyles,
-  disableDefaultUI: true,
-  zoomControl: true,
-};
-
-const SafetyNetworkMap = () => {
-  const classes = useStyles();
+const SafetyNetworkMap = (props) => {
   const [ userSn, setUserSn ] = useState([]);
-  const [ selected, setSelected ] = useState(null);
+  const selected = props.selected;
+  const setSelected = props.setSelected;
 
   const getUserNetwork = async () => {
     try {
@@ -53,9 +35,7 @@ const SafetyNetworkMap = () => {
         sharing_location: data.sharing_location, 
         time: formatDistance(new Date(data.updated_at), new Date(), { addSuffix: true })
       }
-      
 
-      console.log(" THIS IS HTE TIME:", userInfo)
       return setUserSn((prev) => [...prev, userInfo])
     })
 
@@ -68,47 +48,11 @@ const SafetyNetworkMap = () => {
     getUserNetwork();
   }, []);
 
-  const { loadError } = useJsApiLoader({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
-    libraries,
-  });
-
-  const mapRef = useRef();
-
-  const panTo = useCallback(({ lat, lng }) => {
-    mapRef.current.panTo({ lat, lng });
-    mapRef.current.setZoom(16);
-  }, []);
-
-  const onMapLoad = useCallback((map) => {
-    mapRef.current = map;
-  }, []);
-
-  if (loadError) return "Error loading maps";
-
-  console.log(userSn)
-
   return (
     <div className="map">
-    <Box display="flex" flexDirection="column">
-      <Box className={classes.mapBox}>
-        <MapSearch panTo={panTo} />
-        <Locate panTo={panTo} />
-      </Box>
-
-      <Box>
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={18}
-        options={options}
-        onLoad={onMapLoad}
-        >
-
       { userSn.map((sn) => {
           return(
             <Marker
-            className={classes.marker}
             position={{ lat: sn.lat, lng: sn.lng }}
             onClick={() => {
               setSelected(sn);
@@ -121,31 +65,6 @@ const SafetyNetworkMap = () => {
             }}
             />)
         })}
-
-      { selected ? (
-        <InfoWindow
-          position={{ lat: selected.lat, lng: selected.lng }}
-          onCloseClick={() => {
-            setSelected(null)
-          }}>
-          <div class="user-info">
-            <img class="avatar" src={selected.img} alt="icon" />
-            <div class="info">
-              <h2>{ selected.name }</h2>
-              <h2>{ selected.number }</h2>
-              <h2>{ selected.sharing_location ? <div>Current Sharing Location</div> : <div>Updated: {selected.time}</div> }</h2>
-            </div>
-          </div>
-        </InfoWindow>
-      ) : null } 
-
-      </GoogleMap>
-      </Box>
-
-      <Box className={classes.contacts}>
-      </Box>
-
-    </Box>
     </div>
   );
 };

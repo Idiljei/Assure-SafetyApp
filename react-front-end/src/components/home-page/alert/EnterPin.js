@@ -5,25 +5,29 @@ const userPIN = 2021;
 const limit = 4;
 
 const EnterPin = (props) => {
-  const option = props.option;
-  const setOption = props.setOption;
-
   const [ pin, setPin ] = useState(0);
+  const setUserStatus = props.setUserStatus;
+
+  const turnOffLocationSharing = async () => {
+    const id = 9;
+    await fetch(`http://localhost:8080/home/safe/${id}`, {
+    method: 'PUT',
+    })
+    .catch(err => console.log(err))
+  };
 
   const handleClose = () => {
-    setOption(1)
+    props.setCheckPin(0)
   }
 
   const handleSubmit = () => {
     if (userPIN === parseInt(pin)) {
-      setOption(3);
+      props.setCheckPin(2)
+      turnOffLocationSharing();
     } else {
-      setOption(4);
+      props.setCheckPin(3);
     }
   }
-
-  console.log("This is the option: ", option)
-  console.log(pin)
 
   return (
     <div>

@@ -2,11 +2,11 @@ import React from 'react';
 import { DialogActions, DialogContent, DialogContentText, Button, DialogTitle } from '@material-ui/core';
 
 const SafeNow = (props) => {
-  const setOption = props.setOption;
   const id = props.id;
 
   const handleClose = () => {
-    setOption(0)
+    props.setCheckPin(0);
+    props.setUserStatus(false);
   }
 
   return (

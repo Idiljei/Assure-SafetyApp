@@ -148,6 +148,15 @@ App.put("/home/:id", async (req, res) => {
   }
 });
 
+App.put("/home/safe/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const updateStatus = await pool.query("UPDATE users SET sharing_location = false, updated_at = current_timestamp WHERE id = $1", [id])
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 
 // DELETE => delete a post
 App.delete("/forum/:id", async (req, res) => {

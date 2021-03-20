@@ -2,15 +2,15 @@ import React from 'react';
 import { DialogActions, DialogContent, DialogContentText, Button, DialogTitle } from '@material-ui/core';
 
 const WrongPin = (props) => {
-  const setOption = props.setOption;
   const id = props.id;
 
   const handleClose = () => {
-    setOption(1)
+    props.setCheckPin(0)
+    // setUserStatus(true)
   }
 
   const handleSubmit = () => {
-    setOption(2)
+    props.setCheckPin(1);
   }
 
   return (

@@ -1,21 +1,25 @@
-import React from 'react';
-import { Button, Box } from '@material-ui/core';
-import ConfirmCancel from '../alert/ConfirmCancel';
+import React, { useState, useEffect } from 'react';
+import { Button, Box, Dialog } from '@material-ui/core';
+import EnterPin from './EnterPin';
+import SafeNow from './SafeNow';
+import WrongPin from './WrongPin';
 import SendIcon from '@material-ui/icons/Send';
 import useStyles from '../../Styles';
 
 const LocationButton = (props) => {
   const classes = useStyles();
-  const option = props.location;
-  const setOption = props.setLocation;
+  const userStatus = props.userStatus;
+  const setUserStatus = props.setUserStatus;
+  const id = props.id;
+  const [ checkPin, setCheckPin ] = useState(0);
 
   const status = {
-    before: "Share Live Location",
-    after: "Currently sharing your Live Location"
+    false: "Share Live Location",
+    true: "Currently sharing your Live Location"
   }
 
   const turnOnLocationSharing = async () => {
-    const id = 2;
+    const id = 9;
     await fetch(`http://localhost:8080/home/${id}`, {
     method: 'PUT',
     })
@@ -23,26 +27,39 @@ const LocationButton = (props) => {
   }
 
   const handleClick = () => {
-    if (!option) {
-      setOption(1)
+    if (!userStatus) {
+      setUserStatus(true);
       turnOnLocationSharing();
+      props.checkLocationStatus(); 
       // smsLocation();
     }
 
-    if (option === 1) {
-      setOption(2)
+    if (userStatus) {
+      setCheckPin(1)
     }
   }
+  
+  console.log("This is the checkPin:", checkPin)
 
   return (
     <Box className={classes.home}>
       <Button onClick={handleClick} type="submit" className={classes.homeButton} size="large" startIcon={<SendIcon />} variant="contained">
         
-      { !option ? status.before : status.after }
-
+      { userStatus ? status.true : status.false }
       </Button>
 
-      { option > 1 ? <ConfirmCancel id="location" option={option} setOption={setOption} /> : null }
+
+      { checkPin ?  
+      
+      <Dialog open={checkPin} aria-labelledby="form-dialog-title">
+        
+        { checkPin === 1 ? <EnterPin setCheckPin={setCheckPin} setUserStatus={setUserStatus} /> : null}
+        { checkPin === 2 ? <SafeNow setUserStatus={setUserStatus} setCheckPin={setCheckPin} id={id} /> : null }
+        { checkPin === 3 ? <WrongPin setCheckPin={setCheckPin} id={id} /> : null}
+
+      </Dialog> 
+
+      : null }
 
     </Box>
   )

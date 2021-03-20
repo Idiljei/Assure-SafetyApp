@@ -13,7 +13,7 @@ const ConfirmCancel = (props) => {
       
       { option === 2 ? <EnterPin option={option} setOption={setOption} /> : null }
 
-      { option === 3 ? <SafeNow id={props.id} option={option} setOption={setOption} /> : null }
+      { option === 3 ? <SafeNow checkStatus={props.checkStatus} id={props.id} option={option} setOption={setOption} /> : null }
 
       { option === 4 ? <WrongPin id={props.id} option={option} setOption={setOption} /> : null}
 
