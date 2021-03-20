@@ -21,7 +21,7 @@ app.use(Express.static("public"));
 
 //Page when user is not logged in
 
-app.get("/:id", (req, res) => { 
+app.get("/", (req, res) => { 
   res.json({ home: "page" });
 });
 

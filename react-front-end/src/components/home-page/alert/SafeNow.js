@@ -5,8 +5,8 @@ const SafeNow = (props) => {
   const id = props.id;
 
   const handleClose = () => {
-    props.setCheckPin(0);
     props.setUserStatus(false);
+    props.setCheckPin(0);
   }
 
   return (

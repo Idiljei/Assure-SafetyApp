@@ -1,11 +1,6 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
-import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from "@react-google-maps/api";
-import { Box } from "@material-ui/core";
-import Locate from "../map-page/Locate";
-import mapStyles from "../map-page/mapStyles";
-import useStyles from "../Styles";
+import React, { useState, useEffect } from "react";
+import { Marker } from "@react-google-maps/api";
 import { formatDistance } from "date-fns";
-import MapSearch from "../map-page/MapSearch";
 import "@reach/combobox/styles.css";
 import "../map-page/search.css";
 import './network.css'
@@ -23,8 +18,6 @@ const SafetyNetworkMap = (props) => {
 
     jsonData.map(data => {
       const parsed = JSON.parse(data.current_location)
-
-      console.log(" This is the data:", data)
 
       const userInfo = {
         name: data.first_name, 

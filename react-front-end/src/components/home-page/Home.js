@@ -17,7 +17,7 @@ const Home = () => {
 
     jsonData.map(data => {
       const confirmStatus = data.sharing_location
-      setUserStatus(confirmStatus)
+      return setUserStatus(confirmStatus)
     })}
     catch (err) {
       console.error(err.message);

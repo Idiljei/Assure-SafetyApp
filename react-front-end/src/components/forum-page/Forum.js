@@ -31,6 +31,7 @@ const Forum = () => {
       console.error(err.message);
     }
   };
+
   // validate
   const validateForm = () => {
     if (!description) {

@@ -3,7 +3,6 @@ import { Button, Box, Dialog } from '@material-ui/core';
 import EnterPin from './EnterPin';
 import SafeNow from './SafeNow';
 import WrongPin from './WrongPin';
-import { smsLocation } from '../sms';
 import SendIcon from '@material-ui/icons/Send';
 import useStyles from '../../Styles';
 
@@ -22,7 +21,7 @@ const LocationButton = (props) => {
   const turnOnLocationSharing = async () => {
     const id = 9;
     await fetch(`http://localhost:8080/home/${id}`, {
-    method: 'PUT',
+    method: 'PUT'
     })
     .catch(err => console.log(err))
   }
@@ -31,8 +30,7 @@ const LocationButton = (props) => {
     if (!userStatus) {
       setUserStatus(true);
       turnOnLocationSharing();
-      props.checkLocationStatus(); 
-      smsLocation();
+      // smsLocation();
     }
 
     if (userStatus) {
@@ -40,7 +38,6 @@ const LocationButton = (props) => {
     }
   }
   
-  console.log("This is the checkPin:", checkPin)
 
   return (
     <Box className={classes.home}>
