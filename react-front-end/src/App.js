@@ -19,7 +19,6 @@ const App = () => {
         <Switch>
           <Route path="/profile" component={Profile} />
           <Route path="/forum" component={Map} />
-          <Route path="/safetyNetwork" component={SafetyNetworkMap} />
           <Route path="/" component={Home} />
         </Switch>
 
