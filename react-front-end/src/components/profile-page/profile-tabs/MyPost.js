@@ -1,8 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Divider, List, ListItem, ListItemText, Box } from "@material-ui/core";
 import { IconButton } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
+import ConfirmDelete from "./confirmDelete";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  Button,
+  DialogTitle,
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,6 +25,27 @@ export default function MyPosts(props) {
   const classes = useStyles();
   const [myPosts, setMyPosts] = useState([]);
   const selected = props.selected;
+  const [open, setOpen] = useState(false);
+  const [deletedPost, setDeletedPost] = useState([]);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const deletePost = async (id) => {
+    try {
+      const deletePost = await fetch(`http://localhost:8080/forum/${id}`, {
+        method: "DELETE",
+      });
+      setMyPosts(myPosts.filter((post) => post.id !== id));
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
 
   const getPosts = async () => {
     try {
@@ -32,23 +62,12 @@ export default function MyPosts(props) {
     getPosts();
   }, []);
 
-  const deletePost = async (id) => {
-    try {
-      const deletePost = await fetch(`http://localhost:8080/forum/${id}`, {
-        method: "DELETE",
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
-    <div className={classes.root}>
-      {myPosts.map((post) => {
-        // console.log(myPosts, myPosts[0].id);
-        return (
+    <div>
+      {myPosts.map((post) => (
+        <div className={classes.root}>
           <div>
-            <List>
+            <List key={post.id}>
               <Box display="flex" alignItems="center">
                 <ListItem button>
                   <ListItemText
@@ -62,7 +81,8 @@ export default function MyPosts(props) {
                     <IconButton type="submit" aria-label="delete" size="small">
                       <DeleteIcon
                         onClick={() => {
-                          deletePost(post.id);
+                          handleClickOpen();
+                          setDeletedPost(post.id);
                         }}
                       />
                     </IconButton>
@@ -72,8 +92,37 @@ export default function MyPosts(props) {
             </List>
             <Divider />
           </div>
-        );
-      })}
+
+          <div>
+            {open ? (
+              <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+              >
+                <DialogTitle id="alert-dialog-title">CONFIRM</DialogTitle>
+                <DialogContent>
+                  <DialogContentText id="alert-dialog-description">
+                    Are you sure you want to delete?
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button
+                    color="primary"
+                    onClick={() => {
+                      handleClose();
+                      deletePost(deletedPost);
+                    }}
+                  >
+                    Confirm
+                  </Button>
+                </DialogActions>
+              </Dialog>
+            ) : null}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

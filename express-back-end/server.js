@@ -15,7 +15,7 @@ app.use(BodyParser.json());
 app.use(cors());
 app.use(Express.static("public"));
 
-app.get("/", (req, res) => { 
+app.get("/", (req, res) => {
   res.json({ home: "page" });
 });
 
@@ -102,8 +102,22 @@ app.post("/sms", (req, res) => {
 // POST => create a post
 app.post("/forum", async (req, res) => {
   try {
-    const { user_id, incident_type, title, address, description, date } = req.body;
-    const postData = [user_id, incident_type, title, address, description, date];
+    const {
+      user_id,
+      incident_type,
+      title,
+      address,
+      description,
+      date,
+    } = req.body;
+    const postData = [
+      user_id,
+      incident_type,
+      title,
+      address,
+      description,
+      date,
+    ];
     console.log("This is the submitted data:", postData);
 
     const newForum = await pool.query(
@@ -131,12 +145,14 @@ app.post("/forum", async (req, res) => {
 //   }
 // });
 
-
 // Update live location status to TRUE
 app.put("/home/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const updateStatus = await pool.query("UPDATE users SET sharing_location = true, updated_at = current_timestamp WHERE id = $1", [id])
+    const updateStatus = await pool.query(
+      "UPDATE users SET sharing_location = true, updated_at = current_timestamp WHERE id = $1",
+      [id]
+    );
   } catch (error) {
     console.log(error);
   }
@@ -145,12 +161,14 @@ app.put("/home/:id", async (req, res) => {
 app.put("/home/safe/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const updateStatus = await pool.query("UPDATE users SET sharing_location = false, updated_at = current_timestamp WHERE id = $1", [id])
+    const updateStatus = await pool.query(
+      "UPDATE users SET sharing_location = false, updated_at = current_timestamp WHERE id = $1",
+      [id]
+    );
   } catch (error) {
     console.log(error);
   }
 });
-
 
 // DELETE => delete a post
 app.delete("/forum/:id", async (req, res) => {
@@ -159,8 +177,9 @@ app.delete("/forum/:id", async (req, res) => {
     const deleteForum = await pool.query("DELETE FROM posts WHERE id = $1", [
       id,
     ]);
-  } catch (error) {
-    console.log(error);
+    res.json("post was deleted!");
+  } catch (err) {
+    console.log(err.message);
   }
 });
 

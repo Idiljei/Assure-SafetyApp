@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Tabs, Tab, Typography, Box } from '@material-ui/core';
-import ContactList from './ContactList';
-import UserInfoList from './UserList';
-import MyPosts from './MyPost';
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import { AppBar, Tabs, Tab, Typography, Box } from "@material-ui/core";
+import ContactList from "./ContactList";
+import UserInfoList from "./UserList";
+import MyPosts from "./MyPost";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -35,18 +35,18 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
 const useStyles = makeStyles({
   root: {
-    flexGrow: 2
+    flexGrow: 2,
   },
   bar: {
-    background: '#63639F',
-    indicatorColor: 'white'
-  }
+    background: "#63639F",
+    indicatorColor: "white",
+  },
 });
 
 export default function SimpleTabs(props) {
@@ -61,12 +61,12 @@ export default function SimpleTabs(props) {
     <div className={classes.root}>
       <AppBar position="static" elevation={0}>
         <Tabs
-          className={classes.bar} 
+          className={classes.bar}
           value={value}
-          onChange={handleChange} 
+          onChange={handleChange}
           aria-label="simple tabs example"
           centered
-          >
+        >
           <Tab label="User Information" {...a11yProps(0)} />
           <Tab label="Safety Network" {...a11yProps(1)} />
           <Tab label="My Posts" {...a11yProps(2)} />
@@ -74,21 +74,41 @@ export default function SimpleTabs(props) {
       </AppBar>
 
       <TabPanel value={value} index={0}>
-          <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-            <UserInfoList number={props.number} dob={props.dob}/>
-          </Box>
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <UserInfoList number={props.number} dob={props.dob} />
+        </Box>
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-          <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" marginBottom="1%">
-            <ContactList selected={props.selected}/>
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+          marginBottom="1%"
+        >
+          <ContactList selected={props.selected} />
         </Box>
       </TabPanel>
 
       <TabPanel value={value} index={2}>
-          <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-            <MyPosts title={props.title} date={props.date} selected={props.selected}/>
-          </Box>
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <MyPosts
+            title={props.title}
+            date={props.date}
+            selected={props.selected}
+          />
+        </Box>
       </TabPanel>
     </div>
   );
