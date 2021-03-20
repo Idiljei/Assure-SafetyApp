@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Badge from '@material-ui/core/Badge';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
@@ -33,8 +33,26 @@ const StyledBadge = withStyles((theme) => ({
 }))(Badge);
 
 export default function UserAvatar(props) {
+  const [ online, setOnline ] = useState(null);
 
-  const [ online, setOnline ] = useState(true);
+  const checkLocationStatus = async() => {
+    try {
+    const id = 9;
+    const response = await fetch(`http://localhost:8080/user/${id}`)
+    const jsonData = await response.json();
+
+    jsonData.map(data => {
+      const confirmStatus = data.sharing_location
+      return setOnline(confirmStatus)
+    })}
+    catch (err) {
+      console.error(err.message);
+    }
+  }
+
+  useEffect(() => {
+    checkLocationStatus();
+  }, []);
 
   return (
     <div>
