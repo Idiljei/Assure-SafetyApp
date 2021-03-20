@@ -31,30 +31,47 @@ const MapLegend = () => {
 
   const message = (
     <>
-    <div class="icon-box">
-      <img src="./hospital.svg" class="legend-icon"/>
-      <h4>Hospitals</h4>
-      <img src="./police.svg" class="legend-icon"/>
-      <h4>Police Staions</h4>
-    </div>
-    <div class="icon-box">
-      <img src="./fire-station.svg" class="legend-icon"/>
-      <h4>Fire Stations</h4>
-    </div>
-    <div class="icon-box">
-      <img src="./burglar.svg" class="legend-icon"/>
-      <h4>Theft</h4>
-      <img src="./harassment.svg" class="legend-icon"/>
-      <h4>Harassment</h4>
-      <img src="./report.svg" class="legend-icon"/>
-      <h4>Other</h4>
-    </div>  
+    <div class="big-box">
+      <div class="icon-box">
+        <div class="small-box">
+        <img src="./hospital.svg" class="legend-icon"/>
+        <h4>Hospitals</h4>
+        </div>
+
+        <div class="small-box">
+        <img src="./police.svg" class="legend-icon"/>
+        <h4>Police Staions</h4>
+        </div>
+
+        <div class="small-box">
+        <img src="./fire-station.svg" class="legend-icon"/>
+        <h4>Fire Stations</h4>
+        </div>
+      </div>
+
+      <div class="icon-box">
+        <div class="small-box">
+        <img src="./burglar.svg" class="legend-icon"/>
+        <h4>Theft</h4>
+        </div>
+  
+        <div class="small-box">
+        <img src="./harassment.svg" class="legend-icon"/>
+        <h4>Harassment</h4>
+        </div>
+
+        <div class="small-box">
+        <img src="./report.svg" class="legend-icon"/>
+        <h4>Other</h4>
+        </div>
+      </div>
+      </div>
     </>
   )
 
   return (
     <div class="legend">
-      <Button onClick={handleClick({ vertical: 'top', horizontal: 'center' })}>Top-Center</Button>
+      <Button onClick={handleClick({ vertical: 'top', horizontal: 'center' })}>Legend</Button>
       <Snackbar
         anchorOrigin={{ vertical, horizontal }}
         open={open}

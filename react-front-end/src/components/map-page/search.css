@@ -38,10 +38,25 @@ div.style {
   padding: 0.5em;
 }
 
+div.MuiSnackbarContent-root {
+  padding-left: 2em;
+}
+
+.small-box {
+  display: flex;
+}
+
+.big-box {
+  display: flex;
+  justify-content: space-between;
+}
+
 .icon-box {
   display: flex;
-  align-items: center;
-  padding: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 2em;
+  width: 100%;
 }
 
 div.MuiSnackbarContent-message {
