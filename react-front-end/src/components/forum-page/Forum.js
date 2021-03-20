@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Box, Fab, Tooltip } from "@material-ui/core";
-import FilterButton from "./FilterButton";
 import AddIcon from "@material-ui/icons/Add";
 import CreatePost from "./CreatePost";
 import postStyles from "./PostStyles";
@@ -87,8 +86,6 @@ const Forum = () => {
 
   return (
     <div className="forum-box">
-      <Box className={classes.filterButton}>
-        <FilterButton />
         <div class="add-button">
           <Tooltip title="Create Post" aria-label="add" arrow>
             <Fab
@@ -117,8 +114,6 @@ const Forum = () => {
               ) : null }
           </Box>
         </div>
-      </Box>
-
       <div>
       { allPosts.map((post) => {
           return (
