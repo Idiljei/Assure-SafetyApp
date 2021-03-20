@@ -10,16 +10,10 @@ const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require("twilio")(accountSid, authToken);
 
-// const router  = Express.Router();
-
-// const {sendTextMsg} = require('./api/send_sms');
-// Express Configuration
 app.use(BodyParser.urlencoded({ extended: false }));
 app.use(BodyParser.json());
 app.use(cors());
 app.use(Express.static("public"));
-
-//Page when user is not logged in
 
 app.get("/", (req, res) => { 
   res.json({ home: "page" });

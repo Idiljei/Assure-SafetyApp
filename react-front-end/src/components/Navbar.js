@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ForumIcon from "@material-ui/icons/Forum";
+import RoomIcon from "@material-ui/icons/Room";
 import HomeIcon from "@material-ui/icons/Home";
 import PeopleIcon from '@material-ui/icons/People';
 import PersonPinIcon from "@material-ui/icons/PersonPin";
@@ -15,10 +15,7 @@ const Navbar = () => {
           <BottomNavigationAction label="Home" icon={<HomeIcon />} />
         </Link>
         <Link to="/forum">
-          <BottomNavigationAction label="Forum" icon={<ForumIcon />} />
-        </Link>
-        <Link to="/safetyNetwork">
-          <BottomNavigationAction label="Safety Network" icon={<PeopleIcon  />} />
+          <BottomNavigationAction label="Forum" icon={<RoomIcon />} />
         </Link>
         <Link to="/profile">
           <BottomNavigationAction label="Profile" icon={<PersonPinIcon />} />
