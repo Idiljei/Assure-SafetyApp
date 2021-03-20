@@ -5,9 +5,10 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
-import { Box, Button,  Avatar } from "@material-ui/core";
+import { Box, Button } from "@material-ui/core";
 import Locate from "./Locate";
 import Forum from '../forum-page/Forum';
+import UserAvatar from '../safety-network-page/Avatar';
 import mapStyles from "./mapStyles";
 import useStyles from "../Styles";
 import MapSearch from "./MapSearch";
@@ -128,7 +129,7 @@ const Map = () => {
               }}
             >
               <div>
-              { selected.img &&  <Avatar alt="avatar" src={selected.img} alt="icon" className={classes.large}/> }
+              { selected.img &&  <UserAvatar img={selected.img}/> }
                 <h2>{ selected.title || selected.name }</h2>
                 { selected.address ? <h4>Address: {selected.address}</h4> : null }
                 { selected.open ? <h4>Open Now</h4> : null }

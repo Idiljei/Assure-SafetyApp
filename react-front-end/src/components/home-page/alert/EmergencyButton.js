@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Box } from '@material-ui/core';
-import ConfirmCancel from '../alert/ConfirmCancel';
 import SendIcon from '@material-ui/icons/Send';
 import useStyles from '../../Styles';
 
@@ -34,7 +33,6 @@ const EmergencyButton = (props) => {
       
       </Button>
 
-      { option > 1 ? <ConfirmCancel id="police" option={option} setOption={setOption} /> : null }
 
     </Box>
   )
