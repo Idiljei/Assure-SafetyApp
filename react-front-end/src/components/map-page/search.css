@@ -35,7 +35,7 @@ div.style {
 .legend-icon {
   width: 1.6em;
   margin: 0;
-  padding: 0.5em;
+  padding-right: 0.5em;
 }
 
 div.MuiSnackbarContent-root {
@@ -44,6 +44,10 @@ div.MuiSnackbarContent-root {
 
 .small-box {
   display: flex;
+}
+
+h4.icon-label {
+  margin: 0.7em;
 }
 
 .big-box {
