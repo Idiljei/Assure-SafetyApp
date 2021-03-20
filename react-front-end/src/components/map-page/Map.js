@@ -7,15 +7,14 @@ import {
 } from "@react-google-maps/api";
 import { Box, Button } from "@material-ui/core";
 import Locate from "./Locate";
-import Legend from "./Legend";
 import Forum from '../forum-page/Forum';
 import mapStyles from "./mapStyles";
 import useStyles from "../Styles";
 import MapSearch from "./MapSearch";
 import MarkSafeSpots from "./MarkSafeSpots";
+import SafetyNetworkMap from "../safety-network-page/SafetyNetwork";
 import "./search.css";
 import "@reach/combobox/styles.css";
-import SafetyNetworkMap from "../safety-network-page/SafetyNetwork";
 
 const containerStyle = {
   width: "100%",
@@ -143,8 +142,6 @@ const Map = () => {
 
       </GoogleMap>
       </Box>
-
-      <Legend />
 
       <Forum />
 
