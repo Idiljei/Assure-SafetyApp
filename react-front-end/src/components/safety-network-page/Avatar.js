@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Badge from '@material-ui/core/Badge';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
+import CallIcon from '@material-ui/icons/Call';
+import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+import {smsCheckin} from '../home-page/sms'
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -32,21 +35,30 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
+
+const handleClick = () => {
+  smsCheckin()
+  }
+
 export default function UserAvatar(props) {
-  const selected = props.selected
+  const selected = props.selected;
 
   return (
     <div>
-    { selected.sharing_location ? 
-      <StyledBadge overlap="circle"
-        variant="dot"
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-      >
-        <Avatar alt="avatar" src={props.img} />
-      </StyledBadge> : <Avatar alt="avatar" src={props.img} /> }
+      { selected.sharing_location ?
+        <StyledBadge overlap="circle"
+          variant="dot"
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+        >
+          <Avatar alt="avatar" src={props.img} />
+
+            <CallIcon />
+            <ChatBubbleOutlineIcon onClick={handleClick}/>
+        </StyledBadge> : <Avatar alt="avatar" src={props.img} />
+      }
     </div>
   );
 }
