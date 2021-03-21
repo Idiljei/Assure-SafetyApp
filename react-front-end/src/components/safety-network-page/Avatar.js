@@ -33,7 +33,7 @@ const StyledBadge = withStyles((theme) => ({
 }))(Badge);
 
 export default function UserAvatar(props) {
-  const selected = props.selected
+  const selected = props.selected;
 
   return (
     <div>

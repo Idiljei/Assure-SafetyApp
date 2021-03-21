@@ -18,10 +18,14 @@ const MarkIncidents = (props) => {
         const lng = locationObj.lng;
         const id = post.id;
         const type = post.incident_type;
+        const date = post.date
+
+        console.log("This is the data:", post)
 
         const markerInfo = {
           id,
           type,
+          date,
           title,
           lat,
           lng,

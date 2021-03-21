@@ -1,13 +1,12 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import {
   GoogleMap,
-  useJsApiLoader,
-  InfoWindow,
+  useJsApiLoader
 } from "@react-google-maps/api";
 import { Box, Button } from "@material-ui/core";
 import Locate from "./Locate";
 import Forum from '../forum-page/Forum';
-import UserAvatar from '../safety-network-page/Avatar';
+import InfoWindowMarker from './InfoWindow';
 import mapStyles from "./mapStyles";
 import useStyles from "../Styles";
 import MapSearch from "./MapSearch";
@@ -41,34 +40,13 @@ const Map = () => {
   const classes = useStyles();
   const [selected, setSelected] = useState(null);
   const [ filter, setFilter ] = useState(0);
-  const [ online, setOnline ] = useState(null);
   const [ userSn, setUserSn ] = useState([]);
-
   const [ openPost, setOpenPost ] = useState(null);
 
   const { loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
     libraries,
   });
-
-  const checkLocationStatus = async() => {
-    try {
-    const id = 3;
-    const response = await fetch(`http://localhost:8080/snlocation/${id}`)
-    const jsonData = await response.json();
-
-    jsonData.map(data => {
-      const confirmStatus = data.sharing_location
-      setOnline(confirmStatus)
-    })}
-    catch (err) {
-      console.error(err.message);
-    }
-  }
-  
-  useEffect(() => {
-    checkLocationStatus();
-  }, []);
 
   const mapRef = useRef();
 
@@ -108,27 +86,7 @@ const Map = () => {
 
         { !filter || filter === 2 ? <MarkIncidents selected={selected} setSelected={setSelected} /> : null }
 
-        { selected ? (
-            <InfoWindow
-              position={{ lat: selected.lat, lng: selected.lng }}
-              onCloseClick={() => {
-                setSelected(null);
-              }}
-            >
-              <div>
-              { selected.img &&  <UserAvatar selected={selected} online={online} img={selected.img}/> }
-                <h2>{ selected.title || selected.name }</h2>
-                { selected.address ? <h4>Address: {selected.address}</h4> : null }
-                { selected.open ? <h4>Open Now</h4> : null }
-                { selected.address ? <h6>Go Here:  </h6> : null}
-                { selected.title ? 
-                    <div>
-                      <Button onClick={() => setOpenPost(selected.id)}>See Details</Button>
-                      </div> : null}
-                { selected.sharing_location ? <div>Current Sharing Location</div> : <div>Updated: {selected.time}</div> }
-              </div>
-            </InfoWindow>
-          ) : null}
+        { selected ? ( <InfoWindowMarker selected={selected} setSelected={setSelected} setOpenPost={setOpenPost}  /> ) : null}
 
       </GoogleMap>
       </Box>
