@@ -14,10 +14,8 @@ import {
   FormLabel,
   FormControlLabel
 } from "@material-ui/core";
-import { DatePicker } from 'antd';
 import Search from "./ForumSearch";
 import postStyles from "./PostStyles";
-import 'antd/dist/antd.css';
 import "./forum.css";
 
 const CreatePost = (props) => {

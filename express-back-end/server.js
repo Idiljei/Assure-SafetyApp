@@ -87,6 +87,7 @@ app.get("/forum/user/:id", async (req, res) => {
 app.post("/sms", (req, res) => {
   res.header("Content-Type", "application/json");
   console.log("Req BOdy of Post to SMS:", req.body);
+  
   client.messages
     .create({
       body: req.body.message,

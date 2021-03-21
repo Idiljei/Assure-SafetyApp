@@ -1,5 +1,6 @@
 import React from 'react';
 import { DialogActions, DialogContent, DialogContentText, Button, DialogTitle } from '@material-ui/core';
+// import { smsSafeNow } from '../sms'
 
 const SafeNow = (props) => {
   const id = props.id;
@@ -11,6 +12,7 @@ const SafeNow = (props) => {
 
     props.setUserStatus(false);
     props.setCheckPin(0);
+    // smsSafeNow()
   }
 
   return (
