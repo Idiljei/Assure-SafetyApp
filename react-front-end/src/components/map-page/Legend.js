@@ -9,7 +9,6 @@ const useStyles = makeStyles({
   }
 })
 
-
 const MapLegend = () => {
   const classes = useStyles();
 
