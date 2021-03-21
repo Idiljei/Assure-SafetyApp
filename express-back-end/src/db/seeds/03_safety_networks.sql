@@ -8,4 +8,4 @@ insert into safety_networks (sn_id, user_id) values (3, 4);
 insert into safety_networks (sn_id, user_id) values (3, 2);
 insert into safety_networks (sn_id, user_id) values (3, 1);
 insert into safety_networks (sn_id, user_id) values (3, 8);
-insert into safety_networks (sn_id, user_id) values (3, 9);
+insert into safety_networks (sn_id, user_id) values (3, 8);
