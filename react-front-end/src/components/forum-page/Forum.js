@@ -17,6 +17,10 @@ const Forum = (props) => {
   const [ incident_type, setIncidentType ] = useState(null);
   const [ error, setError ] = useState("");
 
+  const openPost = props.openPost; // post ID
+
+  console.log("This is the selected post id:", openPost);
+
   const makePost = async () => {
     try {
       const user_id = 3;
@@ -68,7 +72,7 @@ const Forum = (props) => {
     setSelected(false);
   };
 
-  const getPosts = async () => {
+  const getPost = async () => {
     try {
       const response = await fetch("http://localhost:8080/forum");
       const jsonData = await response.json();

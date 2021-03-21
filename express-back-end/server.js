@@ -26,7 +26,7 @@ app.get("/forum", async (req, res) => {
   // console.log("Forum Get Request");
   try {
     const allForums = await pool.query(
-      "SELECT users.first_name, users.last_name, posts.description, posts.date, posts.title, posts.address, posts.incident_type FROM posts JOIN users ON posts.user_id = users.id ORDER by posts.id DESC LIMIT 10;"
+      "SELECT users.first_name, users.last_name, posts.id, posts.description, posts.date, posts.title, posts.address, posts.incident_type FROM posts JOIN users ON posts.user_id = users.id ORDER by posts.id DESC LIMIT 10;"
     );
     res.json(allForums.rows);
   } catch (err) {

@@ -45,6 +45,8 @@ const Map = () => {
   const [ online, setOnline ] = useState(null);
   const [ userSn, setUserSn ] = useState([]);
 
+  const [ openPost, setOpenPost ] = useState(null);
+
   const { loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
     libraries,
@@ -60,7 +62,10 @@ const Map = () => {
         const locationObj = JSON.parse(post.address);
         const lat = locationObj.lat;
         const lng = locationObj.lng;
+        const id = post.id;
+
         const markerInfo = {
+          id,
           title,
           lat,
           lng,
@@ -105,6 +110,8 @@ const Map = () => {
   }, []);
 
   if (loadError) return "Error loading maps";
+
+  console.log("This is the selecdted post:", selected)
 
   return (
     <div className="map">
@@ -162,7 +169,10 @@ const Map = () => {
                 { selected.address ? <h4>Address: {selected.address}</h4> : null }
                 { selected.open ? <h4>Open Now</h4> : null }
                 { selected.address ? <h6>Go Here:  </h6> : null}
-                { selected.title ? <div><Button>See Details</Button></div> : null}
+                { selected.title ? 
+                    <div>
+                      <Button onClick={() => setOpenPost(selected.id)}>See Details</Button>
+                      </div> : null}
                 { selected.sharing_location ? <div>Current Sharing Location</div> : <div>Updated: {selected.time}</div> }
               </div>
             </InfoWindow>
@@ -171,8 +181,9 @@ const Map = () => {
       </GoogleMap>
       </Box>
 
-      <FilterButton filter={filter} setFilter={setFilter} />   
-      <Forum selected={selected} />
+      <FilterButton filter={filter} setFilter={setFilter} />
+      
+      <Forum openPost={openPost} selected={selected} />
 
     </Box>
     </div>
