@@ -5,6 +5,10 @@ const SafeNow = (props) => {
   const id = props.id;
 
   const handleClose = () => {
+    if (id === 'police') {
+      return  props.setOption(0); // the police button
+    }
+
     props.setUserStatus(false);
     props.setCheckPin(0);
   }

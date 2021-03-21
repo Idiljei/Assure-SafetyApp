@@ -5,13 +5,21 @@ const WrongPin = (props) => {
   const id = props.id;
 
   const handleClose = () => {
-    props.setCheckPin(0)
-    // setUserStatus(true)
+    if (id === 'police') {
+      return props.setOption(1);
+    }
+
+    props.setCheckPin(0);
   }
 
   const handleSubmit = () => {
+    if (id === 'police') {
+      return props.setOption(2);
+    }
+
     props.setCheckPin(1);
   }
+
 
   return (
     <div>

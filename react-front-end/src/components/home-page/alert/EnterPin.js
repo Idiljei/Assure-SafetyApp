@@ -7,6 +7,8 @@ const limit = 4;
 const EnterPin = (props) => {
   const [ pin, setPin ] = useState(0);
   const setUserStatus = props.setUserStatus;
+  const setOption = props.setOption; // for police button
+  const id = props.id;
 
   const turnOffLocationSharing = async () => {
     const id = 3;
@@ -17,13 +19,27 @@ const EnterPin = (props) => {
   };
 
   const handleClose = () => {
-    props.setCheckPin(0)
+    if (id === 'police') {
+      return props.setOption(0);
+    }
+
+    props.setCheckPin(0);
   }
 
   const handleSubmit = () => {
+    if (id === 'police') {
+      if (userPIN === parseInt(pin)) {
+        return props.setOption(3)
+      }
+
+      return props.setOption(4)
+    }
+
+
     if (userPIN === parseInt(pin)) {
-      props.setCheckPin(2)
+      props.setCheckPin(2);
       turnOffLocationSharing();
+
     } else {
       props.setCheckPin(3);
     }

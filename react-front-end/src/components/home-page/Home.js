@@ -8,6 +8,9 @@ import '././alert/Alertpopup.css';
 const Home = () => {
   const classes = useStyles();
   const [ userStatus, setUserStatus ] = useState(null);
+  const [ policeStatus, setPoliceStatus ] = useState(null);
+
+  console.log("This is the em button status:", policeStatus)
 
   const checkLocationStatus = async() => {
     try {
@@ -28,8 +31,6 @@ const Home = () => {
     checkLocationStatus();
   }, []);
 
-  console.log("This is the user Status:", userStatus)
-
   return (
     <Box className={classes.homeBox}>
       <Box margin="2em">
@@ -41,7 +42,10 @@ const Home = () => {
       </Box>
 
       <Box margin="2em">
-        <EmergencyButton />
+        <EmergencyButton 
+          id="police"
+          policeStatus={policeStatus}
+          setPoliceStatus={setPoliceStatus} />
       </Box>
     </Box>
   )

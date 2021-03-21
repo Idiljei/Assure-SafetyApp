@@ -1,13 +1,19 @@
 import React from 'react';
-import { Button, Box } from '@material-ui/core';
+import { Button, Box, Dialog } from '@material-ui/core';
+import EnterPin from './EnterPin';
+import SafeNow from './SafeNow';
+import { smsPolice } from './EmergencyButton';
+import WrongPin from './WrongPin';
 import SendIcon from '@material-ui/icons/Send';
 import useStyles from '../../Styles';
 
+
 const EmergencyButton = (props) => {
   const classes = useStyles();
+  const option = props.policeStatus;
+  const setOption = props.setPoliceStatus;
 
-  const option = props.police;
-  const setOption = props.setPolice;
+  const id = 'police';
 
   const status = {
     before: "Call Emergency Services",
@@ -29,11 +35,24 @@ const EmergencyButton = (props) => {
     <Box className={classes.home}>
       <Button onClick={handleClick} type="submit" className={classes.homeButton} size="large" startIcon={<SendIcon />} variant="contained">
         
-        { !option ? status.before : status.after }
-      
+        { !option && status.before }
+        { option >= 1 && status.after}
+        
       </Button>
 
+      { option > 1 ?  
+      
+      <Dialog open={option > 1} aria-labelledby="form-dialog-title">
+        
+        { option === 2 ? <EnterPin setOption={setOption} option={option} id={id} /> : null}
 
+        { option === 3 ? <SafeNow setOption={setOption} option={option} id={id} /> : null }
+
+        { option === 4 ? <WrongPin setOption={setOption} id={id} /> : null}
+
+      </Dialog> 
+
+      : null }
     </Box>
   )
 };
