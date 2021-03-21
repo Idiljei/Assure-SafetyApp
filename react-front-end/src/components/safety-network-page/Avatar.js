@@ -33,30 +33,11 @@ const StyledBadge = withStyles((theme) => ({
 }))(Badge);
 
 export default function UserAvatar(props) {
-  const [ online, setOnline ] = useState(null);
-
-  const checkLocationStatus = async() => {
-    try {
-    const id = 9;
-    const response = await fetch(`http://localhost:8080/user/${id}`)
-    const jsonData = await response.json();
-
-    jsonData.map(data => {
-      const confirmStatus = data.sharing_location
-      return setOnline(confirmStatus)
-    })}
-    catch (err) {
-      console.error(err.message);
-    }
-  }
-
-  useEffect(() => {
-    checkLocationStatus();
-  }, []);
+  const selected = props.selected
 
   return (
     <div>
-    { online ? 
+    { selected.sharing_location ? 
       <StyledBadge overlap="circle"
         variant="dot"
         anchorOrigin={{

@@ -8,9 +8,9 @@ INSERT INTO users
 VALUES
   ('Nick', 'Miller', '315-155-1892', 'Mar 17, 1985', 'nick@gmail.com', '{"lat":49.93424, "lng":-123.12213}', '/avatars/nick.png');
 INSERT INTO users
-  (first_name, last_name, phone_number, date_of_birth, email, current_location, img, sharing_location)
+  (first_name, last_name, phone_number, date_of_birth, email, current_location, img)
 VALUES
-  ('Jessica', 'Day', '144-387-1970', 'Feb 16, 1985', 'jessica@gmail.com', '{"lat":49.123324, "lng":-123.123413}', '/avatars/jessica.jpg' , true);
+  ('Jessica', 'Day', '144-387-1970', 'Feb 16, 1985', 'jessica@gmail.com', '{"lat":49.123324, "lng":-123.123413}', '/avatars/jessica.jpg');
 INSERT INTO users
   (first_name, last_name, phone_number, date_of_birth, email, current_location, img, sharing_location)
 VALUES

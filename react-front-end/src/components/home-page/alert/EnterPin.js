@@ -9,7 +9,7 @@ const EnterPin = (props) => {
   const setUserStatus = props.setUserStatus;
 
   const turnOffLocationSharing = async () => {
-    const id = 9;
+    const id = 3;
     await fetch(`http://localhost:8080/home/safe/${id}`, {
     method: 'PUT',
     })

@@ -130,21 +130,6 @@ app.post("/forum", async (req, res) => {
   }
 });
 
-// UPDATE => update a post
-// app.put("/forum/:id", async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const { description } = req.body;
-//     const updateForum = await pool.query(
-//       "UPDATE posts SET description = $1 WHERE id = $2",
-//       [description, id]
-//     );
-//     // res.json();
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
-
 // Update live location status to TRUE
 app.put("/home/:id", async (req, res) => {
   const { id } = req.params;

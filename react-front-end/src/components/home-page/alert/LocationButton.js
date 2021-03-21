@@ -19,7 +19,7 @@ const LocationButton = (props) => {
   }
 
   const turnOnLocationSharing = async () => {
-    const id = 9;
+    const id = 3;
     await fetch(`http://localhost:8080/home/${id}`, {
     method: 'PUT'
     })
@@ -38,7 +38,6 @@ const LocationButton = (props) => {
     }
   }
   
-
   return (
     <Box className={classes.home}>
       <Button onClick={handleClick} type="submit" className={classes.homeButton} size="large" startIcon={<SendIcon />} variant="contained">

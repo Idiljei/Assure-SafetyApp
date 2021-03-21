@@ -56,7 +56,7 @@ const CreatePost = (props) => {
               <Box display="flex" flexWrap="wrap">
               <FormControlLabel value="Theft" control={<Radio />} label="Theft" />
               <FormControlLabel value="Assault" control={<Radio />} label="Assault" />
-              <FormControlLabel value="Harrassment" control={<Radio />} label="Harrassment" />
+              <FormControlLabel value="Harassment" control={<Radio />} label="Harassment" />
               <FormControlLabel value="Other" control={<Radio />} label="Other" />
               </Box>
             </RadioGroup>

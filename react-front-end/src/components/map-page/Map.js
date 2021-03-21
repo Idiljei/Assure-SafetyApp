@@ -42,6 +42,10 @@ const Map = () => {
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
   const [ filter, setFilter ] = useState(0);
+  const [ online, setOnline ] = useState(null);
+  const [ userSn, setUserSn ] = useState([]);
+
+  console.log("This the online status:", online)
 
   const { loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
@@ -71,8 +75,24 @@ const Map = () => {
     }
   };
 
+  const checkLocationStatus = async() => {
+    try {
+    const id = 3;
+    const response = await fetch(`http://localhost:8080/snlocation/${id}`)
+    const jsonData = await response.json();
+
+    jsonData.map(data => {
+      const confirmStatus = data.sharing_location
+      setOnline(confirmStatus)
+    })}
+    catch (err) {
+      console.error(err.message);
+    }
+  }
+  
   useEffect(() => {
     getPostLocation();
+    checkLocationStatus();
   }, []);
 
   const mapRef = useRef();
@@ -109,7 +129,7 @@ const Map = () => {
         
         { filter < 2 ? <MarkSafeSpots selected={selected} setSelected={setSelected}/> : null }
 
-        { !filter || filter === 3 ? <SafetyNetworkMap selected={selected} setSelected={setSelected}/> : null }
+        { !filter || filter === 3 ? <SafetyNetworkMap userSn={userSn} setUserSn={setUserSn} selected={selected} setSelected={setSelected}/> : null }
 
         { !filter || filter === 2 ? 
 
@@ -119,6 +139,7 @@ const Map = () => {
                 key={post.title + post.lat + post.lng}
                 position={{ lat: post.lat, lng: post.lng }}
                 onClick={() => {
+                  checkLocationStatus();
                   setSelected(post);
                 }}
                 icon={{
@@ -138,7 +159,7 @@ const Map = () => {
               }}
             >
               <div>
-              { selected.img &&  <UserAvatar img={selected.img}/> }
+              { selected.img &&  <UserAvatar selected={selected} online={online} img={selected.img}/> }
                 <h2>{ selected.title || selected.name }</h2>
                 { selected.address ? <h4>Address: {selected.address}</h4> : null }
                 { selected.open ? <h4>Open Now</h4> : null }

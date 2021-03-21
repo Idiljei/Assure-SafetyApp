@@ -11,7 +11,7 @@ const Home = () => {
 
   const checkLocationStatus = async() => {
     try {
-    const id = 9;
+    const id = 3;
     const response = await fetch(`http://localhost:8080/user/${id}`)
     const jsonData = await response.json();
 

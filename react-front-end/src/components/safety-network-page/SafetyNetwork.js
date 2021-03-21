@@ -6,7 +6,8 @@ import "../map-page/search.css";
 import './network.css'
 
 const SafetyNetworkMap = (props) => {
-  const [ userSn, setUserSn ] = useState([]);
+  const userSn = props.userSn;
+  const setUserSn = props.setUserSn;
   const setSelected = props.setSelected;
 
   const getUserNetwork = async () => {
@@ -36,8 +37,36 @@ const SafetyNetworkMap = (props) => {
     }
   };
 
+  const getUser = async () => {
+    try {
+      const id = 3;
+      const response = await fetch(`http://localhost:8080/user/${id}`);
+      const jsonData = await response.json();
+
+      jsonData.map((data) => {
+        const parsed = JSON.parse(data.current_location);
+
+        const userInfo = {
+          name: data.first_name,
+          number: data.phone_number,
+          lat: parsed.lat,
+          lng: parsed.lng,
+          img: data.img,
+          sharing_location: data.sharing_location,
+          time: formatDistance(new Date(data.updated_at), new Date(), {
+            addSuffix: true,
+          }),
+        };
+        return setUserSn((prev) => [...prev, userInfo]);
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
   useEffect(() => {
     getUserNetwork();
+    getUser();
   }, []);
 
   return (
