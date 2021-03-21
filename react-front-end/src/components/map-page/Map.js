@@ -85,47 +85,9 @@ const Map = () => {
 
         { !filter || filter === 3 ? <SafetyNetworkMap userSn={userSn} setUserSn={setUserSn} selected={selected} setSelected={setSelected}/> : null }
 
-        { !filter || filter === 2 ? 
+        { !filter || filter === 2 ? <MarkIncidents setSelected={setSelected} /> : null }
 
-          <div>
-          { markers.map((post) => (
-              <Marker
-                key={post.title + post.lat + post.lng}
-                position={{ lat: post.lat, lng: post.lng }}
-                onClick={() => {
-                  checkLocationStatus();
-                  setSelected(post);
-                }}
-                icon={{
-                  url: "./report.svg",
-                  scaledSize: new window.google.maps.Size(25, 25),
-                  origin: new window.google.maps.Point(0, 0),
-                  anchor: new window.google.maps.Point(17, 17)
-                }}
-              />
-            ))} </div> : null }
-
-        { selected ? (
-            <InfoWindow
-              position={{ lat: selected.lat, lng: selected.lng }}
-              onCloseClick={() => {
-                setSelected(null);
-              }}
-            >
-              <div>
-              { selected.img &&  <UserAvatar selected={selected} online={online} img={selected.img}/>}
-                <h2>{ selected.title || selected.name }</h2>
-                { selected.address ? <h4>Address: {selected.address}</h4> : null }
-                { selected.open ? <h4>Open Now</h4> : null }
-                { selected.address ? <h6>Go Here:  </h6> : null}
-                { selected.title ? 
-                    <div>
-                      <Button onClick={() => setOpenPost(selected.id)}>See Details</Button>
-                      </div> : null}
-                { selected.sharing_location ? <div>Current Sharing Location</div> : <div>Updated: {selected.time}</div> }
-              </div>
-            </InfoWindow>
-          ) : null}
+        { selected ? <InfoWindowMarker selected={selected} setSelected={setSelected} setOpenPost={setOpenPost}/> : null } 
 
       </GoogleMap>
       </Box>
