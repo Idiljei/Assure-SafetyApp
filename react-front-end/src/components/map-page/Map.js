@@ -111,8 +111,6 @@ const Map = () => {
 
   if (loadError) return "Error loading maps";
 
-  console.log("This is the selecdted post:", selected)
-
   return (
     <div className="map">
     <Box display="flex" flexDirection="column">
