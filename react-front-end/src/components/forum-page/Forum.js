@@ -6,7 +6,7 @@ import postStyles from "./PostStyles";
 import Post from "./Post";
 import "./forum.css";
 
-const Forum = () => {
+const Forum = (props) => {
   const classes = postStyles();
   const [ allPosts, setAllPosts ] = useState([]);
   const [ selected, setSelected ] = useState(false);
@@ -107,6 +107,7 @@ const Forum = () => {
                   onSubmitForm={validateForm}
                   close={handleClose}
                   setDate={setDate}
+                  date={date}
                   setType={setIncidentType}
                   type={incident_type}
                   error={error}

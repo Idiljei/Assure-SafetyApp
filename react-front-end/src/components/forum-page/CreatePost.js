@@ -14,14 +14,18 @@ import {
   FormLabel,
   FormControlLabel
 } from "@material-ui/core";
+import { DatePicker } from 'antd';
 import Search from "./ForumSearch";
 import postStyles from "./PostStyles";
+import 'antd/dist/antd.css';
 import "./forum.css";
 
 const CreatePost = (props) => {
   const classes = postStyles();
   const open = props.open;
   const close = props.close;
+
+  console.log("This is the date:", props.date)
 
   return (
     <div>
@@ -71,9 +75,12 @@ const CreatePost = (props) => {
             required
             className={classes.textField}
             margin="normal"
+            value={props.date}
             InputLabelProps={{ shrink: true }}
             onChange={(e) => props.setDate(e.target.value)}
           />
+
+          {/* <DatePicker className={classes.time} showTime onChange={(e) => props.setDate(e.target.value)} /> */}
 
           <TextField
             className={classes.input}

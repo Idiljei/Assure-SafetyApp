@@ -22,9 +22,9 @@ const GetAddress = (props) => {
   .catch( err => console.log(err))
 
   return (
-    <div>
+    <>
       {props.converted}
-    </div>
+    </>
   )
 }
 

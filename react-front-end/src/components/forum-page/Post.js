@@ -6,7 +6,9 @@ import "./forum.css";
 
 const Post = (props) => {
   const [converted, setConverted] = useState("");
-  const date = format(new Date(props.date), "MMM dd, yyyy h:mm aaa");
+  const newDate = new Date(props.date);
+  const date = format(newDate, 'Pp')
+
   const addressObj = JSON.parse(props.address);
   const lat = addressObj.lat;
   const lng = addressObj.lng;

@@ -45,8 +45,6 @@ const Map = () => {
   const [ online, setOnline ] = useState(null);
   const [ userSn, setUserSn ] = useState([]);
 
-  console.log("This the online status:", online)
-
   const { loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
     libraries,
@@ -174,7 +172,7 @@ const Map = () => {
       </Box>
 
       <FilterButton filter={filter} setFilter={setFilter} />   
-      <Forum />
+      <Forum selected={selected} />
 
     </Box>
     </div>

@@ -36,6 +36,10 @@ const postStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
     marginTop: '1.3em',
     width: '96%',
+  },
+  time: {
+    zIndex: 6,
+    position: 'absolute'
   }
 }));
 
