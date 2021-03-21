@@ -15,6 +15,7 @@ import MapSearch from "./MapSearch";
 import MarkSafeSpots from "./MarkSafeSpots";
 import FilterButton from "../map-page/FilterButton";
 import MapLegend from './Legend';
+import MarkIncidents from './MarkIncidents';
 import SafetyNetworkMap from "../safety-network-page/SafetyNetwork";
 import "./search.css";
 import "@reach/combobox/styles.css";
@@ -39,7 +40,6 @@ const options = {
 
 const Map = () => {
   const classes = useStyles();
-  const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
   const [ filter, setFilter ] = useState(0);
   const [ online, setOnline ] = useState(null);
@@ -51,32 +51,6 @@ const Map = () => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
     libraries,
   });
-
-  const getPostLocation = async () => {
-    try {
-      const response = await fetch("http://localhost:8080/forum");
-      const jsonData = await response.json();
-
-      jsonData.map((post) => {
-        const title = post.title;
-        const locationObj = JSON.parse(post.address);
-        const lat = locationObj.lat;
-        const lng = locationObj.lng;
-        const id = post.id;
-
-        const markerInfo = {
-          id,
-          title,
-          lat,
-          lng,
-        };
-
-        return setMarkers((prev) => [...prev, markerInfo]);
-      });
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
 
   const checkLocationStatus = async() => {
     try {
@@ -94,7 +68,6 @@ const Map = () => {
   }
   
   useEffect(() => {
-    getPostLocation();
     checkLocationStatus();
   }, []);
 
@@ -134,25 +107,7 @@ const Map = () => {
 
         { !filter || filter === 3 ? <SafetyNetworkMap userSn={userSn} setUserSn={setUserSn} selected={selected} setSelected={setSelected}/> : null }
 
-        { !filter || filter === 2 ? 
-
-          <div>
-          { markers.map((post) => (
-              <Marker
-                key={post.title + post.lat + post.lng}
-                position={{ lat: post.lat, lng: post.lng }}
-                onClick={() => {
-                  checkLocationStatus();
-                  setSelected(post);
-                }}
-                icon={{
-                  url: "./report.svg",
-                  scaledSize: new window.google.maps.Size(25, 25),
-                  origin: new window.google.maps.Point(0, 0),
-                  anchor: new window.google.maps.Point(17, 17)
-                }}
-              />
-            ))} </div> : null }
+        { !filter || filter === 2 ? <MarkIncidents selected={selected} setSelected={setSelected} /> : null }
 
         { selected ? (
             <InfoWindow
