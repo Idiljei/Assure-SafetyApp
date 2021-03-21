@@ -9,6 +9,20 @@ const InfoWindowMarker = (props) => {
 
   console.log("This is the selected:", selected)
 
+  const filterIcon = (iconType) => {
+    if (iconType === "Theft") {
+      return "./burglar.svg";
+    }
+
+    if (iconType === "Harassment") {
+      return "./harassment.svg";
+    }
+
+    if (iconType === "Other") {
+      return "./report.svg";
+    }
+  };
+
   return (
     <InfoWindow
       position={{ lat: selected.lat, lng: selected.lng }}
@@ -21,10 +35,9 @@ const InfoWindowMarker = (props) => {
           { selected.img &&  <UserAvatar selected={selected} img={selected.img}/> }
 
           { selected.type && 
-          <img class="info-window-icon" src="./burglar.svg" alt="icon" />
+          <img class="info-window-icon" src={filterIcon(selected.type)} alt="icon" />
           }
-
-
+          
           <h2 class="title-name">{ selected.title || selected.name }</h2>
         </div>
 

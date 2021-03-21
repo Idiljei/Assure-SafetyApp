@@ -46,6 +46,7 @@ export default function UserAvatar(props) {
   return (
     <div>
       { selected.sharing_location ?
+      <>
         <StyledBadge overlap="circle"
           variant="dot"
           anchorOrigin={{
@@ -54,10 +55,13 @@ export default function UserAvatar(props) {
           }}
         >
           <Avatar alt="avatar" src={props.img} />
-
-            <CallIcon />
-            <ChatBubbleOutlineIcon onClick={handleClick}/>
-        </StyledBadge> : <Avatar alt="avatar" src={props.img} />
+        </StyledBadge> 
+        
+        <CallIcon />
+        <ChatBubbleOutlineIcon onClick={handleClick}/>
+        
+        </>
+        : <Avatar alt="avatar" src={props.img} />
       }
     </div>
   );

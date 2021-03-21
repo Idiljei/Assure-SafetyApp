@@ -3,7 +3,7 @@ import {
   GoogleMap,
   useJsApiLoader
 } from "@react-google-maps/api";
-import { Box, Button } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import Locate from "./Locate";
 import Forum from '../forum-page/Forum';
 import InfoWindowMarker from './InfoWindow';
@@ -15,9 +15,8 @@ import FilterButton from "../map-page/FilterButton";
 import MapLegend from './Legend';
 import MarkIncidents from './MarkIncidents';
 import SafetyNetworkMap from "../safety-network-page/SafetyNetwork";
-import "./search.css";
 import "@reach/combobox/styles.css";
-
+import "./search.css";
 
 const containerStyle = {
   width: "100%",
