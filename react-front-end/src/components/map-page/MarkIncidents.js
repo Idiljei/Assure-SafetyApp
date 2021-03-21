@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Marker } from '@react-google-maps/api';
 
 const MarkIncidents = (props) => {
-  const [ markers, setMarkers ] = useState([]);
   const [ theft, setTheft ] = useState([]);
   const [ harassment, setHarassment ] = useState([]);
   const [ other, setOther ] = useState([]);

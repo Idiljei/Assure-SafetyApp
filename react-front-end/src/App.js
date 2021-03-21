@@ -4,7 +4,6 @@ import Home from "./components/home-page/Home";
 import Navbar from "./components/Navbar";
 import Map from "./components/map-page/Map";
 import Profile from "./components/profile-page/Profile";
-import SafetyNetworkMap from "./components/safety-network-page/SafetyNetwork";
 import "./App.css";
 
 const App = () => {
