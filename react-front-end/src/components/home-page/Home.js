@@ -10,7 +10,7 @@ const Home = () => {
   const [ userStatus, setUserStatus ] = useState(null);
   const [ policeStatus, setPoliceStatus ] = useState(null);
 
-  console.log("This is the em button status:", policeStatus)
+  console.log("This is the police Status:", policeStatus);
 
   const checkLocationStatus = async() => {
     try {

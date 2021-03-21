@@ -20,7 +20,7 @@ const EnterPin = (props) => {
 
   const handleClose = () => {
     if (id === 'police') {
-      return props.setOption(0);
+      return props.setOption(1);
     }
 
     props.setCheckPin(0);
