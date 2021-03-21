@@ -46,3 +46,16 @@ export const smsSafeNow = async(e) => {
 }
 
 
+export const smsCheckin = async(e) => {
+  // e.preventDefault();
+  const body = { "message": "Hey are you okay? I got your notification from assure! I'm watching you on the map, let me know if you're okay" }
+  await fetch('/sms', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body),
+  })
+  .then(res =>  res.json())
+  .catch(err => console.log(err))
+}
