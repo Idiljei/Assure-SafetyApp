@@ -19,6 +19,7 @@ import SafetyNetworkMap from "../safety-network-page/SafetyNetwork";
 import "./search.css";
 import "@reach/combobox/styles.css";
 
+
 const containerStyle = {
   width: "100%",
   height: "400px",
@@ -164,7 +165,7 @@ const Map = () => {
               }}
             >
               <div>
-              { selected.img &&  <UserAvatar selected={selected} online={online} img={selected.img}/> }
+              { selected.img &&  <UserAvatar selected={selected} online={online} img={selected.img}/>}
                 <h2>{ selected.title || selected.name }</h2>
                 { selected.address ? <h4>Address: {selected.address}</h4> : null }
                 { selected.open ? <h4>Open Now</h4> : null }
