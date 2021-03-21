@@ -72,7 +72,7 @@ const Forum = (props) => {
     setSelected(false);
   };
 
-  const getPost = async () => {
+  const getPosts = async () => {
     try {
       const response = await fetch("http://localhost:8080/forum");
       const jsonData = await response.json();
