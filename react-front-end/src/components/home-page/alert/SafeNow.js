@@ -7,12 +7,12 @@ const SafeNow = (props) => {
 
   const handleClose = () => {
     if (id === 'police') {
-      return  props.setOption(0); // the police button
+      return props.setOption(0); // the police button
     }
 
     props.setUserStatus(false);
     props.setCheckPin(0);
-    // smsSafeNow()
+    // smsSafeNow();
   }
 
   return (

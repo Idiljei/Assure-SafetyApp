@@ -68,6 +68,35 @@ div.MuiSnackbarContent-message {
   padding: 0;
 }
 
+.info-ava-icon {
+  display: flex;
+  padding-right: 1em;
+}
+
+.title-name {
+  padding-left: 0.6em;
+}
+
+.info-window-icon {
+  width: 3em;
+  height: 3em;
+  padding: 0;
+  margin: 0;
+}
+
+.info-date {
+  margin: 0;
+  padding-bottom: 1em;
+  padding-left: 0.1em;
+}
+
+.incident-details {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
 /* Mobile version*/
 @media only screen and (max-width: 767px) {
   .map-page {

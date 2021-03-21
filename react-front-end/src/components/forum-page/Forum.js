@@ -19,8 +19,6 @@ const Forum = (props) => {
 
   const openPost = props.openPost; // post ID
 
-  console.log("This is the selected post id:", openPost);
-
   const makePost = async () => {
     try {
       const user_id = 3;

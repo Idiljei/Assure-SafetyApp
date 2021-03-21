@@ -6,8 +6,6 @@ const limit = 4;
 
 const EnterPin = (props) => {
   const [ pin, setPin ] = useState(0);
-  const setUserStatus = props.setUserStatus;
-  const setOption = props.setOption; // for police button
   const id = props.id;
 
   const turnOffLocationSharing = async () => {
@@ -20,7 +18,7 @@ const EnterPin = (props) => {
 
   const handleClose = () => {
     if (id === 'police') {
-      return props.setOption(0);
+      return props.setOption(1);
     }
 
     props.setCheckPin(0);

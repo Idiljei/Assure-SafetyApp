@@ -1,20 +1,19 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import {
   GoogleMap,
-  useJsApiLoader,
-  Marker,
-  InfoWindow,
+  useJsApiLoader
 } from "@react-google-maps/api";
 import { Box, Button } from "@material-ui/core";
 import Locate from "./Locate";
 import Forum from '../forum-page/Forum';
-import UserAvatar from '../safety-network-page/Avatar';
+import InfoWindowMarker from './InfoWindow';
 import mapStyles from "./mapStyles";
 import useStyles from "../Styles";
 import MapSearch from "./MapSearch";
 import MarkSafeSpots from "./MarkSafeSpots";
 import FilterButton from "../map-page/FilterButton";
 import MapLegend from './Legend';
+import MarkIncidents from './MarkIncidents';
 import SafetyNetworkMap from "../safety-network-page/SafetyNetwork";
 import "./search.css";
 import "@reach/combobox/styles.css";
@@ -40,64 +39,15 @@ const options = {
 
 const Map = () => {
   const classes = useStyles();
-  const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
   const [ filter, setFilter ] = useState(0);
-  const [ online, setOnline ] = useState(null);
   const [ userSn, setUserSn ] = useState([]);
-
   const [ openPost, setOpenPost ] = useState(null);
 
   const { loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
     libraries,
   });
-
-  const getPostLocation = async () => {
-    try {
-      const response = await fetch("http://localhost:8080/forum");
-      const jsonData = await response.json();
-
-      jsonData.map((post) => {
-        const title = post.title;
-        const locationObj = JSON.parse(post.address);
-        const lat = locationObj.lat;
-        const lng = locationObj.lng;
-        const id = post.id;
-
-        const markerInfo = {
-          id,
-          title,
-          lat,
-          lng,
-        };
-
-        return setMarkers((prev) => [...prev, markerInfo]);
-      });
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-
-  const checkLocationStatus = async() => {
-    try {
-    const id = 3;
-    const response = await fetch(`http://localhost:8080/snlocation/${id}`)
-    const jsonData = await response.json();
-
-    jsonData.map(data => {
-      const confirmStatus = data.sharing_location
-      setOnline(confirmStatus)
-    })}
-    catch (err) {
-      console.error(err.message);
-    }
-  }
-  
-  useEffect(() => {
-    getPostLocation();
-    checkLocationStatus();
-  }, []);
 
   const mapRef = useRef();
 
@@ -111,8 +61,6 @@ const Map = () => {
   }, []);
 
   if (loadError) return "Error loading maps";
-
-  console.log("This is the selecdted post:", selected)
 
   return (
     <div className="map">

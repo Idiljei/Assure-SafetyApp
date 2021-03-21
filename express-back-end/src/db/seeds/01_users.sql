@@ -7,7 +7,7 @@ INSERT INTO users
   (first_name, last_name, phone_number, date_of_birth, email, current_location, img)
 VALUES
   ('Nick', 'Miller', '315-155-1892', 'Mar 17, 1985', 'nick@gmail.com', '{"lat":49.93424, "lng":-123.12213}', '/avatars/nick.png');
-INSERT INT users
+INSERT INTO users
   (first_name, last_name, phone_number, date_of_birth, email, current_location, img)
 VALUES
   ('Jessica', 'Day', '144-387-1970', 'Feb 16, 1985', 'jessica@gmail.com', '{"lat":49.123324, "lng":-123.123413}', '/avatars/jessica.jpg');
@@ -34,6 +34,6 @@ INSERT INTO users
 VALUES
   ('Joan', 'Day', '144-387-1970', 'Feb 16, 1960', 'joan@gmail.com', '{"lat":49.2811956,"lng":-123.1306807}', '/avatars/joan.jpg');
 INSERT INTO users
-  (first_name, las\t_name, phone_number, date_of_birth, email, current_location, img)
+  (first_name, last_name, phone_number, date_of_birth, email, current_location, img)
 VALUES
   ('Alisha', 'Bishop', '144-456-1290', 'Feb 16, 1987', 'alisha@gmail.com', '{"lat":49.2811956,"lng":-123.1306807}', '/avatars/alisha.jpg');

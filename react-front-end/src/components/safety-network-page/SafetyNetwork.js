@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Marker } from "@react-google-maps/api";
 import { formatDistance } from "date-fns";
 import "@reach/combobox/styles.css";
