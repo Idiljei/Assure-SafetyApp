@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Marker } from '@react-google-maps/api';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  icon: {
+    border: "solid 2px"
+  }
+})
 
 const MarkIncidents = (props) => {
+  const classes = useStyles();
   const [ theft, setTheft ] = useState([]);
   const [ harassment, setHarassment ] = useState([]);
   const [ other, setOther ] = useState([]);
@@ -19,11 +27,13 @@ const MarkIncidents = (props) => {
         const id = post.id;
         const type = post.incident_type;
         const date = post.date
+        const description = post.description;
 
         const markerInfo = {
           id,
           type,
           date,
+          description,
           title,
           lat,
           lng,
@@ -56,6 +66,7 @@ const MarkIncidents = (props) => {
           <Marker
             key={post.title + post.lat + post.lng}
             position={{ lat: post.lat, lng: post.lng }}
+            class={classes.icon}
             onClick={() => {
               props.setSelected(post)
             }}

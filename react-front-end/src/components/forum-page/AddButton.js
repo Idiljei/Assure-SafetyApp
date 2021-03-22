@@ -1,12 +1,20 @@
 import React from "react";
 import { Fab, Tooltip } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
+import { makeStyles } from '@material-ui/core/styles';
 import "./forum.css";
 
+const useStyles = makeStyles({
+  add: {
+    paddingLeft: "1em"
+  }
+})
+
 const AddButton = (props) => {
+  const classes = useStyles();
 
   return (
-    <>
+    <div className={classes.add}>
       <Tooltip title="Create Post" aria-label="add" arrow>
         <Fab
           onClick={() => props.setNewPost(true)}
@@ -16,7 +24,7 @@ const AddButton = (props) => {
           <AddIcon />
         </Fab>
       </Tooltip>
-    </>
+    </div>
   );
 };
 

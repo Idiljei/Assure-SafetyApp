@@ -83,6 +83,9 @@ const SafetyNetworkMap = (props) => {
               scaledSize: new window.google.maps.Size(35, 35),
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(17, 17),
+              options: {
+                border: "solid black"
+              }
             }}
             />)
         })}

@@ -3,7 +3,7 @@ import {
   GoogleMap,
   useJsApiLoader
 } from "@react-google-maps/api";
-import { Box } from "@material-ui/core";
+import { Box, CircularProgress } from "@material-ui/core";
 import Locate from "./Locate";
 import Forum from '../forum-page/Forum';
 import InfoWindowMarker from './InfoWindow';
@@ -42,10 +42,9 @@ const Map = () => {
   const [selected, setSelected ] = useState(null);
   const [ filter, setFilter ] = useState(0);
   const [ userSn, setUserSn ] = useState([]);
-  const [ openPost, setOpenPost ] = useState(null);
   const [ newPost, setNewPost ] = useState(false);
 
-  const { loadError } = useJsApiLoader({
+  const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
     libraries,
   });
@@ -71,6 +70,7 @@ const Map = () => {
         <Locate panTo={panTo} />
       </Box>
         
+      { !isLoaded && <CircularProgress color="secondary" /> }
       <Box>
       <GoogleMap
         mapContainerStyle={containerStyle}
@@ -90,17 +90,17 @@ const Map = () => {
 
         { !filter || filter === 2 ? <MarkIncidents setSelected={setSelected} /> : null }
 
-        { selected ? <InfoWindowMarker selected={selected} setSelected={setSelected} setOpenPost={setOpenPost}/> : null } 
+        { selected ? <InfoWindowMarker selected={selected} setSelected={setSelected} /> : null } 
 
       </GoogleMap>
       </Box>
-
+      
       <div class="filter-button">
-        <FilterButton filter={filter} setFilter={setFilter} />
-        <AddButton setNewPost={setNewPost} />
+          <FilterButton filter={filter} setFilter={setFilter} />
+          <AddButton setNewPost={setNewPost} />
       </div>
       
-      <Forum newPost={newPost} setNewPost={setNewPost} openPost={openPost} selected={selected} />
+      <Forum newPost={newPost} setNewPost={setNewPost} selected={selected} />
 
     </Box>
     </div>

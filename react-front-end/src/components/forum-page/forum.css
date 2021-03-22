@@ -17,6 +17,11 @@
   padding-top: 0;
 }
 
+.all-posts {
+  display: flex;
+  flex-direction: column;
+}
+
 .title {
   font-family: 'Roboto';
   margin-bottom: 0;

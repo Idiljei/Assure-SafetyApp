@@ -110,9 +110,13 @@ div.legend {
 }
 
 .filter-button {
-  padding: 1em;
+  padding: 1.2em;
   display: flex;
   justify-content: center;
+}
+
+.add-button {
+  padding: 0;
 }
 
 /* Mobile version*/

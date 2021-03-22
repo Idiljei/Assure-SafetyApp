@@ -15,8 +15,6 @@ const Forum = (props) => {
   const [ incident_type, setIncidentType ] = useState(null);
   const [ error, setError ] = useState("");
 
-  const openPost = props.openPost; // post ID
-
   const makePost = async () => {
     try {
       const user_id = 3;
@@ -103,6 +101,7 @@ const Forum = (props) => {
         ) : null }
     </Box>
 
+    <div>
     { allPosts.map((post) => {
         return (
           <Box className={classes.hover}>
@@ -119,6 +118,7 @@ const Forum = (props) => {
           </Box>
         );
       })}
+    </div>
     </div>
   );
 };

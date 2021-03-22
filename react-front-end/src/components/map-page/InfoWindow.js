@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IconButton, Button } from '@material-ui/core';
-  import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import { InfoWindow } from "@react-google-maps/api";
 import UserAvatar from '../safety-network-page/Avatar';
+import CloseIcon from '@material-ui/icons/Close';
 import CallIcon from '@material-ui/icons/Call';
 import { smsCheckin } from '../home-page/sms';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
@@ -13,6 +14,9 @@ const useStyles = makeStyles({
   open: {
     color: '#44b700',
     fontSize: 'small',
+  },
+  msg: {
+    marginLeft: '0.5em'
   }
 });
 
@@ -48,6 +52,8 @@ const filterIcon = (iconType) => {
 
 const InfoWindowMarker = (props) => {
   const classes = useStyles();
+  const [ details, setDetails ] = useState(false);
+  const [ hide, setHide ] = useState(false);
   const selected = props.selected;
   const add = selected.address;
   const name = selected.name;
@@ -56,6 +62,16 @@ const InfoWindowMarker = (props) => {
 
   const handleClick = () => {
     smsCheckin()
+  };
+
+  const toggle = () => {
+    setHide(true);
+    setDetails(true);
+  };
+
+  const close = () => {
+    setHide(false);
+    setDetails(false);
   }
   
   return (
@@ -74,7 +90,7 @@ const InfoWindowMarker = (props) => {
 
           { selected.sharing_location &&
               <div>
-                <IconButton aria-label="call">
+                <IconButton className={classes.msg} aria-label="call">
                   <CallIcon />
                 </IconButton>
                 <IconButton aria-label="msg" onClick={handleClick}>
@@ -89,10 +105,17 @@ const InfoWindowMarker = (props) => {
 
         <div class="incident-details">
           { selected.date && <h4 class="info-date">Occurred at: {selected.date}</h4>}
-          { selected.title ? 
+
+          { selected.title && !hide ? 
               <div class="info-button">
-              <Button variant="outlined" onClick={() => props.setOpenPost(selected.id)}>See Details</Button>
+              <Button variant="outlined" onClick={toggle}>See Details</Button>
               </div> : null}
+
+          { details && 
+              <div>
+              <h4>{add}{selected.description}</h4>
+              <IconButton onClick={close} ><CloseIcon /></IconButton>
+              </div>}
         </div>
         
           { selected.address ? <h4 class="info-date">{add.substring(0, add.length - 20)}</h4> : null }
