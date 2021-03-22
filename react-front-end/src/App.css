@@ -21,6 +21,10 @@ body {
   width: 100%;
 }
 
+.MuiSvgIcon-root {
+  color: #63639f;
+}
+
 img {
   width: 20em;
   margin: 2em;
@@ -31,9 +35,9 @@ img {
   display: flex;
 }
 
-.MuiBottomNavigationAction-root.Mui-selected {
+/* .MuiBottomNavigationAction-root.Mui-selected {
   color: #63639f;
-}
+} */
 
 #root {
   margin-bottom: 50px;

@@ -44,7 +44,7 @@ const Profile = () => {
   }, []);
 
   return (
-    <div class="profile">
+    <div classNames="profile">
       {users.map((user) => {
         return (
           <Box
