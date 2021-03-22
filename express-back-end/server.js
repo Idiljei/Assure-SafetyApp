@@ -158,7 +158,6 @@ app.put("/home/safe/:id", async (req, res) => {
 
 //Put request for updating counter
 app.put("/forum", async (req, res) => {
-  console.log(req.body);
   const { id, counter } = req.body;
   try {
     const updateCounter = await pool.query(
