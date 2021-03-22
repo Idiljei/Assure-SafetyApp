@@ -69,6 +69,8 @@ const SafetyNetworkMap = (props) => {
     getUser();
   }, []);
 
+  console.log("This is the userSN:", userSn)
+
   return (
     <div>
       { userSn.map((sn) => {
@@ -76,7 +78,7 @@ const SafetyNetworkMap = (props) => {
             <Marker
             position={{ lat: sn.lat, lng: sn.lng }}
             onClick={() => {
-              setSelected(sn);
+              props.setSelected(sn);
             }}
             icon={{
               url: sn.img,

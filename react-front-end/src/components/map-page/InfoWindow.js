@@ -60,12 +60,15 @@ const InfoWindowMarker = (props) => {
   const name = selected.name;
   const lat = selected.lat;
   const lng = selected.lng;
+  let date = "";
 
-  const newDate = new Date(selected.date);
-  const timeZone = "PST";
-  const zonedDate = utcToZonedTime(newDate, timeZone);
-
-  const date = format(zonedDate, "Pp");
+  if (selected.date) {
+    const newDate = new Date(selected.date);
+    const timeZone = "PST";
+    const zonedDate = utcToZonedTime(newDate, timeZone);
+  
+    date = format(zonedDate, "Pp");
+  }
 
   const handleClick = () => {
     smsCheckin();
