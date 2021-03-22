@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import {
   GoogleMap,
   useJsApiLoader
@@ -17,6 +17,7 @@ import MarkIncidents from './MarkIncidents';
 import SafetyNetworkMap from "../safety-network-page/SafetyNetwork";
 import "@reach/combobox/styles.css";
 import "./search.css";
+import AddButton from "../forum-page/AddButton";
 
 const containerStyle = {
   width: "100%",
@@ -38,10 +39,11 @@ const options = {
 
 const Map = () => {
   const classes = useStyles();
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected ] = useState(null);
   const [ filter, setFilter ] = useState(0);
   const [ userSn, setUserSn ] = useState([]);
   const [ openPost, setOpenPost ] = useState(null);
+  const [ newPost, setNewPost ] = useState(false);
 
   const { loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
@@ -93,9 +95,12 @@ const Map = () => {
       </GoogleMap>
       </Box>
 
-      <FilterButton filter={filter} setFilter={setFilter} />
+      <div class="filter-button">
+        <FilterButton filter={filter} setFilter={setFilter} />
+        <AddButton setNewPost={setNewPost} />
+      </div>
       
-      <Forum openPost={openPost} selected={selected} />
+      <Forum newPost={newPost} setNewPost={setNewPost} openPost={openPost} selected={selected} />
 
     </Box>
     </div>

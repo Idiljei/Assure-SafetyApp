@@ -6,12 +6,10 @@ import "./forum.css";
 
 const Post = (props) => {
   const [converted, setConverted] = useState("");
-  // console.log("THIS IS PROPS", props.date);
   const newDate = new Date(props.date);
-  // console.log("THIS IS NEW DATE", newDate);
   const timeZone = "PST";
   const zonedDate = utcToZonedTime(newDate, timeZone);
-  // console.log("THIS IS ZONEDDATE", zonedDate);
+
   const date = format(zonedDate, "Pp");
 
   const addressObj = JSON.parse(props.address);

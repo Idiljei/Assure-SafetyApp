@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Fab, Tooltip } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
+import { Box } from "@material-ui/core";
 import CreatePost from "./CreatePost";
 import postStyles from "./PostStyles";
 import Post from "./Post";
@@ -9,7 +8,6 @@ import "./forum.css";
 const Forum = (props) => {
   const classes = postStyles();
   const [ allPosts, setAllPosts ] = useState([]);
-  const [ selected, setSelected ] = useState(false);
   const [ title, setTitle ] = useState("");
   const [ address, setAddress ] = useState("");
   const [ description, setDescription ] = useState("");
@@ -67,7 +65,7 @@ const Forum = (props) => {
   // validate takes in an object
   const handleClose = () => {
     reset();
-    setSelected(false);
+    props.setNewPost(false);
   };
 
   const getPosts = async () => {
@@ -85,56 +83,42 @@ const Forum = (props) => {
     getPosts();
   }, []);
 
-
   return (
     <div className="forum-box">
-        <div class="add-button">
-          <Tooltip title="Create Post" aria-label="add" arrow>
-            <Fab
-              onClick={() => setSelected(true)}
-              color="primary"
-              aria-label="Create Post"
-            >
-              <AddIcon />
-            </Fab>
-          </Tooltip>
+    <Box className={classes.paper}>
+      { props.newPost ? (
+          <CreatePost
+            open={props.newPost}
+            setTitle={setTitle}
+            setAddress={setAddress}
+            setDescription={setDescription}
+            onSubmitForm={validateForm}
+            close={handleClose}
+            setDate={setDate}
+            date={date}
+            setType={setIncidentType}
+            type={incident_type}
+            error={error}
+          />
+        ) : null }
+    </Box>
 
-          <Box className={classes.paper}>
-            { selected ? (
-                <CreatePost
-                  open={selected}
-                  setTitle={setTitle}
-                  setAddress={setAddress}
-                  setDescription={setDescription}
-                  onSubmitForm={validateForm}
-                  close={handleClose}
-                  setDate={setDate}
-                  date={date}
-                  setType={setIncidentType}
-                  type={incident_type}
-                  error={error}
-                />
-              ) : null }
+    { allPosts.map((post) => {
+        return (
+          <Box className={classes.hover}>
+            <div key={post.title + post.address + post.date}>
+              <Post
+                title={post.title}
+                address={post.address}
+                description={post.description}
+                date={post.date}
+                user={post.first_name + " " + post.last_name}
+                type={post.incident_type}
+              />
+            </div>
           </Box>
-        </div>
-      <div>
-      { allPosts.map((post) => {
-          return (
-            <Box className={classes.hover}>
-              <div key={post.title + post.address + post.date}>
-                <Post
-                  title={post.title}
-                  address={post.address}
-                  description={post.description}
-                  date={post.date}
-                  user={post.first_name + " " + post.last_name}
-                  type={post.incident_type}
-                />
-              </div>
-            </Box>
-          );
-        })}
-      </div>
+        );
+      })}
     </div>
   );
 };

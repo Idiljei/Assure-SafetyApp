@@ -56,7 +56,7 @@ const InfoWindowMarker = (props) => {
 
   const handleClick = () => {
     smsCheckin()
-    }
+  }
   
   return (
     <InfoWindow
