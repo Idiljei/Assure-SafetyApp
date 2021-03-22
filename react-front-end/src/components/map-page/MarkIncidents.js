@@ -61,7 +61,7 @@ const MarkIncidents = (props) => {
             }}
             icon={{
               url: "./burglar.svg",
-              scaledSize: new window.google.maps.Size(25, 25),
+              scaledSize: new window.google.maps.Size(30, 30),
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(17, 17)
             }}
@@ -77,7 +77,7 @@ const MarkIncidents = (props) => {
                 }}
                 icon={{
                   url: "./harassment.svg",
-                  scaledSize: new window.google.maps.Size(25, 25),
+                  scaledSize: new window.google.maps.Size(30, 30),
                   origin: new window.google.maps.Point(0, 0),
                   anchor: new window.google.maps.Point(17, 17)
                 }}
@@ -93,7 +93,7 @@ const MarkIncidents = (props) => {
                 }}
                 icon={{
                   url: "./report.svg",
-                  scaledSize: new window.google.maps.Size(25, 25),
+                  scaledSize: new window.google.maps.Size(30, 30),
                   origin: new window.google.maps.Point(0, 0),
                   anchor: new window.google.maps.Point(17, 17)
                 }}

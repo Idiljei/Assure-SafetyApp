@@ -61,7 +61,7 @@ const MarkSafeSpots = (props) => {
           }}
           icon={{
             url: "./police.svg",
-            scaledSize: new window.google.maps.Size(25, 25),
+            scaledSize: new window.google.maps.Size(30, 30),
             origin: new window.google.maps.Point(0, 0),
             anchor: new window.google.maps.Point(17, 17),
           }}
@@ -76,7 +76,7 @@ const MarkSafeSpots = (props) => {
           }}
           icon={{
             url: "./fire-station.svg",
-            scaledSize: new window.google.maps.Size(25, 25),
+            scaledSize: new window.google.maps.Size(30, 30),
             origin: new window.google.maps.Point(0, 0),
             anchor: new window.google.maps.Point(17, 17),
           }}
@@ -91,7 +91,7 @@ const MarkSafeSpots = (props) => {
           }}
           icon={{
             url: "./hospital.svg",
-            scaledSize: new window.google.maps.Size(25, 25),
+            scaledSize: new window.google.maps.Size(30, 30),
             origin: new window.google.maps.Point(0, 0),
             anchor: new window.google.maps.Point(17, 17),
           }}

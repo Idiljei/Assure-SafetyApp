@@ -1,8 +1,11 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
+import { IconButton, Button } from '@material-ui/core';
   import { makeStyles } from '@material-ui/core/styles'
 import { InfoWindow } from "@react-google-maps/api";
 import UserAvatar from '../safety-network-page/Avatar';
+import CallIcon from '@material-ui/icons/Call';
+import { smsCheckin } from '../home-page/sms';
+import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import '../map-page/search.css';
 
@@ -51,8 +54,10 @@ const InfoWindowMarker = (props) => {
   const lat = selected.lat;
   const lng = selected.lng;
 
-  // `https://maps.google.com/?q=${lat},${lng}`
-
+  const handleClick = () => {
+    smsCheckin()
+    }
+  
   return (
     <InfoWindow
       position={{ lat: lat, lng: lng }}
@@ -66,6 +71,17 @@ const InfoWindowMarker = (props) => {
           { selected.type &&  <img class="info-window-icon" src={filterIcon(selected.type)} alt="icon" /> }
           { selected.place && <img class="info-window-icon" src={filterIcon(selected.place)} alt="icon" /> }
           <h2 class="title-name">{ selected.title || selected.name }</h2>
+
+          { selected.sharing_location &&
+              <div>
+                <IconButton aria-label="call">
+                  <CallIcon />
+                </IconButton>
+                <IconButton aria-label="msg" onClick={handleClick}>
+                  <ChatBubbleOutlineIcon />
+                </IconButton>
+              </div> }
+
         </div>
 
           { selected.sharing_location && <div>Currently Sharing Location</div> }

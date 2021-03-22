@@ -2,9 +2,6 @@ import React from 'react';
 import Badge from '@material-ui/core/Badge';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
-import CallIcon from '@material-ui/icons/Call';
-import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
-import {smsCheckin} from '../home-page/sms'
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -35,11 +32,6 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
-
-const handleClick = () => {
-  smsCheckin()
-  }
-
 export default function UserAvatar(props) {
   const selected = props.selected;
 
@@ -55,11 +47,7 @@ export default function UserAvatar(props) {
           }}
         >
           <Avatar alt="avatar" src={props.img} />
-        </StyledBadge> 
-        
-        <CallIcon />
-        <ChatBubbleOutlineIcon onClick={handleClick}/>
-        
+        </StyledBadge>   
         </>
         : <Avatar alt="avatar" src={props.img} />
       }
