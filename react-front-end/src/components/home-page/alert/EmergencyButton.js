@@ -13,6 +13,7 @@ const EmergencyButton = (props) => {
   const option = props.policeStatus;
   const setOption = props.setPoliceStatus;
 
+
   const id = 'police';
 
   const status = {
@@ -44,7 +45,7 @@ const EmergencyButton = (props) => {
       
       <Dialog open={option > 1} aria-labelledby="form-dialog-title">
         
-        { option === 2 ? <EnterPin setOption={setOption} option={option} id={id} /> : null}
+        { option === 2 ? <EnterPin  setOption={setOption} option={option} id={id} /> : null}
 
         { option === 3 ? <SafeNow setOption={setOption} option={option} id={id} /> : null }
 
