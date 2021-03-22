@@ -26,23 +26,24 @@ const MarkSafeSpots = (props) => {
           lat: data.geometry.location.lat,
           lng: data.geometry.location.lng,
           open: data.opening_hours,
-          place: query
+          place: query,
+        };
+
+        if (query === "police+stations") {
+          return setPoliceStations((prev) => [...prev, info]);
         }
-    
-        if (query === 'police+stations') {
-          return setPoliceStations(prev => [...prev, info])
-        }
-        if (query === 'fire+stations') {
-          return setFireStations(prev => [...prev, info])
+        if (query === "fire+stations") {
+          return setFireStations((prev) => [...prev, info]);
         }
 
-        if (query === 'hospitals') {
-          return setHospitals(prev => [...prev, info])
+        if (query === "hospitals") {
+          return setHospitals((prev) => [...prev, info]);
         }
+        return;
       });
     } catch (err) {
       console.log(err);
-    };
+    }
   };
 
   useEffect(() => {

@@ -91,7 +91,6 @@ export default function MyPosts(props) {
             </List>
             <Divider />
           </div>
-
           <div>
             {open ? (
               <Dialog
@@ -107,6 +106,14 @@ export default function MyPosts(props) {
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
+                  <Button
+                    color="primary"
+                    onClick={() => {
+                      handleClose();
+                    }}
+                  >
+                    Cancel
+                  </Button>
                   <Button
                     color="primary"
                     onClick={() => {

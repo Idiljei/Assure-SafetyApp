@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(theme => ({ 
+const useStyles = makeStyles((theme) => ({
   homeBox: {
     display: "flex",
     justifyContent: "center",
@@ -8,12 +8,12 @@ const useStyles = makeStyles(theme => ({
     flexWrap: "wrap",
     backgroundColor: "#63639f",
     height: "fit-content",
-    paddingBottom: "7em"
+    paddingBottom: "7em",
   },
   homeButton: {
-    background: 'linear-gradient(45deg, #63639F, #a6a6e0)',
+    background: "linear-gradient(45deg, #63639F, #a6a6e0)",
     border: 0,
-    color: 'white',
+    color: "white !important",
     width: "20em",
     height: "10em",
   },
@@ -21,10 +21,10 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "0.8em"
+    padding: "0.8em",
   },
   findButton: {
-    padding: 0
+    padding: 0,
   },
   alert: {
     display: "flex",
@@ -32,22 +32,22 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     width: "30em",
-    height: "30em"
+    height: "30em",
   },
   home: {
-    display: "flex"
+    display: "flex",
   },
   contacts: {
     height: "22em",
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
   marker: {
-    borderRadius: "50%"
+    borderRadius: "50%",
   },
   large: {
     width: theme.spacing(7),
     height: theme.spacing(7),
-  }
+  },
 }));
 
 export default useStyles;
