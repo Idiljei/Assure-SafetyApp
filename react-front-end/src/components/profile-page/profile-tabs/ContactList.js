@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import DeleteButton from '../buttons/DeleteButton';
+import React, { useState, useEffect } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Divider,
+} from "@material-ui/core";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import DeleteButton from "../buttons/DeleteButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -77,6 +77,10 @@ img {
 .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
   border: 2px solid #63639f !important;
 }
+
+MuiInputBase-input {
+  color: #63639f !important;
+}
 #root {
   margin-bottom: 50px;
 }
