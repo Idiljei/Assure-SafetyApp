@@ -25,7 +25,8 @@ const MarkSafeSpots = (props) => {
           address: data.formatted_address,
           lat: data.geometry.location.lat,
           lng: data.geometry.location.lng,
-          open: data.opening_hours
+          open: data.opening_hours,
+          place: query
         }
     
         if (query === 'police+stations') {

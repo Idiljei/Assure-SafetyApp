@@ -20,8 +20,6 @@ const MarkIncidents = (props) => {
         const type = post.incident_type;
         const date = post.date
 
-        console.log("This is the data:", post)
-
         const markerInfo = {
           id,
           type,

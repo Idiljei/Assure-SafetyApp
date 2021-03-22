@@ -23,8 +23,6 @@ const CreatePost = (props) => {
   const open = props.open;
   const close = props.close;
 
-  console.log("This is the date:", props.date)
-
   return (
     <div>
       <Dialog

@@ -70,11 +70,14 @@ div.MuiSnackbarContent-message {
 
 .info-ava-icon {
   display: flex;
+  align-items: center;
+  padding-bottom: 0.9em;
   padding-right: 1em;
 }
 
 .title-name {
   padding-left: 0.6em;
+  margin: 0;
 }
 
 .info-window-icon {
@@ -95,6 +98,15 @@ div.MuiSnackbarContent-message {
   flex-direction: column;
   padding: 0;
   margin: 0;
+}
+
+.info-button {
+  margin-top: 1em;
+}
+
+.open-now {
+  margin: 0;
+  margin-bottom: 1em;
 }
 
 /* Mobile version*/
