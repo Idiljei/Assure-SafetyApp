@@ -37,7 +37,7 @@ export default function MyPosts(props) {
 
   const deletePost = async (id) => {
     try {
-      await fetch(`http://localhost:8080/forum/${id}`, {
+      const deletePost = await fetch(`http://localhost:8080/forum/${id}`, {
         method: "DELETE",
       });
       setMyPosts(myPosts.filter((post) => post.id !== id));
@@ -91,7 +91,6 @@ export default function MyPosts(props) {
             </List>
             <Divider />
           </div>
-
           <div>
             {open ? (
               <Dialog

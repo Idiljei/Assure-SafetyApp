@@ -35,10 +35,15 @@ img {
   display: flex;
 }
 
+.MuiButton-root {
+  color: #63639f !important;
+}
 /* .MuiBottomNavigationAction-root.Mui-selected {
   color: #63639f;
 } */
-
+.MuiDialogContent-root {
+  color: black !important;
+}
 #root {
   margin-bottom: 50px;
 }
