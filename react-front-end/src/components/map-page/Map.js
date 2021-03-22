@@ -44,6 +44,8 @@ const Map = () => {
   const [ userSn, setUserSn ] = useState([]);
   const [ newPost, setNewPost ] = useState(false);
 
+  console.log("This si the selected:", selected);
+
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
     libraries,
