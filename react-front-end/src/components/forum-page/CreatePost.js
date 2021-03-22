@@ -76,8 +76,6 @@ const CreatePost = (props) => {
             onChange={(e) => props.setDate(e.target.value)}
           />
 
-          {/* <DatePicker className={classes.time} showTime onChange={(e) => props.setDate(e.target.value)} /> */}
-
           <TextField
             className={classes.input}
             id="outlined-multiline-static"

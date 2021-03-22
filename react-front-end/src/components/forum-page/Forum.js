@@ -76,7 +76,7 @@ const Forum = (props) => {
       console.error(err.message);
     }
   };
-
+  
   useEffect(() => {
     getPosts();
   }, []);
@@ -107,12 +107,16 @@ const Forum = (props) => {
           <Box className={classes.hover}>
             <div key={post.title + post.address + post.date}>
               <Post
+                setAllPosts={setAllPosts}
+                allPosts={allPosts}
+                id={post.id}
                 title={post.title}
                 address={post.address}
                 description={post.description}
                 date={post.date}
                 user={post.first_name + " " + post.last_name}
                 type={post.incident_type}
+                counter={post.counter}
               />
             </div>
           </Box>

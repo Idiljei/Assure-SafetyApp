@@ -7,5 +7,6 @@ CREATE TABLE posts (
   address VARCHAR(255) NOT NULL,
   title VARCHAR(255) NOT NULL,
   description VARCHAR(1000) NOT NULL,
-  date TIMESTAMP NOT NULL
+  date TIMESTAMP NOT NULL,
+  counter INTEGER DEFAULT 0
 );
