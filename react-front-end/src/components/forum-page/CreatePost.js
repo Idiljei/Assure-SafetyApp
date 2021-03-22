@@ -55,7 +55,6 @@ const CreatePost = (props) => {
             <RadioGroup aria-label="type" value={props.type} onChange={(e) => props.setType(e.target.value)} >
               <Box display="flex" flexWrap="wrap">
               <FormControlLabel value="Theft" control={<Radio />} label="Theft" />
-              <FormControlLabel value="Assault" control={<Radio />} label="Assault" />
               <FormControlLabel value="Harassment" control={<Radio />} label="Harassment" />
               <FormControlLabel value="Other" control={<Radio />} label="Other" />
               </Box>

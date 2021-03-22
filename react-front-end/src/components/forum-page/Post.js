@@ -62,10 +62,9 @@ const Post = (props) => {
         <Box display="flex" flexDirection="column">
           <h2 class="post-title">{props.title}</h2>
           <h5 class="date">Date of Incident: {date}</h5>
-          <Box display="flex" alignContent="flex-start">
-            <h5 class="address">Incident Type: {props.type}</h5>
-            <h5 class="address">Location:</h5>
+          <Box display="flex" alignContent="flex-start" flexDirection="column">
             <h5 class="address">
+              Location:
               <GetAddress
                 lat={lat}
                 lng={lng}
@@ -73,18 +72,22 @@ const Post = (props) => {
                 setConverted={setConverted}
               />
             </h5>
+            <h5 class="address">Incident Type: {props.type}</h5>
           </Box>
         </Box>
 
-        <Box display="flex" flexDirection="column">
-          <h4 class="des">Description: {props.description}</h4>
-          <h5 class="user">Posted by: {props.user}</h5>
-        </Box>
 
-        <Box display="flex" justifyContent="flex-end">
-          <h5>{props.counter}</h5>
-          <IconButton onClick={onClickADD}><ArrowDropUpIcon Icon /></IconButton>
-          <IconButton onClick={onClickMINUS}><ArrowDropDownIcon Icon /></IconButton>
+        <Box display="flex" justifyContent="space-between">
+          <Box display="flex" flexDirection="column">
+            <h4 class="des">Description: {props.description}</h4>
+            <h5 class="user">Posted by: {props.user}</h5>
+          </Box>
+
+          <box class="counter">
+            <IconButton onClick={onClickADD}><ArrowDropUpIcon Icon /></IconButton>
+            <h5 class="count">{props.counter}</h5>
+            <IconButton onClick={onClickMINUS}><ArrowDropDownIcon Icon /></IconButton>
+          </box>
         </Box>
       </Box>
       <Divider />
