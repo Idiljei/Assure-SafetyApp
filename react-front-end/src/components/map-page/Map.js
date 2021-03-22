@@ -68,8 +68,6 @@ const Map = () => {
         <MapSearch panTo={panTo} />
         <Locate panTo={panTo} />
       </Box>
-
-      <MapLegend />
         
       <Box>
       <GoogleMap
@@ -79,6 +77,10 @@ const Map = () => {
         options={options}
         onLoad={onMapLoad}
         >
+
+        <div class="legend">
+          <MapLegend />
+        </div>
         
         { filter < 2 ? <MarkSafeSpots selected={selected} setSelected={setSelected}/> : null }
 

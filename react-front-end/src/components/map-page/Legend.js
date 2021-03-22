@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Button, Snackbar } from '@material-ui/core';
+import { Button, Snackbar, IconButton } from '@material-ui/core';
+import HelpIcon from '@material-ui/icons/Help';
 import '../map-page/search.css';
 
 const MapLegend = () => {
@@ -60,8 +61,8 @@ const MapLegend = () => {
   )
 
   return (
-    <div class="legend">
-      <Button onClick={handleClick({ vertical: 'top', horizontal: 'center' })}>Legend</Button>
+    <>
+      <IconButton onClick={handleClick({ vertical: 'top', horizontal: 'center' })}><HelpIcon fontSize="large"/></IconButton>
       <Snackbar
         anchorOrigin={{ vertical, horizontal }}
         open={open}
@@ -69,7 +70,7 @@ const MapLegend = () => {
         message={message}
         key={vertical + horizontal}
       />
-    </div>
+    </>
   );
 };
 

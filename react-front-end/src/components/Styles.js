@@ -48,6 +48,10 @@ const useStyles = makeStyles(theme => ({
     width: theme.spacing(7),
     height: theme.spacing(7),
   },
+  legend: {
+
+    // position: "absolute"
+  }
 }));
 
 export default useStyles;

@@ -22,11 +22,6 @@ div.style {
   height: 2em;
 }
 
-.legend {
-  font-family: "Roboto";
-  margin: 0.5em;
-}
-
 .map-page {
   display: flex;
   justify-content: center;
@@ -109,11 +104,21 @@ div.MuiSnackbarContent-message {
   margin-bottom: 1em;
 }
 
+div.legend {
+  position: absolute;
+  padding-left: 96%;
+}
+
 /* Mobile version*/
 @media only screen and (max-width: 767px) {
   .map-page {
     display: flex;
     justify-content: center;
     flex-direction: column;
+  }
+
+  div.legend {
+    position: absolute;
+    padding-left: 83%;
   }
 }
