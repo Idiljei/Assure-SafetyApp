@@ -6,6 +6,7 @@ import UserAvatar from "../safety-network-page/Avatar";
 import CloseIcon from "@material-ui/icons/Close";
 import CallIcon from "@material-ui/icons/Call";
 import { smsCheckin } from "../home-page/sms";
+import BatteryCharging80Icon from '@material-ui/icons/BatteryCharging80';
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import { format, utcToZonedTime } from "date-fns-tz";
@@ -16,10 +17,7 @@ const useStyles = makeStyles({
   open: {
     color: "#44b700",
     fontSize: "small",
-  },
-  msg: {
-    marginLeft: "0.5em",
-  },
+  }
 });
 
 const getLink = (name) => {
@@ -80,55 +78,54 @@ const InfoWindowMarker = (props) => {
     setDetails(true);
   };
 
-  const close = () => {
-    setHide(false);
-    setDetails(false);
-  };
-
   return (
     <InfoWindow
       position={{ lat: lat, lng: lng }}
       onCloseClick={() => {
+        setHide(false);
+        setDetails(false);
         props.setSelected(null);
       }}
     >
       <>
-        <div class="info-ava-icon">
-          {selected.img && (
-            <UserAvatar selected={selected} img={selected.img} />
-          )}
-          {selected.type && (
-            <img
-              class="info-window-icon"
-              src={filterIcon(selected.type)}
-              alt="icon"
-            />
-          )}
-          {selected.place && (
-            <img
-              class="info-window-icon"
-              src={filterIcon(selected.place)}
-              alt="icon"
-            />
-          )}
-          <h2 class="title-name">{selected.title || selected.name}</h2>
+      <div class="info-ava-icon">
+        {selected.img && (
+          <UserAvatar selected={selected} img={selected.img} />
+        )}
+        {selected.type && (
+          <img
+            class="info-window-icon"
+            src={filterIcon(selected.type)}
+            alt="icon"
+          />
+        )}
+        {selected.place && (
+          <img
+            class="info-window-icon"
+            src={filterIcon(selected.place)}
+            alt="icon"
+          />
+        )}
 
-          {selected.sharing_location && (
-            <div>
-              <IconButton className={classes.msg} aria-label="call">
-                <CallIcon />
-              </IconButton>
-              <IconButton aria-label="msg" onClick={handleClick}>
-                <ChatBubbleOutlineIcon />
-              </IconButton>
-            </div>
-          )}
+        <h2 class="title-name">{selected.title || selected.name}</h2>
+      </div>
+
+      {selected.sharing_location && <div>Currently Sharing Location</div>}
+      {!selected.sharing_location && selected.img ? (
+        <div>Updated: {selected.time}</div>
+      ) : null}
+
+      {selected.sharing_location && (
+        <div class="contact-icon">
+          <IconButton className={classes.msg} aria-label="call">
+            <CallIcon />
+          </IconButton>
+          <IconButton aria-label="msg" onClick={handleClick}>
+            <ChatBubbleOutlineIcon />
+          </IconButton>
+          <div class="battery"><BatteryCharging80Icon fontSize="small"/><h3 class="percent">80%</h3></div>
         </div>
-
-        {selected.sharing_location && <div>Currently Sharing Location</div>}
-        {!selected.sharing_location && selected.img ? (
-          <div>Updated: {selected.time}</div>
-        ) : null}
+      )}  
 
         <div class="incident-details">
           {selected.date && <h4 class="info-date">Occurred at: {date}</h4>}

@@ -66,8 +66,8 @@ div.MuiSnackbarContent-message {
 .info-ava-icon {
   display: flex;
   align-items: center;
-  padding-bottom: 0.9em;
   padding-right: 1em;
+  padding-bottom: 0.7em;
 }
 
 .title-name {
@@ -122,6 +122,21 @@ div.legend {
 .filter-markers {
   padding: 0;
   margin: 0;
+}
+
+.battery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.percent {
+  margin-right: 10%;
+}
+
+.contact-icon {
+  display: flex;
+  justify-content: space-between
 }
 
 /* Mobile version*/
