@@ -29,12 +29,21 @@ img {
   width: 20em;
   margin: 2em;
 }
-
+.logo-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .logo {
   background-color: #63639f;
   display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
 }
 
+.logo-picture {
+  width: 40%;
+}
 .MuiButton-root {
   color: #63639f !important;
 }
@@ -63,9 +72,7 @@ img {
   color: #63639f !important;
   border-color: #63639f !important;
 }
-/* .MuiInput-underline:hover {
-  border-bottom: 1px solid #63639f !important;
-} */
+
 .MuiInput-underline:after {
   border-bottom: 2px solid #63639f !important;
 }
@@ -78,9 +85,17 @@ img {
   border: 2px solid #63639f !important;
 }
 
-MuiInputBase-input {
+.MuiInputBase-input {
   color: #63639f !important;
 }
 #root {
   margin-bottom: 50px;
+}
+
+.MuiFab-primary {
+  background-color: #63639f !important;
+}
+
+.MuiFab-label .MuiSvgIcon-root {
+  color: #dcf3f4;
 }

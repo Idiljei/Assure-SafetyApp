@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Box } from '@material-ui/core';
-import LocationButton from './alert/LocationButton';
-import EmergencyButton from './alert/EmergencyButton';
-import useStyles from '../Styles';
-import Siren from '../home-page/alert/Siren';
-import '././alert/Alertpopup.css';
+import React, { useState, useEffect } from "react";
+import { Box } from "@material-ui/core";
+import LocationButton from "./alert/LocationButton";
+import EmergencyButton from "./alert/EmergencyButton";
+import useStyles from "../Styles";
+import Siren from "../home-page/alert/Siren";
+import "././alert/Alertpopup.css";
 
 const Home = () => {
   const classes = useStyles();
@@ -31,28 +31,33 @@ const Home = () => {
   }, []);
 
   return (
-    <Box className={classes.homeBox}>
-      <Box>
-        <Siren></Siren>
-      </Box>
+    <div>
+      <div className="logo-home">
+        <img src="logo/assure-logo.png" alt="assure logo" />
+      </div>
+      <Box className={classes.homeBox}>
+        <Box>
+          <Siren></Siren>
+        </Box>
 
-      <Box margin="2em">
-        <LocationButton
-          id="location"
-          userStatus={userStatus}
-          setUserStatus={setUserStatus}
-          checkLocationStatus={checkLocationStatus}
-        />
-      </Box>
+        <Box margin="2em">
+          <LocationButton
+            id="location"
+            userStatus={userStatus}
+            setUserStatus={setUserStatus}
+            checkLocationStatus={checkLocationStatus}
+          />
+        </Box>
 
-      <Box margin="2em">
-        <EmergencyButton
-          id="police"
-          policeStatus={policeStatus}
-          setPoliceStatus={setPoliceStatus}
-        />
+        <Box margin="2em">
+          <EmergencyButton
+            id="police"
+            policeStatus={policeStatus}
+            setPoliceStatus={setPoliceStatus}
+          />
+        </Box>
       </Box>
-    </Box>
+    </div>
   );
 };
 
