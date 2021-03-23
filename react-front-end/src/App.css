@@ -100,10 +100,18 @@ img {
   color: #dcf3f4;
 }
 
-.MuiButton-label {
+/* .MuiButton-label {
   color: #dcf3f4;
-}
+} */
 
 .MuiButtonBase-root {
   border-color: #dcf3f4 !important;
 }
+
+.MuiTypography-colorTextSecondary {
+  color: white !important;
+}
+
+/* .MuiDivider-root {
+  background-color: white !important;
+} */
