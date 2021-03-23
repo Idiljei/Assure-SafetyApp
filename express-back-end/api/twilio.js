@@ -7,7 +7,6 @@ const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
-
 client.messages
   .create({
     body: 'Monica is sharing her location with you',
@@ -15,5 +14,4 @@ client.messages
     to: process.env.USER_PHONE_NUM
   })
   .then(message => console.log(message.sid))
-  .catch((error) => console.log(error));
-
+  .catch((error) => console.log("This is the msg error:", error));

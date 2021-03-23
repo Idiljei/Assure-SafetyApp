@@ -100,6 +100,20 @@ app.post("/sms", (req, res) => {
     .catch((error) => console.log(error));
 });
 
+app.post("/sms/call", (req, res) => {
+  res.header("Content-Type", "application/json");
+  
+  client.calls
+    .create({
+      url: 'http://demo.twilio.com/docs/voice.xml',
+      from: process.env.TWILIO_PHONE_NUMBER,
+      to: process.env.USER_PHONE_NUM,
+    })
+    .then(call => console.log(call.sid))
+    .catch((error) => console.log(error));
+});
+
+
 // POST => create a post
 app.post("/forum", async (req, res) => {
   try {

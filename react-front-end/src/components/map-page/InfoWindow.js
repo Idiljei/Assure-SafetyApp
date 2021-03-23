@@ -3,7 +3,6 @@ import { IconButton, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { InfoWindow } from "@react-google-maps/api";
 import UserAvatar from "../safety-network-page/Avatar";
-import CloseIcon from "@material-ui/icons/Close";
 import CallIcon from "@material-ui/icons/Call";
 import { smsCheckin } from "../home-page/sms";
 import BatteryCharging80Icon from '@material-ui/icons/BatteryCharging80';
@@ -17,6 +16,9 @@ const useStyles = makeStyles({
   open: {
     color: "#44b700",
     fontSize: "small",
+  },
+  call: {
+    paddingTop: '0.6em'
   }
 });
 
@@ -117,10 +119,10 @@ const InfoWindowMarker = (props) => {
 
       {selected.sharing_location && (
         <div class="contact-icon">
-          <IconButton className={classes.msg} aria-label="call">
+          <IconButton aria-label="call">
             <CallIcon />
           </IconButton>
-          <IconButton aria-label="msg" onClick={handleClick}>
+          <IconButton className={classes.call} aria-label="msg" onClick={handleClick}>
             <ChatBubbleOutlineIcon />
           </IconButton>
           <div class="battery"><BatteryCharging80Icon fontSize="small"/><h3 class="percent">80%</h3></div>

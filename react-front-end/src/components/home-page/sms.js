@@ -14,6 +14,15 @@ export const smsLocation = async() => {
 
 }
 
+export const callPolice = async(e) => {
+
+  await fetch('/sms/call', {
+    method: 'POST',
+  })
+  .then(res => res.json())
+  .catch(err => console.log(err))
+};
+
 // Texting Police 
 export const smsPolice = async(e) => {
   // e.preventDefault();
