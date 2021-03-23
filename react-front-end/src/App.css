@@ -12,7 +12,7 @@ body {
 .MuiBottomNavigation-root {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-around !important;
   align-items: stretch;
   height: 20em;
   background-color: white;
@@ -98,4 +98,12 @@ img {
 
 .MuiFab-label .MuiSvgIcon-root {
   color: #dcf3f4;
+}
+
+.MuiButton-label {
+  color: #dcf3f4;
+}
+
+.MuiButtonBase-root {
+  border-color: #dcf3f4 !important;
 }
