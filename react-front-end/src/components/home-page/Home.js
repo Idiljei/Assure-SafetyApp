@@ -2,17 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Box } from '@material-ui/core';
 import LocationButton from './alert/LocationButton';
 import EmergencyButton from './alert/EmergencyButton';
-
-
 import useStyles from '../Styles';
+import Siren from '../home-page/alert/Siren';
 import '././alert/Alertpopup.css';
 
 const Home = () => {
   const classes = useStyles();
   const [userStatus, setUserStatus] = useState(null);
   const [policeStatus, setPoliceStatus] = useState(null);
-
-  // console.log("This is the police Status:", policeStatus);
 
   const checkLocationStatus = async () => {
     try {
@@ -35,6 +32,10 @@ const Home = () => {
 
   return (
     <Box className={classes.homeBox}>
+      <Box>
+        <Siren></Siren>
+      </Box>
+
       <Box margin="2em">
         <LocationButton
           id="location"

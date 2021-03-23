@@ -12,13 +12,13 @@ const Navbar = () => {
     <div>
       <BottomNavigation>
         <Link to="/">
-          <BottomNavigationAction label="Home" icon={<HomeIcon />} />
+          <BottomNavigationAction showLabel label="Home" icon={<HomeIcon />} />
         </Link>
         <Link to="/forum">
-          <BottomNavigationAction label="Forum" icon={<RoomIcon />} />
+          <BottomNavigationAction showLabel label="Map" icon={<RoomIcon />} />
         </Link>
         <Link to="/profile">
-          <BottomNavigationAction label="Profile" icon={<PersonPinIcon />} />
+          <BottomNavigationAction showLabel label="Profile" icon={<PersonPinIcon />} />
         </Link>
       </BottomNavigation>
     </div>

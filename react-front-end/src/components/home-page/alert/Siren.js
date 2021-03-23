@@ -22,14 +22,12 @@ const RenderButtonandSound = () => {
       </button>
     )
   })
-
 }
 
 Howler.volume(1.0)
   return (
     <div>
       {RenderButtonandSound()}
-
     </div>
   );
 };

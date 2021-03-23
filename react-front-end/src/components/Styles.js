@@ -17,6 +17,13 @@ const useStyles = makeStyles((theme) => ({
     width: "20em",
     height: "10em",
   },
+  homeButtonClicked: {
+    background: "#DCF3F4",
+    border: 0,
+    color: "#63639F !important",
+    width: "20em",
+    height: "10em",
+  },
   mapBox: {
     display: "flex",
     alignItems: "center",
