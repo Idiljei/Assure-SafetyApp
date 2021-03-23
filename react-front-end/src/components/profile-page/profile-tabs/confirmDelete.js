@@ -27,7 +27,6 @@ const ConfirmDelete = (props) => {
         <Button
           color="primary"
           onClick={() => {
-            console.log(props.post);
             props.handleClose();
           }}
         >

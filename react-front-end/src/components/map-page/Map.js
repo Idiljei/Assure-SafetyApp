@@ -15,9 +15,9 @@ import FilterButton from "../map-page/FilterButton";
 import MapLegend from './Legend';
 import MarkIncidents from './MarkIncidents';
 import SafetyNetworkMap from "../safety-network-page/SafetyNetwork";
+import AddButton from "../forum-page/AddButton";
 import "@reach/combobox/styles.css";
 import "./search.css";
-import AddButton from "../forum-page/AddButton";
 
 const containerStyle = {
   width: "100%",
@@ -43,8 +43,6 @@ const Map = () => {
   const [ filter, setFilter ] = useState(0);
   const [ userSn, setUserSn ] = useState([]);
   const [ newPost, setNewPost ] = useState(false);
-
-  console.log("This si the selected:", selected);
 
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,

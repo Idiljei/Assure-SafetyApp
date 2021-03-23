@@ -119,6 +119,11 @@ div.legend {
   padding: 0;
 }
 
+.filter-markers {
+  padding: 0;
+  margin: 0;
+}
+
 /* Mobile version*/
 @media only screen and (max-width: 767px) {
   .map-page {

@@ -10,6 +10,7 @@ import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import { format, utcToZonedTime } from "date-fns-tz";
 import "../map-page/search.css";
+import GetAddress from "../forum-page/ConvertToAdd";
 
 const useStyles = makeStyles({
   open: {
@@ -55,8 +56,8 @@ const InfoWindowMarker = (props) => {
   const classes = useStyles();
   const [details, setDetails] = useState(false);
   const [hide, setHide] = useState(false);
+  const [ add, setAdd ] = useState(null);
   const selected = props.selected;
-  const add = selected.address;
   const name = selected.name;
   const lat = selected.lat;
   const lng = selected.lng;
@@ -133,26 +134,21 @@ const InfoWindowMarker = (props) => {
           {selected.date && <h4 class="info-date">Occurred at: {date}</h4>}
           {selected.title && !hide ? (
             <div class="info-button">
-              <Button variant="outlined" onClick={toggle}>
+              <Button fontSize="small" onClick={toggle}>
                 See Details
               </Button>
             </div>
           ) : null}
           {details && (
             <div>
-              <h4>
-                {add}
-                {selected.description}
-              </h4>
-              <IconButton onClick={close}>
-                <CloseIcon />
-              </IconButton>
+              <h4>Address: <GetAddress lat={lat} lng={lng} converted={add} setConverted={setAdd}/></h4>
+              <h4>Description: {selected.description}</h4>
             </div>
           )}
         </div>
 
         {selected.address ? (
-          <h4 class="info-date">{add.substring(0, add.length - 20)}</h4>
+          <h4 class="info-date"><GetAddress lat={lat} lng={lng} converted={add} setConverted={setAdd}/></h4>
         ) : null}
         {selected.open ? (
           <h4 class="open-now">
