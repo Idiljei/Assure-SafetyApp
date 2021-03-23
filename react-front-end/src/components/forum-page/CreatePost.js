@@ -12,7 +12,7 @@ import {
   RadioGroup,
   FormControl,
   FormLabel,
-  FormControlLabel
+  FormControlLabel,
 } from "@material-ui/core";
 import Search from "./ForumSearch";
 import postStyles from "./PostStyles";
@@ -52,7 +52,11 @@ const CreatePost = (props) => {
 
           <FormControl component="fieldset">
             <FormLabel component="legend">Select an Incident Type</FormLabel>
-            <RadioGroup aria-label="type" value={props.type} onChange={(e) => props.setType(e.target.value)} >
+            <RadioGroup
+              aria-label="type"
+              value={props.type}
+              onChange={(e) => props.setType(e.target.value)}
+            >
               <Box display="flex" flexWrap="wrap">
               <FormControlLabel value="Theft" control={<Radio />} label="Theft" />
               <FormControlLabel value="Harassment" control={<Radio />} label="Harassment" />

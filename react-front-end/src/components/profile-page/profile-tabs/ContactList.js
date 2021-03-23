@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import DeleteButton from '../buttons/DeleteButton';
+import React, { useState, useEffect } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Divider,
+} from "@material-ui/core";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import DeleteButton from "../buttons/DeleteButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,6 +63,7 @@ export default function ContactList(props) {
                   className={classes.icon}
                   primary={network.first_name + " " + network.last_name}
                   secondary={network.phone_number}
+                  
                 />
                 {selected ? <DeleteButton /> : null}
               </ListItem>
