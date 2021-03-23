@@ -6,6 +6,7 @@ import { smsPolice } from './EmergencyButton';
 import WrongPin from './WrongPin';
 import SendIcon from '@material-ui/icons/Send';
 import useStyles from '../../Styles';
+import Siren from './Siren'
 
 
 const EmergencyButton = (props) => {
@@ -34,6 +35,7 @@ const EmergencyButton = (props) => {
 
   return (
     <Box className={classes.home}>
+      <Siren></Siren>
       <Button onClick={handleClick} type="submit" className={classes.homeButton} size="large" startIcon={<SendIcon />} variant="contained">
         
         { !option && status.before }

@@ -57,6 +57,7 @@ export default function ContactList(props) {
                   className={classes.icon}
                   primary={network.first_name + " " + network.last_name}
                   secondary={network.phone_number}
+                  
                 />
                 {selected ? <DeleteButton /> : null}
               </ListItem>
