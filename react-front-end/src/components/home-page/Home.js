@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { Box } from '@material-ui/core';
 import LocationButton from './alert/LocationButton';
@@ -7,14 +6,6 @@ import EmergencyButton from './alert/EmergencyButton';
 
 import useStyles from '../Styles';
 import '././alert/Alertpopup.css';
-=======
-import React, { useState, useEffect } from "react";
-import { Box } from "@material-ui/core";
-import LocationButton from "./alert/LocationButton";
-import EmergencyButton from "./alert/EmergencyButton";
-import useStyles from "../Styles";
-import "././alert/Alertpopup.css";
->>>>>>> 56b3c27b64b0bb9de4baf0cbd1e15dfc9205c7b8
 
 const Home = () => {
   const classes = useStyles();
