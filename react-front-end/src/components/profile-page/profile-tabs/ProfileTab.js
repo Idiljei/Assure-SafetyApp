@@ -44,6 +44,7 @@ const useStyles = makeStyles({
     flexGrow: 2,
   },
   bar: {
+    color: "white !important",
     background: "#63639F",
     indicatorColor: "white",
   },
@@ -59,7 +60,11 @@ export default function SimpleTabs(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" elevation={0}>
+      <AppBar
+        position="static"
+        elevation={0}
+        background-color="white !important"
+      >
         <Tabs
           className={classes.bar}
           value={value}

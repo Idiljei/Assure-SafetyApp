@@ -7,7 +7,6 @@ import Profile from "./components/profile-page/Profile";
 import "./App.css";
 
 const App = () => {
-
   return (
     <div className="app">
       <div className="logo">

@@ -7,19 +7,26 @@ import "./forum.css";
 
 const Forum = (props) => {
   const classes = postStyles();
-  const [ allPosts, setAllPosts ] = useState([]);
-  const [ title, setTitle ] = useState("");
-  const [ address, setAddress ] = useState("");
-  const [ description, setDescription ] = useState("");
-  const [ date, setDate ] = useState(null);
-  const [ incident_type, setIncidentType ] = useState(null);
-  const [ error, setError ] = useState("");
+  const [allPosts, setAllPosts] = useState([]);
+  const [title, setTitle] = useState("");
+  const [address, setAddress] = useState("");
+  const [description, setDescription] = useState("");
+  const [date, setDate] = useState(null);
+  const [incident_type, setIncidentType] = useState(null);
+  const [error, setError] = useState("");
 
   const makePost = async () => {
     try {
       const user_id = 3;
-      const body = { user_id, incident_type, description, address, title, date };
-      const response = await fetch(`http://localhost:8080/forum`, {
+      const body = {
+        user_id,
+        incident_type,
+        description,
+        address,
+        title,
+        date,
+      };
+      await fetch(`http://localhost:8080/forum`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
@@ -59,7 +66,7 @@ const Forum = (props) => {
     setDescription("");
     setError("");
   };
-  
+
   // validate takes in an object
   const handleClose = () => {
     reset();
@@ -76,15 +83,15 @@ const Forum = (props) => {
       console.error(err.message);
     }
   };
-
+  
   useEffect(() => {
     getPosts();
   }, []);
 
   return (
     <div className="forum-box">
-    <Box className={classes.paper}>
-      { props.newPost ? (
+      <Box className={classes.paper}>
+        {props.newPost ? (
           <CreatePost
             open={props.newPost}
             setTitle={setTitle}
@@ -98,8 +105,8 @@ const Forum = (props) => {
             type={incident_type}
             error={error}
           />
-        ) : null }
-    </Box>
+        ) : null}
+      </Box>
 
     <div>
     { allPosts.map((post) => {
@@ -107,12 +114,16 @@ const Forum = (props) => {
           <Box className={classes.hover}>
             <div key={post.title + post.address + post.date}>
               <Post
+                setAllPosts={setAllPosts}
+                allPosts={allPosts}
+                id={post.id}
                 title={post.title}
                 address={post.address}
                 description={post.description}
                 date={post.date}
                 user={post.first_name + " " + post.last_name}
                 type={post.incident_type}
+                counter={post.counter}
               />
             </div>
           </Box>

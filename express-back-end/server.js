@@ -26,7 +26,7 @@ app.get("/forum", async (req, res) => {
   // console.log("Forum Get Request");
   try {
     const allForums = await pool.query(
-      "SELECT users.first_name, users.last_name, posts.id, posts.description, posts.date, posts.title, posts.address, posts.incident_type FROM posts JOIN users ON posts.user_id = users.id ORDER by posts.id DESC LIMIT 10;"
+      "SELECT users.first_name, users.last_name, posts.id, posts.description, posts.date, posts.title, posts.address, posts.incident_type, posts.counter FROM posts JOIN users ON posts.user_id = users.id ORDER by posts.id DESC LIMIT 10;"
     );
     res.json(allForums.rows);
   } catch (err) {
@@ -150,6 +150,18 @@ app.put("/home/safe/:id", async (req, res) => {
     const updateStatus = await pool.query(
       "UPDATE users SET sharing_location = false, updated_at = current_timestamp WHERE id = $1",
       [id]
+    );
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+//Put request for updating counter
+app.put("/forum", async (req, res) => {
+  const { id, counter } = req.body;
+  try {
+    const updateCounter = await pool.query(
+      "UPDATE posts SET counter = $1 WHERE id = $2", [counter, id]
     );
   } catch (error) {
     console.log(error);
