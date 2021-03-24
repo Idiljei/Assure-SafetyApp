@@ -47,12 +47,6 @@ img {
 .MuiButton-root {
   color: #63639f !important;
 }
-/* .MuiBottomNavigationAction-root.Mui-selected {
-  color: #63639f;
-} */
-/* .MuiDialogContent-root {
-  color: black !important;
-} */
 
 .MuiPaper-root {
   color: #63639f !important;
@@ -100,10 +94,6 @@ img {
   color: #dcf3f4;
 }
 
-/* .MuiButton-label {
-  color: #dcf3f4;
-} */
-
 .MuiButtonBase-root {
   border-color: #dcf3f4 !important;
 }
@@ -112,6 +102,6 @@ img {
   color: white !important;
 }
 
-/* .MuiDivider-root {
-  background-color: white !important;
-} */
+.MuiTypography-body1 {
+  font-weight: 600 !important;
+}

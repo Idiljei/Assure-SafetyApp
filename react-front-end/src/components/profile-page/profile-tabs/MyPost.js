@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Divider, List, ListItem, ListItemText, Box } from "@material-ui/core";
+import {
+  Divider,
+  List,
+  ListItem,
+  ListItemText,
+  Box,
+  ListItemIcon,
+} from "@material-ui/core";
 import { IconButton } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
+import SpeakerNotesOutlinedIcon from "@material-ui/icons/SpeakerNotesOutlined";
 import {
   Dialog,
   DialogActions,
@@ -18,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     maxWidth: 500,
     backgroundColor: "transparent",
+    color: "white",
   },
   icon: {
     color: "white",
@@ -71,28 +80,31 @@ export default function MyPosts(props) {
         <div className={classes.root}>
           <div>
             <List key={post.id}>
-              {/* <Box display="flex" alignItems="center"> */}
-              <ListItem button>
-                <ListItemText
-                  primary={post.title}
-                  secondary={post.description}
-                />
-              </ListItem>
+              <Box display="flex" alignItems="center">
+                <ListItem button>
+                  {/* <ListItemIcon>
+                    <SpeakerNotesOutlinedIcon className={classes.icon} />
+                  </ListItemIcon> */}
+                  <ListItemText
+                    primary={post.title}
+                    secondary={post.description}
+                  />
+                </ListItem>
 
-              {selected ? (
-                <div>
-                  <IconButton type="submit" aria-label="delete" size="small">
-                    <DeleteOutlineOutlinedIcon
-                      className={classes.icon}
-                      onClick={() => {
-                        handleClickOpen();
-                        setDeletedPost(post.id);
-                      }}
-                    />
-                  </IconButton>
-                </div>
-              ) : null}
-              {/* </Box> */}
+                {selected ? (
+                  <div>
+                    <IconButton type="submit" aria-label="delete" size="small">
+                      <DeleteOutlineOutlinedIcon
+                        className={classes.icon}
+                        onClick={() => {
+                          handleClickOpen();
+                          setDeletedPost(post.id);
+                        }}
+                      />
+                    </IconButton>
+                  </div>
+                ) : null}
+              </Box>
             </List>
             <Divider />
           </div>
