@@ -9,9 +9,13 @@ import "./App.css";
 const App = () => {
   return (
     <div className="app">
-      <div className="logo">
-        <img src="logo/assure-logo.png" alt="assure logo" />
-      </div>
+      {/* <div className="logo">
+        <img
+          src="logo/assure-logo.png"
+          alt="assure logo"
+          className="logo-picture"
+        />
+      </div> */}
 
       <Router>
         <Switch>

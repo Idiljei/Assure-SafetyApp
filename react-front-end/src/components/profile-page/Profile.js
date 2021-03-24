@@ -44,44 +44,53 @@ const Profile = () => {
   }, []);
 
   return (
-    <div classNames="profile">
-      {users.map((user) => {
-        return (
-          <Box
-            display="flex"
-            height="100%"
-            width="100%"
-            justifyContent="center"
-            alignItems="center"
-            flexDirection="column"
-          >
+    <div>
+      <div className="logo">
+        <img
+          src="logo/assure-logo.png"
+          alt="assure logo"
+          className="logo-picture"
+        />
+      </div>
+      <div classNames="profile">
+        {users.map((user) => {
+          return (
             <Box
               display="flex"
-              flexDirection="column"
+              height="100%"
+              width="100%"
               justifyContent="center"
               alignItems="center"
+              flexDirection="column"
             >
-              <img src={user.img} alt="profile" class="profile-img" />
-              <Box display="flex" alignItems="center">
-                <h1 class="user-name">
-                  {" "}
-                  {user.first_name} {user.last_name}
-                </h1>
-                <IconButton aria-label="edit">
-                  <EditIcon className={classes.icon} onClick={toggle} />
-                </IconButton>
+              <Box
+                display="flex"
+                flexDirection="column"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <img src={user.img} alt="profile" class="profile-img" />
+                <Box display="flex" alignItems="center">
+                  <h1 class="user-name">
+                    {" "}
+                    {user.first_name} {user.last_name}
+                  </h1>
+                  <IconButton aria-label="edit">
+                    <EditIcon className={classes.icon} onClick={toggle} />
+                  </IconButton>
+                </Box>
+              </Box>
+              <Box>
+                <SimpleTabs
+                  number={user.phone_number}
+                  dob={user.date_of_birth}
+                  selected={selected}
+                />
               </Box>
             </Box>
-            <Box>
-              <SimpleTabs
-                number={user.phone_number}
-                dob={user.date_of_birth}
-                selected={selected}
-              />
-            </Box>
-          </Box>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 };
