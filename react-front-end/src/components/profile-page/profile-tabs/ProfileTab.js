@@ -72,15 +72,9 @@ export default function SimpleTabs(props) {
           aria-label="simple tabs example"
           centered
         >
-<<<<<<< HEAD
-          <Tab label="User Info" {...a11yProps(0)} />
-          <Tab label="My Safety Network" {...a11yProps(1)} />
-          <Tab label="My Posts" {...a11yProps(2)} />
-=======
           <Tab label="Info" {...a11yProps(0)} />
           <Tab label="Safety Network" {...a11yProps(1)} />
           <Tab label="Posts" {...a11yProps(2)} />
->>>>>>> 0f14eb783ce8c6884abc4a64fb8e7e4fc308f453
         </Tabs>
       </AppBar>
 
