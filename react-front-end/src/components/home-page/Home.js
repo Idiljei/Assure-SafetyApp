@@ -3,7 +3,7 @@ import { Box } from "@material-ui/core";
 import LocationButton from "./alert/LocationButton";
 import EmergencyButton from "./alert/EmergencyButton";
 import useStyles from "../Styles";
-import Siren from "../home-page/alert/Siren";
+import PlayPause from "../home-page/alert/Siren";
 import "././alert/Alertpopup.css";
 
 const Home = () => {
@@ -37,7 +37,6 @@ const Home = () => {
       </div>
       <Box className={classes.homeBox}>
         <Box>
-          <Siren></Siren>
         </Box>
 
         <Box margin="2em">
@@ -56,6 +55,12 @@ const Home = () => {
             setPoliceStatus={setPoliceStatus}
           />
         </Box>
+
+        <Box>
+          <PlayPause></PlayPause>
+        </Box>
+
+
       </Box>
     </div>
   );
