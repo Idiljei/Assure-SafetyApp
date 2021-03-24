@@ -18,9 +18,9 @@ const useStyles = makeStyles((theme) => ({
     height: "10em",
   },
   homeButtonClicked: {
-    background: "#DCF3F4",
+    background: "#ffffff",
     border: 0,
-    color: "#63639F !important",
+    color: "#63639F",
     width: "20em",
     height: "10em",
   },
@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     padding: "0.8em",
+    paddingLeft: "2em"
   },
   findButton: {
     padding: 0,
@@ -43,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
   home: {
     display: "flex",
+    justifyContent: "center"
   },
   contacts: {
     height: "22em",
@@ -54,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   large: {
     width: theme.spacing(7),
     height: theme.spacing(7),
-  },
+  }
 }));
 
 export default useStyles;

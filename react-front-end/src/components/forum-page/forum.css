@@ -50,8 +50,8 @@
 }
 
 .des {
-  margin: 1em;
-  margin-left: 0;
+  margin: 0;
+  margin-top: 1em;
   font-weight: 500;
 }
 
@@ -62,7 +62,6 @@
 
 .counter {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

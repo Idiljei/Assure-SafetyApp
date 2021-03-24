@@ -1,19 +1,25 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import PhoneIcon from '@material-ui/icons/Phone';
-import CakeIcon from '@material-ui/icons/Cake';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Divider,
+} from "@material-ui/core";
+import PhoneIcon from "@material-ui/icons/Phone";
+import CakeIcon from "@material-ui/icons/Cake";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
+    width: "100%",
     maxWidth: 360,
-    backgroundColor: 'transparent',
-    color: 'white'
+    backgroundColor: "transparent",
+    color: "white",
   },
   icon: {
-    color: 'white'
-  }
+    color: "white",
+  },
 }));
 
 export default function UserInfoList(props) {
@@ -24,16 +30,18 @@ export default function UserInfoList(props) {
       <List component="nav" aria-label="user info">
         <ListItem>
           <ListItemIcon>
-            <PhoneIcon className={classes.icon}/>
+            <PhoneIcon className={classes.icon} />
           </ListItemIcon>
-          <ListItemText primary={props.number}/>
+          <ListItemText primary={props.number} />
         </ListItem>
+        <Divider />
         <ListItem>
           <ListItemIcon>
-            <CakeIcon className={classes.icon}/>
+            <CakeIcon className={classes.icon} />
           </ListItemIcon>
           <ListItemText primary={props.dob} />
         </ListItem>
+        <Divider />
       </List>
     </div>
   );

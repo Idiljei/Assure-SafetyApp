@@ -5,6 +5,7 @@ import SafeNow from './SafeNow';
 import WrongPin from './WrongPin';
 import SendIcon from '@material-ui/icons/Send';
 import useStyles from '../../Styles';
+import './Alertpopup.css';
 
 const LocationButton = (props) => {
   const classes = useStyles();
@@ -40,11 +41,17 @@ const LocationButton = (props) => {
   
   return (
     <Box className={classes.home}>
-      <Button onClick={handleClick} type="submit" className={classes.homeButton} size="large" startIcon={<SendIcon />} variant="contained">
+      <Button onClick={handleClick} type="submit" className={!userStatus ? classes.homeButton : classes.homeButtonClicked} size="large" variant="contained">
+      <div class="button-message">
+        <div class="icon">
+          <SendIcon style={{ fontSize: 30 }}/>
+        </div>
+        <h4 class="message">
+          { userStatus ? status.true : status.false }
+        </h4>
+      </div>
         
-      { userStatus ? status.true : status.false }
       </Button>
-
 
       { checkPin ?  
       
