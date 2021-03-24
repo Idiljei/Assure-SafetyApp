@@ -27,13 +27,13 @@ const SafeNow = (props) => {
       <DialogContent>
         {id === "location" && (
           <DialogContentText id="alert-dialog-description">
-            No longer sharing your live location
+            You are no longer sharing your live location
           </DialogContentText>
         )}
 
         {id === "police" && (
           <DialogContentText id="alert-dialog-description">
-            No longer calling emergency services
+            You are no longer calling emergency services
           </DialogContentText>
         )}
       </DialogContent>

@@ -10,6 +10,7 @@ const AddButton = (props) => {
         onClick={() => props.setNewPost(true)}
         color="primary"
         aria-label="Create Post"
+        className="add-post"
       >
         <AddIcon />
       </Fab>

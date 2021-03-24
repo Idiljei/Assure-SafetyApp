@@ -51,6 +51,10 @@ h4.icon-label {
   justify-content: space-between;
 }
 
+div.add-button {
+  ;
+}
+
 .icon-box {
   display: flex;
   flex-direction: column;
@@ -125,10 +129,6 @@ div.mapBox {
   justify-content: center;
 }
 
-.add-button {
-  padding: 0;
-}
-
 .filter-markers {
   padding: 0;
   margin: 0;
@@ -154,6 +154,10 @@ div.mapBox {
   outline: 0;
 }
 
+div.MuiOutlinedInput-input {
+  padding: 14px 14px;
+}
+
 /* Mobile version*/
 @media only screen and (max-width: 767px) {
   .map-page {
@@ -164,10 +168,10 @@ div.mapBox {
 
   div.legend {
     padding-top: 18%;
-    padding-left: 84%;
+    padding-left: 82.6%;
   }
 
   div.mapBox {
-    justify-content: flex-end;
+    justify-content: space-evenly;
   }
 }

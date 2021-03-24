@@ -138,12 +138,12 @@ const InfoWindowMarker = (props) => {
               </Button>
             </div>
           ) : null}
-          {details && (
+          {details && selected.title ? (
             <div>
               <h4>Address: <GetAddress lat={lat} lng={lng} converted={add} setConverted={setAdd}/></h4>
               <h4>Description: {selected.description}</h4>
             </div>
-          )}
+          ) : null}
         </div>
 
         {selected.address ? (

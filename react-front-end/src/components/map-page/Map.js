@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef } from "react";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
-import { Box, CircularProgress } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import Locate from "./Locate";
 import Forum from "../forum-page/Forum";
 import InfoWindowMarker from "./InfoWindow";
@@ -18,7 +18,7 @@ import "./search.css";
 
 const containerStyle = {
   width: "100%",
-  height: "430px",
+  height: "450px",
 };
 
 const center = {
@@ -117,7 +117,9 @@ const Map = () => {
 
           <div class="filter-button">
             <FilterButton filter={filter} setFilter={setFilter} />
-            <AddButton setNewPost={setNewPost} />
+            <div class="add-button">
+              <AddButton setNewPost={setNewPost} />
+            </div>
           </div>
 
           <Forum

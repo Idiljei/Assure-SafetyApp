@@ -35,10 +35,8 @@ const Home = () => {
       <div className="logo-home">
         <img src="logo/assure-logo.png" alt="assure logo" />
       </div>
+      
       <Box className={classes.homeBox}>
-        <Box>
-        </Box>
-
         <Box margin="2em">
           <LocationButton
             id="location"
