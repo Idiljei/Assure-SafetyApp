@@ -10,10 +10,6 @@ body {
   margin: 0px;
   background-color: #63639f;
   font-family: "Roboto";
-<<<<<<< HEAD
-=======
-  margin-bottom: 1em;
->>>>>>> styles/profile-posts
 }
 
 .MuiBottomNavigation-root {
@@ -124,12 +120,4 @@ img {
 .MuiDialogContentText-root {
   color: #63639f !important;
   font-weight: 400 !important;
-<<<<<<< HEAD
 }
-=======
-}
-
-.PrivateTabIndicator-colorSecondary {
-  background-color: #63639f !important;
-}
->>>>>>> styles/profile-posts
