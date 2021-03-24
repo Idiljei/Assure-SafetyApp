@@ -39,15 +39,15 @@ const filterIcon = (iconType) => {
     return "./report.svg";
   }
 
-  if (iconType === "hospitals") {
+  if (iconType === "hospitals+in+Vancouver") {
     return "./hospital.svg";
   }
 
-  if (iconType === "fire+stations") {
+  if (iconType === "fire+stations+in+Vancouver") {
     return "./fire-station.svg";
   }
 
-  if (iconType === "police+stations") {
+  if (iconType === "police+stations+in+Vancouver") {
     return "./police.svg";
   }
 };
