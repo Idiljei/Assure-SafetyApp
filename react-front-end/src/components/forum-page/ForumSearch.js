@@ -1,21 +1,32 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
-import { TextField, List, ListItem, ListItemText, Divider, Paper, Box } from '@material-ui/core';
-import '../map-page/search.css';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from "use-places-autocomplete";
+import {
+  TextField,
+  List,
+  ListItem,
+  ListItemText,
+  Divider,
+  Paper,
+  Box,
+} from "@material-ui/core";
+import "../map-page/search.css";
 
 const useStyles = makeStyles({
   search: {
     position: "absolute",
     width: "94%",
-    zIndex: 6
+    zIndex: 6,
   },
   suggestions: {
     fontSize: "1.5rem",
     display: "flex",
     flexDirection: "column",
-  }
-})
+  },
+});
 
 const Search = (props) => {
   const classes = useStyles();
@@ -41,7 +52,7 @@ const Search = (props) => {
     getGeocode({ address: description })
       .then((results) => getLatLng(results[0]))
       .then(({ e, lat, lng }) => {
-        props.setAddress({ lat, lng})
+        props.setAddress({ lat, lng });
       })
       .catch((error) => {
         console.log(error);
@@ -58,7 +69,12 @@ const Search = (props) => {
       return (
         <div>
           <ListItem button>
-            <ListItemText key={place_id} onClick={handleSelect(suggestion)} primary={main_text} secondary={secondary_text} />
+            <ListItemText
+              key={place_id}
+              onClick={handleSelect(suggestion)}
+              primary={main_text}
+              secondary={secondary_text}
+            />
           </ListItem>
           <Divider />
         </div>
@@ -68,22 +84,23 @@ const Search = (props) => {
   return (
     <Box className={classes.suggestions}>
       <Box>
-      <TextField
-        value={value}
-        fullWidth
-        required
-        margin="normal"
-        onChange={handleInput}
-        disabled={!ready}
-        placeholder="Enter Address*"
-      />
+        <TextField
+          value={value}
+          fullWidth
+          required
+          margin="normal"
+          onChange={handleInput}
+          disabled={!ready}
+          placeholder="Enter Address*"
+        />
       </Box>
 
       <Box>
-        {status === "OK" ?  
-            <Paper className={classes.search}>
-                <List>{renderSuggestions()}</List>
-            </Paper>: null}
+        {status === "OK" ? (
+          <Paper className={classes.search}>
+            <List>{renderSuggestions()}</List>
+          </Paper>
+        ) : null}
       </Box>
     </Box>
   );

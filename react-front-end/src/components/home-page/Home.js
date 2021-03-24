@@ -5,7 +5,7 @@ import EmergencyButton from "./alert/EmergencyButton";
 import useStyles from "../Styles";
 import PlayPause from "../home-page/alert/Siren";
 import "././alert/Alertpopup.css";
-import SurroundSoundOutlinedIcon from '@material-ui/icons/SurroundSoundOutlined';
+import SurroundSoundOutlinedIcon from "@material-ui/icons/SurroundSoundOutlined";
 import { IconButton, Button } from "@material-ui/core";
 
 const Home = () => {
@@ -38,30 +38,26 @@ const Home = () => {
         <img src="logo/assure-logo.png" alt="assure logo" />
         <PlayPause></PlayPause>
       </div>
-      
-      <Box className={classes.homeBox}>
-        <Box margin="2em">
-          <LocationButton
-            id="location"
-            userStatus={userStatus}
-            setUserStatus={setUserStatus}
-            checkLocationStatus={checkLocationStatus}
-          />
+      <div>
+        <Box className={classes.homeBox}>
+          <Box margin="2em">
+            <LocationButton
+              id="location"
+              userStatus={userStatus}
+              setUserStatus={setUserStatus}
+              checkLocationStatus={checkLocationStatus}
+            />
+          </Box>
+          <Box margin="2em">
+            <EmergencyButton
+              id="police"
+              policeStatus={policeStatus}
+              setPoliceStatus={setPoliceStatus}
+            />
+          </Box>
+          <Box></Box>
         </Box>
-
-        <Box margin="2em">
-          <EmergencyButton
-            id="police"
-            policeStatus={policeStatus}
-            setPoliceStatus={setPoliceStatus}
-          />
-        </Box>
-
-        <Box>
-        </Box>
-
-
-      </Box>
+      </div>
     </div>
   );
 };
