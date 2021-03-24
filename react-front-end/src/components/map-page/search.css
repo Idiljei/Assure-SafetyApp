@@ -51,10 +51,6 @@ h4.icon-label {
   justify-content: space-between;
 }
 
-div.add-button {
-  ;
-}
-
 .icon-box {
   display: flex;
   flex-direction: column;

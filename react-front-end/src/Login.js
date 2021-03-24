@@ -40,13 +40,3 @@ const Login = () => {
 }
 
 export default Login;
-
-
-
-// In the forum: 
-
-// Search bar => on Submit => find lat&lng of the address => save this address to the database => display the address in the database as a marker
-
-// function => displays the address from the posts from the database as a marker on the map 
-
-// function => displays the title of the posts in the info window for that address

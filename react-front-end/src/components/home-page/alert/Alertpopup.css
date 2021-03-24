@@ -6,6 +6,10 @@
   background: green;
 }
 
+.alarm {
+  margin-top: 0.8em;
+}
+
 .button-message {
   padding: 0;
   margin: 0;

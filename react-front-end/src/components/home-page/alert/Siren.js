@@ -17,9 +17,9 @@ const PlayPause = () => {
 
   return (
     <div>
-      <ReactHowler src='./siren.mp3' playing={play} />
       <IconButton > 
-      <SurroundSoundOutlinedIcon onClick={() => setPlay(!play)} className={classes.icon} />
+      <ReactHowler src='./siren.mp3' playing={play} />
+      <SurroundSoundOutlinedIcon fontSize="large" onClick={() => setPlay(!play)} className={classes.icon} />
         {play}
       </IconButton>
 

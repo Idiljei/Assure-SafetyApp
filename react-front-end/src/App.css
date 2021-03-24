@@ -1,13 +1,13 @@
 .app {
   display: flex;
   flex-direction: column;
+  width: auto;
 }
 
 body {
   margin: 0px;
   background-color: #63639f;
   font-family: "Roboto";
-  margin-bottom: 2em;
 }
 
 .MuiBottomNavigation-root {
@@ -27,9 +27,11 @@ body {
 }
 
 img {
-  width: 20em;
-  margin: 2em;
+  width: 45%;
+  margin: 1.2em;
+  margin-top: 2em;
 }
+
 .logo {
   background-color: #63639f;
   display: flex;
@@ -37,18 +39,12 @@ img {
   align-items: flex-end;
 }
 
-.logo-home {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
 .logo-picture {
   width: 40%;
   margin-bottom: 15px;
   margin-left: 15px;
 }
+
 .MuiButton-root {
   color: #63639f !important;
 }

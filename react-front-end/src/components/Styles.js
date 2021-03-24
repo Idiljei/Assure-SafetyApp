@@ -7,8 +7,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     flexWrap: "wrap",
     backgroundColor: "#63639f",
-    height: "fit-content",
-    paddingBottom: "7em",
+    height: "fit-content"
   },
   homeButton: {
     background: "linear-gradient(45deg, #63639F, #a6a6e0)",

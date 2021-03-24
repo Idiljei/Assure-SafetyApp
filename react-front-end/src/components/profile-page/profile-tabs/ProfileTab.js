@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Tabs, Tab, Typography, Box } from "@material-ui/core";
+import { AppBar, Paper, Tabs, Tab, Typography, Box } from "@material-ui/core";
 import ContactList from "./ContactList";
 import UserInfoList from "./UserList";
 import MyPosts from "./MyPost";
@@ -47,6 +47,7 @@ const useStyles = makeStyles({
     color: "white !important",
     background: "#63639F",
     indicatorColor: "white",
+    width: "100%"
   },
 });
 
@@ -72,7 +73,7 @@ export default function SimpleTabs(props) {
           aria-label="simple tabs example"
           centered
         >
-          <Tab label="Info" {...a11yProps(0)} />
+          <Tab label="Information" {...a11yProps(0)} />
           <Tab label="Safety Network" {...a11yProps(1)} />
           <Tab label="Posts" {...a11yProps(2)} />
         </Tabs>
