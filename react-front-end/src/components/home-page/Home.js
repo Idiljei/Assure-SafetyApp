@@ -41,19 +41,6 @@ const Home = () => {
         <img class="logo-picture" src="logo/assure-logo.png" alt="assure logo" />
         <div class="alarm">
         <PlayPause></PlayPause>
-<<<<<<< HEAD
-        </div>
-      </Box>
-
-      <Box className={classes.homeBox}>
-        <Box margin="2em">
-          <LocationButton
-            id="location"
-            userStatus={userStatus}
-            setUserStatus={setUserStatus}
-            checkLocationStatus={checkLocationStatus}
-          />
-=======
       </div>
       <div>
         <Box className={classes.homeBox}>
@@ -73,7 +60,6 @@ const Home = () => {
             />
           </Box>
           <Box></Box>
->>>>>>> styles/profile-posts
         </Box>
       </div>
     </div>

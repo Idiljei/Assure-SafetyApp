@@ -45,15 +45,6 @@ img {
   align-items: flex-end;
 }
 
-<<<<<<< HEAD
-=======
-.logo-home {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
->>>>>>> styles/profile-posts
 .logo-picture {
   width: 40%;
   margin-bottom: 15px;
