@@ -16,8 +16,6 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-around !important;
-  align-items: stretch;
-  height: 20em;
   background-color: white;
   position: fixed;
   bottom: 0;
@@ -28,12 +26,6 @@ body {
   color: #63639f;
 }
 
-img {
-  width: 45%;
-  margin: 1.2em;
-  margin-top: 2em;
-}
-
 .logo {
   background-color: #63639f;
   display: flex;
@@ -41,10 +33,9 @@ img {
   align-items: flex-end;
 }
 
-.logo-picture {
-  width: 40%;
-  margin-bottom: 15px;
-  margin-left: 15px;
+img.logo-picture {
+  width: 9em;
+  margin: 1.5em;
 }
 
 .MuiButton-root {
