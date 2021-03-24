@@ -5,3 +5,36 @@
 .MuiButton-Label {
   background: green;
 }
+
+.button-message {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-message-em {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h4.message {
+  width: 90%;
+  font-weight: 500;
+}
+
+h4.message-em {
+  width: 70%;
+  font-weight: 500;
+}
+
+.icon {
+  padding-right: 0.8em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

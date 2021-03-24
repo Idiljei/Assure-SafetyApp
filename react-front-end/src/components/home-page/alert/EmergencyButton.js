@@ -1,19 +1,17 @@
 import React from 'react';
 import { Button, Box, Dialog } from '@material-ui/core';
+import { smsPolice, callPolice } from '../sms';
 import EnterPin from './EnterPin';
 import SafeNow from './SafeNow';
-import { smsPolice, callPolice } from '../sms';
 import WrongPin from './WrongPin';
-import SendIcon from '@material-ui/icons/Send';
+import CallIcon from '@material-ui/icons/Call';
 import useStyles from '../../Styles';
-
+import './Alertpopup.css';
 
 const EmergencyButton = (props) => {
   const classes = useStyles();
   const option = props.policeStatus;
   const setOption = props.setPoliceStatus;
-
-
   const id = 'police';
 
   const status = {
@@ -31,15 +29,20 @@ const EmergencyButton = (props) => {
     if (option === 1) {
       setOption(2)
     }
-  }
+  };
 
   return (
     <Box className={classes.home}>
-      <Button onClick={handleClick} type="submit" className={classes.homeButton} size="large" startIcon={<SendIcon />} variant="contained">
-        
-        { !option && status.before }
-        { option >= 1 && status.after}
-        
+      <Button onClick={handleClick} type="submit" className={!option ? classes.homeButton : classes.homeButtonClicked} size="large" variant="contained">
+          <div class="button-message-em">
+            <div>
+            <CallIcon style={{ fontSize: 30 }}/>
+            </div>
+            <h4 class="message-em">
+            { !option && status.before }
+            { option >= 1 && status.after}
+            </h4>
+          </div>
       </Button>
 
       { option > 1 ?  

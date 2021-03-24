@@ -76,19 +76,16 @@ const Post = (props) => {
           </Box>
         </Box>
 
+          <h4 class="des">Description: {props.description}</h4>
 
-        <Box display="flex" justifyContent="space-between">
-          <Box display="flex" flexDirection="column">
-            <h4 class="des">Description: {props.description}</h4>
+          <Box display="flex" justifyContent="space-between" alignItems="flex-end"> 
             <h5 class="user">Posted by: {props.user}</h5>
+            <box class="counter">
+              <IconButton onClick={onClickADD}><ArrowDropUpIcon Icon /></IconButton>
+              <h5 class="count">{props.counter}</h5>
+              <IconButton onClick={onClickMINUS}><ArrowDropDownIcon Icon /></IconButton>
+            </box>
           </Box>
-
-          <box class="counter">
-            <IconButton onClick={onClickADD}><ArrowDropUpIcon Icon /></IconButton>
-            <h5 class="count">{props.counter}</h5>
-            <IconButton onClick={onClickMINUS}><ArrowDropDownIcon Icon /></IconButton>
-          </box>
-        </Box>
       </Box>
       <Divider />
     </>
