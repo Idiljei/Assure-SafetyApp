@@ -16,9 +16,7 @@ const App = () => {
           <Route path="/" component={Home} />
         </Switch>
 
-        <div className="nav">
-          <Navbar />
-        </div>
+        <Navbar />
       </Router>
     </div>
   );
