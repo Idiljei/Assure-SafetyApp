@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Box, Dialog } from '@material-ui/core';
-import { smsPolice, callPolice } from '../sms';
+import { callPolice } from '../sms';
 import EnterPin from './EnterPin';
 import SafeNow from './SafeNow';
 import WrongPin from './WrongPin';
@@ -22,8 +22,7 @@ const EmergencyButton = (props) => {
   const handleClick = () => {
     if (!option) {
       setOption(1)
-      // smsPolice()
-      // callPolice();
+      callPolice();
     }
 
     if (option === 1) {

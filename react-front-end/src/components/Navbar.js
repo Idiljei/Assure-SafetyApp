@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 
 const Navbar = () => {
   const classes = useStyles();
-  const [ selected, setSelected ] = useState(1);
+  const [ selected, setSelected ] = useState(2);
 
   return (
     <div>
@@ -28,7 +28,7 @@ const Navbar = () => {
             onClick={() => setSelected(1)} 
             showLabel 
             label="Home" 
-            icon={<HomeIcon className={ selected !==1 ? classes.color : null} />} />
+            icon={<HomeIcon className={ selected !== 1 ? classes.color : null} />} />
         </Link>
         <Link to="/forum" className={classes.bottom}>
           <BottomNavigationAction onClick={() => setSelected(2)} showLabel label="Map" icon={<RoomIcon className={ selected !==2 ? classes.color : null} />} />
