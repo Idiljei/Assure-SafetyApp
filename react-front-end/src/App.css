@@ -30,18 +30,19 @@ img {
   width: 20em;
   margin: 2em;
 }
-
-.logo-home {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .logo {
   background-color: #63639f;
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
 }
+
+.logo-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .logo-picture {
   width: 40%;
