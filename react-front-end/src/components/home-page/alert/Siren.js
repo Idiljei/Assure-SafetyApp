@@ -1,35 +1,17 @@
-import React from 'react';
-import soundOff from '../alert/siren.mp3';
-import {Howl, Howler} from 'howler'
+import React, { useState } from 'react';
+import ReactHowler from 'react-howler';
 
-const Siren = () => {
-const audioClips = [
-  {sound: soundOff, label: 'SIREN'}
-]
-
-const soundPlay = (src) => {
-  const sound = new Howl({
-    src 
-  })
-  sound.play()
-}
-
-const RenderButtonandSound = () => {
-  return audioClips.map((soundObj, index) => {
-    return (
-      <button key={index} onClick={() => soundPlay(soundObj.sound)}>
-        {soundObj.label}
-      </button>
-    )
-  })
-}
-
-Howler.volume(1.0)
+const PlayPause = () => {
+  const [play, setPlay] = useState(false);
   return (
     <div>
-      {RenderButtonandSound()}
+      <ReactHowler src='./siren.mp3' playing={play} />
+      <button onClick={() => setPlay(!play)}>
+        {play ? 'Pause' : 'Play'}
+      </button>
+
     </div>
   );
 };
 
-export default Siren;
+export default PlayPause;
