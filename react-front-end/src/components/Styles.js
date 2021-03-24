@@ -27,9 +27,11 @@ const useStyles = makeStyles((theme) => ({
   mapBox: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     padding: "0.8em",
-    paddingLeft: "2em"
+    paddingLeft: "2em",
+    position: "absolute",
+    width: "91.2%"
   },
   findButton: {
     padding: 0,

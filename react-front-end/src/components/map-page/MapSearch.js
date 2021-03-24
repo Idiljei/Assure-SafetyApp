@@ -21,7 +21,6 @@ const MapSearch = ( props ) => {
   });
 
   return (
-    <div class="search">
       <Combobox
         className="search-box"
         onSelect={async (address) => {
@@ -43,12 +42,12 @@ const MapSearch = ( props ) => {
         disabled={!ready}
         placeholder="Enter Address"
         style={{ 
-          width: 242,
+          width: 240,
           border: "solid #B7B7B7 1px",
           borderRadius: "4px",
           fontSize: "1rem",
           fontFamily: "Roboto",
-          padding: "1rem"
+          padding: "0.8rem",
         }}
         /> 
         <ComboboxPopover > 
@@ -60,7 +59,6 @@ const MapSearch = ( props ) => {
           </ComboboxList>
         </ComboboxPopover>
       </Combobox>
-    </div>
     );
 }
 

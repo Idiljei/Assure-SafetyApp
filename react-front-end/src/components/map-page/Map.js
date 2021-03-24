@@ -18,7 +18,7 @@ import "./search.css";
 
 const containerStyle = {
   width: "100%",
-  height: "400px",
+  height: "430px",
 };
 
 const center = {
@@ -70,12 +70,6 @@ const Map = () => {
       </div>
       <div className="map">
         <Box display="flex" flexDirection="column">
-          <Box className={classes.mapBox}>
-            <MapSearch panTo={panTo} />
-            <Locate panTo={panTo} />
-          </Box>
-
-          {!isLoaded && <CircularProgress color="secondary" />}
           <Box>
             <GoogleMap
               mapContainerStyle={containerStyle}
@@ -84,6 +78,13 @@ const Map = () => {
               options={options}
               onLoad={onMapLoad}
             >
+            <div class="mapBox">
+              <MapSearch panTo={panTo} />
+              <div class="find-me">
+                <Locate panTo={panTo} />
+              </div>
+            </div>
+
               <div class="legend">
                 <MapLegend />
               </div>

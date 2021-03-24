@@ -42,17 +42,12 @@ img {
 }
 
 .logo-picture {
-  width: 40%;
+  width: 207px;
+  margin: 1.2em;
 }
 .MuiButton-root {
   color: #63639f !important;
 }
-/* .MuiBottomNavigationAction-root.Mui-selected {
-  color: #63639f;
-} */
-/* .MuiDialogContent-root {
-  color: black !important;
-} */
 
 .MuiPaper-root {
   color: #63639f !important;

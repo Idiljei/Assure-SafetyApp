@@ -105,8 +105,18 @@ div.MuiSnackbarContent-message {
 }
 
 div.legend {
+  padding-left: 96.3%;
+  padding-top: 0.5rem;
+}
+
+div.mapBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8em;
+  padding-left: 2em;
   position: absolute;
-  padding-left: 90%;
+  width: 91.2%;
 }
 
 .filter-button {
@@ -144,7 +154,6 @@ div.legend {
   outline: 0;
 }
 
-
 /* Mobile version*/
 @media only screen and (max-width: 767px) {
   .map-page {
@@ -154,7 +163,11 @@ div.legend {
   }
 
   div.legend {
-    position: absolute;
-    padding-left: 81.6%;
+    padding-top: 18%;
+    padding-left: 84%;
+  }
+
+  div.mapBox {
+    justify-content: flex-end;
   }
 }
