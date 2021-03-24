@@ -29,14 +29,14 @@ const MarkSafeSpots = (props) => {
           place: query,
         };
 
-        if (query === "police+stations") {
+        if (query === "police+stations+in+Vancouver") {
           return setPoliceStations((prev) => [...prev, info]);
         }
-        if (query === "fire+stations") {
+        if (query === "fire+stations+in+Vancouver") {
           return setFireStations((prev) => [...prev, info]);
         }
 
-        if (query === "hospitals") {
+        if (query === "hospitals+in+Vancouver") {
           return setHospitals((prev) => [...prev, info]);
         }
         return;
@@ -47,9 +47,9 @@ const MarkSafeSpots = (props) => {
   };
 
   useEffect(() => {
-    getPlaces("police+stations");
-    getPlaces("hospitals");
-    getPlaces("fire+stations");
+    getPlaces("police+stations+in+Vancouver");
+    getPlaces("hospitals+in+Vancouver");
+    getPlaces("fire+stations+in+Vancouver");
   }, []);
 
   return (
