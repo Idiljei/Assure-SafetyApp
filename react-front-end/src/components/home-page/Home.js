@@ -5,6 +5,8 @@ import EmergencyButton from "./alert/EmergencyButton";
 import useStyles from "../Styles";
 import PlayPause from "../home-page/alert/Siren";
 import "././alert/Alertpopup.css";
+import SurroundSoundOutlinedIcon from '@material-ui/icons/SurroundSoundOutlined';
+import { IconButton, Button } from "@material-ui/core";
 
 const Home = () => {
   const classes = useStyles();
@@ -34,6 +36,7 @@ const Home = () => {
     <div>
       <div className="logo-home">
         <img src="logo/assure-logo.png" alt="assure logo" />
+        <PlayPause></PlayPause>
       </div>
       
       <Box className={classes.homeBox}>
@@ -55,7 +58,6 @@ const Home = () => {
         </Box>
 
         <Box>
-          <PlayPause></PlayPause>
         </Box>
 
 
