@@ -7,6 +7,7 @@ body {
   margin: 0px;
   background-color: #63639f;
   font-family: "Roboto";
+  margin-bottom: 5em;
 }
 
 .MuiBottomNavigation-root {
@@ -29,6 +30,7 @@ img {
   width: 20em;
   margin: 2em;
 }
+
 .logo-home {
   display: flex;
   justify-content: center;
@@ -43,6 +45,8 @@ img {
 
 .logo-picture {
   width: 40%;
+  margin-bottom: 15px;
+  margin-left: 15px;
 }
 .MuiButton-root {
   color: #63639f !important;

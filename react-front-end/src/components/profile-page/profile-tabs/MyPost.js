@@ -79,6 +79,7 @@ export default function MyPosts(props) {
       {myPosts.map((post) => (
         <div className={classes.root}>
           <div>
+            <Divider />
             <List key={post.id}>
               <Box display="flex" alignItems="center">
                 <ListItem button>
