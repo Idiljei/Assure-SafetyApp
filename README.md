@@ -1,4 +1,5 @@
 # Assure - A Safety App
+Owners: Jinny Jang, Idil Jeilani, Maggie DeVito 
 
 Assure is a safety app designed to provide a sense of reassurance to its users. With the ability to notify your safety network and emergency services with one click, users can feel more confident going about their daily routines. 
 
