@@ -7,10 +7,10 @@ We utilize Google Maps api to display all the incidents reported by the users, i
 
 ### Screenshots
 
-!['Homepage']()
-!['SharingLocation']()
-!['Map']()
-!['Profile']()
+!['Homepage'](https://github.com/Idiljei/Assure-SafetyApp/blob/master/react-front-end/public/readme/home.png?raw=true)
+!['SharingLocation'](https://github.com/Idiljei/Assure-SafetyApp/blob/master/react-front-end/public/readme/livesharing.png?raw=true)
+!['Map'](https://github.com/Idiljei/Assure-SafetyApp/blob/master/react-front-end/public/readme/map.png?raw=true)
+!['Profile'](https://github.com/Idiljei/Assure-SafetyApp/blob/master/react-front-end/public/readme/profile.png?raw=true)
 
 ### Setup
 
