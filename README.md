@@ -6,7 +6,10 @@ We utilize Google Maps api to display all the incidents reported by the users, i
 
 ### Screenshots
 
-Coming Soon
+!['Homepage']()
+!['SharingLocation']()
+!['Map']()
+!['Profile']()
 
 ### Setup
 
